@@ -199,6 +199,9 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .q-step{margin-top:26px}
 .q-label{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
 .q-opts{display:flex;flex-wrap:wrap;gap:9px}
+.q-hint{font-size:13px;color:var(--ink-3);font-weight:500;padding:4px 2px}
+.chip.chip-all{border-style:dashed}
+.chip.chip-all svg{width:15px;height:15px}
 .chip{background:var(--surface);border:1px solid var(--line-2);border-radius:13px;padding:11px 16px;font-weight:600;font-size:14px;color:var(--ink);transition:.15s;display:flex;align-items:center;gap:8px}
 .chip svg{width:17px;height:17px}
 .chip:hover{border-color:var(--accent)}
@@ -667,7 +670,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
     <div class="hero-visual">
       <div class="hv-card hv-main">
         <span class="hv-tag">UP TO 60% OFF</span>
-        <img id="heroImg" alt="A warm Sri Lankan home styled with Sastho" src="assets/life-6.jpg" loading="eager">
+        <img id="heroImg" alt="A bright Sri Lankan family kitchen styled with Sastho" src="assets/life-3.jpg" loading="eager">
       </div>
       <div class="hv-float">
         <div class="row"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Order placed</div>
@@ -710,7 +713,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
 <section class="sect" id="shop">
   <div class="wrap">
     <div class="sect-head">
-      <div><span class="eyebrow">Browse</span><h2>Shop by room</h2></div>
+      <div><span class="eyebrow">Browse</span><h2>Shop by category</h2><p>Find everyday home and kitchen essentials by category.</p></div>
       <a class="link-more" href="#deals">All categories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="cat-rail" id="catRail"></div>
@@ -778,25 +781,29 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
         <div class="builder-l">
           <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/></svg>The Sastho shortcut</span>
           <h2>Build My Space</h2>
-          <p>200+ products is a lot. Answer a few quick questions and we'll build a cart that fits your room, style and budget in seconds.</p>
+          <p>Answer a few quick questions and we'll suggest the best Sastho items for your space, style and budget.</p>
           <div class="q-step">
-            <div class="q-label">1. Pick your space</div>
+            <div class="q-label">1. Pick your category</div>
             <div class="q-opts" id="qRooms"></div>
           </div>
           <div class="q-step">
-            <div class="q-label">2. Your style</div>
+            <div class="q-label">2. Select items you need</div>
+            <div class="q-opts" id="qItems"></div>
+          </div>
+          <div class="q-step">
+            <div class="q-label">3. Choose your style</div>
             <div class="q-opts" id="qStyle"></div>
           </div>
           <div class="q-step">
-            <div class="q-label">3. Colour vibe</div>
+            <div class="q-label">4. Colour vibe</div>
             <div class="q-opts" id="qColour"></div>
           </div>
           <div class="q-step">
-            <div class="q-label">4. Who's it for</div>
+            <div class="q-label">5. Who's it for</div>
             <div class="q-opts" id="qWho"></div>
           </div>
           <div class="q-step">
-            <div class="q-label">5. Your budget</div>
+            <div class="q-label">6. Set your budget</div>
             <div class="q-opts" id="qBudget"></div>
           </div>
         </div>
@@ -838,7 +845,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   <div class="wrap">
     <div class="sect-head"><div><span class="eyebrow">Real Sri Lankan homes</span><h2>Loved in homes island-wide</h2></div></div>
     <div class="lookbook reveal">
-      <div class="lb"><img src="assets/life-3.jpg" alt="A family enjoying breakfast together" loading="lazy"><div class="cap">Breakfast, sorted<small>Dining &amp; glassware</small></div></div>
+      <div class="lb"><img src="assets/life-6.jpg" alt="A couple styling their kitchen shelves" loading="lazy"><div class="cap">Styled together<small>Storage &amp; ceramics</small></div></div>
       <div class="lb"><img src="assets/life-5.jpg" alt="A family setting the dinner table" loading="lazy"><div class="cap">Table for the family<small>Dinner sets</small></div></div>
       <div class="lb"><img src="assets/life-4.jpg" alt="A bright modern kitchen and living space" loading="lazy"><div class="cap">Everyday living<small>Home &amp; kitchen</small></div></div>
     </div>
@@ -1407,11 +1414,35 @@ function placeOrder(){
 
 /* ============ BUILD MY SPACE ============ */
 const ROOMS=[
-  {key:"Kitchen",img:"assets/room-kitchen.jpg",cats:["Cookware","Storage","Tableware"]},
-  {key:"Dining",img:"assets/room-dining.jpg",cats:["Tableware","Drinkware"]},
-  {key:"Bedroom",img:"assets/room-bedroom.jpg",cats:["Lighting","Home","Storage"]},
-  {key:"Office",img:"assets/room-office.jpg",cats:["Lighting","Storage","Drinkware"]},
-  {key:"Bathroom",img:null,cats:["Bathroom","Home"]},
+  {key:"Kitchen",img:"assets/room-kitchen.jpg",cats:["Cookware","Storage","Tableware"],items:[
+    {key:"Plates",kw:["plate"]},{key:"Bowls",kw:["bowl"]},
+    {key:"Storage jars",kw:["jar","canister","airtight","storage","container"]},
+    {key:"Cookware",cat:"Cookware"},
+    {key:"Cutlery",kw:["spoon","fork","knife","cutlery","ladle"]},
+    {key:"Kitchen tools",kw:["utensil","board","spatula","grater","peeler","rolling","strainer","whisk","opener","masher","tong"]},
+  ]},
+  {key:"Dining",img:"assets/room-dining.jpg",cats:["Tableware","Drinkware"],items:[
+    {key:"Dinner sets",kw:["plate","dinner","platter"]},
+    {key:"Glassware",kw:["glass","tumbler","goblet"]},
+    {key:"Mugs & cups",kw:["mug","cup"]},
+    {key:"Serving trays",kw:["tray","serving","platter"]},
+    {key:"Bowls",kw:["bowl"]},
+  ]},
+  {key:"Bedroom",img:"assets/room-bedroom.jpg",cats:["Lighting","Home","Storage"],items:[
+    {key:"Lamps & light",kw:["lamp","light","led"]},
+    {key:"Storage",kw:["jar","box","organiz","basket","rack","storage"]},
+    {key:"Décor",kw:["vase","frame","decor","candle","diffuser","ornament","mirror"]},
+  ]},
+  {key:"Office",img:"assets/room-office.jpg",cats:["Lighting","Storage","Drinkware"],items:[
+    {key:"Desk lamps",kw:["lamp","light","led"]},
+    {key:"Organisers",kw:["organiz","jar","box","rack","holder","storage"]},
+    {key:"Mugs",kw:["mug","cup","tumbler"]},
+  ]},
+  {key:"Bathroom",img:null,cats:["Bathroom","Home"],items:[
+    {key:"Soap dispensers",kw:["dispenser","soap"]},
+    {key:"Storage",kw:["jar","box","organiz","basket","rack","holder","storage"]},
+    {key:"Accessories",kw:["towel","brush","toothbrush","holder","tray","mat"]},
+  ]},
 ];
 const STYLES=[
   {key:"Minimal",kw:["white","minimalist","matte","plain","round","simple","square","modern"]},
@@ -1431,7 +1462,7 @@ const WHO=[
   {key:"Family",target:7,cap:3,kw:["set","3-tier","family","large","lunch","box","kids","children","6-piece"]},
 ];
 const BUDGETS=[{key:"Under Rs 2,000",max:2000},{key:"Rs 2,000–5,000",max:5000},{key:"Rs 5,000–10,000",max:10000}];
-let bRoom=null,bStyle=null,bColour=null,bWho=null,bBudget=null;
+let bRoom=null,bItems=[],bStyle=null,bColour=null,bWho=null,bBudget=null;
 const ICN_STYLE='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l1.5 5.2a3 3 0 0 0 2 2L21 11l-5.5 1.8a3 3 0 0 0-2 2L12 20l-1.5-5.2a3 3 0 0 0-2-2L3 11l5.5-1.8a3 3 0 0 0 2-2z"/></svg>';
 const ICN_COLOUR='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.2"/><circle cx="17.5" cy="11.5" r="2.2"/><circle cx="8.5" cy="7.5" r="2.2"/><circle cx="6.5" cy="12.5" r="2.2"/><path d="M12 22a10 10 0 1 1 0-20c5.5 0 10 4 10 9 0 3-2.5 5-5 5h-1.8a2 2 0 0 0-1.5 3.3A2 2 0 0 1 12 22z"/></svg>';
 const ICN_WHO='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 5.5a3.2 3.2 0 0 1 0 6M17.5 14a6.5 6.5 0 0 1 4 6"/></svg>';
@@ -1441,13 +1472,28 @@ function renderBuilder(){
   byId("qColour").innerHTML=COLOURS.map(c=>`<button class="chip" data-colour="${c.key}" onclick="pickQ('Colour','${c.key}')">${ICN_COLOUR}${c.key}</button>`).join("");
   byId("qWho").innerHTML=WHO.map(w=>`<button class="chip" data-who="${w.key}" onclick="pickQ('Who','${w.key}')">${ICN_WHO}${w.key}</button>`).join("");
   byId("qBudget").innerHTML=BUDGETS.map(b=>`<button class="chip" data-bud="${b.key}" onclick="pickQ('Budget','${b.key}')">${b.key}</button>`).join("");
+  renderItems();
   emptyBuilder();
+}
+function renderItems(){
+  const room=ROOMS.find(r=>r.key===bRoom);
+  if(!room){byId("qItems").innerHTML='<span class="q-hint">Pick a category first ↑</span>';return;}
+  const opts=room.items.map((it,i)=>`<button class="chip" data-item="${i}" onclick="pickItem(${i})">${it.key}</button>`).join("");
+  byId("qItems").innerHTML=opts+`<button class="chip chip-all" data-item="ALL" onclick="pickItem('ALL')">${I.check}All ${room.key.toLowerCase()} essentials</button>`;
+}
+function pickItem(i){
+  if(!bRoom)return;
+  if(i==='ALL'){bItems=['ALL'];}
+  else{bItems=bItems.filter(x=>x!=='ALL');const pos=bItems.indexOf(i);if(pos>-1)bItems.splice(pos,1);else bItems.push(i);}
+  document.querySelectorAll('#qItems .chip').forEach(c=>{const d=c.dataset.item;c.classList.toggle('sel',d==='ALL'?bItems.includes('ALL'):bItems.includes(+d));});
+  buildSpace();
 }
 function emptyBuilder(){byId("builderResult").innerHTML=`<div class="br-empty"><div class="big">${I.Home}</div><p>Answer the questions on the left, and your personalised cart appears right here.</p></div>`;}
 function pickQ(type,k){
   const map={Room:['qRooms','room',v=>bRoom=v],Style:['qStyle','style',v=>bStyle=v],Colour:['qColour','colour',v=>bColour=v],Who:['qWho','who',v=>bWho=v],Budget:['qBudget','bud',v=>bBudget=v]};
   const [id,attr,set]=map[type];set(k);
-  document.querySelectorAll('#'+id+' .chip').forEach(c=>c.classList.toggle("sel",c.dataset[attr]===k));
+  document.querySelectorAll('#'+id+' .chip, #'+id+' .room-card').forEach(c=>c.classList.toggle("sel",c.dataset[attr]===k));
+  if(type==='Room'){bItems=[];renderItems();}
   buildSpace();
 }
 function scoreProduct(p){
@@ -1461,8 +1507,16 @@ function buildSpace(){
   if(!bRoom||!bBudget)return;
   const room=ROOMS.find(r=>r.key===bRoom),bud=BUDGETS.find(b=>b.key===bBudget);
   const who=bWho?WHO.find(w=>w.key===bWho):null;
-  const target=who?who.target:6, capPer=who?who.cap:2;
-  let pool=CATALOG.filter(p=>room.cats.includes(p.cat)).map(p=>({p,sc:scoreProduct(p)})).sort((a,b)=>b.sc-a.sc).map(o=>o.p);
+  const target=who?who.target:6;
+  const selItems=bItems.filter(x=>x!=='ALL');
+  const capPer=selItems.length?99:(who?who.cap:2);
+  let base=CATALOG.filter(p=>room.cats.includes(p.cat));
+  if(selItems.length){
+    const preds=selItems.map(i=>room.items[i]).filter(Boolean);
+    const filtered=base.filter(p=>{const s=p.name.toLowerCase();return preds.some(it=>(it.kw&&it.kw.some(w=>s.includes(w)))||(it.cat&&p.cat===it.cat&&!it.kw));});
+    if(filtered.length)base=filtered;
+  }
+  let pool=base.map(p=>({p,sc:scoreProduct(p)})).sort((a,b)=>b.sc-a.sc).map(o=>o.p);
   const picks=[],usedCat={};let spent=0;
   for(const p of pool){
     if(spent+p.price>bud.max)continue;
@@ -1472,18 +1526,18 @@ function buildSpace(){
   }
   if(!picks.length){pool.slice(0,3).forEach(p=>{picks.push(p);spent+=p.price;});}
   const reg=picks.reduce((a,p)=>a+p.reg,0);
-  const tags=[bStyle,bColour,bWho].filter(Boolean);
+  const tags=[...selItems.map(i=>room.items[i]&&room.items[i].key),bStyle,bColour,bWho].filter(Boolean);
   byId("builderResult").innerHTML=`
-    <div class="br-head"><b>${I[bRoom]||''} Your ${bRoom} kit</b><small>${picks.length} items</small></div>
+    <div class="br-head"><b>${I[bRoom]||''} Your ${bRoom} picks</b><small>${picks.length} items</small></div>
     ${tags.length?`<div class="br-tags">${tags.map(t=>`<span>${t}</span>`).join("")}</div>`:""}
     <div class="br-items">${picks.map(p=>`<div class="br-item"><img src="${p.img}" alt=""><div class="nm">${p.name}</div><div class="pr">${fmt(p.price)}</div></div>`).join("")}</div>
     <div class="br-foot">
-      <div class="br-total"><span class="l">Kit total</span><span class="v">${fmt(spent)}</span></div>
+      <div class="br-total"><span class="l">Cart total</span><span class="v">${fmt(spent)}</span></div>
       <div class="br-save">${I.check}You save ${fmt(reg-spent)} vs buying separately</div>
-      <button class="btn btn-primary" style="width:100%" onclick='addKit(${JSON.stringify(picks.map(p=>p.id))})'>Add all ${picks.length} to cart</button>
+      <button class="btn btn-primary" style="width:100%" onclick='addKit(${JSON.stringify(picks.map(p=>p.id))})'>Build My Cart &middot; ${picks.length} items</button>
     </div>`;
 }
-function addKit(ids){ids.forEach(id=>addToCart(id,true));toast(ids.length+" items added to cart");openCart();}
+function addKit(ids){ids.forEach(id=>addToCart(id,true));toast("Cart built · "+ids.length+" items added");openCart();}
 
 /* ============ TESTIMONIALS ============ */
 const TESTI=[
