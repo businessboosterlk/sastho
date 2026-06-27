@@ -169,7 +169,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.2s;position:relative;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
 .card-img{position:relative;aspect-ratio:1;background:#f4ede6;overflow:hidden}
-.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;mix-blend-mode:multiply}
 .card:hover .card-img img{transform:scale(1.06)}
 .badge-off{position:absolute;top:11px;left:11px;background:var(--hot);color:#fff;font-family:var(--disp);font-weight:700;font-size:12px;padding:5px 9px;border-radius:9px;box-shadow:0 3px 10px rgba(217,33,33,.32)}
 .badge-low{position:absolute;top:11px;right:11px;background:rgba(23,18,16,.8);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:600;padding:5px 9px;border-radius:9px;display:flex;align-items:center;gap:5px}
@@ -502,6 +502,36 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 .lb .cap{position:absolute;left:18px;bottom:16px;z-index:2;color:#fff;font-family:var(--disp);font-weight:700;font-size:15px}
 .lb .cap small{display:block;font-family:var(--sans);font-weight:500;font-size:12px;color:rgba(255,255,255,.8);margin-top:2px}
 
+/* ===== HERO PRODUCT SPOTLIGHT ===== */
+.spotlight{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden}
+.spot-img{aspect-ratio:1;background:#f4ede6;overflow:hidden}
+.spot-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.spot-img:hover img{transform:scale(1.04)}
+.spot-info{padding:48px 46px;display:flex;flex-direction:column;justify-content:center}
+.spot-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.spot-info h3{font-family:var(--disp);font-size:clamp(24px,3vw,32px);font-weight:800;line-height:1.14;margin-bottom:14px}
+.spot-info .desc{font-size:15px;color:var(--ink-2);line-height:1.6;margin-bottom:20px;max-width:400px}
+.spot-price{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.spot-price .now{font-family:var(--disp);font-weight:800;font-size:28px}
+.spot-price .was{font-size:15px;color:var(--ink-3);text-decoration:line-through}
+.spot-price .off{font-size:12px;font-weight:700;color:#fff;background:var(--hot);padding:4px 10px;border-radius:8px;margin-left:4px}
+.spot-trust{display:flex;gap:18px;margin:16px 0 24px;font-size:12.5px;color:var(--ink-2);font-weight:550}
+.spot-trust span{display:flex;align-items:center;gap:5px}
+.spot-trust svg{width:14px;height:14px;color:var(--good)}
+.spot-cta{display:flex;gap:10px}
+@media(max-width:880px){.spotlight{grid-template-columns:1fr}.spot-info{padding:30px 26px}}
+@media(max-width:560px){.spot-info{padding:24px 20px}.spot-price .now{font-size:24px}}
+
+/* ===== CATEGORY TILES WITH IMAGES ===== */
+.cat-tile-img{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.18s}
+.cat-tile-img:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow)}
+.cat-tile-img .ct-photo{aspect-ratio:1;overflow:hidden;background:#f4ede6}
+.cat-tile-img .ct-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s;mix-blend-mode:multiply}
+.cat-tile-img:hover .ct-photo img{transform:scale(1.06)}
+.cat-tile-img .ct-info{padding:10px 10px 12px;text-align:center}
+.cat-tile-img .ct-info b{font-size:12.5px;font-weight:650;display:block;color:var(--ink)}
+.cat-tile-img .ct-info small{font-size:11px;color:var(--ink-3);font-weight:500}
+
 /* ===== SCROLL REVEAL (gated: visible unless JS enables) ===== */
 .reveal-on .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
 .reveal-on .reveal.in{opacity:1;transform:none}
@@ -737,8 +767,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
         <img id="heroImg" alt="A bright Sri Lankan family kitchen styled with Sastho" src="assets/life-3.jpg" loading="eager">
       </div>
       <div class="hv-pill">
-        <div class="av"><span style="background:#d24e08">A</span><span style="background:#1aae54">N</span><span style="background:#222">F</span></div>
-        <div><b>2,400+ orders</b><small>delivered this month</small></div>
+        <div class="av"><span style="background:var(--gold)">&#9733;</span></div>
+        <div><b>4.8 out of 5</b><small>from 2,300+ customer reviews</small></div>
       </div>
     </div>
   </div>
@@ -810,6 +840,13 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   </div>
 </section>
 
+<!-- HERO PRODUCT SPOTLIGHT -->
+<section class="sect" style="padding-top:0">
+  <div class="wrap">
+    <div class="spotlight reveal" id="spotlight"></div>
+  </div>
+</section>
+
 <!-- SHOP THE LOOK -->
 <section class="sect" style="padding-top:0">
   <div class="wrap">
@@ -878,8 +915,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   <div class="wrap">
     <div class="how">
       <div class="how-head">
-        <h2>Order in 10 seconds. Pay nothing until it's in your hands.</h2>
-        <p>No card, no risk, no account needed. This is the Sastho way.</p>
+        <h2>Why thousands of Sri Lankan families shop with us</h2>
+        <p>No card, no risk, no account needed. You only pay when it's in your hands and you're happy with it.</p>
       </div>
       <div class="how-steps">
         <div class="how-step"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg></div><b>1. Add &amp; check out</b><p>Add what you love and check out on the site in seconds, cash on delivery. Prefer chat? Order on WhatsApp.</p></div>
@@ -894,7 +931,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
 <section class="sect">
   <div class="wrap">
     <div class="sect-head">
-      <div><span class="eyebrow">Loved across Sri Lanka</span><h2>4.8 average from 2,300+ reviews</h2></div>
+      <div><span class="eyebrow">Don't take our word for it</span><h2>Real customers, real deliveries</h2></div>
     </div>
     <div class="testi-grid" id="testiGrid"></div>
   </div>
@@ -1160,11 +1197,33 @@ byId("brandFoot").innerHTML=`<img class="brand-img foot" src="assets/logo-light.
 /* ============ CATEGORIES ============ */
 function renderCats(){
   byId("catRail").innerHTML = CATS.map(c=>{
-    const n = CATALOG.filter(p=>p.cat===c.key).length;
-    return `<div class="cat-tile" onclick="filterCat('${c.key}')"><div class="ci">${I[c.key]||I.Home}</div><b>${c.label}</b><small>${n} items</small></div>`;
+    const items = CATALOG.filter(p=>p.cat===c.key);
+    const n = items.length;
+    const rep = items.length ? items[Math.floor(items.length/3)] : null;
+    const img = rep ? rep.img : '';
+    return `<div class="cat-tile-img" onclick="filterCat('${c.key}')"><div class="ct-photo">${img?`<img src="${img}" alt="${c.label}" loading="lazy">`:''}</div><div class="ct-info"><b>${c.label}</b><small>${n} items</small></div></div>`;
   }).join("");
 }
 function filterCat(k){activeCat=k;searchQ="";byId("searchInput").value="";shown=0;byId("grid").innerHTML="";loadMore();byId("deals").scrollIntoView({behavior:"smooth"});}
+
+/* ============ SPOTLIGHT ============ */
+function renderSpotlight(){
+  const p = CATALOG[0];
+  const off = Math.round((1-p.price/p.reg)*100);
+  byId("spotlight").innerHTML=`
+    <div class="spot-img"><img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+    <div class="spot-info">
+      <div class="spot-label">Staff pick &middot; Best seller</div>
+      <h3>${p.name}</h3>
+      <p class="desc">Our most-ordered item this month. Heavy ceramic, ribbed detail, heat-resistant lid. Pairs with any dinner set in the store.</p>
+      <div class="spot-price"><span class="now">${fmt(p.price)}</span>${off>0?`<span class="was">${fmt(p.reg)}</span><span class="off">-${off}%</span>`:''}</div>
+      <div class="spot-trust"><span>${I.check}${p.sold.toLocaleString()} sold</span><span>${I.check}${p.rating} stars</span><span>${I.check}COD available</span></div>
+      <div class="spot-cta">
+        <button class="btn btn-primary" onclick="addToCart(${p.id})">Add to cart</button>
+        <button class="btn btn-ghost" onclick="openQuick(${p.id})">View details</button>
+      </div>
+    </div>`;
+}
 
 /* ============ PRODUCT GRID ============ */
 function visibleList(){
@@ -1312,7 +1371,7 @@ function updateCart(){
   const mb=byId("mbarBadge");if(mb){mb.textContent=t.count;mb.classList.toggle("show",t.count>0);}
   const body=byId("cartBody"),foot=byId("cartFoot");
   if(cart.length===0){
-    body.innerHTML=`<div class="cart-empty"><div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg></div><p>Your cart is empty.<br>Add some finds to get started.</p><button class="btn btn-primary" onclick="closeCart()">Browse deals</button></div>`;
+    body.innerHTML=`<div class="cart-empty"><div class="big"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg></div><p>Nothing here yet.<br>Go find something you love, we'll hold it for you.</p><button class="btn btn-primary" onclick="closeCart()">Browse deals</button></div>`;
     foot.style.display="none";byId("cartUrgent").style.display="none";byId("shipBar").style.display="none";
     return;
   }
@@ -1720,7 +1779,7 @@ byId("hambBtn").addEventListener("click",()=>byId("deals").scrollIntoView({behav
 
 /* ============ INIT ============ */
 (function init(){
-  renderCats();renderBuilder();renderTesti();loadMore();updateCart();updateWishCount();
+  renderCats();renderSpotlight();renderBuilder();renderTesti();loadMore();updateCart();updateWishCount();
   setTimeout(proofLoop,9000);revealOnScroll();
   if(!localStorage.getItem("sastho_offer"))setTimeout(openOffer,2600);
 })();
