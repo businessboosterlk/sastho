@@ -115,9 +115,9 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .hero-trust div{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:550;color:var(--ink-2)}
 .hero-trust .ic{width:36px;height:36px;border-radius:11px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent);box-shadow:var(--shadow)}
 .hero-trust .ic svg{width:18px;height:18px}
-.hero-visual{position:relative;height:480px}
+.hero-visual{position:relative;height:470px}
 .hv-card{position:absolute;background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--line)}
-.hv-main{inset:0 0 0 20%;z-index:2}
+.hv-main{inset:0;z-index:2}
 .hv-main img{width:100%;height:100%;object-fit:cover}
 .hv-tag{position:absolute;top:16px;left:16px;background:var(--hot);color:#fff;font-family:var(--disp);font-weight:700;font-size:12px;padding:6px 12px;border-radius:10px;box-shadow:0 4px 14px rgba(217,33,33,.36)}
 .hv-pill{position:absolute;left:0;bottom:20px;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-radius:16px;padding:11px 16px;box-shadow:var(--shadow-lg);z-index:4;display:flex;align-items:center;gap:12px;border:1px solid var(--line)}
@@ -561,6 +561,50 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
 .cset-item .ca:hover{background:var(--accent)}
 .cset-item .ca svg{width:13px;height:13px}
 
+/* ===== PRODUCT QUICK VIEW ===== */
+.card-img{cursor:pointer}
+.br-item{cursor:pointer;border-radius:10px;transition:background .15s;padding:4px;margin:-4px}
+.br-item:hover{background:#fbf2ea}
+.qv-scrim{position:fixed;inset:0;background:rgba(20,12,6,.55);backdrop-filter:blur(6px);z-index:430;display:grid;place-items:center;opacity:0;visibility:hidden;transition:.3s;padding:18px}
+.qv-scrim.open{opacity:1;visibility:visible}
+.qv-box{background:var(--surface);border-radius:var(--r-lg);max-width:760px;width:100%;overflow:hidden;box-shadow:var(--shadow-lg);transform:scale(.96) translateY(10px);transition:.3s cubic-bezier(.3,1.2,.5,1);position:relative;max-height:92vh}
+.qv-scrim.open .qv-box{transform:none}
+.qv-x{position:absolute;top:13px;right:13px;z-index:4;width:36px;height:36px;border-radius:11px;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);display:grid;place-items:center;color:var(--ink);box-shadow:var(--shadow)}
+.qv-x:hover{background:#fff}
+.qv-x svg{width:18px;height:18px}
+.qv-grid{display:grid;grid-template-columns:1fr 1fr;max-height:92vh}
+.qv-img{position:relative;background:#f4ede6}
+.qv-img img{width:100%;height:100%;object-fit:cover;min-height:300px}
+.qv-img .badge-off{position:absolute;top:14px;left:14px}
+.qv-info{padding:30px 30px;display:flex;flex-direction:column;overflow-y:auto}
+.qv-cat{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.qv-info h3{font-family:var(--disp);font-size:21px;font-weight:800;line-height:1.22;margin:8px 0 11px}
+.qv-rate{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:var(--ink-2);margin-bottom:14px}
+.qv-rate .stars{display:inline-flex;gap:1px;color:var(--gold)}
+.qv-rate .stars svg{width:13px;height:13px;fill:currentColor}
+.qv-price{display:flex;align-items:center;gap:9px;margin-bottom:15px}
+.qv-price .now{font-family:var(--disp);font-weight:800;font-size:25px}
+.qv-price .was{font-size:14px;color:var(--ink-3);text-decoration:line-through}
+.qv-price .off{font-size:11.5px;font-weight:700;color:#fff;background:var(--hot);padding:3px 8px;border-radius:7px}
+.qv-desc{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin-bottom:16px}
+.qv-meta{display:flex;flex-direction:column;gap:9px;margin-bottom:18px}
+.qv-meta div{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:550;color:var(--ink-2)}
+.qv-meta svg{width:15px;height:15px;color:var(--good);flex-shrink:0}
+.qv-qtyrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
+.qv-qtyrow span.l{font-size:12.5px;font-weight:600;color:var(--ink-2)}
+.qv-cta{display:flex;gap:9px;margin-top:auto}
+.qv-add{flex:1;background:var(--accent);color:#fff;font-weight:700;font-size:15px;border-radius:13px;padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px rgba(210,78,8,.28);transition:.16s}
+.qv-add:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.qv-add:active{transform:scale(.97)}
+.qv-add svg{width:17px;height:17px}
+.qv-wa{width:52px;flex-shrink:0;background:#e8f7ee;color:#1aae54;border-radius:13px;display:grid;place-items:center;transition:.15s}
+.qv-wa:hover{background:#1aae54;color:#fff}
+.qv-wa svg{width:22px;height:22px}
+.qv-save{width:52px;flex-shrink:0;border:1px solid var(--line-2);border-radius:13px;display:grid;place-items:center;color:var(--ink-2);transition:.15s}
+.qv-save.on{color:var(--hot);border-color:#f3c0bf}
+.qv-save.on svg{fill:var(--hot)}
+.qv-save svg{width:20px;height:20px}
+
 /* ===== MOBILE ===== */
 @media(max-width:1080px){
   .grid{grid-template-columns:repeat(3,1fr)}
@@ -572,9 +616,14 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   :root{--topbar:100px}
   .nav-links,.search{display:none}
   .hamb{display:grid}
-  .nav{height:66px}
-  .hero-grid{grid-template-columns:1fr;gap:26px;padding:34px 0}
-  .hero-visual{height:340px;order:-1}
+  .nav{height:64px;gap:12px}
+  .cart-btn{background:transparent;color:var(--ink);width:44px;height:44px;padding:0;border-radius:13px}
+  .cart-btn:hover{background:rgba(0,0,0,.05)}
+  .cart-btn .m-hide{display:none}
+  .hero-grid{grid-template-columns:1fr;gap:22px;padding:24px 0 28px}
+  .hero-visual{height:300px;order:-1}
+  .hv-pill{padding:9px 13px;bottom:14px;left:0}
+  .hv-pill b{font-size:12px}.hv-pill small{font-size:10px}
   .builder-inner{grid-template-columns:1fr}
   .builder-r{border-left:none;border-top:1px solid var(--line)}
   .builder-l{padding:34px 26px}
@@ -592,6 +641,9 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   .lookbook .lb{height:170px}
   .co-grid{grid-template-columns:1fr}
   .co-side{border-left:none;border-top:1px solid var(--line);order:-1}
+  .qv-grid{grid-template-columns:1fr;overflow-y:auto}
+  .qv-img img{min-height:auto;aspect-ratio:4/3}
+  .qv-info{padding:24px 22px}
 }
 @media(max-width:560px){
   .wrap{padding:0 15px}
@@ -608,9 +660,13 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   .cset{bottom:82px}
   .grid{grid-template-columns:repeat(2,1fr);gap:12px}
   .cat-rail{grid-template-columns:repeat(3,1fr);gap:10px}
-  .hero h1{font-size:35px}
-  .hero-trust{gap:14px}
+  .hero-visual{height:264px}
+  .hero h1{font-size:33px}
+  .hero-sub{font-size:15px;margin-top:16px}
+  .hero-cta{margin-top:20px}
+  .hero-trust{gap:12px;margin-top:22px}
   .hero-trust div{font-size:12px}
+  .hero-trust .ic{width:32px;height:32px}
   .foot-grid{grid-template-columns:1fr}
   .card-name{font-size:12.5px;min-height:34px}
   .card-price .now{font-size:16px}
@@ -678,12 +734,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
     </div>
     <div class="hero-visual">
       <div class="hv-card hv-main">
-        <span class="hv-tag">UP TO 60% OFF</span>
         <img id="heroImg" alt="A bright Sri Lankan family kitchen styled with Sastho" src="assets/life-3.jpg" loading="eager">
-      </div>
-      <div class="hv-float">
-        <div class="row"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4 10-10"/></svg></span>Order placed</div>
-        <small>Pay Rs 0 now &middot; Cash on delivery</small>
       </div>
       <div class="hv-pill">
         <div class="av"><span style="background:#d24e08">A</span><span style="background:#1aae54">N</span><span style="background:#222">F</span></div>
@@ -1002,6 +1053,11 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   </div>
 </div>
 
+<!-- PRODUCT QUICK VIEW -->
+<div class="qv-scrim" id="qvScrim" onclick="if(event.target===this)closeQuick()">
+  <div class="qv-box" id="qvBox"></div>
+</div>
+
 <!-- WISHLIST DRAWER -->
 <div class="scrim" id="wishScrim" onclick="closeWish()"></div>
 <aside class="drawer" id="wishDrawer">
@@ -1088,7 +1144,7 @@ function save(){localStorage.setItem("sastho_cart",JSON.stringify(cart));}
 /* ============ ANNOUNCEMENT ============ */
 (function(){
   const items=[
-    {i:I.spark,t:"Lightning Deals live now: up to 60% off"},
+    {i:I.spark,t:"Lightning Deals live now: the week's lowest prices"},
     {i:CATS[0].key&&'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h2"/><path d="M14 9h4l3 3v5h-3"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>',t:"FREE island-wide delivery over Rs 5,000"},
     {i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/></svg>',t:"Pay cash on delivery, no card needed"},
     {i:I.spark,t:"Get 10% off your first order with WELCOME10"},
@@ -1122,11 +1178,11 @@ function cardHTML(p){
   const low = p.stock<=6;
   const isFav = favs.includes(p.id);
   return `<div class="card">
-    <div class="card-img">
+    <div class="card-img" onclick="openQuick(${p.id})">
       ${off>0?`<span class="badge-off">-${off}%</span>`:""}
       ${low?`<span class="badge-low"><span class="pulse"></span>Only ${p.stock} left</span>`:""}
       <img src="${p.img}" alt="${p.name}" loading="lazy">
-      <button class="fav ${isFav?'on':''}" onclick="toggleFav(${p.id},this)" aria-label="Save">${I.heart}</button>
+      <button class="fav ${isFav?'on':''}" onclick="event.stopPropagation();toggleFav(${p.id},this)" aria-label="Save">${I.heart}</button>
     </div>
     <div class="card-body">
       <div class="card-cat">${p.cat}</div>
@@ -1291,11 +1347,49 @@ function updateCart(){
 }
 function bumpCount(){const cc=byId("cartCount");cc.style.transform="scale(0)";requestAnimationFrame(()=>{cc.classList.add("show");cc.style.transform="";});}
 function addFromCard(e,id){
+  e.stopPropagation();
   addToCart(id);
   const b=e.currentTarget;if(!b||b.classList.contains("added"))return;
   b.classList.add("added");b.innerHTML=`${I.check}Added`;
   setTimeout(()=>{b.classList.remove("added");b.innerHTML=`${I.plus}Add`;},1300);
 }
+
+/* ============ PRODUCT QUICK VIEW ============ */
+let qvId=null,qvQty=1;
+const XICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+function descFor(p){return `Handpicked by Sastho for quality and everyday value, this ${p.cat.toLowerCase()} piece is built to last and priced to love. Over ${p.sold.toLocaleString()} already sold across Sri Lanka.`;}
+function openQuick(id){const p=CATALOG.find(x=>x.id===id);if(!p)return;qvId=id;qvQty=1;renderQuick();byId("qvScrim").classList.add("open");document.body.style.overflow="hidden";}
+function closeQuick(){byId("qvScrim").classList.remove("open");document.body.style.overflow="";}
+function qvChangeQty(d){qvQty=Math.max(1,qvQty+d);renderQuick();}
+function renderQuick(){
+  const p=CATALOG.find(x=>x.id===qvId);if(!p)return;
+  const off=Math.round((1-p.price/p.reg)*100),low=p.stock<=6,fav=favs.includes(p.id);
+  byId("qvBox").innerHTML=`
+    <button class="qv-x" onclick="closeQuick()" aria-label="Close">${XICON}</button>
+    <div class="qv-grid">
+      <div class="qv-img">${off>0?`<span class="badge-off">-${off}%</span>`:""}<img src="${p.img}" alt="${p.name}"></div>
+      <div class="qv-info">
+        <div class="qv-cat">${p.cat}</div>
+        <h3>${p.name}</h3>
+        <div class="qv-rate"><span class="stars">${cardStars(p.rating)}</span>${p.rating.toFixed(1)} &middot; ${p.sold.toLocaleString()} sold</div>
+        <div class="qv-price"><span class="now">${fmt(p.price)}</span>${off>0?`<span class="was">${fmt(p.reg)}</span><span class="off">-${off}%</span>`:""}</div>
+        <p class="qv-desc">${descFor(p)}${low?` Only ${p.stock} left in stock.`:""}</p>
+        <div class="qv-meta">
+          <div>${I.check}Cash on delivery, pay only when it arrives</div>
+          <div>${I.check}Island-wide delivery in 1 to 3 days</div>
+          <div>${I.check}7-day easy returns</div>
+        </div>
+        <div class="qv-qtyrow"><span class="l">Quantity</span><div class="qty"><button onclick="qvChangeQty(-1)">${I.minus}</button><span>${qvQty}</span><button onclick="qvChangeQty(1)">${I.plus}</button></div></div>
+        <div class="qv-cta">
+          <button class="qv-add" onclick="qvAdd()">${I.plus}Add ${qvQty} to cart</button>
+          <button class="qv-save ${fav?'on':''}" onclick="qvToggleFav()" aria-label="Save">${I.heart}</button>
+          <button class="qv-wa" onclick="buyNowWA(${p.id})" aria-label="Order on WhatsApp">${I.wa}</button>
+        </div>
+      </div>
+    </div>`;
+}
+function qvAdd(){const p=CATALOG.find(x=>x.id===qvId);if(!p)return;for(let i=0;i<qvQty;i++)addToCart(qvId,true);bumpCount();toast(`Added ${qvQty} × ${p.name.slice(0,20)}…`);closeQuick();openCart();}
+function qvToggleFav(){toggleFav(qvId);renderQuick();}
 let holdInt;
 function startHold(){
   clearInterval(holdInt);let s=599;
@@ -1545,7 +1639,7 @@ function buildSpace(){
   byId("builderResult").innerHTML=`
     <div class="br-head"><b>${I[bRoom]||''} Your ${bRoom} picks</b><small>${picks.length} items</small></div>
     ${tags.length?`<div class="br-tags">${tags.map(t=>`<span>${t}</span>`).join("")}</div>`:""}
-    <div class="br-items">${picks.map(p=>`<div class="br-item"><img src="${p.img}" alt=""><div class="nm">${p.name}</div><div class="pr">${fmt(p.price)}</div></div>`).join("")}</div>
+    <div class="br-items">${picks.map(p=>`<div class="br-item" onclick="openQuick(${p.id})" title="View item"><img src="${p.img}" alt=""><div class="nm">${p.name}</div><div class="pr">${fmt(p.price)}</div></div>`).join("")}</div>
     <div class="br-foot">
       <div class="br-total"><span class="l">Cart total</span><span class="v">${fmt(spent)}</span></div>
       <div class="br-save">${I.check}You save ${fmt(reg-spent)} vs buying separately</div>
@@ -1627,7 +1721,7 @@ byId("hambBtn").addEventListener("click",()=>byId("deals").scrollIntoView({behav
 /* ============ INIT ============ */
 (function init(){
   renderCats();renderBuilder();renderTesti();loadMore();updateCart();updateWishCount();
-  proofLoop();revealOnScroll();
+  setTimeout(proofLoop,9000);revealOnScroll();
   if(!localStorage.getItem("sastho_offer"))setTimeout(openOffer,2600);
 })();
 </script>
