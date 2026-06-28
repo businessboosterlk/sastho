@@ -87,8 +87,8 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .icon-btn{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--ink);transition:.15s;position:relative}
 .icon-btn:hover{background:rgba(0,0,0,.04)}
 .icon-btn svg{width:21px;height:21px}
-.cart-btn{background:var(--ink);color:#fff;width:auto;padding:0 18px;gap:9px;font-weight:650;font-size:14px;border-radius:14px}
-.cart-btn:hover{background:#000;transform:translateY(-1px)}
+.cart-btn{background:transparent;color:var(--ink)}
+.cart-btn:hover{background:rgba(0,0,0,.04)}
 .cart-count{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center;font-family:var(--sans);transform:scale(0);transition:transform .25s cubic-bezier(.5,1.6,.5,1)}
 .cart-count.show{transform:scale(1)}
 .hamb{display:none}
@@ -650,9 +650,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   .nav-links,.search{display:none}
   .hamb{display:grid}
   .nav{height:64px;gap:12px}
-  .cart-btn{background:transparent;color:var(--ink);width:44px;height:44px;padding:0;border-radius:13px}
-  .cart-btn:hover{background:rgba(0,0,0,.05)}
-  .cart-btn .m-hide{display:none}
+  .cart-btn{width:44px;height:44px;padding:0;border-radius:13px}
   .hero-grid{grid-template-columns:1fr;gap:22px;padding:24px 0 28px}
   .hero-visual{height:300px;order:-1}
   .hv-pill{padding:9px 13px;bottom:14px;left:0}
@@ -739,9 +737,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 1 0-7.7 7.7l1.1 1.1L12 22l7.7-7.6 1.1-1.1a5.4 5.4 0 0 0 0-7.7z"/></svg>
         <span class="cart-count" id="wishCount">0</span>
       </button>
-      <button class="icon-btn cart-btn" onclick="openCart()">
+      <button class="icon-btn cart-btn" onclick="openCart()" aria-label="Cart">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>
-        <span class="m-hide">Cart</span>
         <span class="cart-count" id="cartCount">0</span>
       </button>
     </div>
