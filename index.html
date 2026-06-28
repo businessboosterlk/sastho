@@ -1197,11 +1197,8 @@ byId("brandFoot").innerHTML=`<img class="brand-img foot" src="assets/logo-light.
 /* ============ CATEGORIES ============ */
 function renderCats(){
   byId("catRail").innerHTML = CATS.map(c=>{
-    const items = CATALOG.filter(p=>p.cat===c.key);
-    const n = items.length;
-    const rep = items.length ? items[Math.floor(items.length/3)] : null;
-    const img = rep ? rep.img : '';
-    return `<div class="cat-tile-img" onclick="filterCat('${c.key}')"><div class="ct-photo">${img?`<img src="${img}" alt="${c.label}" loading="lazy">`:''}</div><div class="ct-info"><b>${c.label}</b><small>${n} items</small></div></div>`;
+    const n = CATALOG.filter(p=>p.cat===c.key).length;
+    return `<div class="cat-tile" onclick="filterCat('${c.key}')"><div class="ci">${I[c.key]||''}</div><b>${c.label}</b><small>${n} items</small></div>`;
   }).join("");
 }
 function filterCat(k){activeCat=k;searchQ="";byId("searchInput").value="";shown=0;byId("grid").innerHTML="";loadMore();byId("deals").scrollIntoView({behavior:"smooth"});}
