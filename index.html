@@ -486,6 +486,15 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 .co-done-cta .btn{flex:1}
 
 /* ===== EDITORIAL IMAGE BAND ===== */
+.ed-slider{position:relative;border-radius:var(--r-lg);overflow:hidden}
+.ed-track{position:relative}
+.editorial.ed-slide{display:none}
+.editorial.ed-slide.active{display:flex}
+.ed-slide.active img,.ed-slide.active .ed-in{animation:edFadeIn .6s ease}
+@keyframes edFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ed-dots{position:absolute;bottom:20px;right:28px;display:flex;gap:8px;z-index:5}
+.ed-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.5);border:none;cursor:pointer;transition:.25s;padding:0}
+.ed-dot.on{background:#fff;width:28px;border-radius:5px}
 .editorial{position:relative;border-radius:var(--r-lg);overflow:hidden;min-height:440px;display:flex;align-items:center;box-shadow:var(--shadow)}
 .editorial img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .editorial::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,12,6,.16),transparent 50%);pointer-events:none}
@@ -806,13 +815,50 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
 <!-- EDITORIAL BAND -->
 <section class="sect" style="padding-bottom:0">
   <div class="wrap">
-    <div class="editorial reveal">
-      <img src="assets/life-2.jpg" alt="A bright open-plan Sri Lankan home styled with Sastho pieces" loading="lazy">
-      <div class="ed-in">
-        <span class="eyebrow">Made for real homes</span>
-        <h2>The home you love,<br>for less.</h2>
-        <p>From the kitchen to the dining table, Sastho brings together the pieces that make everyday living easier, beautiful and affordable.</p>
-        <a href="#shop" class="btn btn-primary">Explore the collection <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    <div class="ed-slider reveal" id="edSlider">
+      <div class="ed-track">
+        <div class="editorial ed-slide active">
+          <img src="assets/life-2.jpg" alt="Sri Lankan home styled with Sastho pieces" loading="lazy">
+          <div class="ed-in">
+            <span class="eyebrow">Made for real homes</span>
+            <h2>The home you love,<br>for less.</h2>
+            <p>From the kitchen to the dining table, Sastho brings together the pieces that make everyday living easier, beautiful and affordable.</p>
+            <a href="#shop" class="btn btn-primary">Explore the collection <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="editorial ed-slide">
+          <img src="assets/life-1.jpg" alt="Warm kitchen with Sastho tableware" loading="lazy">
+          <div class="ed-in">
+            <span class="eyebrow">Kitchen essentials</span>
+            <h2>Cook, serve,<br>impress.</h2>
+            <p>Premium cookware, elegant tableware and clever storage — everything you need to create a kitchen you'll actually enjoy spending time in.</p>
+            <a href="#shop" class="btn btn-primary">Shop kitchen <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="editorial ed-slide">
+          <img src="assets/life-4.jpg" alt="Cozy bedroom with Sastho decor" loading="lazy">
+          <div class="ed-in">
+            <span class="eyebrow">Bedroom &amp; living</span>
+            <h2>Rest easy,<br>live beautifully.</h2>
+            <p>Transform any room into a retreat with soft textiles, warm lighting and handpicked decor — all at prices that let you do every room.</p>
+            <a href="#shop" class="btn btn-primary">Shop living <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+        <div class="editorial ed-slide">
+          <img src="assets/life-5.jpg" alt="Modern dining setup" loading="lazy">
+          <div class="ed-in">
+            <span class="eyebrow">Cash on delivery</span>
+            <h2>Zero risk,<br>total trust.</h2>
+            <p>Every order ships island-wide with cash on delivery. See it, feel it, love it — then pay. Not happy? Return it within 7 days, no questions.</p>
+            <a href="#how" class="btn btn-primary">How it works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="ed-dots" id="edDots">
+        <button class="ed-dot on" onclick="edGo(0)"></button>
+        <button class="ed-dot" onclick="edGo(1)"></button>
+        <button class="ed-dot" onclick="edGo(2)"></button>
+        <button class="ed-dot" onclick="edGo(3)"></button>
       </div>
     </div>
   </div>
@@ -1254,6 +1300,23 @@ function hcGo(i){
   hcLayout();
 }
 function hcAuto(){clearInterval(hcTimer);hcTimer=setInterval(()=>hcGo(hcIdx+1),5000);}
+
+/* ============ EDITORIAL SLIDER ============ */
+let edIdx=0,edTimer;
+const edSlides=document.querySelectorAll('.ed-slide');
+const edDots=document.querySelectorAll('.ed-dot');
+function edGo(i){
+  edSlides[edIdx].classList.remove('active');
+  edDots[edIdx].classList.remove('on');
+  edIdx=((i%edSlides.length)+edSlides.length)%edSlides.length;
+  edSlides[edIdx].classList.add('active');
+  edDots[edIdx].classList.add('on');
+  edAutoStart();
+}
+function edAutoStart(){clearInterval(edTimer);edTimer=setInterval(()=>edGo(edIdx+1),5000);}
+document.getElementById('edSlider')?.addEventListener('mouseenter',()=>clearInterval(edTimer));
+document.getElementById('edSlider')?.addEventListener('mouseleave',edAutoStart);
+edAutoStart();
 
 /* ============ CATEGORIES ============ */
 function renderCats(){
