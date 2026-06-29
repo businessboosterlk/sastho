@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Build My Space | Sastho Lanka</title>
+<meta name="description" content="Answer a few quick questions and we'll curate the perfect home & kitchen collection for your space, style, and budget. Cash on delivery, island-wide.">
+<meta name="theme-color" content="#d24e08">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<meta property="og:title" content="Build My Space | Sastho Lanka">
+<meta property="og:description" content="Answer a few quick questions and get personalized product recommendations for your space.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#d24e08;--accent-2:#f2671a;--accent-deep:#a83d06;
+  --ink:#171210;--ink-2:#5c524b;--ink-3:#8c8077;
+  --bg:#faf8f5;--surface:#ffffff;--line:#efe9e2;--line-2:#e2d8cd;
+  --good:#1a8a4a;--hot:#d92121;--gold:#e8a700;
+  --r:18px;--r-sm:12px;--r-lg:26px;
+  --shadow:0 1px 2px rgba(40,20,8,.04),0 6px 20px rgba(40,20,8,.06);
+  --shadow-lg:0 18px 60px rgba(40,20,8,.16);
+  --maxw:1240px;--topbar:114px;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --disp:'Plus Jakarta Sans',var(--sans);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+svg{flex-shrink:0}
+html,body{overflow-x:clip;max-width:100%}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-top:var(--topbar)}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+input{font-family:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.tnum{font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
+.eyebrow{font-family:var(--disp);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.eyebrow svg{width:15px;height:15px}
+
+/* ===== BRAND ===== */
+.brand{display:inline-flex;align-items:center;gap:11px}
+.brand-img{height:52px;width:auto;display:block}
+.brand-img.foot{height:62px}
+@media(max-width:560px){.brand-img{height:46px}}
+
+/* ===== ANNOUNCEMENT ===== */
+.anno{background:var(--ink);color:#fff;font-size:12.5px;font-weight:500;height:34px;display:flex;align-items:center;overflow:hidden;position:relative}
+.anno-track{display:flex;gap:46px;white-space:nowrap;animation:marq 30s linear infinite;padding-left:46px}
+.anno-track span{display:inline-flex;align-items:center;gap:8px;letter-spacing:.01em;color:rgba(255,255,255,.92)}
+.anno-track svg{width:15px;height:15px;color:var(--accent-2)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== TOPBAR ===== */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,248,245,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav{height:80px;display:flex;align-items:center;gap:18px}
+.nav-links{display:flex;gap:2px;margin-left:14px}
+.nav-links a{font-weight:550;font-size:14.5px;color:var(--ink-2);padding:9px 14px;border-radius:10px;transition:.15s}
+.nav-links a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
+.nav-links a.active{color:var(--accent);background:rgba(210,78,8,.07)}
+.nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.icon-btn{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--ink);transition:.15s;position:relative}
+.icon-btn:hover{background:rgba(0,0,0,.04)}
+.icon-btn svg{width:21px;height:21px}
+.hamb{display:none}
+
+/* ===== MOBILE MENU ===== */
+.mob-menu{position:fixed;inset:0;z-index:300;pointer-events:none;opacity:0;transition:opacity .25s}
+.mob-menu.open{pointer-events:auto;opacity:1}
+.mob-scrim{position:absolute;inset:0;background:rgba(0,0,0,.4)}
+.mob-panel{position:absolute;top:0;left:0;bottom:0;width:300px;background:var(--surface);transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding:28px 22px;display:flex;flex-direction:column;gap:6px}
+.mob-menu.open .mob-panel{transform:translateX(0)}
+.mob-panel a{font-weight:600;font-size:16px;padding:14px 0;border-bottom:1px solid var(--line);display:block}
+.mob-panel a.active{color:var(--accent)}
+.mob-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center}
+.mob-close svg{width:22px;height:22px}
+
+/* ===== HERO ===== */
+.build-hero{background:var(--surface);padding:52px 0 60px;text-align:center;position:relative;overflow:hidden}
+.build-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(210,78,8,.06),transparent)}
+.build-hero>*{position:relative}
+.build-hero .eyebrow{margin-bottom:16px;justify-content:center}
+.build-hero h1{font-size:clamp(36px,5.2vw,58px);font-weight:800;letter-spacing:-.04em;margin-bottom:14px}
+.build-hero h1 .accent{color:var(--accent)}
+.build-hero p{font-size:clamp(15.5px,1.8vw,18px);color:var(--ink-2);max-width:560px;margin:0 auto;line-height:1.6;font-weight:450}
+@keyframes heroFadeIn{from{opacity:0;transform:translateY(24px);filter:blur(3px)}to{opacity:1;transform:none;filter:blur(0)}}
+.build-hero .eyebrow,.build-hero h1,.build-hero p{opacity:0;animation:heroFadeIn .7s cubic-bezier(.16,1,.3,1) forwards}
+.build-hero .eyebrow{animation-delay:.1s}
+.build-hero h1{animation-delay:.22s}
+.build-hero p{animation-delay:.36s}
+
+/* ===== PROGRESS BAR ===== */
+.progress-wrap{background:var(--surface);border-bottom:1px solid var(--line);padding:18px 0;position:sticky;top:var(--topbar);z-index:100;transition:box-shadow .25s}
+.progress-wrap.shadow{box-shadow:0 4px 20px rgba(40,20,8,.06)}
+.progress-inner{display:flex;align-items:center;gap:16px}
+.progress-label{font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--ink-2);white-space:nowrap}
+.progress-label b{color:var(--accent)}
+.progress-track{flex:1;height:6px;background:var(--line);border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent-2),var(--accent));border-radius:10px;width:0;transition:width .5s cubic-bezier(.4,0,.2,1)}
+.progress-pct{font-family:var(--disp);font-weight:800;font-size:13px;color:var(--accent);min-width:36px;text-align:right}
+
+/* ===== QUIZ ===== */
+.quiz-section{padding:48px 0 60px;min-height:460px}
+.quiz-container{max-width:860px;margin:0 auto;position:relative;overflow:hidden}
+.quiz-step{display:none;animation:stepIn .5s cubic-bezier(.16,1,.3,1) forwards}
+.quiz-step.active{display:block}
+@keyframes stepIn{from{opacity:0;transform:translateX(50px)}to{opacity:1;transform:none}}
+@keyframes stepOut{from{opacity:1;transform:none}to{opacity:0;transform:translateX(-50px)}}
+.quiz-step.exiting{animation:stepOut .3s cubic-bezier(.4,0,1,1) forwards;display:block}
+.step-head{text-align:center;margin-bottom:36px}
+.step-head h2{font-size:clamp(24px,3vw,32px);font-weight:800;margin-bottom:8px}
+.step-head p{color:var(--ink-2);font-size:15px;font-weight:450}
+
+/* Option Cards */
+.options-grid{display:grid;gap:14px}
+.options-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.options-grid.cols-2{grid-template-columns:repeat(2,1fr)}
+.options-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+.opt-card{background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:28px 20px;text-align:center;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);position:relative;display:flex;flex-direction:column;align-items:center;gap:12px}
+.opt-card:hover{border-color:var(--line-2);transform:translateY(-3px);box-shadow:var(--shadow)}
+.opt-card.selected{border-color:var(--accent);background:rgba(210,78,8,.04);box-shadow:0 0 0 4px rgba(210,78,8,.1)}
+.opt-card.selected::after{content:"";position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;background:var(--accent);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E");background-size:16px;background-position:center;background-repeat:no-repeat}
+.opt-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(210,78,8,.08),rgba(210,78,8,.03));display:grid;place-items:center;color:var(--accent);transition:all .2s}
+.opt-card:hover .opt-icon{background:linear-gradient(135deg,rgba(210,78,8,.14),rgba(210,78,8,.06))}
+.opt-card.selected .opt-icon{background:var(--accent);color:#fff}
+.opt-icon svg{width:26px;height:26px}
+.opt-card b{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink)}
+
+/* Color swatches */
+.color-swatch{display:flex;gap:6px;margin-bottom:4px}
+.color-dot{width:22px;height:22px;border-radius:50%;border:2px solid rgba(0,0,0,.08)}
+
+/* Style cards */
+.style-preview{width:100%;height:6px;border-radius:3px;margin-bottom:4px;overflow:hidden;display:flex;gap:0}
+.style-preview span{flex:1;height:100%}
+
+/* Budget cards */
+.opt-card .price-tag{font-family:var(--disp);font-weight:800;font-size:18px;color:var(--accent)}
+
+/* Multi select hint */
+.multi-hint{text-align:center;margin-top:-20px;margin-bottom:20px;font-size:13px;color:var(--ink-3);font-weight:500;display:flex;align-items:center;justify-content:center;gap:6px}
+.multi-hint svg{width:15px;height:15px;color:var(--accent)}
+
+/* Navigation */
+.quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:36px;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:650;font-size:15px;border-radius:14px;padding:14px 28px;transition:.16s;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(210,78,8,.28)}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(210,78,8,.36)}
+.btn-primary:disabled{opacity:.4;pointer-events:none;transform:none;box-shadow:none}
+.btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line-2)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-2px)}
+.quiz-nav .spacer{flex:1}
+
+/* ===== RESULTS ===== */
+.results-section{display:none;padding:0 0 60px}
+.results-section.visible{display:block;animation:resultsFadeIn .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes resultsFadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+.results-head{text-align:center;padding:52px 0 40px}
+.results-head .eyebrow{margin-bottom:14px;justify-content:center}
+.results-head h2{font-size:clamp(28px,3.6vw,40px);font-weight:800;margin-bottom:12px}
+.results-summary{display:inline-flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.sum-pill{background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:7px 16px;font-size:13px;font-weight:550;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px}
+.sum-pill svg{width:14px;height:14px;color:var(--accent)}
+
+/* Product Grid */
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px}
+.p-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.2s}
+.p-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.p-img-wrap{position:relative;aspect-ratio:1;background:#f8f4f0;overflow:hidden}
+.p-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.p-card:hover .p-img-wrap img{transform:scale(1.06)}
+.p-badge{position:absolute;top:10px;left:10px;background:var(--hot);color:#fff;font-family:var(--disp);font-weight:700;font-size:11px;padding:4px 10px;border-radius:8px}
+.p-info{padding:14px 16px 16px}
+.p-name{font-size:13.5px;font-weight:550;line-height:1.35;min-height:37px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:8px}
+.p-meta{display:flex;align-items:center;gap:6px;margin-bottom:10px}
+.p-stars{display:flex;gap:1px;color:var(--gold)}
+.p-stars svg{width:13px;height:13px}
+.p-sold{font-size:11.5px;color:var(--ink-3);font-weight:500}
+.p-price{display:flex;align-items:baseline;gap:8px;margin-bottom:12px}
+.p-price .now{font-family:var(--disp);font-weight:800;font-size:18px;color:var(--ink)}
+.p-price .was{font-size:13px;color:var(--ink-3);text-decoration:line-through;font-weight:450}
+.p-add{width:100%;background:var(--accent);color:#fff;font-weight:650;font-size:13.5px;border-radius:12px;padding:11px;display:flex;align-items:center;justify-content:center;gap:7px;transition:.16s}
+.p-add:hover{background:var(--accent-deep)}
+.p-add svg{width:16px;height:16px}
+.p-add.added{background:var(--good)}
+
+/* Results Summary Bar */
+.results-bar{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.rb-total{font-family:var(--disp)}
+.rb-total small{font-size:13px;color:var(--ink-3);font-weight:500;display:block}
+.rb-total b{font-size:26px;font-weight:800;color:var(--ink)}
+.rb-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ===== HOW IT WORKS ===== */
+.how-section{background:var(--surface);padding:60px 0;border-top:1px solid var(--line)}
+.how-section .sect-head{text-align:center;display:flex;flex-direction:column;align-items:center;margin-bottom:44px}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.how-card{text-align:center;padding:32px 24px}
+.how-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;font-family:var(--disp);font-weight:800;font-size:18px;display:grid;place-items:center;margin:0 auto 18px}
+.how-card h3{font-size:18px;font-weight:800;margin-bottom:8px}
+.how-card p{font-size:14px;color:var(--ink-2);line-height:1.6}
+.how-arrow{display:flex;align-items:center;justify-content:center;color:var(--line-2)}
+.how-arrow svg{width:32px;height:32px}
+
+/* ===== FOOTER ===== */
+footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+.foot-brand{margin-bottom:0}
+.foot-brand .brand{margin-bottom:16px}
+.foot-brand p{font-size:13.5px;line-height:1.6;max-width:280px}
+.foot-soc{display:flex;gap:10px;margin-top:20px}
+.foot-soc a{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.07);display:grid;place-items:center;color:#fff;transition:.15s}
+.foot-soc a:hover{background:var(--accent)}
+.foot-soc svg{width:18px;height:18px}
+.foot-col h4{font-family:var(--disp);color:#fff;font-size:14px;font-weight:700;margin-bottom:17px}
+.foot-col a,.foot-col div{display:block;font-size:13.5px;margin-bottom:11px;transition:.15s}
+.foot-col a:hover{color:#fff}
+.foot-contact div{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;margin-bottom:13px}
+.foot-contact svg{width:17px;height:17px;color:var(--accent-2);flex-shrink:0;margin-top:2px}
+.foot-bot{border-top:1px solid rgba(255,255,255,.09);margin-top:44px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px}
+.pay-icons{display:flex;gap:8px}
+.pay-icons span{background:rgba(255,255,255,.08);padding:4px 12px;border-radius:6px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.5)}
+
+/* ===== WHATSAPP FAB ===== */
+.wa-fab{position:fixed;right:20px;bottom:20px;z-index:140;width:58px;height:58px;border-radius:50%;background:#1aae54;box-shadow:0 8px 24px rgba(26,174,84,.42);display:grid;place-items:center;transition:.2s;animation:bob 4.5s ease-in-out infinite}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:30px;height:30px;color:#fff}
+.wa-fab::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1aae54;animation:ring 2.6s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+
+/* ===== MOBILE STICKY BAR ===== */
+.mbar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:150;background:var(--surface);border-top:1px solid var(--line);padding:10px 16px;gap:10px;align-items:center;box-shadow:0 -4px 20px rgba(0,0,0,.06)}
+.mbar .btn{flex:1;padding:13px;font-size:14px;justify-content:center}
+
+/* ===== CONFETTI ===== */
+.confetti-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+
+/* ===== NO RESULTS ===== */
+.no-results{text-align:center;padding:60px 20px;color:var(--ink-3)}
+.no-results svg{width:60px;height:60px;margin-bottom:16px;color:var(--line-2)}
+.no-results h3{font-size:20px;color:var(--ink);margin-bottom:8px}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:880px){
+  :root{--topbar:100px}
+  .nav-links{display:none}
+  .hamb{display:grid}
+  .nav{height:64px;gap:12px}
+  .options-grid.cols-3{grid-template-columns:repeat(2,1fr)}
+  .options-grid.cols-4{grid-template-columns:repeat(2,1fr)}
+  .products-grid{grid-template-columns:repeat(3,1fr)}
+  .how-grid{grid-template-columns:1fr}
+  .how-arrow{display:none}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .results-bar{flex-direction:column;align-items:stretch;text-align:center}
+  .rb-actions{justify-content:center}
+}
+@media(max-width:560px){
+  .wrap{padding:0 15px}
+  body{padding-bottom:72px}
+  .mbar{display:flex}
+  .wa-fab{display:none}
+  .build-hero{padding:36px 0 44px}
+  .build-hero h1{font-size:30px}
+  .options-grid.cols-3,.options-grid.cols-4{grid-template-columns:repeat(2,1fr)}
+  .options-grid.cols-2{grid-template-columns:1fr}
+  .opt-card{padding:20px 14px;gap:8px}
+  .opt-icon{width:46px;height:46px;border-radius:13px}
+  .opt-icon svg{width:22px;height:22px}
+  .opt-card b{font-size:13.5px}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .p-info{padding:10px 12px 14px}
+  .p-name{font-size:12.5px;min-height:34px}
+  .p-price .now{font-size:16px}
+  .p-add{font-size:12px;padding:10px}
+  .quiz-section{padding:32px 0 48px}
+  .step-head h2{font-size:22px}
+  .foot-grid{grid-template-columns:1fr}
+  .results-head h2{font-size:26px}
+  .rb-total b{font-size:22px}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.05ms!important}}
+/* AI Chat Widget */
+.ai-fab{position:fixed;right:20px;bottom:88px;z-index:139;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);box-shadow:0 6px 20px rgba(99,102,241,.4);display:grid;place-items:center;cursor:pointer;transition:.2s}
+.ai-fab:hover{transform:scale(1.08)}
+.ai-fab svg{width:24px;height:24px;color:#fff}
+.ai-chat{position:fixed;right:20px;bottom:148px;z-index:300;width:360px;max-height:480px;background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);border:1px solid var(--line);display:none;flex-direction:column;overflow:hidden}
+.ai-chat.open{display:flex;animation:aiSlideIn .25s ease}
+@keyframes aiSlideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ai-chat-head{padding:16px 18px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;display:flex;align-items:center;gap:10px}
+.ai-chat-head .ai-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.ai-chat-head b{font-size:14px;flex:1}
+.ai-chat-head button{background:none;border:none;color:#fff;cursor:pointer;width:28px;height:28px;display:grid;place-items:center;border-radius:8px}
+.ai-chat-head button:hover{background:rgba(255,255,255,.2)}
+.ai-chat-head button svg{width:18px;height:18px}
+.ai-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:320px}
+.ai-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.5;animation:aiSlideIn .2s ease}
+.ai-msg.bot{background:#f0f0ff;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.ai-msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.ai-msg .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ai-msg .chip{background:#fff;border:1px solid var(--line-2);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;transition:.15s}
+.ai-msg .chip:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ai-input{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
+.ai-input input{flex:1;border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;font-size:13px;background:var(--bg)}
+.ai-input input:focus{outline:none;border-color:var(--accent)}
+.ai-input button{width:38px;height:38px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.ai-input button svg{width:18px;height:18px}
+@media(max-width:560px){.ai-fab{bottom:80px;right:14px;width:46px;height:46px}.ai-fab svg{width:20px;height:20px}.ai-chat{right:8px;left:8px;bottom:134px;width:auto;max-height:60vh}}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="anno">
+  <div class="anno-track" id="annoTrack"></div>
+</div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="wrap nav">
+    <button class="icon-btn hamb" id="hambBtn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <a href="index.html" class="brand" aria-label="Sastho Lanka"><img src="assets/logo.png" alt="Sastho Lanka" class="brand-img"></a>
+    <nav class="nav-links">
+      <a href="deals.html">Deals</a>
+      <a href="shop.html">Shop</a>
+      <a href="build.html" class="active">Build My Space</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">Help</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-btn" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <div class="mob-scrim" onclick="closeMob()"></div>
+  <div class="mob-panel">
+    <button class="mob-close" onclick="closeMob()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <a href="deals.html">Deals</a>
+    <a href="shop.html">Shop</a>
+    <a href="build.html" class="active">Build My Space</a>
+    <a href="index.html#how">How It Works</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="faq.html">Help</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="build-hero">
+  <div class="wrap">
+    <div class="eyebrow">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20.18 9l-5 4.27L16.82 20 12 16.77 7.18 20l1.64-6.73L3.82 9l6.09-.74z"/></svg>
+      THE SASTHO SHORTCUT
+    </div>
+    <h1>Build My <span class="accent">Space</span></h1>
+    <p>Answer a few quick questions and we'll curate the perfect collection for your space, style, and budget.</p>
+  </div>
+</section>
+
+<!-- PROGRESS BAR -->
+<div class="progress-wrap" id="progressWrap">
+  <div class="wrap progress-inner">
+    <span class="progress-label">Step <b id="stepNum">1</b> of <b>6</b></span>
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+    <span class="progress-pct tnum" id="progressPct">0%</span>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<section class="quiz-section" id="quizSection">
+  <div class="wrap quiz-container" id="quizContainer">
+
+    <!-- Step 1: Space -->
+    <div class="quiz-step active" data-step="1">
+      <div class="step-head">
+        <h2>Pick your space</h2>
+        <p>Which room are we transforming today?</p>
+      </div>
+      <div class="options-grid cols-3" id="spaceGrid">
+        <div class="opt-card" data-value="Kitchen" onclick="selectSingle(this,'space')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2v0a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
+          <b>Kitchen</b>
+        </div>
+        <div class="opt-card" data-value="Dining Room" onclick="selectSingle(this,'space')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M8 8h8"/><rect x="4" y="14" width="16" height="4" rx="1"/><path d="M6 18v2M18 18v2"/></svg></div>
+          <b>Dining Room</b>
+        </div>
+        <div class="opt-card" data-value="Living Room" onclick="selectSingle(this,'space')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/><path d="M4 18v2M20 18v2"/></svg></div>
+          <b>Living Room</b>
+        </div>
+        <div class="opt-card" data-value="Bedroom" onclick="selectSingle(this,'space')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg></div>
+          <b>Bedroom</b>
+        </div>
+        <div class="opt-card" data-value="Bathroom" onclick="selectSingle(this,'space')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16a1 1 0 0 1 1 1v3a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4v-3a1 1 0 0 1 1-1Z"/><path d="M6 12V5a2 2 0 0 1 2-2h3a1 1 0 0 1 1 1v3"/><path d="M8 20v2M16 20v2"/></svg></div>
+          <b>Bathroom</b>
+        </div>
+        <div class="opt-card" data-value="Home Office" onclick="selectSingle(this,'space')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="12" rx="2"/><path d="M12 16v4M8 20h8"/></svg></div>
+          <b>Home Office</b>
+        </div>
+      </div>
+      <div class="quiz-nav"><div class="spacer"></div><button class="btn btn-primary" id="nextBtn1" disabled onclick="goStep(2)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </div>
+
+    <!-- Step 2: Needs (dynamic) -->
+    <div class="quiz-step" data-step="2">
+      <div class="step-head">
+        <h2>What do you need?</h2>
+        <p>Pick everything that catches your eye</p>
+      </div>
+      <div class="multi-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg> Select multiple items</div>
+      <div class="options-grid cols-3" id="needsGrid"></div>
+      <div class="quiz-nav"><button class="btn btn-ghost" onclick="goStep(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back</button><button class="btn btn-primary" id="nextBtn2" disabled onclick="goStep(3)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </div>
+
+    <!-- Step 3: Style -->
+    <div class="quiz-step" data-step="3">
+      <div class="step-head">
+        <h2>Your style</h2>
+        <p>What best describes your aesthetic?</p>
+      </div>
+      <div class="options-grid cols-2" id="styleGrid">
+        <div class="opt-card" data-value="Minimal & Modern" onclick="selectSingle(this,'style')">
+          <div class="style-preview"><span style="background:#fff"></span><span style="background:#e8e4e0"></span><span style="background:#3a3a3a"></span><span style="background:#d4cec7"></span></div>
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+          <b>Minimal & Modern</b>
+        </div>
+        <div class="opt-card" data-value="Classic & Elegant" onclick="selectSingle(this,'style')">
+          <div class="style-preview"><span style="background:#f5efe7"></span><span style="background:#c5a87e"></span><span style="background:#2d2420"></span><span style="background:#8b6f47"></span></div>
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <b>Classic & Elegant</b>
+        </div>
+        <div class="opt-card" data-value="Warm & Rustic" onclick="selectSingle(this,'style')">
+          <div class="style-preview"><span style="background:#f2e4d3"></span><span style="background:#b87333"></span><span style="background:#5a3e28"></span><span style="background:#d4a574"></span></div>
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4-4 8-7 8-12a8 8 0 1 0-16 0c0 5 4 8 8 12z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <b>Warm & Rustic</b>
+        </div>
+        <div class="opt-card" data-value="Bold & Colorful" onclick="selectSingle(this,'style')">
+          <div class="style-preview"><span style="background:#e05d26"></span><span style="background:#2d7d46"></span><span style="background:#c42a5a"></span><span style="background:#e8a700"></span></div>
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="4.5"/><circle cx="7.5" cy="13.5" r="4.5"/><circle cx="17.5" cy="13.5" r="4.5"/></svg></div>
+          <b>Bold & Colorful</b>
+        </div>
+      </div>
+      <div class="quiz-nav"><button class="btn btn-ghost" onclick="goStep(2)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back</button><button class="btn btn-primary" id="nextBtn3" disabled onclick="goStep(4)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </div>
+
+    <!-- Step 4: Color -->
+    <div class="quiz-step" data-step="4">
+      <div class="step-head">
+        <h2>Color vibe</h2>
+        <p>What palette speaks to you?</p>
+      </div>
+      <div class="options-grid cols-2" id="colorGrid">
+        <div class="opt-card" data-value="Neutrals" onclick="selectSingle(this,'color')">
+          <div class="color-swatch"><div class="color-dot" style="background:#fff"></div><div class="color-dot" style="background:#f5f0e8"></div><div class="color-dot" style="background:#e8ddd0"></div><div class="color-dot" style="background:#c7bfb4"></div></div>
+          <b>Neutrals</b>
+          <span style="font-size:12px;color:var(--ink-3)">White / Beige / Cream</span>
+        </div>
+        <div class="opt-card" data-value="Earth Tones" onclick="selectSingle(this,'color')">
+          <div class="color-swatch"><div class="color-dot" style="background:#8b5e3c"></div><div class="color-dot" style="background:#c4773b"></div><div class="color-dot" style="background:#a0522d"></div><div class="color-dot" style="background:#d4a574"></div></div>
+          <b>Earth Tones</b>
+          <span style="font-size:12px;color:var(--ink-3)">Brown / Terracotta</span>
+        </div>
+        <div class="opt-card" data-value="Cool Tones" onclick="selectSingle(this,'color')">
+          <div class="color-swatch"><div class="color-dot" style="background:#4a7c8c"></div><div class="color-dot" style="background:#2d6a4f"></div><div class="color-dot" style="background:#1a1a2e"></div><div class="color-dot" style="background:#6b93a8"></div></div>
+          <b>Cool Tones</b>
+          <span style="font-size:12px;color:var(--ink-3)">Blue / Green / Black</span>
+        </div>
+        <div class="opt-card" data-value="Warm Tones" onclick="selectSingle(this,'color')">
+          <div class="color-swatch"><div class="color-dot" style="background:#e8a700"></div><div class="color-dot" style="background:#e87d3e"></div><div class="color-dot" style="background:#d4618c"></div><div class="color-dot" style="background:#f2c94c"></div></div>
+          <b>Warm Tones</b>
+          <span style="font-size:12px;color:var(--ink-3)">Gold / Orange / Pink</span>
+        </div>
+      </div>
+      <div class="quiz-nav"><button class="btn btn-ghost" onclick="goStep(3)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back</button><button class="btn btn-primary" id="nextBtn4" disabled onclick="goStep(5)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </div>
+
+    <!-- Step 5: Who -->
+    <div class="quiz-step" data-step="5">
+      <div class="step-head">
+        <h2>Who is it for?</h2>
+        <p>Help us fine-tune the recommendations</p>
+      </div>
+      <div class="options-grid cols-4" id="whoGrid">
+        <div class="opt-card" data-value="Myself" onclick="selectSingle(this,'who')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></div>
+          <b>Myself</b>
+        </div>
+        <div class="opt-card" data-value="My Family" onclick="selectSingle(this,'who')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="7" r="3"/><path d="M13 21v-4a3 3 0 0 0-6 0v4M15 14a3 3 0 0 1 3 3v4"/></svg></div>
+          <b>My Family</b>
+        </div>
+        <div class="opt-card" data-value="A Gift" onclick="selectSingle(this,'who')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M12 8v13"/><path d="M3 13h18"/><path d="M7.5 8C6.1 8 5 6.9 5 5.5S6.1 3 7.5 3c1.3 0 3 1 4.5 5"/><path d="M16.5 8C17.9 8 19 6.9 19 5.5S17.9 3 16.5 3c-1.3 0-3 1-4.5 5"/></svg></div>
+          <b>A Gift</b>
+        </div>
+        <div class="opt-card" data-value="My Business" onclick="selectSingle(this,'who')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v3M12 12v4"/></svg></div>
+          <b>My Business</b>
+        </div>
+      </div>
+      <div class="quiz-nav"><button class="btn btn-ghost" onclick="goStep(4)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back</button><button class="btn btn-primary" id="nextBtn5" disabled onclick="goStep(6)">Continue <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+    </div>
+
+    <!-- Step 6: Budget -->
+    <div class="quiz-step" data-step="6">
+      <div class="step-head">
+        <h2>Budget range</h2>
+        <p>What's your comfort zone?</p>
+      </div>
+      <div class="options-grid cols-2" id="budgetGrid">
+        <div class="opt-card" data-value="0-2000" onclick="selectSingle(this,'budget')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <span class="price-tag">Under Rs 2,000</span>
+          <b>Budget Friendly</b>
+        </div>
+        <div class="opt-card" data-value="2000-5000" onclick="selectSingle(this,'budget')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <span class="price-tag">Rs 2,000 - 5,000</span>
+          <b>Sweet Spot</b>
+        </div>
+        <div class="opt-card" data-value="5000-10000" onclick="selectSingle(this,'budget')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <span class="price-tag">Rs 5,000 - 10,000</span>
+          <b>Premium Pick</b>
+        </div>
+        <div class="opt-card" data-value="10000-999999" onclick="selectSingle(this,'budget')">
+          <div class="opt-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <span class="price-tag">Rs 10,000+</span>
+          <b>Go All Out</b>
+        </div>
+      </div>
+      <div class="quiz-nav"><button class="btn btn-ghost" onclick="goStep(5)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg> Back</button><button class="btn btn-primary" id="nextBtn6" disabled onclick="showResults()">See My Picks <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.09 6.26L20.18 9l-5 4.27L16.82 20 12 16.77 7.18 20l1.64-6.73L3.82 9l6.09-.74z"/></svg></button></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section" id="resultsSection">
+  <div class="wrap">
+    <div class="results-head">
+      <div class="eyebrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20.18 9l-5 4.27L16.82 20 12 16.77 7.18 20l1.64-6.73L3.82 9l6.09-.74z"/></svg> CURATED FOR YOU</div>
+      <h2>Your personalized picks</h2>
+      <div class="results-summary" id="resultsSummary"></div>
+    </div>
+
+    <div class="results-bar" id="resultsBar">
+      <div class="rb-total">
+        <small>Estimated total</small>
+        <b class="tnum" id="resultsTotal">Rs 0</b>
+      </div>
+      <div class="rb-actions">
+        <button class="btn btn-primary" onclick="orderAllWhatsApp()"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/></svg> Order on WhatsApp</button>
+        <button class="btn btn-ghost" onclick="startOver()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg> Start Over</button>
+      </div>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+
+    <div class="no-results" id="noResults" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <h3>No exact matches</h3>
+      <p>Try a wider budget or different space. Here are some popular picks instead.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section reveal" id="howSection">
+  <div class="wrap">
+    <div class="sect-head">
+      <div>
+        <div class="eyebrow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20.18 9l-5 4.27L16.82 20 12 16.77 7.18 20l1.64-6.73L3.82 9l6.09-.74z"/></svg> SIMPLE AS 1-2-3</div>
+        <h2>How it works</h2>
+      </div>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <h3>Answer Questions</h3>
+        <p>Tell us about your space, style, and budget in under 60 seconds.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <h3>Get Recommendations</h3>
+        <p>Our smart engine curates the perfect collection just for you.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <h3>Order & Enjoy</h3>
+        <p>One-click WhatsApp ordering. Cash on delivery, island-wide.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand" aria-label="Sastho Lanka"><img src="assets/logo-light.png" alt="Sastho Lanka" class="brand-img foot"></a>
+        <p>Sri Lanka's one-stop shop for home, kitchen and more. Unbeatable quality at unbeatable prices, delivered island-wide.</p>
+        <div class="foot-soc">
+          <a href="https://instagram.com/sastho.lk" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .5-1.5 1.7-1.5H17V2.5h-2.5C11.7 2.5 10 4.2 10 7v2H7.5v3.2H10V21.5h4v-9.3h2.7l.5-3.2H14z"/></svg></a>
+          <a href="https://wa.me/94777675984" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="deals.html">Lightning Deals</a>
+        <a href="shop.html">All Categories</a>
+        <a href="build.html">Build My Space</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <div class="foot-col">
+        <h4>Help</h4>
+        <a href="index.html#how">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">Returns & Refunds</a>
+        <a href="faq.html">FAQs</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="foot-col foot-contact">
+        <h4>Reach us</h4>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 3.2 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L9.1 9.9a16 16 0 0 0 6 6l1.3-1.35a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+94 77 767 5984</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>No.84/1, Maliban Street, Colombo 11</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Open 7 days &middot; 10am to 7pm</div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; 2026 Sastho Lanka. All rights reserved.</span>
+      <div class="pay-icons"><span>COD</span><span>Visa</span><span>Master</span><span>WhatsApp</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FAB -->
+<a class="wa-fab" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+</a>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mbar" id="mobileBar">
+  <button class="btn btn-primary" onclick="orderAllWhatsApp()" id="mbarWa" style="display:none"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/></svg> Order on WhatsApp</button>
+  <button class="btn btn-ghost" onclick="startOver()" id="mbarReset" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg> Start Over</button>
+</div>
+
+<script>
+/* ===== PRODUCT CATALOG ===== */
+const CATALOG=[{"id":19601,"name":"Ceramic Soup Bowl with Lid","price":1593,"reg":1770,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.30-PM-1.jpeg","cat":"Tableware","rating":4.85,"sold":9136,"stock":36},{"id":19300,"name":"6-Piece Rotating Spice Rack Set","price":1161,"reg":1290,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.19.40-AM.jpeg","cat":"Storage","rating":4.85,"sold":9127,"stock":35},{"id":19024,"name":"Rechargeable LED Desk Table Lamp","price":2295,"reg":2550,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-12.45.16-PM.jpeg","cat":"Lighting","rating":4.85,"sold":9088,"stock":35},{"id":19350,"name":"Portable Shaker Water Bottle","price":864,"reg":960,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.22.12-AM.jpeg","cat":"Bottles","rating":4.85,"sold":9068,"stock":35},{"id":20378,"name":"Square Ceramic Snack Bowl 14CM","price":288,"reg":320,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.22.57-PM.jpeg","cat":"Tableware","rating":4.84,"sold":8950,"stock":35},{"id":19575,"name":"250ml Glass Tumbler Mug","price":225,"reg":250,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.46.30-PM.jpeg","cat":"Bottles","rating":4.83,"sold":8806,"stock":34},{"id":20503,"name":"Classic Ceramic Bowl 12CM","price":279,"reg":310,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.30.59-PM.jpeg","cat":"Tableware","rating":4.83,"sold":8804,"stock":34},{"id":19073,"name":"Rectangular Ceramic Baking Dish","price":1242,"reg":1380,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-5.42.23-PM.jpeg","cat":"Cookware","rating":4.82,"sold":8670,"stock":33},{"id":19123,"name":"Floral Ceramic Casserole Dish 26CM","price":4518,"reg":5020,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-12.48.29-PM.jpeg","cat":"Cookware","rating":4.82,"sold":8612,"stock":33},{"id":20552,"name":"Classic Ceramic Soup Plate 20CM","price":468,"reg":520,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.32.57-PM.jpeg","cat":"Tableware","rating":4.81,"sold":8386,"stock":32},{"id":18796,"name":"Elegant Scalloped Serving Bowl 30CM","price":1503,"reg":1670,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-09-at-5.08.18-PM.jpeg","cat":"Tableware","rating":4.8,"sold":8272,"stock":32},{"id":18946,"name":"3-Tier Insulated Lunch Box","price":3465,"reg":3850,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.02-AM.jpeg","cat":"Storage","rating":4.79,"sold":8097,"stock":31},{"id":18996,"name":"Rechargeable LED Table Lamp (Medium)","price":2142,"reg":2380,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.13AM.jpeg","cat":"Lighting","rating":4.79,"sold":8038,"stock":31},{"id":19673,"name":"Ceramic Teapot 750ML","price":1062,"reg":1180,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-03-at-6.09.15-PM.jpeg","cat":"Cookware","rating":4.79,"sold":7970,"stock":30},{"id":18820,"name":"Ceramic Triple Section Snack Plate 27CM","price":396,"reg":440,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-09-at-5.08.48-PM.jpeg","cat":"Tableware","rating":4.78,"sold":7883,"stock":30},{"id":20400,"name":"Mini Rectangular Ceramic Dish","price":72,"reg":80,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.23.57-PM.jpeg","cat":"Tableware","rating":4.78,"sold":7842,"stock":30},{"id":18969,"name":"Portable Touch Control LED Table Lamp","price":2151,"reg":2390,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.10-AM.jpeg","cat":"Lighting","rating":4.75,"sold":7348,"stock":28},{"id":19294,"name":"3-Compartment Spice Storage Jar Set","price":648,"reg":720,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.19.12-AM.jpeg","cat":"Storage","rating":4.73,"sold":6969,"stock":26},{"id":18792,"name":"Modern Ribbed Ceramic Serving Plate 20CM","price":486,"reg":540,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-09-at-5.08.14-PM.jpeg","cat":"Tableware","rating":4.72,"sold":6833,"stock":26},{"id":19594,"name":"Premium Glass Soap Dispenser","price":459,"reg":510,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.27-PM-1.jpeg","cat":"Bathroom","rating":4.71,"sold":6619,"stock":25},{"id":19669,"name":"Ceramic Sugar Jar with Lid","price":477,"reg":530,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-03-at-6.09.02-PM.jpeg","cat":"Storage","rating":4.71,"sold":6531,"stock":24},{"id":19346,"name":"Electrostatic Pet Hair Remover Roller","price":801,"reg":890,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.21.53-AM.jpeg","cat":"Home","rating":4.77,"sold":7630,"stock":29},{"id":19045,"name":"Elegant Scalloped Ceramic Serving Plate","price":594,"reg":660,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-5.41.29-PM.jpeg","cat":"Tableware","rating":4.77,"sold":7620,"stock":29},{"id":19591,"name":"Clear Glass Soap Dispenser","price":315,"reg":350,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.26-PM.jpeg","cat":"Bathroom","rating":4.65,"sold":5540,"stock":20},{"id":19615,"name":"Luxury Gold Finish Ceramic Mug","price":540,"reg":600,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.55.19-PM-1.jpeg","cat":"Drinkware","rating":4.63,"sold":5151,"stock":18},{"id":18982,"name":"Automatic Smart Robot Floor Cleaner","price":2637,"reg":2930,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.13-AM.jpeg","cat":"Home","rating":4.52,"sold":3004,"stock":9},{"id":19407,"name":"3-in-1 Portable Mini Vacuum Cleaner","price":387,"reg":430,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.23.31-AM.jpeg","cat":"Home","rating":4.98,"sold":2507,"stock":7},{"id":18950,"name":"300ML Volcano Flame Aroma Diffuser","price":1395,"reg":1550,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.07-AM.jpeg","cat":"Lighting","rating":4.87,"sold":515,"stock":37},{"id":19611,"name":"Ceramic Coffee Mug – Green Gradient","price":531,"reg":590,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.55.17-PM.jpeg","cat":"Drinkware","rating":4.56,"sold":3712,"stock":12},{"id":19630,"name":"Ceramic Spice Jar with Lid & Spoon","price":693,"reg":770,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-03-at-6.06.54-PM.jpeg","cat":"Storage","rating":4.93,"sold":1525,"stock":42},{"id":19489,"name":"Face Towel Mop – Multi-Surface","price":999,"reg":1110,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.23.43-AM.jpeg","cat":"Bathroom","rating":4.62,"sold":4937,"stock":17},{"id":19588,"name":"Luxury Glass Soap Dispenser – Gold Pump","price":387,"reg":430,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.24-PM.jpeg","cat":"Bathroom","rating":4.6,"sold":4461,"stock":15}];
+
+const ROOM_CATS={
+  'Kitchen':['Tableware','Cookware','Storage'],
+  'Dining Room':['Tableware','Drinkware'],
+  'Living Room':['Home','Lighting'],
+  'Bedroom':['Lighting','Bottles','Home'],
+  'Bathroom':['Bathroom','Bottles'],
+  'Home Office':['Bottles','Storage','Lighting']
+};
+
+const ROOM_NEEDS={
+  'Kitchen':['Plates','Bowls','Storage Jars','Cookware','Bakeware','Tea / Coffee'],
+  'Dining Room':['Dinner Plates','Serving Bowls','Glassware','Teapots','Cake Stands'],
+  'Living Room':['Lamps','Decor','Diffusers','Storage'],
+  'Bedroom':['Lamps','Water Bottles','Diffusers','Storage'],
+  'Bathroom':['Soap Dispensers','Cleaning Tools','Organizers'],
+  'Home Office':['Desk Lamps','Water Bottles','Storage','Mugs']
+};
+
+const NEED_ICONS={
+  'Plates':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/></svg>',
+  'Bowls':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 12h16a1 1 0 0 1 0 4H4a1 1 0 0 1 0-4z"/><path d="M6 16v2a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-2"/></svg>',
+  'Storage Jars':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="6" width="12" height="14" rx="2"/><path d="M6 10h12M9 3h6v3H9z"/></svg>',
+  'Cookware':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="14" r="7"/><path d="M11 7V3M15 5l3-2"/></svg>',
+  'Bakeware':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="8" width="18" height="10" rx="3"/><path d="M7 8V6a5 5 0 0 1 10 0v2"/></svg>',
+  'Tea / Coffee':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/><path d="M6 2v3M10 2v3M14 2v3"/></svg>',
+  'Dinner Plates':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>',
+  'Serving Bowls':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 11h18a1 1 0 0 1 0 6H3a1 1 0 0 1 0-6z"/><path d="M8 17v2M16 17v2"/></svg>',
+  'Glassware':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2h8l-1 10H9L8 2z"/><path d="M12 12v7M8 21h8"/></svg>',
+  'Teapots':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 4h-4a6 6 0 0 0-6 6v2h16v-2a6 6 0 0 0-6-6z"/><path d="M4 12v4a4 4 0 0 0 4 4h8a4 4 0 0 0 4-4v-4"/><path d="M9 4a3 3 0 0 1 3-3 3 3 0 0 1 3 3"/></svg>',
+  'Cake Stands':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 10h16"/><rect x="5" y="4" width="14" height="6" rx="3"/><path d="M12 10v5M8 18h8M10 15h4"/></svg>',
+  'Lamps':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 18h6M10 22h4"/><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/></svg>',
+  'Decor':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22c4-4 8-7 8-12a8 8 0 1 0-16 0c0 5 4 8 8 12z"/><circle cx="12" cy="10" r="3"/></svg>',
+  'Diffusers':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 22h8l-1-10H9l-1 10z"/><path d="M12 12V8M9 5c0-1 1-3 3-3s3 2 3 3"/><path d="M7 2c2 2 1 4 3 5M17 2c-2 2-1 4-3 5"/></svg>',
+  'Storage':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>',
+  'Water Bottles':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2h8v4H8z"/><path d="M8 6l-1 2a6 6 0 0 0-.5 2.5V20a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-9.5A6 6 0 0 0 17 8l-1-2"/></svg>',
+  'Soap Dispensers':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="6" y="10" width="12" height="12" rx="3"/><path d="M12 10V7M10 7h4M12 4v3"/></svg>',
+  'Cleaning Tools':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v10"/><path d="M5 12h14v2a6 6 0 0 1-3 5.2V22H8v-2.8A6 6 0 0 1 5 14v-2z"/></svg>',
+  'Organizers':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>',
+  'Desk Lamps':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2l-3 14"/><path d="M9 16h10"/><path d="M11 16l-5 6M19 16l2 6"/><circle cx="11" cy="5" r="3"/></svg>',
+  'Mugs':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V8z"/></svg>'
+};
+
+/* ===== STATE ===== */
+let answers={space:null,needs:[],style:null,color:null,who:null,budget:null};
+let currentStep=1;
+let resultProducts=[];
+
+/* ===== ANNOUNCEMENT ===== */
+(function(){
+  const msgs=[
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',text:'Island-Wide Cash on Delivery'},
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>',text:'62,000+ Happy Customers'},
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',text:'Delivery in 2-4 Business Days'},
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 22s-8-4-8-10V5l8-3 8 3v7c0 6-8 10-8 10z"/></svg>',text:'7-Day Easy Returns'},
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 16.5v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 2.2 3 2 2 0 0 1 4.2 1h3"/></svg>',text:'WhatsApp: +94 77 767 5984'}
+  ];
+  const track=document.getElementById('annoTrack');
+  let html='';
+  for(let i=0;i<3;i++) msgs.forEach(m=>html+=`<span>${m.icon}${m.text}</span>`);
+  track.innerHTML=html;
+})();
+
+/* ===== MOBILE NAV ===== */
+document.getElementById('hambBtn').addEventListener('click',function(){document.getElementById('mobMenu').classList.add('open');});
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+
+/* ===== PROGRESS ===== */
+function updateProgress(step){
+  const pct=Math.round(((step-1)/6)*100);
+  document.getElementById('stepNum').textContent=step;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('progressPct').textContent=pct+'%';
+}
+
+/* ===== SCROLL SHADOW ===== */
+window.addEventListener('scroll',function(){
+  document.getElementById('progressWrap').classList.toggle('shadow',window.scrollY>10);
+});
+
+/* ===== SINGLE SELECT ===== */
+function selectSingle(el,key){
+  const grid=el.parentElement;
+  grid.querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[key]=el.dataset.value;
+  const btn=document.getElementById('nextBtn'+currentStep);
+  if(btn) btn.disabled=false;
+
+  if(key==='space') populateNeeds(el.dataset.value);
+}
+
+/* ===== MULTI SELECT ===== */
+function toggleMulti(el){
+  el.classList.toggle('selected');
+  const grid=document.getElementById('needsGrid');
+  answers.needs=Array.from(grid.querySelectorAll('.opt-card.selected')).map(c=>c.dataset.value);
+  document.getElementById('nextBtn2').disabled=answers.needs.length===0;
+}
+
+/* ===== POPULATE NEEDS ===== */
+function populateNeeds(room){
+  const needs=ROOM_NEEDS[room]||[];
+  const grid=document.getElementById('needsGrid');
+  grid.innerHTML=needs.map(n=>`<div class="opt-card" data-value="${n}" onclick="toggleMulti(this)"><div class="opt-icon">${NEED_ICONS[n]||'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/></svg>'}</div><b>${n}</b></div>`).join('');
+  answers.needs=[];
+  document.getElementById('nextBtn2').disabled=true;
+}
+
+/* ===== STEP NAVIGATION ===== */
+function goStep(step){
+  const current=document.querySelector('.quiz-step.active');
+  if(current){
+    current.classList.remove('active');
+    current.classList.add('exiting');
+    setTimeout(()=>current.classList.remove('exiting'),300);
+  }
+  setTimeout(()=>{
+    const next=document.querySelector(`.quiz-step[data-step="${step}"]`);
+    if(next){
+      next.classList.remove('exiting');
+      next.classList.add('active');
+    }
+    currentStep=step;
+    updateProgress(step);
+    document.getElementById('quizSection').scrollIntoView({behavior:'smooth',block:'start'});
+  },current?280:0);
+}
+
+/* ===== SHOW RESULTS ===== */
+function showResults(){
+  document.getElementById('quizSection').style.display='none';
+  document.getElementById('progressWrap').style.display='none';
+
+  const budget=answers.budget.split('-').map(Number);
+  const minB=budget[0],maxB=budget[1];
+  const cats=ROOM_CATS[answers.space]||[];
+
+  let filtered=CATALOG.filter(p=>cats.includes(p.cat)&&p.price>=minB*0.5&&p.price<=maxB);
+  if(filtered.length<3){
+    filtered=CATALOG.filter(p=>cats.includes(p.cat));
+  }
+  if(filtered.length===0){
+    filtered=CATALOG.slice(0,8);
+    document.getElementById('noResults').style.display='block';
+  }
+  filtered.sort((a,b)=>b.sold-a.sold);
+  resultProducts=filtered;
+
+  const summary=document.getElementById('resultsSummary');
+  summary.innerHTML=[
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>',text:answers.space},
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 22c4-4 8-7 8-12a8 8 0 1 0-16 0c0 5 4 8 8 12z"/></svg>',text:answers.style},
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/></svg>',text:answers.color},
+    {icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>',text:answers.who}
+  ].map(s=>`<span class="sum-pill">${s.icon}${s.text}</span>`).join('');
+
+  renderProducts(filtered);
+  updateTotal();
+
+  const rs=document.getElementById('resultsSection');
+  rs.classList.add('visible');
+  rs.scrollIntoView({behavior:'smooth',block:'start'});
+
+  document.getElementById('mbarWa').style.display='';
+  document.getElementById('mbarReset').style.display='';
+
+  setTimeout(launchConfetti,400);
+}
+
+function renderProducts(products){
+  const grid=document.getElementById('productsGrid');
+  grid.innerHTML=products.map(p=>{
+    const disc=Math.round((1-p.price/p.reg)*100);
+    const stars='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.09 6.26L20.18 9l-5 4.27L16.82 20 12 16.77 7.18 20l1.64-6.73L3.82 9l6.09-.74z"/></svg>'.repeat(Math.round(p.rating));
+    return `<div class="p-card" data-id="${p.id}">
+      <div class="p-img-wrap">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${disc>5?`<span class="p-badge">${disc}% OFF</span>`:''}
+      </div>
+      <div class="p-info">
+        <div class="p-name">${p.name}</div>
+        <div class="p-meta"><div class="p-stars">${stars}</div><span class="p-sold">${(p.sold/1000).toFixed(1)}k sold</span></div>
+        <div class="p-price"><span class="now tnum">Rs ${p.price.toLocaleString()}</span><span class="was tnum">Rs ${p.reg.toLocaleString()}</span></div>
+        <button class="p-add" onclick="toggleProduct(this,${p.id})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Add to Order</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+let selectedIds=new Set();
+function toggleProduct(btn,id){
+  if(selectedIds.has(id)){
+    selectedIds.delete(id);
+    btn.classList.remove('added');
+    btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Add to Order';
+  } else {
+    selectedIds.add(id);
+    btn.classList.add('added');
+    btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5 5L19 7"/></svg> Added';
+  }
+  updateTotal();
+}
+
+function updateTotal(){
+  const items=selectedIds.size>0?CATALOG.filter(p=>selectedIds.has(p.id)):resultProducts;
+  const total=items.reduce((s,p)=>s+p.price,0);
+  document.getElementById('resultsTotal').textContent='Rs '+total.toLocaleString();
+}
+
+/* ===== WHATSAPP ORDER ===== */
+function orderAllWhatsApp(){
+  const items=selectedIds.size>0?CATALOG.filter(p=>selectedIds.has(p.id)):resultProducts;
+  let msg='Hi Sastho! I used Build My Space and here are my picks:\n\n';
+  msg+=`Space: ${answers.space}\nStyle: ${answers.style}\nBudget: ${answers.budget.replace('-',' - ')}\n\n`;
+  items.forEach((p,i)=>msg+=`${i+1}. ${p.name} - Rs ${p.price.toLocaleString()}\n`);
+  const total=items.reduce((s,p)=>s+p.price,0);
+  msg+=`\nTotal: Rs ${total.toLocaleString()}\n\nPlease confirm availability and delivery!`;
+  window.open('https://wa.me/94777675984?text='+encodeURIComponent(msg),'_blank');
+}
+
+/* ===== START OVER ===== */
+function startOver(){
+  answers={space:null,needs:[],style:null,color:null,who:null,budget:null};
+  selectedIds.clear();
+  currentStep=1;
+  document.querySelectorAll('.opt-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.quiz-step').forEach(s=>{s.classList.remove('active','exiting');});
+  document.querySelector('.quiz-step[data-step="1"]').classList.add('active');
+  [1,2,3,4,5,6].forEach(i=>{const b=document.getElementById('nextBtn'+i);if(b)b.disabled=true;});
+  document.getElementById('quizSection').style.display='';
+  document.getElementById('progressWrap').style.display='';
+  document.getElementById('resultsSection').classList.remove('visible');
+  document.getElementById('resultsSection').style.display='none';
+  document.getElementById('noResults').style.display='none';
+  document.getElementById('mbarWa').style.display='none';
+  document.getElementById('mbarReset').style.display='none';
+  updateProgress(1);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ===== CONFETTI ===== */
+function launchConfetti(){
+  const canvas=document.createElement('canvas');
+  canvas.className='confetti-canvas';
+  document.body.appendChild(canvas);
+  const ctx=canvas.getContext('2d');
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+
+  const colors=['#d24e08','#f2671a','#e8a700','#1a8a4a','#d92121','#4a7c8c','#c42a5a'];
+  const particles=[];
+
+  for(let i=0;i<120;i++){
+    particles.push({
+      x:canvas.width/2+(Math.random()-.5)*200,
+      y:canvas.height*.3,
+      vx:(Math.random()-.5)*16,
+      vy:Math.random()*-14-4,
+      w:Math.random()*10+4,
+      h:Math.random()*6+3,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      rotation:Math.random()*360,
+      rv:(Math.random()-.5)*12,
+      gravity:.35,
+      drag:.98,
+      opacity:1
+    });
+  }
+
+  let frame=0;
+  function animate(){
+    frame++;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    let alive=false;
+    particles.forEach(p=>{
+      p.vy+=p.gravity;
+      p.vx*=p.drag;
+      p.x+=p.vx;
+      p.y+=p.vy;
+      p.rotation+=p.rv;
+      if(frame>80) p.opacity-=.02;
+      if(p.opacity<=0) return;
+      alive=true;
+      ctx.save();
+      ctx.translate(p.x,p.y);
+      ctx.rotate(p.rotation*Math.PI/180);
+      ctx.globalAlpha=Math.max(0,p.opacity);
+      ctx.fillStyle=p.color;
+      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+      ctx.restore();
+    });
+    if(alive) requestAnimationFrame(animate);
+    else canvas.remove();
+  }
+  requestAnimationFrame(animate);
+}
+
+/* ===== REVEAL OBSERVER ===== */
+const obs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ===== INIT ===== */
+updateProgress(1);
+</script>
+
+<!-- AI ASSISTANT -->
+<div class="ai-fab" id="aiFab" onclick="toggleAI()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5.5 4 7l1 3h4l1-3c2-1.5 4-4 4-7a7 7 0 0 0-7-7z"/><path d="M9 22h6"/><path d="M10 2V1M14 2V1M7.5 4L6.5 3M16.5 4l1-1"/></svg>
+</div>
+<div class="ai-chat" id="aiChat">
+  <div class="ai-chat-head">
+    <span class="ai-dot"></span>
+    <b>Sastho AI Assistant</b>
+    <button onclick="toggleAI()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="ai-msgs" id="aiMsgs"></div>
+  <div class="ai-input">
+    <input type="text" id="aiIn" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendAI()">
+    <button onclick="sendAI()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button>
+  </div>
+</div>
+<script>
+(function(){
+var aiOpen=false;
+var aiHistory=[];
+var AI_KB={
+  delivery:["We deliver island-wide across all 25 districts of Sri Lanka.","Colombo: 1-2 business days. Other areas: 3-5 business days.","FREE delivery on orders over Rs 5,000.","You'll get a WhatsApp tracking update once dispatched."],
+  returns:["We offer a 7-day return policy on all items.","If damaged, defective, or not as expected — message us on WhatsApp with your order number and photos.","We'll arrange a pickup and full refund."],
+  payment:["We accept Cash on Delivery (COD) — no card or online payment needed.","Simply place your order and pay the courier when your package arrives.","We also accept Visa, Mastercard, and WhatsApp orders."],
+  products:["We sell premium home and kitchen products: ceramics, glassware, lamps, storage, bathroom accessories, and more.","Prices start from as low as Rs 72.","All products come with quality guarantee.","Check our Shop page for the full catalog, or use Build My Space to get personalized recommendations."],
+  wholesale:["Yes! Hotels, resellers, and offices get special wholesale rates.","Contact us on WhatsApp or email hello@sastho.lk for bulk pricing."],
+  contact:["WhatsApp: +94 77 767 5984 (fastest way to reach us)","Email: hello@sastho.lk (we reply within 24 hours)","Visit: No.84/1, Maliban Street, Colombo 11","Open 7 days a week, 10am to 7pm."],
+  deals:["Check our Lightning Deals page for the lowest prices of the week!","Use code WELCOME10 for 10% off your first order.","Deals refresh weekly — grab them before the timer runs out."],
+  order:["To place an order: browse our shop, add items to cart, and checkout.","Choose Cash on Delivery at checkout — pay only when you receive your items.","You can also order directly on WhatsApp by sending us the product links."]
+};
+var AI_GREET='<div class="ai-msg bot">Hi! I\'m Sastho\'s AI assistant. How can I help you today?<div class="chips"><span class="chip" onclick="aiChip(this)">Delivery info</span><span class="chip" onclick="aiChip(this)">Return policy</span><span class="chip" onclick="aiChip(this)">How to order</span><span class="chip" onclick="aiChip(this)">Contact us</span></div></div>';
+function toggleAI(){
+  aiOpen=!aiOpen;
+  document.getElementById("aiChat").classList.toggle("open",aiOpen);
+  if(aiOpen&&!aiHistory.length){document.getElementById("aiMsgs").innerHTML=AI_GREET;}
+}
+function aiChip(el){var txt=el.textContent;addAIMsg(txt,"user");processAI(txt);}
+function addAIMsg(txt,who){var d=document.createElement("div");d.className="ai-msg "+who;d.textContent=txt;document.getElementById("aiMsgs").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"end"});aiHistory.push({role:who,text:txt});}
+function addAIBotHTML(html){var d=document.createElement("div");d.className="ai-msg bot";d.innerHTML=html;document.getElementById("aiMsgs").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"end"});}
+function sendAI(){var inp=document.getElementById("aiIn");var v=inp.value.trim();if(!v)return;inp.value="";addAIMsg(v,"user");processAI(v);}
+function processAI(q){
+  var ql=q.toLowerCase();var answer="";var chips=[];
+  if(/deliver|shipping|ship|dispatch|track|when.*arrive|how long/i.test(ql)){answer=AI_KB.delivery.join(" ");chips=["Return policy","How to order"];}
+  else if(/return|refund|exchange|damage|broken|defect/i.test(ql)){answer=AI_KB.returns.join(" ");chips=["Delivery info","Contact us"];}
+  else if(/pay|payment|cod|cash|visa|card|bank/i.test(ql)){answer=AI_KB.payment.join(" ");chips=["How to order","Delivery info"];}
+  else if(/product|what.*sell|catalog|ceramic|glass|lamp|bowl|plate|mug/i.test(ql)){answer=AI_KB.products.join(" ");chips=["View deals","How to order"];}
+  else if(/wholesale|bulk|business|hotel|resell/i.test(ql)){answer=AI_KB.wholesale.join(" ");chips=["Contact us","Products"];}
+  else if(/contact|phone|email|address|visit|location|where|reach/i.test(ql)){answer=AI_KB.contact.join(" ");chips=["Delivery info","How to order"];}
+  else if(/deal|discount|offer|coupon|code|sale|cheap|price|low/i.test(ql)){answer=AI_KB.deals.join(" ");chips=["Products","How to order"];}
+  else if(/order|buy|purchase|checkout|how.*order|how.*buy|cart/i.test(ql)){answer=AI_KB.order.join(" ");chips=["Payment info","Delivery info"];}
+  else if(/hi|hello|hey|good|thank|thanks/i.test(ql)){answer="Hello! Welcome to Sastho Lanka. I can help you with product info, delivery, returns, payments, and more. What would you like to know?";chips=["Delivery info","Products","How to order","Contact us"];}
+  else{answer="I'd be happy to help! For specific queries, you can reach our team on WhatsApp at +94 77 767 5984 or email hello@sastho.lk. Here are some things I can help with:";chips=["Delivery info","Return policy","Payment info","How to order"];}
+  setTimeout(function(){var html=answer;if(chips.length){html+='<div class="chips">'+chips.map(function(c){return '<span class="chip" onclick="aiChip(this)">'+c+'</span>';}).join("")+'</div>';}addAIBotHTML(html);},400+Math.random()*400);
+}
+window.toggleAI=toggleAI;window.sendAI=sendAI;window.aiChip=aiChip;
+})();
+</script>
+</body>
+</html>

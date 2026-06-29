@@ -195,6 +195,44 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 .mbar .mb-wa{background:#1aae54;color:#fff}
 .mbar svg{width:20px;height:20px}
 @media(max-width:560px){.mbar{display:flex}}
+.mnav-scrim{position:fixed;inset:0;z-index:210;background:rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:opacity .25s}
+.mnav-scrim.open{opacity:1;pointer-events:auto}
+.mnav{position:fixed;top:0;left:0;bottom:0;width:280px;z-index:211;background:var(--bg);transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding:24px 20px;display:flex;flex-direction:column;gap:6px;overflow-y:auto}
+.mnav-scrim.open .mnav{transform:translateX(0)}
+.mnav-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.mnav-head img{height:42px;width:auto}
+.mnav-close{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(0,0,0,.04)}
+.mnav-close svg{width:20px;height:20px}
+.mnav a{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:12px;font-weight:600;font-size:15px;color:var(--ink-2);transition:.15s}
+.mnav a:hover,.mnav a.active{background:rgba(210,78,8,.08);color:var(--accent)}
+.mnav a svg{width:20px;height:20px;flex-shrink:0}
+.mnav-divider{height:1px;background:var(--line);margin:10px 0}
+/* AI Chat Widget */
+.ai-fab{position:fixed;right:20px;bottom:88px;z-index:139;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);box-shadow:0 6px 20px rgba(99,102,241,.4);display:grid;place-items:center;cursor:pointer;transition:.2s}
+.ai-fab:hover{transform:scale(1.08)}
+.ai-fab svg{width:24px;height:24px;color:#fff}
+.ai-chat{position:fixed;right:20px;bottom:148px;z-index:300;width:360px;max-height:480px;background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);border:1px solid var(--line);display:none;flex-direction:column;overflow:hidden}
+.ai-chat.open{display:flex;animation:sdIn .25s ease}
+@keyframes sdIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ai-chat-head{padding:16px 18px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;display:flex;align-items:center;gap:10px}
+.ai-chat-head .ai-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.ai-chat-head b{font-size:14px;flex:1}
+.ai-chat-head button{background:none;border:none;color:#fff;cursor:pointer;width:28px;height:28px;display:grid;place-items:center;border-radius:8px}
+.ai-chat-head button:hover{background:rgba(255,255,255,.2)}
+.ai-chat-head button svg{width:18px;height:18px}
+.ai-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:320px}
+.ai-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.5;animation:sdIn .2s ease}
+.ai-msg.bot{background:#f0f0ff;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.ai-msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.ai-msg .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ai-msg .chip{background:#fff;border:1px solid var(--line-2);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;transition:.15s}
+.ai-msg .chip:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ai-input{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
+.ai-input input{flex:1;border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;font-size:13px;background:var(--bg)}
+.ai-input input:focus{outline:none;border-color:var(--accent)}
+.ai-input button{width:38px;height:38px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.ai-input button svg{width:18px;height:18px}
+@media(max-width:560px){.ai-fab{bottom:80px;right:14px;width:46px;height:46px}.ai-fab svg{width:20px;height:20px}.ai-chat{right:8px;left:8px;bottom:134px;width:auto;max-height:60vh}.wa-fab{bottom:80px}}
 </style>
 </head>
 <body>
@@ -206,13 +244,14 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
     <button class="icon-btn hamb" id="hambBtn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <a href="index.html" class="brand" id="brandTop" aria-label="Sastho Lanka"></a>
     <nav class="nav-links">
-      <a href="index.html#deals">Deals</a>
-      <a href="index.html#shop">Shop</a>
-      <a href="index.html#builder">Build My Space</a>
+      <a href="deals.html">Deals</a>
+      <a href="shop.html">Shop</a>
+      <a href="build.html">Build My Space</a>
       <a href="index.html#how">How It Works</a>
       <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="faq.html">Help</a>    </nav>
+      <a href="contact.html" style="color:var(--ink)">Contact</a>
+      <a href="faq.html">Help</a>
+    </nav>
     <div class="nav-actions">
       <a href="https://wa.me/94777675984" target="_blank" rel="noopener" class="icon-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
     </div>
@@ -364,18 +403,19 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
       </div>
       <div class="foot-col">
         <h4>Shop</h4>
-        <a href="index.html#deals">Lightning Deals</a>
-        <a href="index.html#shop">All Categories</a>
-        <a href="index.html#builder">Build My Space</a>
+        <a href="deals.html">Lightning Deals</a>
+        <a href="shop.html">All Categories</a>
+        <a href="build.html">Build My Space</a>
         <a href="about.html">About Us</a>
         <div>Best Sellers</div>
       </div>
       <div class="foot-col">
         <h4>Help</h4>
         <a href="index.html#how">How It Works</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="faq.html">Help</a>        <a href="contact.html">Track My Order</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">Help</a>
+        <a href="contact.html">Track My Order</a>
         <a href="faq.html">Returns &amp; Refunds</a>
         <a href="faq.html">FAQs</a>
         <a href="contact.html">Contact Us</a>
@@ -403,6 +443,41 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
   <a class="mb-wa" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23z"/></svg>WhatsApp</a>
 </div>
 
+<!-- MOBILE NAV -->
+<div class="mnav-scrim" id="mnavScrim" onclick="if(event.target===this){this.classList.remove('open')}">
+  <div class="mnav">
+    <div class="mnav-head">
+      <img src="assets/logo.png" alt="Sastho Lanka" width="120" height="74">
+      <button class="mnav-close" onclick="document.getElementById('mnavScrim').classList.remove('open')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <a href="deals.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 10-12h-7l1-8z"/></svg>Deals</a>
+    <a href="shop.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>Shop</a>
+    <a href="build.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/></svg>Build My Space</a>
+    <a href="index.html#how"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>How It Works</a>
+    <div class="mnav-divider"></div>
+    <a href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M5.5 21a8.4 8.4 0 0 1 13 0"/></svg>About</a>
+    <a href="contact.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Contact</a>
+    <a href="faq.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Help & FAQ</a>
+  </div>
+</div>
+
+<!-- AI ASSISTANT -->
+<div class="ai-fab" id="aiFab" onclick="toggleAI()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5.5 4 7l1 3h4l1-3c2-1.5 4-4 4-7a7 7 0 0 0-7-7z"/><path d="M9 22h6"/><path d="M10 2V1M14 2V1M7.5 4L6.5 3M16.5 4l1-1"/></svg>
+</div>
+<div class="ai-chat" id="aiChat">
+  <div class="ai-chat-head">
+    <span class="ai-dot"></span>
+    <b>Sastho AI Assistant</b>
+    <button onclick="toggleAI()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="ai-msgs" id="aiMsgs"></div>
+  <div class="ai-input">
+    <input type="text" id="aiIn" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendAI()">
+    <button onclick="sendAI()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button>
+  </div>
+</div>
+
 <div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span id="toastMsg"></span></div>
 
 <script>
@@ -420,7 +495,7 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 document.getElementById("brandTop").innerHTML='<img class="brand-img" src="assets/logo.png" alt="Sastho Lanka" width="180" height="110">';
 
 document.getElementById("hambBtn").addEventListener("click",function(){
-  document.querySelector(".contact-hero").scrollIntoView({behavior:"smooth"});
+  document.getElementById("mnavScrim").classList.add("open");
 });
 
 var obs=new IntersectionObserver(function(entries){
@@ -492,6 +567,101 @@ window.resetForm=function(){
   form.reset();
   document.getElementById("successMsg").classList.remove("vis");
 };
+
+/* ============ AI ASSISTANT ============ */
+var aiOpen=false;
+var aiHistory=[];
+var AI_KB={
+  delivery:["We deliver island-wide across all 25 districts of Sri Lanka.","Colombo: 1-2 business days. Other areas: 3-5 business days.","FREE delivery on orders over Rs 5,000.","You'll get a WhatsApp tracking update once dispatched."],
+  returns:["We offer a 7-day return policy on all items.","If damaged, defective, or not as expected — message us on WhatsApp with your order number and photos.","We'll arrange a pickup and full refund."],
+  payment:["We accept Cash on Delivery (COD) — no card or online payment needed.","Simply place your order and pay the courier when your package arrives.","We also accept Visa, Mastercard, and WhatsApp orders."],
+  products:["We sell premium home and kitchen products: ceramics, glassware, lamps, storage, bathroom accessories, and more.","Prices start from as low as Rs 72.","All products come with quality guarantee.","Check our Shop page for the full catalog, or use Build My Space to get personalized recommendations."],
+  wholesale:["Yes! Hotels, resellers, and offices get special wholesale rates.","Contact us on WhatsApp or email hello@sastho.lk for bulk pricing."],
+  contact:["WhatsApp: +94 77 767 5984 (fastest way to reach us)","Email: hello@sastho.lk (we reply within 24 hours)","Visit: No.84/1, Maliban Street, Colombo 11","Open 7 days a week, 10am to 7pm."],
+  deals:["Check our Lightning Deals page for the lowest prices of the week!","Use code WELCOME10 for 10% off your first order.","Deals refresh weekly — grab them before the timer runs out."],
+  order:["To place an order: browse our shop, add items to cart, and checkout.","Choose Cash on Delivery at checkout — pay only when you receive your items.","You can also order directly on WhatsApp by sending us the product links."]
+};
+var AI_GREET='<div class="ai-msg bot">Hi! I\'m Sastho\'s AI assistant. How can I help you today?<div class="chips"><span class="chip" onclick="aiChip(this)">Delivery info</span><span class="chip" onclick="aiChip(this)">Return policy</span><span class="chip" onclick="aiChip(this)">How to order</span><span class="chip" onclick="aiChip(this)">Contact us</span></div></div>';
+
+function toggleAI(){
+  aiOpen=!aiOpen;
+  document.getElementById("aiChat").classList.toggle("open",aiOpen);
+  if(aiOpen&&!aiHistory.length){document.getElementById("aiMsgs").innerHTML=AI_GREET;}
+}
+function aiChip(el){
+  var txt=el.textContent;
+  addAIMsg(txt,"user");
+  processAI(txt);
+}
+function addAIMsg(txt,who){
+  var d=document.createElement("div");
+  d.className="ai-msg "+who;
+  d.textContent=txt;
+  document.getElementById("aiMsgs").appendChild(d);
+  d.scrollIntoView({behavior:"smooth",block:"end"});
+  aiHistory.push({role:who,text:txt});
+}
+function addAIBotHTML(html){
+  var d=document.createElement("div");
+  d.className="ai-msg bot";
+  d.innerHTML=html;
+  document.getElementById("aiMsgs").appendChild(d);
+  d.scrollIntoView({behavior:"smooth",block:"end"});
+}
+function sendAI(){
+  var inp=document.getElementById("aiIn");
+  var v=inp.value.trim();
+  if(!v)return;
+  inp.value="";
+  addAIMsg(v,"user");
+  processAI(v);
+}
+function processAI(q){
+  var ql=q.toLowerCase();
+  var answer="";
+  var chips=[];
+  if(/deliver|shipping|ship|dispatch|track|when.*arrive|how long/i.test(ql)){
+    answer=AI_KB.delivery.join(" ");
+    chips=["Return policy","How to order"];
+  }else if(/return|refund|exchange|damage|broken|defect/i.test(ql)){
+    answer=AI_KB.returns.join(" ");
+    chips=["Delivery info","Contact us"];
+  }else if(/pay|payment|cod|cash|visa|card|bank/i.test(ql)){
+    answer=AI_KB.payment.join(" ");
+    chips=["How to order","Delivery info"];
+  }else if(/product|what.*sell|catalog|ceramic|glass|lamp|bowl|plate|mug/i.test(ql)){
+    answer=AI_KB.products.join(" ");
+    chips=["View deals","How to order"];
+  }else if(/wholesale|bulk|business|hotel|resell/i.test(ql)){
+    answer=AI_KB.wholesale.join(" ");
+    chips=["Contact us","Products"];
+  }else if(/contact|phone|email|address|visit|location|where|reach/i.test(ql)){
+    answer=AI_KB.contact.join(" ");
+    chips=["Delivery info","How to order"];
+  }else if(/deal|discount|offer|coupon|code|sale|cheap|price|low/i.test(ql)){
+    answer=AI_KB.deals.join(" ");
+    chips=["Products","How to order"];
+  }else if(/order|buy|purchase|checkout|how.*order|how.*buy|cart/i.test(ql)){
+    answer=AI_KB.order.join(" ");
+    chips=["Payment info","Delivery info"];
+  }else if(/hi|hello|hey|good|thank|thanks/i.test(ql)){
+    answer="Hello! Welcome to Sastho Lanka. I can help you with product info, delivery, returns, payments, and more. What would you like to know?";
+    chips=["Delivery info","Products","How to order","Contact us"];
+  }else{
+    answer="I'd be happy to help! For specific queries, you can reach our team on WhatsApp at +94 77 767 5984 or email hello@sastho.lk. Here are some things I can help with:";
+    chips=["Delivery info","Return policy","Payment info","How to order"];
+  }
+  setTimeout(function(){
+    var html=answer;
+    if(chips.length){
+      html+='<div class="chips">'+chips.map(function(c){return '<span class="chip" onclick="aiChip(this)">'+c+'</span>';}).join("")+'</div>';
+    }
+    addAIBotHTML(html);
+  },400+Math.random()*400);
+}
+window.toggleAI=toggleAI;
+window.sendAI=sendAI;
+window.aiChip=aiChip;
 })();
 </script>
 <style>@keyframes spin{to{transform:rotate(360deg)}}</style>

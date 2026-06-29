@@ -132,6 +132,32 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
   .e-cats{gap:6px}
   .e-pill{padding:8px 14px;font-size:12px}
 }
+/* AI Chat Widget */
+.ai-fab{position:fixed;right:20px;bottom:88px;z-index:139;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);box-shadow:0 6px 20px rgba(99,102,241,.4);display:grid;place-items:center;cursor:pointer;transition:.2s}
+.ai-fab:hover{transform:scale(1.08)}
+.ai-fab svg{width:24px;height:24px;color:#fff}
+.ai-chat{position:fixed;right:20px;bottom:148px;z-index:300;width:360px;max-height:480px;background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);border:1px solid var(--line);display:none;flex-direction:column;overflow:hidden}
+.ai-chat.open{display:flex;animation:aiSlideIn .25s ease}
+@keyframes aiSlideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ai-chat-head{padding:16px 18px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;display:flex;align-items:center;gap:10px}
+.ai-chat-head .ai-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.ai-chat-head b{font-size:14px;flex:1}
+.ai-chat-head button{background:none;border:none;color:#fff;cursor:pointer;width:28px;height:28px;display:grid;place-items:center;border-radius:8px}
+.ai-chat-head button:hover{background:rgba(255,255,255,.2)}
+.ai-chat-head button svg{width:18px;height:18px}
+.ai-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:320px}
+.ai-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.5;animation:aiSlideIn .2s ease}
+.ai-msg.bot{background:#f0f0ff;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.ai-msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.ai-msg .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ai-msg .chip{background:#fff;border:1px solid var(--line-2);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;transition:.15s}
+.ai-msg .chip:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ai-input{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
+.ai-input input{flex:1;border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;font-size:13px;background:var(--bg)}
+.ai-input input:focus{outline:none;border-color:var(--accent)}
+.ai-input button{width:38px;height:38px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.ai-input button svg{width:18px;height:18px}
+@media(max-width:560px){.ai-fab{bottom:80px;right:14px;width:46px;height:46px}.ai-fab svg{width:20px;height:20px}.ai-chat{right:8px;left:8px;bottom:134px;width:auto;max-height:60vh}}
 </style>
 </head>
 <body>
@@ -143,9 +169,9 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
     <button class="icon-btn hamb" id="hambBtn" aria-label="Menu" onclick="window.location='index.html'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
     <a href="index.html" class="brand" id="brandTop" aria-label="Sastho Lanka"></a>
     <nav class="nav-links">
-      <a href="index.html#deals">Deals</a>
-      <a href="index.html#shop">Shop</a>
-      <a href="index.html#builder">Build My Space</a>
+      <a href="deals.html">Deals</a>
+      <a href="shop.html">Shop</a>
+      <a href="build.html">Build My Space</a>
       <a href="index.html#how">How It Works</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -193,7 +219,7 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
     <p class="e-sub">Looks like this page doesn't exist — but our collection of 200+ home finds definitely does.</p>
     <div class="e-actions">
       <a href="index.html" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 20z"/><path d="M9 21.5V14h6v7.5"/></svg>Back to Home</a>
-      <a href="index.html#shop" class="btn btn-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Browse Products</a>
+      <a href="shop.html" class="btn btn-ghost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Browse Products</a>
     </div>
     <div class="e-search">
       <p>Or search for what you need:</p>
@@ -203,11 +229,11 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
       </form>
     </div>
     <div class="e-cats">
-      <a href="index.html#shop" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3z"/><circle cx="17.5" cy="6.5" r="3.5"/><path d="M3 14h7v7H3z"/><path d="M14 14h7v7h-7z"/></svg>Tableware</a>
-      <a href="index.html#shop" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6z"/><path d="M6 17h12"/></svg>Kitchen</a>
-      <a href="index.html#shop" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12"/><path d="M1 20h22"/><path d="M7 12h10"/></svg>Bedroom</a>
-      <a href="index.html#shop" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l3-3 3 3"/><path d="M12 3v10"/><path d="M5 12h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z"/></svg>Bathroom</a>
-      <a href="index.html#shop" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 5.5L19 10l-4.5 3 1.5 5.5L12 15.5 7.5 18.5 9 13 4.5 10l5.5-1.5z"/></svg>Decor</a>
+      <a href="shop.html" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h7v7H3z"/><circle cx="17.5" cy="6.5" r="3.5"/><path d="M3 14h7v7H3z"/><path d="M14 14h7v7h-7z"/></svg>Tableware</a>
+      <a href="shop.html" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6z"/><path d="M6 17h12"/></svg>Kitchen</a>
+      <a href="shop.html" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v12"/><path d="M1 20h22"/><path d="M7 12h10"/></svg>Bedroom</a>
+      <a href="shop.html" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l3-3 3 3"/><path d="M12 3v10"/><path d="M5 12h14a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2z"/></svg>Bathroom</a>
+      <a href="shop.html" class="e-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.5 5.5L19 10l-4.5 3 1.5 5.5L12 15.5 7.5 18.5 9 13 4.5 10l5.5-1.5z"/></svg>Decor</a>
     </div>
   </div>
 </main>
@@ -226,9 +252,9 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
       </div>
       <div class="foot-col">
         <h4>Shop</h4>
-        <a href="index.html#deals">Lightning Deals</a>
-        <a href="index.html#shop">All Categories</a>
-        <a href="index.html#builder">Build My Space</a>
+        <a href="deals.html">Lightning Deals</a>
+        <a href="shop.html">All Categories</a>
+        <a href="build.html">Build My Space</a>
         <a href="about.html">About Us</a>
         <div>Best Sellers</div>
       </div>
@@ -280,6 +306,64 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
   tk.innerHTML=h+h;
   document.getElementById("brandTop").innerHTML='<img class="brand-img" src="assets/logo.png" alt="Sastho Lanka" width="180" height="110">';
   document.getElementById("brandFoot").innerHTML='<img class="brand-img foot" src="assets/logo-light.png" alt="Sastho Lanka" width="180" height="110">';
+})();
+</script>
+
+<!-- AI ASSISTANT -->
+<div class="ai-fab" id="aiFab" onclick="toggleAI()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5.5 4 7l1 3h4l1-3c2-1.5 4-4 4-7a7 7 0 0 0-7-7z"/><path d="M9 22h6"/><path d="M10 2V1M14 2V1M7.5 4L6.5 3M16.5 4l1-1"/></svg>
+</div>
+<div class="ai-chat" id="aiChat">
+  <div class="ai-chat-head">
+    <span class="ai-dot"></span>
+    <b>Sastho AI Assistant</b>
+    <button onclick="toggleAI()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="ai-msgs" id="aiMsgs"></div>
+  <div class="ai-input">
+    <input type="text" id="aiIn" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendAI()">
+    <button onclick="sendAI()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button>
+  </div>
+</div>
+<script>
+(function(){
+var aiOpen=false;
+var aiHistory=[];
+var AI_KB={
+  delivery:["We deliver island-wide across all 25 districts of Sri Lanka.","Colombo: 1-2 business days. Other areas: 3-5 business days.","FREE delivery on orders over Rs 5,000.","You'll get a WhatsApp tracking update once dispatched."],
+  returns:["We offer a 7-day return policy on all items.","If damaged, defective, or not as expected — message us on WhatsApp with your order number and photos.","We'll arrange a pickup and full refund."],
+  payment:["We accept Cash on Delivery (COD) — no card or online payment needed.","Simply place your order and pay the courier when your package arrives.","We also accept Visa, Mastercard, and WhatsApp orders."],
+  products:["We sell premium home and kitchen products: ceramics, glassware, lamps, storage, bathroom accessories, and more.","Prices start from as low as Rs 72.","All products come with quality guarantee.","Check our Shop page for the full catalog, or use Build My Space to get personalized recommendations."],
+  wholesale:["Yes! Hotels, resellers, and offices get special wholesale rates.","Contact us on WhatsApp or email hello@sastho.lk for bulk pricing."],
+  contact:["WhatsApp: +94 77 767 5984 (fastest way to reach us)","Email: hello@sastho.lk (we reply within 24 hours)","Visit: No.84/1, Maliban Street, Colombo 11","Open 7 days a week, 10am to 7pm."],
+  deals:["Check our Lightning Deals page for the lowest prices of the week!","Use code WELCOME10 for 10% off your first order.","Deals refresh weekly — grab them before the timer runs out."],
+  order:["To place an order: browse our shop, add items to cart, and checkout.","Choose Cash on Delivery at checkout — pay only when you receive your items.","You can also order directly on WhatsApp by sending us the product links."]
+};
+var AI_GREET='<div class="ai-msg bot">Hi! I\'m Sastho\'s AI assistant. How can I help you today?<div class="chips"><span class="chip" onclick="aiChip(this)">Delivery info</span><span class="chip" onclick="aiChip(this)">Return policy</span><span class="chip" onclick="aiChip(this)">How to order</span><span class="chip" onclick="aiChip(this)">Contact us</span></div></div>';
+function toggleAI(){
+  aiOpen=!aiOpen;
+  document.getElementById("aiChat").classList.toggle("open",aiOpen);
+  if(aiOpen&&!aiHistory.length){document.getElementById("aiMsgs").innerHTML=AI_GREET;}
+}
+function aiChip(el){var txt=el.textContent;addAIMsg(txt,"user");processAI(txt);}
+function addAIMsg(txt,who){var d=document.createElement("div");d.className="ai-msg "+who;d.textContent=txt;document.getElementById("aiMsgs").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"end"});aiHistory.push({role:who,text:txt});}
+function addAIBotHTML(html){var d=document.createElement("div");d.className="ai-msg bot";d.innerHTML=html;document.getElementById("aiMsgs").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"end"});}
+function sendAI(){var inp=document.getElementById("aiIn");var v=inp.value.trim();if(!v)return;inp.value="";addAIMsg(v,"user");processAI(v);}
+function processAI(q){
+  var ql=q.toLowerCase();var answer="";var chips=[];
+  if(/deliver|shipping|ship|dispatch|track|when.*arrive|how long/i.test(ql)){answer=AI_KB.delivery.join(" ");chips=["Return policy","How to order"];}
+  else if(/return|refund|exchange|damage|broken|defect/i.test(ql)){answer=AI_KB.returns.join(" ");chips=["Delivery info","Contact us"];}
+  else if(/pay|payment|cod|cash|visa|card|bank/i.test(ql)){answer=AI_KB.payment.join(" ");chips=["How to order","Delivery info"];}
+  else if(/product|what.*sell|catalog|ceramic|glass|lamp|bowl|plate|mug/i.test(ql)){answer=AI_KB.products.join(" ");chips=["View deals","How to order"];}
+  else if(/wholesale|bulk|business|hotel|resell/i.test(ql)){answer=AI_KB.wholesale.join(" ");chips=["Contact us","Products"];}
+  else if(/contact|phone|email|address|visit|location|where|reach/i.test(ql)){answer=AI_KB.contact.join(" ");chips=["Delivery info","How to order"];}
+  else if(/deal|discount|offer|coupon|code|sale|cheap|price|low/i.test(ql)){answer=AI_KB.deals.join(" ");chips=["Products","How to order"];}
+  else if(/order|buy|purchase|checkout|how.*order|how.*buy|cart/i.test(ql)){answer=AI_KB.order.join(" ");chips=["Payment info","Delivery info"];}
+  else if(/hi|hello|hey|good|thank|thanks/i.test(ql)){answer="Hello! Welcome to Sastho Lanka. I can help you with product info, delivery, returns, payments, and more. What would you like to know?";chips=["Delivery info","Products","How to order","Contact us"];}
+  else{answer="I'd be happy to help! For specific queries, you can reach our team on WhatsApp at +94 77 767 5984 or email hello@sastho.lk. Here are some things I can help with:";chips=["Delivery info","Return policy","Payment info","How to order"];}
+  setTimeout(function(){var html=answer;if(chips.length){html+='<div class="chips">'+chips.map(function(c){return '<span class="chip" onclick="aiChip(this)">'+c+'</span>';}).join("")+'</div>';}addAIBotHTML(html);},400+Math.random()*400);
+}
+window.toggleAI=toggleAI;window.sendAI=sendAI;window.aiChip=aiChip;
 })();
 </script>
 </body>

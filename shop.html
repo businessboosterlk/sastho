@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<title>Shop All Products | Sastho Lanka</title>
+<meta name="description" content="Browse the full Sastho Lanka collection. Home, kitchen, bathroom & more — unbeatable prices, island-wide COD delivery.">
+<meta name="theme-color" content="#d24e08">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<meta property="og:title" content="Shop All Products | Sastho Lanka">
+<meta property="og:description" content="Browse the full Sastho Lanka collection. Unbeatable quality at unbeatable prices.">
+<meta property="og:image" content="assets/life-3.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#d24e08;--accent-2:#f2671a;--accent-deep:#a83d06;
+  --ink:#171210;--ink-2:#5c524b;--ink-3:#8c8077;
+  --bg:#faf8f5;--surface:#ffffff;--line:#efe9e2;--line-2:#e2d8cd;
+  --good:#1a8a4a;--hot:#d92121;--gold:#e8a200;
+  --r:18px;--r-sm:12px;--r-lg:26px;
+  --shadow:0 1px 2px rgba(40,20,8,.04),0 6px 20px rgba(40,20,8,.06);
+  --shadow-lg:0 18px 60px rgba(40,20,8,.16);
+  --maxw:1240px;--topbar:114px;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --disp:'Plus Jakarta Sans',var(--sans);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+svg{flex-shrink:0}
+html,body{overflow-x:clip;max-width:100%}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-top:var(--topbar)}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+input,select{font-family:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.tnum{font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
+.eyebrow{font-family:var(--disp);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+
+/* ===== ANNOUNCEMENT ===== */
+.anno{background:var(--ink);color:#fff;font-size:12.5px;font-weight:500;height:34px;display:flex;align-items:center;overflow:hidden;position:relative}
+.anno-track{display:flex;gap:46px;white-space:nowrap;animation:marq 35s linear infinite;padding-left:46px}
+.anno-track span{display:inline-flex;align-items:center;gap:8px;letter-spacing:.01em;color:rgba(255,255,255,.92)}
+.anno-track svg{width:15px;height:15px;color:var(--accent-2)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== TOPBAR ===== */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,248,245,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav{height:80px;display:flex;align-items:center;gap:18px}
+.brand{display:inline-flex;align-items:center;gap:11px}
+.brand-img{height:52px;width:auto;display:block}
+.brand-img.foot{height:62px}
+.nav-links{display:flex;gap:2px;margin-left:14px}
+.nav-links a{font-weight:550;font-size:14.5px;color:var(--ink-2);padding:9px 14px;border-radius:10px;transition:.15s}
+.nav-links a:hover,.nav-links a.active{color:var(--ink);background:rgba(0,0,0,.04)}
+.nav-links a.active{color:var(--accent);font-weight:650}
+.search-nav{flex:1;max-width:360px;margin:0 auto;position:relative;display:flex;align-items:center}
+.search-nav svg.si{position:absolute;left:15px;width:17px;height:17px;color:var(--ink-3);pointer-events:none}
+.search-nav input{width:100%;height:44px;border:1px solid var(--line-2);background:var(--surface);border-radius:14px;padding:0 16px 0 40px;font-size:14px;font-weight:450;transition:.18s}
+.search-nav input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(210,78,8,.1)}
+.search-drop{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--line-2);border-radius:16px;box-shadow:var(--shadow-lg);max-height:420px;overflow-y:auto;z-index:300;display:none;padding:8px}
+.search-drop.open{display:block;animation:sdIn .2s ease}
+@keyframes sdIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.sd-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;cursor:pointer;transition:.12s}
+.sd-item:hover{background:rgba(210,78,8,.06)}
+.sd-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:#f4ede6}
+.sd-item-info{flex:1;min-width:0}
+.sd-item-name{font-size:13.5px;font-weight:550;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sd-item-meta{font-size:12px;color:var(--ink-3);display:flex;gap:8px;align-items:center}
+.sd-item-price{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap}
+.sd-empty{padding:24px;text-align:center;color:var(--ink-3);font-size:14px}
+.nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.icon-btn{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--ink);transition:.15s;position:relative}
+.icon-btn:hover{background:rgba(0,0,0,.04)}
+.icon-btn svg{width:21px;height:21px}
+.hamb{display:none}
+
+/* ===== SLIDE MENU ===== */
+.menu-scrim{position:fixed;inset:0;background:rgba(20,12,6,.46);backdrop-filter:blur(3px);z-index:250;opacity:0;visibility:hidden;transition:.3s}
+.menu-scrim.open{opacity:1;visibility:visible}
+.slide-menu{position:fixed;top:0;left:0;width:310px;max-width:86vw;height:100%;background:var(--bg);z-index:260;transform:translateX(-100%);transition:transform .35s cubic-bezier(.4,0,.1,1);display:flex;flex-direction:column;box-shadow:var(--shadow-lg)}
+.slide-menu.open{transform:translateX(0)}
+.sm-head{padding:22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.sm-head .brand-img{height:42px}
+.sm-close{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:var(--ink-2)}
+.sm-close:hover{background:rgba(0,0,0,.06)}
+.sm-links{padding:16px 12px;flex:1;overflow-y:auto}
+.sm-links a{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;font-weight:600;font-size:15.5px;color:var(--ink);transition:.12s}
+.sm-links a:hover,.sm-links a.active{background:rgba(210,78,8,.06);color:var(--accent)}
+.sm-links a svg{width:20px;height:20px;color:var(--ink-3)}
+.sm-links a.active svg{color:var(--accent)}
+.sm-foot{padding:18px 22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+.sm-foot a{color:var(--accent);font-weight:650}
+
+/* ===== HERO ===== */
+.shop-hero{background:var(--surface);padding:48px 0 36px;text-align:center;border-bottom:1px solid var(--line)}
+.shop-hero .eyebrow{margin-bottom:14px}
+.shop-hero h1{font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-.04em}
+.shop-hero h1 .u{color:var(--accent);position:relative}
+.shop-hero p{color:var(--ink-2);font-size:clamp(15px,1.8vw,17px);margin-top:10px;max-width:500px;margin-left:auto;margin-right:auto;font-weight:450;line-height:1.55}
+.shop-hero .count-badge{display:inline-flex;align-items:center;gap:7px;background:var(--bg);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px 7px 9px;font-size:13px;font-weight:600;color:var(--ink-2);margin-top:16px;box-shadow:var(--shadow)}
+.shop-hero .count-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--good);animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ===== FILTER BAR ===== */
+.filter-bar{position:sticky;top:114px;z-index:100;background:rgba(250,248,245,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 0;transition:top .2s}
+.filter-inner{display:flex;align-items:center;gap:14px}
+.cat-pills{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;flex:1;padding:2px 0}
+.cat-pills::-webkit-scrollbar{display:none}
+.pill{background:var(--surface);border:1px solid var(--line-2);border-radius:100px;padding:9px 18px;font-weight:600;font-size:13.5px;color:var(--ink-2);white-space:nowrap;transition:.15s;cursor:pointer}
+.pill:hover{border-color:var(--accent);color:var(--ink)}
+.pill.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(210,78,8,.25)}
+
+/* ===== CONTROLS BAR ===== */
+.controls{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 0 6px;flex-wrap:wrap}
+.result-count{font-size:14px;font-weight:550;color:var(--ink-2)}
+.result-count b{color:var(--ink);font-weight:700}
+.ctrl-right{display:flex;align-items:center;gap:10px}
+.price-filter{position:relative}
+.price-btn{display:flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:.15s;white-space:nowrap}
+.price-btn:hover{border-color:var(--accent);color:var(--ink)}
+.price-btn svg{width:15px;height:15px}
+.price-drop{position:absolute;top:calc(100% + 6px);right:0;background:var(--surface);border:1px solid var(--line-2);border-radius:14px;box-shadow:var(--shadow-lg);padding:6px;min-width:180px;display:none;z-index:50}
+.price-drop.open{display:block;animation:sdIn .2s ease}
+.price-opt{display:block;width:100%;text-align:left;padding:10px 14px;border-radius:10px;font-size:13.5px;font-weight:550;color:var(--ink-2);transition:.12s}
+.price-opt:hover{background:rgba(210,78,8,.06);color:var(--ink)}
+.price-opt.active{color:var(--accent);font-weight:650}
+.sort-select{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:.15s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238c8077' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
+.sort-select:focus{outline:none;border-color:var(--accent)}
+.view-toggle{display:flex;border:1px solid var(--line-2);border-radius:12px;overflow:hidden}
+.view-btn{width:40px;height:38px;display:grid;place-items:center;color:var(--ink-3);transition:.12s;background:var(--surface)}
+.view-btn:hover{color:var(--ink)}
+.view-btn.active{background:var(--ink);color:#fff}
+.view-btn svg{width:17px;height:17px}
+
+/* ===== PRODUCT GRID ===== */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:20px 0}
+.grid.list-view{grid-template-columns:1fr;gap:14px}
+.grid.list-view .card{flex-direction:row;max-height:160px}
+.grid.list-view .card-img{aspect-ratio:1;width:160px;flex-shrink:0}
+.grid.list-view .card-body{padding:16px 20px;justify-content:center}
+.grid.list-view .card-name{-webkit-line-clamp:1;min-height:auto;font-size:15px}
+.grid.list-view .card-actions{max-width:240px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.22s;position:relative;display:flex;flex-direction:column;opacity:0;transform:translateY(24px)}
+.card.card-in{opacity:1;transform:none;transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1),box-shadow .2s,border-color .2s}
+.card.card-in:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
+.card-img{position:relative;aspect-ratio:1;background:#f4ede6;overflow:hidden;cursor:pointer}
+.card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;mix-blend-mode:multiply}
+.card:hover .card-img img{transform:scale(1.06)}
+.badge-off{position:absolute;top:11px;left:11px;background:var(--hot);color:#fff;font-family:var(--disp);font-weight:700;font-size:12px;padding:5px 9px;border-radius:9px;box-shadow:0 3px 10px rgba(217,33,33,.32);z-index:2}
+.badge-low{position:absolute;top:11px;right:11px;background:rgba(23,18,16,.8);backdrop-filter:blur(6px);color:#fff;font-size:11px;font-weight:600;padding:5px 9px;border-radius:9px;display:flex;align-items:center;gap:5px;z-index:2}
+.badge-low .plse{width:6px;height:6px;border-radius:50%;background:#ff6a6a;animation:pulse 1.4s infinite}
+.fav{position:absolute;bottom:11px;right:11px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);display:grid;place-items:center;box-shadow:var(--shadow);transition:.15s;opacity:0;transform:translateY(6px);z-index:3;cursor:pointer}
+.card:hover .fav{opacity:1;transform:translateY(0)}
+.fav svg{width:18px;height:18px;color:var(--ink-2)}
+.fav.on svg{color:var(--hot);fill:var(--hot)}
+.quick-view{position:absolute;bottom:0;left:0;right:0;background:rgba(23,18,16,.85);backdrop-filter:blur(6px);color:#fff;padding:10px 14px;font-size:13px;font-weight:600;text-align:center;opacity:0;transform:translateY(100%);transition:.3s cubic-bezier(.4,0,.2,1);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;z-index:2}
+.card:hover .quick-view{opacity:1;transform:translateY(0)}
+.quick-view svg{width:15px;height:15px}
+.card-body{padding:14px 14px 16px;display:flex;flex-direction:column;flex:1}
+.card-cat{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.card-name{font-size:13.5px;font-weight:550;line-height:1.34;margin:6px 0 8px;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:37px}
+.card-name a{color:inherit;text-decoration:none}
+.card-rate{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:550;color:var(--ink-2);margin-bottom:10px}
+.card-rate .stars{display:inline-flex;gap:1px;color:var(--gold)}
+.card-rate .stars svg{width:12px;height:12px;fill:currentColor}
+.card-rate .sold{color:var(--ink-3)}
+.card-price{display:flex;align-items:baseline;gap:7px;margin-top:auto}
+.card-price .now{font-family:var(--disp);font-weight:800;font-size:18px;color:var(--ink)}
+.card-price .was{font-size:12.5px;color:var(--ink-3);text-decoration:line-through}
+.card-price .pct{font-size:11px;font-weight:700;color:var(--hot);background:rgba(217,33,33,.08);padding:2px 7px;border-radius:6px}
+.card-actions{display:flex;gap:8px;margin-top:12px}
+.add-btn{flex:1;background:linear-gradient(180deg,#241c16,var(--ink));color:#fff;font-weight:650;font-size:13px;letter-spacing:.01em;border-radius:12px;padding:11px 12px;display:flex;align-items:center;justify-content:center;gap:7px;box-shadow:0 2px 6px rgba(20,12,6,.16),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .15s cubic-bezier(.34,1.4,.6,1),background .18s,box-shadow .18s}
+.add-btn:hover{background:linear-gradient(180deg,var(--accent-2),var(--accent));box-shadow:0 8px 18px rgba(210,78,8,.32);transform:translateY(-1px)}
+.add-btn svg{width:15px;height:15px}
+.add-btn.added{background:linear-gradient(180deg,#22b15b,var(--good));box-shadow:0 8px 18px rgba(26,138,74,.32)}
+.wa-btn-card{width:44px;flex-shrink:0;background:#e8f7ee;color:#1aae54;border-radius:12px;display:grid;place-items:center;transition:.15s}
+.wa-btn-card:hover{background:#1aae54;color:#fff}
+.wa-btn-card svg{width:19px;height:19px}
+
+/* ===== LOAD MORE ===== */
+.load-wrap{text-align:center;padding:28px 0 48px}
+.load-btn{display:inline-flex;align-items:center;gap:9px;font-weight:650;font-size:15px;border-radius:14px;padding:15px 32px;background:var(--surface);color:var(--ink);border:1px solid var(--line-2);box-shadow:var(--shadow);transition:.18s;cursor:pointer}
+.load-btn:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.load-btn svg{width:18px;height:18px}
+.load-btn.hide{display:none}
+.load-progress{font-size:13px;color:var(--ink-3);margin-top:10px;font-weight:500}
+
+/* ===== QUICK VIEW MODAL ===== */
+.qv-scrim{position:fixed;inset:0;background:rgba(20,12,6,.55);backdrop-filter:blur(6px);z-index:350;display:grid;place-items:center;opacity:0;visibility:hidden;transition:.3s;padding:20px}
+.qv-scrim.open{opacity:1;visibility:visible}
+.qv-box{background:var(--surface);border-radius:var(--r-lg);max-width:860px;width:100%;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;transform:scale(.94) translateY(8px);transition:.3s cubic-bezier(.3,1.2,.5,1);box-shadow:var(--shadow-lg)}
+.qv-scrim.open .qv-box{transform:scale(1) translateY(0)}
+.qv-img{position:relative;background:#f4ede6;overflow:hidden}
+.qv-img img{width:100%;height:100%;object-fit:cover;min-height:420px;mix-blend-mode:multiply}
+.qv-info{padding:32px 28px;display:flex;flex-direction:column}
+.qv-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:12px;background:rgba(0,0,0,.5);backdrop-filter:blur(8px);display:grid;place-items:center;color:#fff;z-index:5;cursor:pointer;transition:.15s}
+.qv-close:hover{background:rgba(0,0,0,.7)}
+.qv-close svg{width:18px;height:18px}
+.qv-cat{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.qv-name{font-family:var(--disp);font-size:22px;font-weight:800;line-height:1.2;margin-bottom:12px}
+.qv-rate{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:550;color:var(--ink-2);margin-bottom:16px}
+.qv-rate .stars{display:inline-flex;gap:1.5px;color:var(--gold)}
+.qv-rate .stars svg{width:14px;height:14px;fill:currentColor}
+.qv-pricing{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.qv-pricing .now{font-family:var(--disp);font-weight:800;font-size:28px;color:var(--ink)}
+.qv-pricing .was{font-size:15px;color:var(--ink-3);text-decoration:line-through}
+.qv-pricing .save{font-size:13px;font-weight:700;color:var(--good);background:#e8f5ed;padding:4px 10px;border-radius:8px}
+.qv-stock{font-size:13px;font-weight:550;color:var(--ink-3);margin-bottom:20px;display:flex;align-items:center;gap:6px}
+.qv-stock .dot{width:7px;height:7px;border-radius:50%;background:var(--good)}
+.qv-stock .dot.low{background:var(--hot)}
+.qv-trust{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;padding:14px;background:var(--bg);border-radius:14px;border:1px solid var(--line)}
+.qv-trust div{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:550;color:var(--ink-2)}
+.qv-trust svg{width:16px;height:16px;color:var(--good)}
+.qv-actions{display:flex;gap:10px;margin-top:auto}
+.qv-add{flex:1;background:var(--accent);color:#fff;font-weight:700;font-size:15px;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 22px rgba(210,78,8,.28);transition:.16s}
+.qv-add:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.qv-add svg{width:18px;height:18px}
+.qv-wa{width:52px;flex-shrink:0;background:#e8f7ee;color:#1aae54;border-radius:14px;display:grid;place-items:center;transition:.15s;border:1px solid #cfe9d8}
+.qv-wa:hover{background:#1aae54;color:#fff}
+.qv-wa svg{width:22px;height:22px}
+
+/* ===== BACK TO TOP ===== */
+.btt{position:fixed;right:20px;bottom:90px;z-index:130;width:48px;height:48px;border-radius:50%;background:var(--surface);border:1px solid var(--line-2);box-shadow:var(--shadow);display:grid;place-items:center;color:var(--ink-2);opacity:0;visibility:hidden;transform:translateY(12px);transition:.25s;cursor:pointer}
+.btt.show{opacity:1;visibility:visible;transform:none}
+.btt:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btt svg{width:20px;height:20px}
+
+/* ===== WHATSAPP FAB ===== */
+.wa-fab{position:fixed;right:20px;bottom:24px;z-index:140;width:58px;height:58px;border-radius:50%;background:#1aae54;box-shadow:0 8px 24px rgba(26,174,84,.42);display:grid;place-items:center;transition:.2s;animation:bob 4.5s ease-in-out infinite}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:30px;height:30px;color:#fff}
+.wa-fab::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1aae54;animation:ring 2.6s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+
+/* ===== TOAST ===== */
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(130%);z-index:500;background:var(--ink);color:#fff;padding:13px 20px;border-radius:14px;font-weight:550;font-size:14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);transition:transform .4s cubic-bezier(.3,1.3,.5,1);white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast svg{width:18px;height:18px;color:var(--accent-2)}
+
+/* ===== FOOTER ===== */
+footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-top:32px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+.foot-brand{margin-bottom:0}
+.foot-brand .brand{margin-bottom:16px}
+.foot-brand p{font-size:13.5px;line-height:1.6;max-width:280px}
+.foot-soc{display:flex;gap:10px;margin-top:20px}
+.foot-soc a{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.07);display:grid;place-items:center;color:#fff;transition:.15s}
+.foot-soc a:hover{background:var(--accent)}
+.foot-soc svg{width:18px;height:18px}
+.foot-col h4{font-family:var(--disp);color:#fff;font-size:14px;font-weight:700;margin-bottom:17px}
+.foot-col a,.foot-col div{display:block;font-size:13.5px;margin-bottom:11px;transition:.15s}
+.foot-col a:hover{color:#fff}
+.foot-contact div{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;margin-bottom:13px}
+.foot-contact svg{width:17px;height:17px;color:var(--accent-2);flex-shrink:0;margin-top:2px}
+.foot-bot{border-top:1px solid rgba(255,255,255,.09);margin-top:44px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px}
+.pay-icons{display:flex;gap:7px;align-items:center}
+.pay-icons span{background:rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;font-size:11px;font-weight:650;color:#fff}
+
+/* ===== MOBILE BAR ===== */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:135;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.mbar button,.mbar a{flex:1;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px}
+.mbar .mb-shop{background:var(--ink);color:#fff}
+.mbar .mb-wa{background:#1aae54;color:#fff}
+.mbar svg{width:20px;height:20px}
+
+/* ===== NO RESULTS ===== */
+.no-results{text-align:center;padding:60px 20px;color:var(--ink-3)}
+.no-results .big-icon{width:64px;height:64px;border-radius:20px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;margin:0 auto 18px;color:var(--ink-3)}
+.no-results .big-icon svg{width:28px;height:28px}
+.no-results h3{font-size:20px;color:var(--ink);margin-bottom:8px;font-weight:800}
+.no-results p{font-size:14px;max-width:360px;margin:0 auto}
+.no-results button{margin-top:18px;background:var(--accent);color:#fff;font-weight:650;font-size:14px;padding:12px 24px;border-radius:12px;transition:.16s}
+.no-results button:hover{background:var(--accent-deep)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1080px){
+  .grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:880px){
+  :root{--topbar:100px}
+  .nav-links,.search-nav{display:none}
+  .hamb{display:grid}
+  .nav{height:64px;gap:12px}
+  .brand-img{height:42px}
+  .filter-bar{top:98px}
+  .shop-hero{padding:32px 0 26px}
+  .shop-hero h1{font-size:30px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .grid.list-view{grid-template-columns:1fr}
+  .grid.list-view .card-img{width:120px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .qv-box{grid-template-columns:1fr;overflow-y:auto;max-height:90vh}
+  .qv-img img{min-height:auto;aspect-ratio:4/3}
+  .qv-info{padding:24px 22px}
+  .controls{gap:10px}
+  .view-toggle{display:none}
+}
+@media(max-width:560px){
+  .wrap{padding:0 15px}
+  body{padding-bottom:72px}
+  .mbar{display:flex}
+  .wa-fab{display:none}
+  .btt{bottom:84px;right:14px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .card-name{font-size:12.5px;min-height:34px}
+  .card-price .now{font-size:16px}
+  .add-btn{font-size:12px;padding:10px}
+  .wa-btn-card{display:none}
+  .foot-grid{grid-template-columns:1fr}
+  .filter-inner{gap:10px}
+  .pill{padding:8px 14px;font-size:12.5px}
+  .ctrl-right{gap:6px}
+  .sort-select{font-size:12px;padding:8px 28px 8px 10px}
+  .price-btn{font-size:12px;padding:8px 10px}
+  .toast{font-size:13px;bottom:82px}
+  .shop-hero{padding:24px 0 20px}
+  .qv-scrim{padding:10px}
+}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.05ms!important}}
+/* AI Chat Widget */
+.ai-fab{position:fixed;right:20px;bottom:88px;z-index:139;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#6366f1,#8b5cf6);box-shadow:0 6px 20px rgba(99,102,241,.4);display:grid;place-items:center;cursor:pointer;transition:.2s}
+.ai-fab:hover{transform:scale(1.08)}
+.ai-fab svg{width:24px;height:24px;color:#fff}
+.ai-chat{position:fixed;right:20px;bottom:148px;z-index:300;width:360px;max-height:480px;background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);border:1px solid var(--line);display:none;flex-direction:column;overflow:hidden}
+.ai-chat.open{display:flex;animation:aiSlideIn .25s ease}
+@keyframes aiSlideIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.ai-chat-head{padding:16px 18px;background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;display:flex;align-items:center;gap:10px}
+.ai-chat-head .ai-dot{width:8px;height:8px;border-radius:50%;background:#4ade80;flex-shrink:0}
+.ai-chat-head b{font-size:14px;flex:1}
+.ai-chat-head button{background:none;border:none;color:#fff;cursor:pointer;width:28px;height:28px;display:grid;place-items:center;border-radius:8px}
+.ai-chat-head button:hover{background:rgba(255,255,255,.2)}
+.ai-chat-head button svg{width:18px;height:18px}
+.ai-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:200px;max-height:320px}
+.ai-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:13.5px;line-height:1.5;animation:aiSlideIn .2s ease}
+.ai-msg.bot{background:#f0f0ff;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.ai-msg.user{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.ai-msg .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.ai-msg .chip{background:#fff;border:1px solid var(--line-2);border-radius:20px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--accent);cursor:pointer;transition:.15s}
+.ai-msg .chip:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ai-input{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--line)}
+.ai-input input{flex:1;border:1px solid var(--line-2);border-radius:10px;padding:10px 14px;font-size:13px;background:var(--bg)}
+.ai-input input:focus{outline:none;border-color:var(--accent)}
+.ai-input button{width:38px;height:38px;border-radius:10px;background:var(--accent);color:#fff;display:grid;place-items:center;flex-shrink:0}
+.ai-input button svg{width:18px;height:18px}
+@media(max-width:560px){.ai-fab{bottom:80px;right:14px;width:46px;height:46px}.ai-fab svg{width:20px;height:20px}.ai-chat{right:8px;left:8px;bottom:134px;width:auto;max-height:60vh}}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="anno"><div class="anno-track" id="annoTrack"></div></div>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="wrap nav">
+    <button class="icon-btn hamb" id="hambBtn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <a href="index.html" class="brand" aria-label="Sastho Lanka"><img class="brand-img" src="assets/logo.png" alt="Sastho Lanka"></a>
+    <nav class="nav-links">
+      <a href="deals.html">Deals</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="build.html">Build My Space</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">Help</a>
+    </nav>
+    <div class="search-nav">
+      <svg class="si" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+      <div class="search-drop" id="searchDrop"></div>
+    </div>
+    <div class="nav-actions">
+      <a class="icon-btn" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- SLIDE MENU (mobile) -->
+<div class="menu-scrim" id="menuScrim"></div>
+<nav class="slide-menu" id="slideMenu">
+  <div class="sm-head">
+    <img class="brand-img" src="assets/logo.png" alt="Sastho Lanka">
+    <button class="sm-close" id="menuClose" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="sm-links">
+    <a href="deals.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Deals</a>
+    <a href="shop.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg>Shop</a>
+    <a href="build.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Build My Space</a>
+    <a href="index.html#how"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>How It Works</a>
+    <a href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>About</a>
+    <a href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
+    <a href="faq.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Help</a>
+  </div>
+  <div class="sm-foot">Need help? <a href="https://wa.me/94777675984" target="_blank" rel="noopener">Chat on WhatsApp</a></div>
+</nav>
+
+<!-- HERO -->
+<section class="shop-hero">
+  <div class="wrap">
+    <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg> THE FULL COLLECTION</div>
+    <h1>Shop <span class="u">All Products</span></h1>
+    <p>Explore our curated range of home, kitchen & lifestyle essentials. Every item hand-picked, quality-checked and delivered COD island-wide.</p>
+    <div class="count-badge"><span class="dot"></span> <span id="totalCount">0</span> products available</div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar" id="filterBar">
+  <div class="wrap">
+    <div class="filter-inner">
+      <div class="cat-pills" id="catPills"></div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="wrap">
+  <!-- CONTROLS -->
+  <div class="controls">
+    <div class="result-count" id="resultCount"></div>
+    <div class="ctrl-right">
+      <div class="price-filter">
+        <button class="price-btn" id="priceBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          Price
+        </button>
+        <div class="price-drop" id="priceDrop">
+          <button class="price-opt active" data-range="all">All prices</button>
+          <button class="price-opt" data-range="0-500">Under Rs 500</button>
+          <button class="price-opt" data-range="500-1000">Rs 500 - Rs 1,000</button>
+          <button class="price-opt" data-range="1000-2000">Rs 1,000 - Rs 2,000</button>
+          <button class="price-opt" data-range="2000-99999">Rs 2,000+</button>
+        </div>
+      </div>
+      <select class="sort-select" id="sortSelect">
+        <option value="best">Best sellers</option>
+        <option value="low">Price: Low to High</option>
+        <option value="high">Price: High to Low</option>
+        <option value="new">Newest</option>
+        <option value="rating">Top Rated</option>
+      </select>
+      <div class="view-toggle">
+        <button class="view-btn active" data-view="grid" aria-label="Grid view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></button>
+        <button class="view-btn" data-view="list" aria-label="List view"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div class="grid" id="productGrid"></div>
+
+  <!-- NO RESULTS -->
+  <div class="no-results" id="noResults" style="display:none">
+    <div class="big-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+    <h3>No products found</h3>
+    <p>Try adjusting your filters or search terms to find what you're looking for.</p>
+    <button onclick="resetAll()">Clear all filters</button>
+  </div>
+
+  <!-- LOAD MORE -->
+  <div class="load-wrap" id="loadWrap">
+    <button class="load-btn" id="loadBtn" onclick="loadMore()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+      Load more products
+    </button>
+    <div class="load-progress" id="loadProgress"></div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand" aria-label="Sastho Lanka"><img class="brand-img foot" src="assets/logo-light.png" alt="Sastho Lanka"></a>
+        <p>Sri Lanka's one-stop shop for home, kitchen and more. Unbeatable quality at unbeatable prices, delivered island-wide.</p>
+        <div class="foot-soc">
+          <a href="https://instagram.com/sastho.lk" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .5-1.5 1.7-1.5H17V2.5h-2.5C11.7 2.5 10 4.2 10 7v2H7.5v3.2H10V21.5h4v-9.3h2.7l.5-3.2H14z"/></svg></a>
+          <a href="https://wa.me/94777675984" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="deals.html">Lightning Deals</a>
+        <a href="shop.html">All Categories</a>
+        <a href="build.html">Build My Space</a>
+        <a href="about.html">About Us</a>
+      </div>
+      <div class="foot-col">
+        <h4>Help</h4>
+        <a href="index.html#how">How It Works</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">Returns &amp; Refunds</a>
+        <a href="faq.html">FAQs</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="foot-col foot-contact">
+        <h4>Reach us</h4>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 3.2 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L9.1 9.9a16 16 0 0 0 6 6l1.3-1.35a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+94 77 767 5984</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>No.84/1, Maliban Street, Colombo 11</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Open 7 days &middot; 10am to 7pm</div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; 2026 Sastho Lanka. All rights reserved. Concept rebuild by Business Booster.</span>
+      <div class="pay-icons"><span>COD</span><span>Visa</span><span>Master</span><span>WhatsApp</span></div>
+    </div>
+  </div>
+</footer>
+
+<!-- QUICK VIEW MODAL -->
+<div class="qv-scrim" id="qvScrim">
+  <div class="qv-box">
+    <div class="qv-img">
+      <button class="qv-close" onclick="closeQV()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <img id="qvImg" src="" alt="">
+    </div>
+    <div class="qv-info">
+      <div class="qv-cat" id="qvCat"></div>
+      <h2 class="qv-name" id="qvName"></h2>
+      <div class="qv-rate" id="qvRate"></div>
+      <div class="qv-pricing" id="qvPricing"></div>
+      <div class="qv-stock" id="qvStock"></div>
+      <div class="qv-trust">
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% Quality Guaranteed</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="3"/><path d="M1 10h22"/></svg>Cash on Delivery island-wide</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Free shipping on Rs 3,000+</div>
+      </div>
+      <div class="qv-actions">
+        <button class="qv-add" id="qvAdd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>Add to Cart</button>
+        <a class="qv-wa" id="qvWa" href="#" target="_blank" rel="noopener" aria-label="Order on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHATSAPP FAB -->
+<a class="wa-fab" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+</a>
+
+<!-- BACK TO TOP -->
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<!-- MOBILE BAR -->
+<div class="mbar">
+  <a class="mb-shop" href="shop.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg>Shop</a>
+  <a class="mb-wa" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/></svg>WhatsApp</a>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg><span id="toastMsg"></span></div>
+
+<script>
+/* ===== CATALOG DATA ===== */
+const CATALOG = [{"id":19601,"name":"Ceramic Soup Bowl with Lid – Ribbed Design (Heat Resistant)","price":1593,"reg":1770,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.30-PM-1.jpeg","cat":"Tableware","rating":4.85,"sold":9136,"stock":36},{"id":19300,"name":"6-Piece Rotating Spice Rack Set with Plastic Jars","price":1161,"reg":1290,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.19.40-AM.jpeg","cat":"Storage","rating":4.85,"sold":9127,"stock":35},{"id":19024,"name":"Rechargeable LED Desk Table Lamp","price":2295,"reg":2550,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-12.45.16-PM.jpeg","cat":"Lighting","rating":4.85,"sold":9088,"stock":35},{"id":19350,"name":"Portable Shaker Water Bottle with Mixing Ball (Sports Gym Bottle)","price":864,"reg":960,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.22.12-AM.jpeg","cat":"Bottles","rating":4.85,"sold":9068,"stock":35},{"id":20378,"name":"Square Ceramic Snack Bowl – Minimal Edge Design 14CM","price":288,"reg":320,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.22.57-PM.jpeg","cat":"Tableware","rating":4.84,"sold":8950,"stock":35},{"id":19575,"name":"250ml Glass Tumbler Mug with Handle – Clear (Red Cherry) 1PCS","price":225,"reg":250,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.46.30-PM.jpeg","cat":"Bottles","rating":4.83,"sold":8806,"stock":34},{"id":20503,"name":"Classic Ceramic Bowl 12CM","price":279,"reg":310,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.30.59-PM.jpeg","cat":"Tableware","rating":4.83,"sold":8804,"stock":34},{"id":19073,"name":"Rectangular Ceramic Baking & Serving Dish","price":1242,"reg":1380,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-5.42.23-PM.jpeg","cat":"Cookware","rating":4.82,"sold":8670,"stock":33},{"id":19123,"name":"Floral Ceramic Casserole Dish with Glass Lid 26CM","price":4518,"reg":5020,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-12.48.29-PM.jpeg","cat":"Cookware","rating":4.82,"sold":8612,"stock":33},{"id":20552,"name":"Classic Ceramic Soup Plate – Beige 20CM","price":468,"reg":520,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.32.57-PM.jpeg","cat":"Tableware","rating":4.81,"sold":8386,"stock":32},{"id":18796,"name":"Elegant Scalloped Ceramic Fruit & Serving Bowl 30CM","price":1503,"reg":1670,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-09-at-5.08.18-PM.jpeg","cat":"Tableware","rating":4.8,"sold":8272,"stock":32},{"id":18946,"name":"3-Tier Stainless Steel Insulated Lunch Box with Handle","price":3465,"reg":3850,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.02-AM.jpeg","cat":"Storage","rating":4.79,"sold":8097,"stock":31},{"id":18996,"name":"Modern Rechargeable LED Table Lamp (Medium)","price":2142,"reg":2380,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.13AM.jpeg","cat":"Lighting","rating":4.79,"sold":8038,"stock":31},{"id":19673,"name":"Ceramic Teapot with Lid – Classic Tea Serving Pot 750ML","price":1062,"reg":1180,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-03-at-6.09.15-PM.jpeg","cat":"Cookware","rating":4.79,"sold":7970,"stock":30},{"id":18820,"name":"Ceramic Triple Section Snack Serving Plate 27CM","price":396,"reg":440,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-09-at-5.08.48-PM.jpeg","cat":"Tableware","rating":4.78,"sold":7883,"stock":30},{"id":20400,"name":"Mini Rectangular Ceramic Dish – Matte Orange Serving Plate","price":72,"reg":80,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.23.57-PM.jpeg","cat":"Tableware","rating":4.78,"sold":7842,"stock":30},{"id":20450,"name":"Glass Tumbler with Bamboo Lid & Straw – Heat Resistant Mug","price":468,"reg":520,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-12.00.01-PM.jpeg","cat":"Bottles","rating":4.78,"sold":7784,"stock":30},{"id":19597,"name":"1L Glass Teapot with Stainless Steel Infuser – Deli Glassware","price":1134,"reg":1260,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.29-PM.jpeg","cat":"Cookware","rating":4.77,"sold":7697,"stock":29},{"id":19346,"name":"Electrostatic Reusable Pet Hair Remover Roller (Lint & Dust Cleaner)","price":801,"reg":890,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.21.53-AM.jpeg","cat":"Home","rating":4.77,"sold":7630,"stock":29},{"id":19045,"name":"Elegant Scalloped Edge Ceramic Serving Plate","price":594,"reg":660,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-5.41.29-PM.jpeg","cat":"Tableware","rating":4.77,"sold":7620,"stock":29},{"id":20349,"name":"2-Tier Ceramic Dessert Serving Stand – White & Gold","price":1566,"reg":1740,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.21.28-PM.jpeg","cat":"Tableware","rating":4.76,"sold":7541,"stock":29},{"id":20374,"name":"Embossed Ceramic Storage Jar with Lid – Decorative Kitchen Container","price":1296,"reg":1440,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.22.35-PM.jpeg","cat":"Storage","rating":4.76,"sold":7512,"stock":28},{"id":20499,"name":"Mini Ceramic Bowl with Lid – Green Handle Pot","price":558,"reg":620,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.30.45-PM.jpeg","cat":"Cookware","rating":4.75,"sold":7366,"stock":28},{"id":18969,"name":"Portable Touch Control LED Table Lamp","price":2151,"reg":2390,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.10-AM.jpeg","cat":"Lighting","rating":4.75,"sold":7348,"stock":28},{"id":19294,"name":"3-Compartment Airtight Spice Storage Jar Set with Spoons","price":648,"reg":720,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.19.12-AM.jpeg","cat":"Storage","rating":4.73,"sold":6969,"stock":26},{"id":18792,"name":"Modern Ribbed Ceramic Serving Plate with Black Rim 20CM","price":486,"reg":540,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-09-at-5.08.14-PM.jpeg","cat":"Tableware","rating":4.72,"sold":6833,"stock":26},{"id":19594,"name":"Premium Glass Soap Dispenser – Silver Pump (Vintage Cut Design)","price":459,"reg":510,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.27-PM-1.jpeg","cat":"Bathroom","rating":4.71,"sold":6619,"stock":25},{"id":20547,"name":"Floral Edge Ceramic Serving Bowl – White 19CM","price":828,"reg":920,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.32.22-PM.jpeg","cat":"Tableware","rating":4.71,"sold":6588,"stock":24},{"id":19669,"name":"Ceramic Sugar Jar with Lid – Minimalist Storage Container","price":477,"reg":530,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-03-at-6.09.02-PM.jpeg","cat":"Storage","rating":4.71,"sold":6531,"stock":24},{"id":20396,"name":"Floral Ceramic Storage Jar with Lid – Decorative Sugar Pot","price":783,"reg":870,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.23.52-PM.jpeg","cat":"Storage","rating":4.7,"sold":6404,"stock":24},{"id":20521,"name":"Embossed Ceramic Ramekin Bowl – White 15CM","price":594,"reg":660,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.31.28-PM.jpeg","cat":"Tableware","rating":4.69,"sold":6258,"stock":23},{"id":19342,"name":"3-Compartment Lunch Box with Spoon & Fork","price":1098,"reg":1220,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.21.41-AM.jpeg","cat":"Storage","rating":4.69,"sold":6191,"stock":23},{"id":19367,"name":"Sukoki Sports Water Bottle with Straw (Leak-Proof Portable Bottle)","price":2313,"reg":2570,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.22.38-AM-1.jpeg","cat":"Bottles","rating":4.69,"sold":6162,"stock":23},{"id":19116,"name":"Ceramic Soup Tureen with Glass Lid 20CM","price":2115,"reg":2350,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-12.48.23-PM.jpeg","cat":"Drinkware","rating":4.68,"sold":6094,"stock":22},{"id":20370,"name":"Ceramic Condiment Jar with Lid – Minimalist Sauce Container","price":396,"reg":440,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.22.27-PM.jpeg","cat":"Storage","rating":4.68,"sold":6073,"stock":22},{"id":19141,"name":"Deli Premium Glass Whisky Decanter – 750ml","price":1386,"reg":1540,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-1.12.04-PM.jpeg","cat":"Drinkware","rating":4.68,"sold":6065,"stock":22},{"id":20420,"name":"Ceramic Sauce Bowl – Glossy Finish Dip Dish","price":153,"reg":170,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.24.37-PM.jpeg","cat":"Tableware","rating":4.68,"sold":6015,"stock":22},{"id":20445,"name":"1PCS Ribbed Glass Tumbler Set – Modern Drinking Glasses","price":405,"reg":450,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-11.59.52-AM.jpeg","cat":"Bottles","rating":4.68,"sold":5986,"stock":22},{"id":20495,"name":"Ceramic Rice Bowl – Orange Stripe Design 28CM","price":1467,"reg":1630,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.30.33-PM.jpeg","cat":"Tableware","rating":4.68,"sold":5927,"stock":22},{"id":20344,"name":"Round Ceramic Sauce Dish – Cream Beige 14CM","price":189,"reg":210,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.21.20-PM.jpeg","cat":"Tableware","rating":4.67,"sold":5743,"stock":21},{"id":19591,"name":"Clear Glass Soap Dispenser – Black Pump (Wave Design)","price":315,"reg":350,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.26-PM.jpeg","cat":"Bathroom","rating":4.65,"sold":5540,"stock":20},{"id":19089,"name":"Moroccan Pattern Ceramic Dinner Plate","price":549,"reg":610,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-5.42.49-PM.jpeg","cat":"Tableware","rating":4.65,"sold":5404,"stock":19},{"id":19615,"name":"Luxury Gold Finish Ceramic Mug","price":540,"reg":600,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.55.19-PM-1.jpeg","cat":"Drinkware","rating":4.63,"sold":5151,"stock":18},{"id":20543,"name":"Mini Ceramic Sauce Bowl – Black Gradient 12CM","price":207,"reg":230,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.31.56-PM.jpeg","cat":"Tableware","rating":4.63,"sold":5150,"stock":18},{"id":19314,"name":"Oval Ceramic Baking & Serving Dish with Handles (Green)","price":1557,"reg":1730,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.20.25-AM.jpeg","cat":"Cookware","rating":4.63,"sold":5142,"stock":18},{"id":19389,"name":"Spider Protein Shaker Bottle (Portable Gym Mixer Cup)","price":684,"reg":760,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.23.11-AM.jpeg","cat":"Bottles","rating":4.63,"sold":5054,"stock":18},{"id":19489,"name":"Flat Head Face Towel Mop – Multi-Surface Cleaning Mop","price":999,"reg":1110,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.23.43-AM.jpeg","cat":"Bathroom","rating":4.62,"sold":4937,"stock":17},{"id":19539,"name":"Modern Square Mini Serving Dish – White","price":153,"reg":170,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.43.18-PM.jpeg","cat":"Tableware","rating":4.62,"sold":4879,"stock":17},{"id":19639,"name":"Elegant Ceramic Rectangular Serving Dish – Textured Edge Design 20CM","price":441,"reg":490,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-03-at-6.07.15-PM.jpeg","cat":"Tableware","rating":4.61,"sold":4762,"stock":17},{"id":19037,"name":"Gradient Glaze Ceramic Serving Bowl","price":549,"reg":610,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-5.40.43-PM.jpeg","cat":"Tableware","rating":4.61,"sold":4743,"stock":17},{"id":19664,"name":"Mini Ceramic Milk Jug – Embossed Creamer Pitcher 200ML","price":495,"reg":550,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-03-at-6.08.43-PM.jpeg","cat":"Drinkware","rating":4.61,"sold":4733,"stock":16},{"id":20366,"name":"Rectangular Serving Tray – Matte Finish Plate (26cm x 11cm)","price":531,"reg":590,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.22.22-PM.jpeg","cat":"Tableware","rating":4.61,"sold":4635,"stock":16},{"id":20416,"name":"Mini Ceramic Sauce Dish – Ribbed Round Dip Bowl","price":189,"reg":210,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.24.27-PM.jpeg","cat":"Tableware","rating":4.6,"sold":4576,"stock":16},{"id":20441,"name":"Clear Glass Beer Mug – Heavy Base Drink Mug","price":549,"reg":610,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-11.59.34-AM.jpeg","cat":"Drinkware","rating":4.6,"sold":4547,"stock":16},{"id":20491,"name":"Ceramic Side Plate – Cream Gloss Finish 20CM","price":405,"reg":450,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.30.15-PM.jpeg","cat":"Tableware","rating":4.6,"sold":4489,"stock":15},{"id":19588,"name":"Luxury Glass Soap Dispenser – Gold Pump (Diamond Design)","price":387,"reg":430,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.54.24-PM.jpeg","cat":"Bathroom","rating":4.6,"sold":4461,"stock":15},{"id":18810,"name":"Classic Ceramic Serving Bowl – Beige 15CM","price":405,"reg":450,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-09-at-5.08.37-PM.jpeg","cat":"Tableware","rating":4.59,"sold":4287,"stock":15},{"id":20515,"name":"Minimal Ceramic Bowl – Cream Gloss Finish 14CM","price":369,"reg":410,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.31.17-PM.jpeg","cat":"Tableware","rating":4.58,"sold":4100,"stock":14},{"id":19010,"name":"Modern Rechargeable LED Table Lamp (large)","price":2421,"reg":2690,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.30-AM.jpeg","cat":"Lighting","rating":4.57,"sold":4053,"stock":14},{"id":19336,"name":"Insulated Stainless Steel Water Bottle with Straw Lid (480ml)","price":1620,"reg":1800,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.21.24-AM.jpeg","cat":"Bottles","rating":4.57,"sold":4033,"stock":13},{"id":19060,"name":"Matte Black Ceramic Soup Bowl","price":702,"reg":780,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-5.41.53-PM.jpeg","cat":"Tableware","rating":4.57,"sold":3995,"stock":13},{"id":19135,"name":"Heavy Glass Beer Mug with Handle","price":1116,"reg":1240,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-15-at-1.11.45-PM.jpeg","cat":"Drinkware","rating":4.57,"sold":3907,"stock":13},{"id":19611,"name":"Ceramic Coffee Mug – Green Gradient Glaze","price":531,"reg":590,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.55.17-PM.jpeg","cat":"Drinkware","rating":4.56,"sold":3712,"stock":12},{"id":20539,"name":"Classic White Ceramic Side Plate 19CM","price":252,"reg":280,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.31.43-PM.jpeg","cat":"Tableware","rating":4.56,"sold":3711,"stock":12},{"id":20564,"name":"Oval Ceramic Sauce Dish – Blue (21CM X 13CM)","price":225,"reg":250,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-11-at-1.34.48-PM.jpeg","cat":"Tableware","rating":4.55,"sold":3682,"stock":12},{"id":20388,"name":"Mini Ceramic Cup – Minimalist Espresso Cup","price":144,"reg":160,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.23.31-PM.jpeg","cat":"Drinkware","rating":4.55,"sold":3527,"stock":11},{"id":19485,"name":"Portable Electric Juicing Cup (Model HS-860)","price":3105,"reg":3450,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2025-02-28-at-13.58.07_e6e28426.jpg","cat":"Drinkware","rating":4.54,"sold":3499,"stock":11},{"id":20413,"name":"Mini Ceramic Sauce Dish – Oval White Dip Plate","price":135,"reg":150,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.24.12-PM.jpeg","cat":"Tableware","rating":4.54,"sold":3497,"stock":11},{"id":19083,"name":"Classic Scalloped Ceramic Dinner Plate","price":504,"reg":560,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-5.42.36-PM.jpeg","cat":"Tableware","rating":4.53,"sold":3246,"stock":10},{"id":20362,"name":"Minimalist Ceramic Bowl – Multi-Purpose Serving Bowl","price":621,"reg":690,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-05-at-1.22.10-PM.jpeg","cat":"Tableware","rating":4.53,"sold":3196,"stock":10},{"id":20437,"name":"3PCS Glass Food Storage Bowl Set with Airtight Lids","price":1998,"reg":2220,"img":"https://sastho.lk/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-06-at-11.59.25-AM.jpeg","cat":"Storage","rating":4.52,"sold":3109,"stock":9},{"id":19534,"name":"Classic White Scalloped Dessert Bowl","price":261,"reg":290,"img":"https://sastho.lk/wp-content/uploads/2026/04/WhatsApp-Image-2026-04-02-at-4.42.49-PM.jpeg","cat":"Tableware","rating":4.52,"sold":3081,"stock":9},{"id":18982,"name":"Automatic Smart Robot Floor Cleaner","price":2637,"reg":2930,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.13-AM.jpeg","cat":"Home","rating":4.52,"sold":3004,"stock":9},{"id":19407,"name":"3-in-1 Portable Mini Vacuum Cleaner – Handheld (Home & Car)","price":387,"reg":430,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-26-at-10.23.31-AM.jpeg","cat":"Home","rating":4.98,"sold":2507,"stock":7},{"id":18950,"name":"300ML Volcano Flame Aroma Diffuser Humidifier","price":1395,"reg":1550,"img":"https://sastho.lk/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-14-at-11.46.07-AM.jpeg","cat":"Lighting","rating":4.87,"sold":515,"stock":37}];
+
+/* ===== CATEGORY MAP ===== */
+const CAT_MAP = {
+  'All': null,
+  'Tableware': 'Tableware',
+  'Drinkware': 'Drinkware',
+  'Cookware': 'Cookware',
+  'Storage': 'Storage',
+  'Lamps & Light': 'Lighting',
+  'Bathroom': 'Bathroom',
+  'Bottles': 'Bottles',
+  'Home & Décor': 'Home'
+};
+
+/* ===== STATE ===== */
+let activeCat = 'All';
+let activePrice = 'all';
+let activeSort = 'best';
+let searchQuery = '';
+let visibleCount = 16;
+let filteredProducts = [];
+let favorites = JSON.parse(localStorage.getItem('sastho_fav') || '[]');
+
+/* ===== HELPERS ===== */
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+const fmt = n => 'Rs ' + n.toLocaleString('en-LK');
+const pct = (p, r) => Math.round((1 - p / r) * 100);
+const starSVG = '<svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>';
+
+function starsHTML(rating) {
+  const full = Math.floor(rating);
+  const half = rating - full >= 0.5;
+  let h = '<span class="stars">';
+  for (let i = 0; i < full; i++) h += starSVG;
+  if (half) h += starSVG;
+  h += '</span>';
+  return h;
+}
+
+function soldFmt(n) {
+  return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : n;
+}
+
+/* ===== ANNOUNCEMENT BAR ===== */
+function initAnno() {
+  const msgs = [
+    ['Free shipping on orders over Rs 3,000', 'M5 12h14M12 5l7 7-7 7'],
+    ['Cash on Delivery island-wide', 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'],
+    ['Up to 10% off on every product', 'M13 2L3 14h9l-1 8 10-12h-9l1-8z'],
+    ['Quality guaranteed or money back', 'M20 6L9 17l-5-5'],
+    ['New arrivals added weekly', 'M12 5v14M5 12h14']
+  ];
+  const track = document.getElementById('annoTrack');
+  let h = '';
+  for (let r = 0; r < 2; r++) msgs.forEach(m => {
+    h += `<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="${m[1]}"/></svg>${m[0]}</span>`;
+  });
+  track.innerHTML = h;
+}
+
+/* ===== CATEGORY PILLS ===== */
+function initCatPills() {
+  const wrap = document.getElementById('catPills');
+  let h = '';
+  Object.keys(CAT_MAP).forEach(label => {
+    h += `<button class="pill${label === 'All' ? ' active' : ''}" data-cat="${label}">${label}</button>`;
+  });
+  wrap.innerHTML = h;
+  wrap.addEventListener('click', e => {
+    const btn = e.target.closest('.pill');
+    if (!btn) return;
+    wrap.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    activeCat = btn.dataset.cat;
+    visibleCount = 16;
+    applyFilters();
+  });
+}
+
+/* ===== FILTERING & SORTING ===== */
+function applyFilters() {
+  let items = [...CATALOG];
+
+  // Category
+  if (activeCat !== 'All') {
+    const mapped = CAT_MAP[activeCat];
+    items = items.filter(p => p.cat === mapped);
+  }
+
+  // Price range
+  if (activePrice !== 'all') {
+    const [min, max] = activePrice.split('-').map(Number);
+    items = items.filter(p => p.price >= min && p.price <= max);
+  }
+
+  // Search
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    items = items.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q));
+  }
+
+  // Sort
+  switch (activeSort) {
+    case 'best': items.sort((a, b) => b.sold - a.sold); break;
+    case 'low': items.sort((a, b) => a.price - b.price); break;
+    case 'high': items.sort((a, b) => b.price - a.price); break;
+    case 'new': items.sort((a, b) => b.id - a.id); break;
+    case 'rating': items.sort((a, b) => b.rating - a.rating); break;
+  }
+
+  filteredProducts = items;
+  renderGrid();
+  updateCount();
+}
+
+function updateCount() {
+  const total = filteredProducts.length;
+  document.getElementById('resultCount').innerHTML = `<b>${total}</b> product${total !== 1 ? 's' : ''} found`;
+  document.getElementById('totalCount').textContent = CATALOG.length;
+
+  const shown = Math.min(visibleCount, total);
+  const loadWrap = document.getElementById('loadWrap');
+  const loadBtn = document.getElementById('loadBtn');
+  const loadProg = document.getElementById('loadProgress');
+
+  if (shown >= total) {
+    loadBtn.classList.add('hide');
+    loadProg.textContent = total > 0 ? `Showing all ${total} products` : '';
+  } else {
+    loadBtn.classList.remove('hide');
+    loadProg.textContent = `Showing ${shown} of ${total} products`;
+  }
+
+  document.getElementById('noResults').style.display = total === 0 ? 'block' : 'none';
+  loadWrap.style.display = total === 0 ? 'none' : '';
+}
+
+/* ===== RENDER CARDS ===== */
+function renderGrid() {
+  const grid = document.getElementById('productGrid');
+  const toShow = filteredProducts.slice(0, visibleCount);
+  let h = '';
+  toShow.forEach((p, i) => {
+    const off = pct(p.price, p.reg);
+    const isFav = favorites.includes(p.id);
+    const isLow = p.stock <= 10;
+    h += `<div class="card" data-id="${p.id}" style="transition-delay:${Math.min(i % 16, 8) * 40}ms">
+      <div class="card-img" onclick="openQV(${p.id})">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${off >= 5 ? `<span class="badge-off">-${off}%</span>` : ''}
+        ${isLow ? `<span class="badge-low"><span class="plse"></span>Only ${p.stock} left</span>` : ''}
+        <button class="fav${isFav ? ' on' : ''}" onclick="event.stopPropagation();toggleFav(${p.id},this)" aria-label="Save">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 1 0-7.7 7.7l1.1 1.1L12 22l7.7-7.6 1.1-1.1a5.4 5.4 0 0 0 0-7.7z"/></svg>
+        </button>
+        <div class="quick-view" onclick="event.stopPropagation();openQV(${p.id})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Quick View</div>
+      </div>
+      <div class="card-body">
+        <div class="card-cat">${p.cat}</div>
+        <div class="card-name"><a href="product.html?id=${p.id}">${p.name}</a></div>
+        <div class="card-rate">${starsHTML(p.rating)} ${p.rating} <span class="sold">&middot; ${soldFmt(p.sold)} sold</span></div>
+        <div class="card-price">
+          <span class="now tnum">${fmt(p.price)}</span>
+          <span class="was tnum">${fmt(p.reg)}</span>
+          ${off >= 5 ? `<span class="pct">-${off}%</span>` : ''}
+        </div>
+        <div class="card-actions">
+          <button class="add-btn" onclick="addToCart(${p.id},this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>Add to Cart</button>
+          <a class="wa-btn-card" href="https://wa.me/94777675984?text=${encodeURIComponent('Hi! I\'m interested in: ' + p.name + ' (Rs ' + p.price + ') - https://sastho.lk/product.html?id=' + p.id)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" aria-label="Order on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01z"/></svg></a>
+        </div>
+      </div>
+    </div>`;
+  });
+  grid.innerHTML = h;
+
+  // Trigger stagger animation
+  requestAnimationFrame(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('card-in');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '40px' });
+    grid.querySelectorAll('.card').forEach(c => observer.observe(c));
+  });
+}
+
+/* ===== LOAD MORE ===== */
+function loadMore() {
+  visibleCount += 16;
+  renderGrid();
+  updateCount();
+}
+
+/* ===== CART (simple localStorage) ===== */
+function addToCart(id, btn) {
+  let cart = JSON.parse(localStorage.getItem('sastho_cart') || '[]');
+  const exists = cart.find(c => c.id === id);
+  if (exists) { exists.qty++; } else { cart.push({ id, qty: 1 }); }
+  localStorage.setItem('sastho_cart', JSON.stringify(cart));
+  btn.classList.add('added');
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Added!';
+  setTimeout(() => {
+    btn.classList.remove('added');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>Add to Cart';
+  }, 1800);
+  showToast('Added to cart!');
+}
+
+/* ===== FAVORITES ===== */
+function toggleFav(id, btn) {
+  const idx = favorites.indexOf(id);
+  if (idx === -1) { favorites.push(id); btn.classList.add('on'); showToast('Saved to wishlist'); }
+  else { favorites.splice(idx, 1); btn.classList.remove('on'); }
+  localStorage.setItem('sastho_fav', JSON.stringify(favorites));
+}
+
+/* ===== QUICK VIEW ===== */
+function openQV(id) {
+  const p = CATALOG.find(c => c.id === id);
+  if (!p) return;
+  const off = pct(p.price, p.reg);
+  document.getElementById('qvImg').src = p.img;
+  document.getElementById('qvImg').alt = p.name;
+  document.getElementById('qvCat').textContent = p.cat;
+  document.getElementById('qvName').textContent = p.name;
+  document.getElementById('qvRate').innerHTML = `${starsHTML(p.rating)} ${p.rating} <span style="color:var(--ink-3)">&middot; ${soldFmt(p.sold)} sold</span>`;
+  document.getElementById('qvPricing').innerHTML = `<span class="now tnum">${fmt(p.price)}</span><span class="was tnum">${fmt(p.reg)}</span>${off >= 5 ? `<span class="save">Save ${off}%</span>` : ''}`;
+  document.getElementById('qvStock').innerHTML = p.stock <= 10
+    ? `<span class="dot low"></span>Only ${p.stock} left in stock`
+    : `<span class="dot"></span>${p.stock} in stock`;
+  document.getElementById('qvAdd').onclick = function () { addToCart(id, this); };
+  document.getElementById('qvWa').href = `https://wa.me/94777675984?text=${encodeURIComponent('Hi! I want to order: ' + p.name + ' (Rs ' + p.price + ')')}`;
+  document.getElementById('qvScrim').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeQV() {
+  document.getElementById('qvScrim').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('qvScrim').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeQV();
+});
+
+/* ===== SEARCH ===== */
+function initSearch() {
+  const input = document.getElementById('searchInput');
+  const drop = document.getElementById('searchDrop');
+  let debounce;
+
+  input.addEventListener('input', () => {
+    clearTimeout(debounce);
+    debounce = setTimeout(() => {
+      const q = input.value.trim().toLowerCase();
+      searchQuery = q;
+
+      // Show search dropdown for instant results
+      if (q.length >= 2) {
+        const matches = CATALOG.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q)).slice(0, 6);
+        if (matches.length) {
+          drop.innerHTML = matches.map(p => `
+            <a class="sd-item" href="product.html?id=${p.id}">
+              <img src="${p.img}" alt="" loading="lazy">
+              <div class="sd-item-info">
+                <div class="sd-item-name">${p.name}</div>
+                <div class="sd-item-meta">${p.cat} &middot; ${p.rating} &#9733;</div>
+              </div>
+              <div class="sd-item-price">${fmt(p.price)}</div>
+            </a>
+          `).join('');
+          drop.classList.add('open');
+        } else {
+          drop.innerHTML = '<div class="sd-empty">No products found</div>';
+          drop.classList.add('open');
+        }
+      } else {
+        drop.classList.remove('open');
+      }
+
+      // Also filter grid
+      visibleCount = 16;
+      applyFilters();
+    }, 200);
+  });
+
+  input.addEventListener('focus', () => {
+    if (input.value.trim().length >= 2) drop.classList.add('open');
+  });
+
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.search-nav')) drop.classList.remove('open');
+  });
+}
+
+/* ===== SORT ===== */
+document.getElementById('sortSelect').addEventListener('change', function () {
+  activeSort = this.value;
+  visibleCount = 16;
+  applyFilters();
+});
+
+/* ===== PRICE FILTER ===== */
+function initPriceFilter() {
+  const btn = document.getElementById('priceBtn');
+  const drop = document.getElementById('priceDrop');
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    drop.classList.toggle('open');
+  });
+
+  drop.addEventListener('click', (e) => {
+    const opt = e.target.closest('.price-opt');
+    if (!opt) return;
+    drop.querySelectorAll('.price-opt').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+    activePrice = opt.dataset.range;
+    btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>${opt.textContent}`;
+    drop.classList.remove('open');
+    visibleCount = 16;
+    applyFilters();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.price-filter')) drop.classList.remove('open');
+  });
+}
+
+/* ===== VIEW TOGGLE ===== */
+function initViewToggle() {
+  const grid = document.getElementById('productGrid');
+  $$('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      $$('.view-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (btn.dataset.view === 'list') grid.classList.add('list-view');
+      else grid.classList.remove('list-view');
+    });
+  });
+}
+
+/* ===== SLIDE MENU ===== */
+function initMenu() {
+  const scrim = document.getElementById('menuScrim');
+  const menu = document.getElementById('slideMenu');
+  const open = () => { scrim.classList.add('open'); menu.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const close = () => { scrim.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow = ''; };
+  document.getElementById('hambBtn').addEventListener('click', open);
+  document.getElementById('menuClose').addEventListener('click', close);
+  scrim.addEventListener('click', close);
+  menu.querySelectorAll('.sm-links a').forEach(a => a.addEventListener('click', close));
+}
+
+/* ===== BACK TO TOP ===== */
+function initBTT() {
+  const btt = document.getElementById('btt');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        btt.classList.toggle('show', window.scrollY > 600);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+/* ===== TOAST ===== */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ===== RESET ===== */
+function resetAll() {
+  activeCat = 'All';
+  activePrice = 'all';
+  searchQuery = '';
+  activeSort = 'best';
+  visibleCount = 16;
+  document.getElementById('searchInput').value = '';
+  document.getElementById('sortSelect').value = 'best';
+  document.getElementById('priceBtn').innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Price';
+  document.querySelectorAll('.price-opt').forEach(o => o.classList.remove('active'));
+  document.querySelector('.price-opt[data-range="all"]').classList.add('active');
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  document.querySelector('.pill[data-cat="All"]').classList.add('active');
+  applyFilters();
+}
+
+/* ===== INIT ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  initAnno();
+  initCatPills();
+  initSearch();
+  initPriceFilter();
+  initViewToggle();
+  initMenu();
+  initBTT();
+  applyFilters();
+});
+</script>
+<!-- AI ASSISTANT -->
+<div class="ai-fab" id="aiFab" onclick="toggleAI()">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5.5 4 7l1 3h4l1-3c2-1.5 4-4 4-7a7 7 0 0 0-7-7z"/><path d="M9 22h6"/><path d="M10 2V1M14 2V1M7.5 4L6.5 3M16.5 4l1-1"/></svg>
+</div>
+<div class="ai-chat" id="aiChat">
+  <div class="ai-chat-head">
+    <span class="ai-dot"></span>
+    <b>Sastho AI Assistant</b>
+    <button onclick="toggleAI()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="ai-msgs" id="aiMsgs"></div>
+  <div class="ai-input">
+    <input type="text" id="aiIn" placeholder="Ask me anything..." onkeydown="if(event.key==='Enter')sendAI()">
+    <button onclick="sendAI()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg></button>
+  </div>
+</div>
+<script>
+(function(){
+var aiOpen=false;
+var aiHistory=[];
+var AI_KB={
+  delivery:["We deliver island-wide across all 25 districts of Sri Lanka.","Colombo: 1-2 business days. Other areas: 3-5 business days.","FREE delivery on orders over Rs 5,000.","You'll get a WhatsApp tracking update once dispatched."],
+  returns:["We offer a 7-day return policy on all items.","If damaged, defective, or not as expected — message us on WhatsApp with your order number and photos.","We'll arrange a pickup and full refund."],
+  payment:["We accept Cash on Delivery (COD) — no card or online payment needed.","Simply place your order and pay the courier when your package arrives.","We also accept Visa, Mastercard, and WhatsApp orders."],
+  products:["We sell premium home and kitchen products: ceramics, glassware, lamps, storage, bathroom accessories, and more.","Prices start from as low as Rs 72.","All products come with quality guarantee.","Check our Shop page for the full catalog, or use Build My Space to get personalized recommendations."],
+  wholesale:["Yes! Hotels, resellers, and offices get special wholesale rates.","Contact us on WhatsApp or email hello@sastho.lk for bulk pricing."],
+  contact:["WhatsApp: +94 77 767 5984 (fastest way to reach us)","Email: hello@sastho.lk (we reply within 24 hours)","Visit: No.84/1, Maliban Street, Colombo 11","Open 7 days a week, 10am to 7pm."],
+  deals:["Check our Lightning Deals page for the lowest prices of the week!","Use code WELCOME10 for 10% off your first order.","Deals refresh weekly — grab them before the timer runs out."],
+  order:["To place an order: browse our shop, add items to cart, and checkout.","Choose Cash on Delivery at checkout — pay only when you receive your items.","You can also order directly on WhatsApp by sending us the product links."]
+};
+var AI_GREET='<div class="ai-msg bot">Hi! I\'m Sastho\'s AI assistant. How can I help you today?<div class="chips"><span class="chip" onclick="aiChip(this)">Delivery info</span><span class="chip" onclick="aiChip(this)">Return policy</span><span class="chip" onclick="aiChip(this)">How to order</span><span class="chip" onclick="aiChip(this)">Contact us</span></div></div>';
+function toggleAI(){
+  aiOpen=!aiOpen;
+  document.getElementById("aiChat").classList.toggle("open",aiOpen);
+  if(aiOpen&&!aiHistory.length){document.getElementById("aiMsgs").innerHTML=AI_GREET;}
+}
+function aiChip(el){var txt=el.textContent;addAIMsg(txt,"user");processAI(txt);}
+function addAIMsg(txt,who){var d=document.createElement("div");d.className="ai-msg "+who;d.textContent=txt;document.getElementById("aiMsgs").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"end"});aiHistory.push({role:who,text:txt});}
+function addAIBotHTML(html){var d=document.createElement("div");d.className="ai-msg bot";d.innerHTML=html;document.getElementById("aiMsgs").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"end"});}
+function sendAI(){var inp=document.getElementById("aiIn");var v=inp.value.trim();if(!v)return;inp.value="";addAIMsg(v,"user");processAI(v);}
+function processAI(q){
+  var ql=q.toLowerCase();var answer="";var chips=[];
+  if(/deliver|shipping|ship|dispatch|track|when.*arrive|how long/i.test(ql)){answer=AI_KB.delivery.join(" ");chips=["Return policy","How to order"];}
+  else if(/return|refund|exchange|damage|broken|defect/i.test(ql)){answer=AI_KB.returns.join(" ");chips=["Delivery info","Contact us"];}
+  else if(/pay|payment|cod|cash|visa|card|bank/i.test(ql)){answer=AI_KB.payment.join(" ");chips=["How to order","Delivery info"];}
+  else if(/product|what.*sell|catalog|ceramic|glass|lamp|bowl|plate|mug/i.test(ql)){answer=AI_KB.products.join(" ");chips=["View deals","How to order"];}
+  else if(/wholesale|bulk|business|hotel|resell/i.test(ql)){answer=AI_KB.wholesale.join(" ");chips=["Contact us","Products"];}
+  else if(/contact|phone|email|address|visit|location|where|reach/i.test(ql)){answer=AI_KB.contact.join(" ");chips=["Delivery info","How to order"];}
+  else if(/deal|discount|offer|coupon|code|sale|cheap|price|low/i.test(ql)){answer=AI_KB.deals.join(" ");chips=["Products","How to order"];}
+  else if(/order|buy|purchase|checkout|how.*order|how.*buy|cart/i.test(ql)){answer=AI_KB.order.join(" ");chips=["Payment info","Delivery info"];}
+  else if(/hi|hello|hey|good|thank|thanks/i.test(ql)){answer="Hello! Welcome to Sastho Lanka. I can help you with product info, delivery, returns, payments, and more. What would you like to know?";chips=["Delivery info","Products","How to order","Contact us"];}
+  else{answer="I'd be happy to help! For specific queries, you can reach our team on WhatsApp at +94 77 767 5984 or email hello@sastho.lk. Here are some things I can help with:";chips=["Delivery info","Return policy","Payment info","How to order"];}
+  setTimeout(function(){var html=answer;if(chips.length){html+='<div class="chips">'+chips.map(function(c){return '<span class="chip" onclick="aiChip(this)">'+c+'</span>';}).join("")+'</div>';}addAIBotHTML(html);},400+Math.random()*400);
+}
+window.toggleAI=toggleAI;window.sendAI=sendAI;window.aiChip=aiChip;
+})();
+</script>
+</body>
+</html>
