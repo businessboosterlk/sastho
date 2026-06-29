@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About Us | Sastho Lanka</title>
+<meta name="description" content="Meet Sastho Lanka. We believe every Sri Lankan home deserves beautiful things at honest prices. Learn our story, mission, and values.">
+<meta name="theme-color" content="#d24e08">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<meta property="og:title" content="About Us | Sastho Lanka">
+<meta property="og:description" content="We believe every Sri Lankan home deserves beautiful things at honest prices.">
+<meta property="og:image" content="assets/life-3.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#d24e08; --accent-2:#f2671a; --accent-deep:#a83d06;
+  --ink:#171210; --ink-2:#5c524b; --ink-3:#8c8077;
+  --bg:#faf8f5; --surface:#ffffff; --line:#efe9e2; --line-2:#e2d8cd;
+  --good:#1a8a4a; --hot:#d92121; --gold:#e8a200;
+  --r:18px; --r-sm:12px; --r-lg:26px;
+  --shadow:0 1px 2px rgba(40,20,8,.04),0 6px 20px rgba(40,20,8,.06);
+  --shadow-lg:0 18px 60px rgba(40,20,8,.16);
+  --maxw:1240px; --topbar:114px;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --disp:'Plus Jakarta Sans',var(--sans);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+svg{flex-shrink:0}
+html,body{overflow-x:clip;max-width:100%}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-top:var(--topbar)}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
+.eyebrow{font-family:var(--disp);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.brand{display:inline-flex;align-items:center;gap:11px}
+.brand-img{height:52px;width:auto;display:block}
+.brand-img.foot{height:62px}
+.anno{background:var(--ink);color:#fff;font-size:12.5px;font-weight:500;height:34px;display:flex;align-items:center;overflow:hidden;position:relative}
+.anno-track{display:flex;gap:46px;white-space:nowrap;animation:marq 30s linear infinite;padding-left:46px}
+.anno-track span{display:inline-flex;align-items:center;gap:8px;letter-spacing:.01em;color:rgba(255,255,255,.92)}
+.anno-track svg{width:15px;height:15px;color:var(--accent-2)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,248,245,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav{height:80px;display:flex;align-items:center;gap:18px}
+.nav-links{display:flex;gap:2px;margin-left:14px}
+.nav-links a{font-weight:550;font-size:14.5px;color:var(--ink-2);padding:9px 14px;border-radius:10px;transition:.15s}
+.nav-links a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
+.nav-links a.active{color:var(--accent);font-weight:650}
+.nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.icon-btn{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--ink);transition:.15s;position:relative}
+.icon-btn:hover{background:rgba(0,0,0,.04)}
+.icon-btn svg{width:21px;height:21px}
+.hamb{display:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:650;font-size:15px;border-radius:14px;padding:14px 24px;transition:.16s;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(210,78,8,.28)}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(210,78,8,.36)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-2px)}
+
+.ab-hero{position:relative;height:70vh;min-height:460px;max-height:720px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.ab-hero-bg{position:absolute;inset:0;background:url(assets/life-3.jpg) center/cover no-repeat;background-attachment:fixed}
+.ab-hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,18,16,.52) 0%,rgba(23,18,16,.72) 100%)}
+.ab-hero-content{position:relative;z-index:2;color:#fff;max-width:680px;padding:0 22px}
+.ab-hero-content .eyebrow{color:var(--accent-2);margin-bottom:18px}
+.ab-hero-content h1{font-size:clamp(34px,5.5vw,58px);font-weight:800;line-height:1.08;letter-spacing:-.04em}
+.ab-hero-content p{font-size:clamp(16px,1.8vw,19px);color:rgba(255,255,255,.78);margin-top:18px;line-height:1.6;font-weight:400}
+
+.ab-mission{padding:100px 0}
+.ab-mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.ab-mission-text .eyebrow{margin-bottom:20px}
+.ab-mission-text blockquote{font-family:var(--disp);font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.15;letter-spacing:-.03em;margin-bottom:22px;position:relative;padding-left:24px;border-left:4px solid var(--accent)}
+.ab-mission-text p{font-size:16px;color:var(--ink-2);line-height:1.7;max-width:480px}
+.ab-mission-img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg)}
+.ab-mission-img img{width:100%;height:460px;object-fit:cover}
+
+.ab-stats{padding:80px 0;background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ab-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.ab-stat{padding:24px 16px}
+.ab-stat-num{font-family:var(--disp);font-size:clamp(36px,4.5vw,52px);font-weight:800;color:var(--accent);letter-spacing:-.04em;line-height:1}
+.ab-stat-label{font-size:14.5px;font-weight:550;color:var(--ink-2);margin-top:10px}
+
+.ab-diff{padding:100px 0}
+.ab-diff-head{text-align:center;margin-bottom:56px}
+.ab-diff-head h2{font-size:clamp(28px,3.5vw,40px);font-weight:800}
+.ab-diff-head p{color:var(--ink-2);font-size:16px;margin-top:10px;max-width:500px;margin-left:auto;margin-right:auto}
+.ab-diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.ab-diff-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-lg);padding:44px 32px;text-align:center;transition:.25s}
+.ab-diff-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
+.ab-diff-icon{width:64px;height:64px;border-radius:18px;background:rgba(210,78,8,.08);display:grid;place-items:center;margin:0 auto 22px;color:var(--accent)}
+.ab-diff-icon svg{width:28px;height:28px}
+.ab-diff-card h3{font-size:20px;font-weight:800;margin-bottom:10px}
+.ab-diff-card p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
+
+.ab-values{padding:100px 0;background:var(--surface);border-top:1px solid var(--line)}
+.ab-values-head{text-align:center;margin-bottom:64px}
+.ab-values-head h2{font-size:clamp(28px,3.5vw,40px);font-weight:800}
+.ab-val-row{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-bottom:80px}
+.ab-val-row:last-child{margin-bottom:0}
+.ab-val-row.reverse .ab-val-img{order:-1}
+.ab-val-text .eyebrow{margin-bottom:14px}
+.ab-val-text h3{font-size:clamp(24px,2.8vw,32px);font-weight:800;margin-bottom:14px}
+.ab-val-text p{font-size:16px;color:var(--ink-2);line-height:1.7;max-width:460px}
+.ab-val-img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow)}
+.ab-val-img img{width:100%;height:380px;object-fit:cover}
+
+.ab-founder{padding:100px 0;text-align:center}
+.ab-founder-inner{max-width:680px;margin:0 auto}
+.ab-founder-inner .eyebrow{margin-bottom:18px}
+.ab-founder-inner h2{font-size:clamp(26px,3vw,36px);font-weight:800;margin-bottom:24px}
+.ab-founder-inner blockquote{font-size:clamp(17px,1.8vw,20px);color:var(--ink-2);line-height:1.7;font-style:italic;position:relative;padding:0 24px}
+.ab-founder-inner blockquote::before,.ab-founder-inner blockquote::after{content:'"';font-family:var(--disp);font-size:48px;color:var(--accent);line-height:1;position:absolute}
+.ab-founder-inner blockquote::before{top:-8px;left:-4px}
+.ab-founder-inner blockquote::after{content:'"';bottom:-24px;right:-4px}
+.ab-founder-sig{margin-top:28px;font-weight:650;font-size:15px;color:var(--ink)}
+.ab-founder-sig span{display:block;font-weight:450;font-size:13.5px;color:var(--ink-3);margin-top:4px}
+
+.ab-cta{padding:80px 0;background:var(--ink);text-align:center;position:relative;overflow:hidden}
+.ab-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(210,78,8,.12) 0%,transparent 70%)}
+.ab-cta-inner{position:relative;z-index:2}
+.ab-cta h2{font-size:clamp(28px,4vw,44px);font-weight:800;color:#fff;margin-bottom:12px}
+.ab-cta p{color:rgba(255,255,255,.6);font-size:16px;margin-bottom:28px}
+
+footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+.foot-brand{margin-bottom:0}
+.foot-brand .brand{margin-bottom:16px}
+.foot-brand p{font-size:13.5px;line-height:1.6;max-width:280px}
+.foot-soc{display:flex;gap:10px;margin-top:20px}
+.foot-soc a{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.07);display:grid;place-items:center;color:#fff;transition:.15s}
+.foot-soc a:hover{background:var(--accent)}
+.foot-soc svg{width:18px;height:18px}
+.foot-col h4{font-family:var(--disp);color:#fff;font-size:14px;font-weight:700;margin-bottom:17px}
+.foot-col a,.foot-col div{display:block;font-size:13.5px;margin-bottom:11px;transition:.15s}
+.foot-col a:hover{color:#fff}
+.foot-contact div{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;margin-bottom:13px}
+.foot-contact svg{width:17px;height:17px;color:var(--accent-2);flex-shrink:0;margin-top:2px}
+.foot-bot{border-top:1px solid rgba(255,255,255,.09);margin-top:44px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px}
+.pay-icons{display:flex;gap:8px}
+.pay-icons span{background:rgba(255,255,255,.08);padding:4px 12px;border-radius:6px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.5)}
+
+.wa-fab{position:fixed;right:20px;bottom:20px;z-index:140;width:58px;height:58px;border-radius:50%;background:#1aae54;box-shadow:0 8px 24px rgba(26,174,84,.42);display:grid;place-items:center;transition:.2s;animation:bob 4.5s ease-in-out infinite}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:30px;height:30px;color:#fff}
+.wa-fab::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1aae54;animation:ring 2.6s infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:none}
+
+.mob-menu{position:fixed;inset:0;z-index:300;pointer-events:none;opacity:0;transition:opacity .25s}
+.mob-menu.open{pointer-events:auto;opacity:1}
+.mob-scrim{position:absolute;inset:0;background:rgba(0,0,0,.4)}
+.mob-panel{position:absolute;top:0;left:0;bottom:0;width:300px;background:var(--surface);transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding:28px 22px;display:flex;flex-direction:column;gap:6px}
+.mob-menu.open .mob-panel{transform:translateX(0)}
+.mob-panel a{font-weight:600;font-size:16px;padding:14px 0;border-bottom:1px solid var(--line);display:block}
+.mob-panel a.active{color:var(--accent)}
+.mob-close{position:absolute;top:18px;right:18px;width:40px;height:40px;border-radius:12px;display:grid;place-items:center}
+.mob-close svg{width:22px;height:22px}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamb{display:grid}
+  .ab-mission-grid{grid-template-columns:1fr;gap:36px}
+  .ab-mission-img img{height:320px}
+  .ab-stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+  .ab-diff-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+  .ab-val-row{grid-template-columns:1fr;gap:28px}
+  .ab-val-row.reverse .ab-val-img{order:0}
+  .ab-val-img img{height:280px}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .ab-hero{min-height:380px;height:55vh}
+  .ab-hero-bg{background-attachment:scroll}
+}
+@media(max-width:560px){
+  .brand-img{height:46px}
+  .ab-hero-content h1{font-size:30px}
+  .ab-stats-grid{grid-template-columns:1fr 1fr}
+  .ab-stat{padding:16px 8px}
+  .foot-grid{grid-template-columns:1fr}
+  .ab-mission{padding:60px 0}
+  .ab-diff{padding:60px 0}
+  .ab-values{padding:60px 0}
+  .ab-founder{padding:60px 0}
+  .ab-cta{padding:56px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="anno"><div class="anno-track" id="annoTrack"></div></div>
+
+<header class="topbar">
+  <div class="wrap nav">
+    <button class="icon-btn hamb" id="hambBtn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <a href="index.html" class="brand" id="brandTop" aria-label="Sastho Lanka"></a>
+    <nav class="nav-links">
+      <a href="index.html#deals">Deals</a>
+      <a href="index.html#shop">Shop</a>
+      <a href="index.html#builder">Build My Space</a>
+      <a href="index.html#how">How It Works</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+    <div class="nav-actions" style="margin-left:auto">
+      <a href="index.html" class="btn btn-dark" style="font-size:13.5px;padding:10px 18px;border-radius:12px">Shop Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<section class="ab-hero">
+  <div class="ab-hero-bg"></div>
+  <div class="ab-hero-overlay"></div>
+  <div class="ab-hero-content">
+    <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg> Our Story</div>
+    <h1>We believe every Sri Lankan home deserves beautiful things.</h1>
+    <p>Quality home and kitchen products at honest prices, delivered to your doorstep across the island. No gimmicks, no middlemen.</p>
+  </div>
+</section>
+
+<section class="ab-mission reveal">
+  <div class="wrap">
+    <div class="ab-mission-grid">
+      <div class="ab-mission-text">
+        <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Why We Exist</div>
+        <blockquote>Making beautiful homes accessible to every Sri Lankan family.</blockquote>
+        <p>We started Sastho with a simple belief: you shouldn't have to choose between quality and affordability. By sourcing directly and selling through our own channels, we cut out layers of markups and deliver premium home and kitchen products at prices that make sense. Every order ships island-wide with cash on delivery, because trust is earned, not assumed.</p>
+      </div>
+      <div class="ab-mission-img">
+        <img src="assets/life-1.jpg" alt="Beautiful Sri Lankan home interior" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ab-stats reveal">
+  <div class="wrap">
+    <div class="ab-stats-grid">
+      <div class="ab-stat">
+        <div class="ab-stat-num" data-target="5000" data-suffix="+">0</div>
+        <div class="ab-stat-label">Happy homes</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-num" data-target="200" data-suffix="+">0</div>
+        <div class="ab-stat-label">Products curated</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-num" data-target="25" data-suffix="">0</div>
+        <div class="ab-stat-label">Districts delivered</div>
+      </div>
+      <div class="ab-stat">
+        <div class="ab-stat-num" data-target="7" data-suffix="-day">0</div>
+        <div class="ab-stat-label">Returns guaranteed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ab-diff reveal">
+  <div class="wrap">
+    <div class="ab-diff-head">
+      <h2>How we're different</h2>
+      <p>Three promises that set us apart from every other store.</p>
+    </div>
+    <div class="ab-diff-grid">
+      <div class="ab-diff-card reveal">
+        <div class="ab-diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></div>
+        <h3>Direct sourcing</h3>
+        <p>We cut the middleman entirely, passing those savings directly to you. Factory to your door, nothing in between.</p>
+      </div>
+      <div class="ab-diff-card reveal">
+        <div class="ab-diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6 6V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Cash on delivery</h3>
+        <p>Zero risk. You pay only when you see the product, hold it in your hands, and love it. No card, no advance payments.</p>
+      </div>
+      <div class="ab-diff-card reveal">
+        <div class="ab-diff-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Quality promise</h3>
+        <p>Every single product is personally inspected before it leaves our warehouse. If it's not perfect, it doesn't ship.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ab-values reveal">
+  <div class="wrap">
+    <div class="ab-values-head">
+      <h2>What we stand for</h2>
+    </div>
+    <div class="ab-val-row reveal">
+      <div class="ab-val-text">
+        <div class="eyebrow">01</div>
+        <h3>Honesty in pricing</h3>
+        <p>We don't inflate prices to create fake discounts. What you see is a fair price, every day. Our margins are thin because we'd rather earn your trust than a few extra rupees.</p>
+      </div>
+      <div class="ab-val-img">
+        <img src="assets/life-2.jpg" alt="Honest pricing" loading="lazy">
+      </div>
+    </div>
+    <div class="ab-val-row reverse reveal">
+      <div class="ab-val-text">
+        <div class="eyebrow">02</div>
+        <h3>Quality over quantity</h3>
+        <p>We'd rather stock 200 products we're proud of than 2,000 we're not sure about. Every item in our catalog has been tested, used, and approved by our own team first.</p>
+      </div>
+      <div class="ab-val-img">
+        <img src="assets/life-4.jpg" alt="Quality products" loading="lazy">
+      </div>
+    </div>
+    <div class="ab-val-row reveal">
+      <div class="ab-val-text">
+        <div class="eyebrow">03</div>
+        <h3>Customer first, always</h3>
+        <p>A problem with your order? We fix it, no questions asked. Our 7-day return guarantee exists because we believe you should never feel stuck with something you don't love.</p>
+      </div>
+      <div class="ab-val-img">
+        <img src="assets/life-5.jpg" alt="Customer first" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ab-founder reveal">
+  <div class="wrap">
+    <div class="ab-founder-inner">
+      <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.7 0L12 6.7l-1.1-1.1a5.4 5.4 0 1 0-7.7 7.7l1.1 1.1L12 22l7.7-7.6 1.1-1.1a5.4 5.4 0 0 0 0-7.7z"/></svg> From Our Family to Yours</div>
+      <h2>A personal note</h2>
+      <blockquote>We didn't start Sastho to be the biggest store in Sri Lanka. We started it to be the most trusted one. Every parcel that leaves our hands carries a simple promise: you'll get more than what you paid for. That's not a tagline. That's how we run this business, every single day.</blockquote>
+      <div class="ab-founder-sig">The Sastho Team<span>Colombo, Sri Lanka</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ab-cta">
+  <div class="wrap ab-cta-inner">
+    <h2>Ready to transform your home?</h2>
+    <p>Thousands of Sri Lankan families already have. Your turn.</p>
+    <a href="index.html#shop" class="btn btn-primary" style="font-size:16px;padding:16px 36px">Shop Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand" id="brandFoot" aria-label="Sastho Lanka"></a>
+        <p>Sri Lanka's one-stop shop for home, kitchen and more. Unbeatable quality at unbeatable prices, delivered island-wide.</p>
+        <div class="foot-soc">
+          <a href="https://instagram.com/sastho.lk" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .5-1.5 1.7-1.5H17V2.5h-2.5C11.7 2.5 10 4.2 10 7v2H7.5v3.2H10V21.5h4v-9.3h2.7l.5-3.2H14z"/></svg></a>
+          <a href="https://wa.me/94777675984" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="index.html#deals">Lightning Deals</a>
+        <a href="index.html#shop">All Categories</a>
+        <a href="index.html#builder">Build My Space</a>
+        <div>New Arrivals</div>
+        <div>Best Sellers</div>
+      </div>
+      <div class="foot-col">
+        <h4>Help</h4>
+        <a href="index.html#how">How It Works</a>
+        <div>Track My Order</div>
+        <div>Returns &amp; Refunds</div>
+        <div>FAQs</div>
+        <a href="https://wa.me/94777675984" target="_blank" rel="noopener">Contact Us</a>
+      </div>
+      <div class="foot-col foot-contact">
+        <h4>Reach us</h4>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 3.2 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L9.1 9.9a16 16 0 0 0 6 6l1.3-1.35a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+94 77 767 5984</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>No.84/1, Maliban Street, Colombo 11</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Open 7 days &middot; 10am to 7pm</div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; 2026 Sastho Lanka. All rights reserved. Concept rebuild by Business Booster.</span>
+      <div class="pay-icons"><span>COD</span><span>Visa</span><span>Master</span><span>WhatsApp</span></div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+</a>
+
+<div class="mob-menu" id="mobMenu">
+  <div class="mob-scrim" onclick="closeMob()"></div>
+  <div class="mob-panel">
+    <button class="mob-close" onclick="closeMob()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <a href="index.html" style="margin-bottom:8px"><img src="assets/logo.png" alt="Sastho Lanka" style="height:44px"></a>
+    <a href="index.html#deals">Deals</a>
+    <a href="index.html#shop">Shop</a>
+    <a href="index.html#builder">Build My Space</a>
+    <a href="index.html#how">How It Works</a>
+    <a href="about.html" class="active">About</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  var spark='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>';
+  var items=[
+    {i:spark,t:"Lightning Deals live now: the week's lowest prices"},
+    {i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h2"/><path d="M14 9h4l3 3v5h-3"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>',t:"FREE island-wide delivery over Rs 5,000"},
+    {i:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/></svg>',t:"Pay cash on delivery, no card needed"},
+    {i:spark,t:"Get 10% off your first order with WELCOME10"}
+  ];
+  var one=items.map(function(x){return '<span>'+x.i+x.t+'</span>';}).join('');
+  document.getElementById('annoTrack').innerHTML=one+one;
+  document.getElementById('brandTop').innerHTML='<img class="brand-img" src="assets/logo.png" alt="Sastho Lanka" width="180" height="110">';
+  document.getElementById('brandFoot').innerHTML='<img class="brand-img foot" src="assets/logo-light.png" alt="Sastho Lanka" width="180" height="110">';
+})();
+
+document.getElementById('hambBtn').addEventListener('click',function(){document.getElementById('mobMenu').classList.add('open');});
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');}
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}
+  });
+},{threshold:0.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el,i){
+  el.style.transitionDelay=(i%4)*0.1+'s';
+  obs.observe(el);
+});
+
+var counted=false;
+var cobs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting&&!counted){
+      counted=true;
+      document.querySelectorAll('.ab-stat-num').forEach(function(el){
+        var target=parseInt(el.getAttribute('data-target'));
+        var suffix=el.getAttribute('data-suffix')||'';
+        var dur=1600;
+        var start=performance.now();
+        function tick(now){
+          var p=Math.min((now-start)/dur,1);
+          var ease=1-Math.pow(1-p,3);
+          var val=Math.round(ease*target);
+          el.textContent=val.toLocaleString()+suffix;
+          if(p<1)requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+      });
+      cobs.unobserve(e.target);
+    }
+  });
+},{threshold:0.3});
+var statsEl=document.querySelector('.ab-stats');
+if(statsEl)cobs.observe(statsEl);
+</script>
+</body>
+</html>

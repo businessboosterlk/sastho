@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact Us | Sastho Lanka</title>
+<meta name="description" content="Get in touch with Sastho Lanka. WhatsApp, email, or visit us at Maliban Street, Colombo 11. We reply within hours.">
+<meta name="theme-color" content="#d24e08">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/logo.png">
+<meta property="og:title" content="Contact Us | Sastho Lanka">
+<meta property="og:description" content="Reach out anytime. WhatsApp, email, or visit our store in Colombo 11.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#d24e08;--accent-2:#f2671a;--accent-deep:#a83d06;
+  --ink:#171210;--ink-2:#5c524b;--ink-3:#8c8077;
+  --bg:#faf8f5;--surface:#ffffff;--line:#efe9e2;--line-2:#e2d8cd;
+  --good:#1a8a4a;--hot:#d92121;
+  --r:18px;--r-sm:12px;--r-lg:26px;
+  --shadow:0 1px 2px rgba(40,20,8,.04),0 6px 20px rgba(40,20,8,.06);
+  --shadow-lg:0 18px 60px rgba(40,20,8,.16);
+  --maxw:1240px;--topbar:114px;
+  --sans:'Inter',-apple-system,system-ui,sans-serif;
+  --disp:'Plus Jakarta Sans',var(--sans);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+svg{flex-shrink:0}
+html,body{overflow-x:clip;max-width:100%}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-top:var(--topbar)}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none}
+input,textarea,select{font-family:inherit}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
+.eyebrow{font-family:var(--disp);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:650;font-size:15px;border-radius:14px;padding:14px 24px;transition:.16s;white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(210,78,8,.28)}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(210,78,8,.36)}
+.btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line-2)}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.anno{background:var(--ink);color:#fff;font-size:12.5px;font-weight:500;height:34px;display:flex;align-items:center;overflow:hidden;position:relative}
+.anno-track{display:flex;gap:46px;white-space:nowrap;animation:marq 30s linear infinite;padding-left:46px}
+.anno-track span{display:inline-flex;align-items:center;gap:8px;letter-spacing:.01em;color:rgba(255,255,255,.92)}
+.anno-track svg{width:15px;height:15px;color:var(--accent-2)}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(250,248,245,.82);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid var(--line)}
+.nav{height:80px;display:flex;align-items:center;gap:18px}
+.nav-links{display:flex;gap:2px;margin-left:14px}
+.nav-links a{font-weight:550;font-size:14.5px;color:var(--ink-2);padding:9px 14px;border-radius:10px;transition:.15s}
+.nav-links a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
+.nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
+.icon-btn{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--ink);transition:.15s;position:relative}
+.icon-btn:hover{background:rgba(0,0,0,.04)}
+.icon-btn svg{width:21px;height:21px}
+.hamb{display:none}
+.brand-img{height:52px;width:auto;display:block}
+.brand-img.foot{height:62px}
+.sect{padding:60px 0}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.vis{opacity:1;transform:none}
+.contact-hero{padding:60px 0 40px;text-align:center}
+.contact-hero .eyebrow{margin-bottom:18px}
+.contact-hero h1{font-size:clamp(36px,5vw,56px);font-weight:800;letter-spacing:-.04em;margin-bottom:14px}
+.contact-hero p{font-size:clamp(16px,1.9vw,18.5px);color:var(--ink-2);max-width:520px;margin:0 auto;font-weight:450;line-height:1.55}
+@keyframes heroIn{from{opacity:0;transform:translateY(28px);filter:blur(4px)}to{opacity:1;transform:none;filter:blur(0)}}
+.contact-hero .eyebrow,.contact-hero h1,.contact-hero p{opacity:0;animation:heroIn .8s cubic-bezier(.16,1,.3,1) forwards}
+.contact-hero .eyebrow{animation-delay:.1s}
+.contact-hero h1{animation-delay:.25s}
+.contact-hero p{animation-delay:.4s}
+.cards-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:60px}
+.c-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:32px 28px;text-align:center;transition:.2s}
+.c-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
+.c-card .c-icon{width:56px;height:56px;border-radius:16px;background:#fbf2ea;display:grid;place-items:center;margin:0 auto 18px;color:var(--accent);transition:.18s}
+.c-card:hover .c-icon{background:var(--accent);color:#fff}
+.c-card .c-icon svg{width:26px;height:26px}
+.c-card h3{font-size:17px;font-weight:800;margin-bottom:4px}
+.c-card .c-sub{font-size:13.5px;color:var(--ink-3);font-weight:450;margin-bottom:16px}
+.c-card .c-link{display:inline-flex;align-items:center;gap:7px;font-weight:650;font-size:14px;color:var(--accent);transition:.15s}
+.c-card .c-link svg{width:16px;height:16px;transition:transform .15s}
+.c-card .c-link:hover svg{transform:translateX(3px)}
+.form-section{max-width:680px;margin:0 auto;padding-bottom:60px}
+.form-section h2{font-size:clamp(24px,3vw,33px);font-weight:800;text-align:center;margin-bottom:8px}
+.form-section>p{text-align:center;color:var(--ink-2);font-size:14.5px;margin-bottom:32px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:12.5px;font-weight:650;color:var(--ink-2);margin-bottom:7px}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line-2);background:var(--surface);border-radius:var(--r-sm);padding:14px 16px;font-size:14.5px;font-weight:450;transition:.18s;color:var(--ink)}
+.field textarea{resize:vertical;min-height:130px}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%238c8077' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(210,78,8,.1)}
+.field.err input,.field.err textarea,.field.err select{border-color:var(--hot);box-shadow:0 0 0 4px rgba(217,33,33,.08)}
+.field .msg{font-size:11.5px;color:var(--hot);margin-top:5px;display:none;font-weight:600}
+.field.err .msg{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.submit-btn{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:16px;border-radius:14px;padding:17px;display:flex;align-items:center;justify-content:center;gap:9px;box-shadow:0 8px 22px rgba(210,78,8,.28);transition:.16s;margin-top:6px}
+.submit-btn:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(210,78,8,.36)}
+.submit-btn svg{width:19px;height:19px}
+.submit-btn.sending{opacity:.7;pointer-events:none}
+.map-section{padding-bottom:60px}
+.map-section h2{font-size:clamp(24px,3vw,33px);font-weight:800;text-align:center;margin-bottom:8px}
+.map-section>p{text-align:center;color:var(--ink-2);font-size:14.5px;margin-bottom:28px}
+.map-wrap{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);height:400px}
+.map-wrap iframe{width:100%;height:100%;border:none;display:block}
+.faq-section{padding-bottom:60px}
+.faq-section h2{font-size:clamp(24px,3vw,33px);font-weight:800;text-align:center;margin-bottom:8px}
+.faq-section>p{text-align:center;color:var(--ink-2);font-size:14.5px;margin-bottom:28px}
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);margin-bottom:12px;overflow:hidden;transition:.18s}
+.faq-item:hover{border-color:var(--line-2)}
+.faq-q{display:flex;align-items:center;gap:14px;padding:18px 22px;cursor:pointer;font-weight:650;font-size:15px;color:var(--ink);user-select:none}
+.faq-q svg{width:20px;height:20px;color:var(--accent);flex-shrink:0;transition:transform .3s}
+.faq-q .arrow{margin-left:auto;width:20px;height:20px;color:var(--ink-3);transition:transform .3s}
+.faq-item.open .faq-q .arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1)}
+.faq-a-inner{padding:0 22px 20px 56px;font-size:14.5px;color:var(--ink-2);line-height:1.6}
+.faq-link{display:flex;justify-content:center;margin-top:24px}
+.faq-link a{font-weight:650;font-size:14.5px;color:var(--accent);display:inline-flex;align-items:center;gap:7px;transition:gap .15s}
+.faq-link a:hover{gap:11px}
+.faq-link svg{width:16px;height:16px}
+.cta-banner{background:linear-gradient(135deg,var(--accent),var(--accent-deep));border-radius:var(--r-lg);padding:52px 40px;text-align:center;color:#fff;position:relative;overflow:hidden;margin-bottom:60px}
+.cta-banner::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.15),transparent 50%)}
+.cta-banner>*{position:relative}
+.cta-banner h2{font-size:clamp(24px,3vw,33px);font-weight:800;color:#fff;margin-bottom:10px}
+.cta-banner p{font-size:16px;opacity:.9;margin-bottom:24px;font-weight:450}
+.cta-banner .btn{background:#fff;color:var(--accent);font-weight:700;box-shadow:0 8px 22px rgba(0,0,0,.14)}
+.cta-banner .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,.2)}
+footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-top:0}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:36px}
+.foot-brand{margin-bottom:16px}
+.foot-brand p{font-size:13.5px;line-height:1.6;max-width:280px;margin-top:16px}
+.foot-soc{display:flex;gap:10px;margin-top:20px}
+.foot-soc a{width:40px;height:40px;border-radius:12px;background:rgba(255,255,255,.07);display:grid;place-items:center;color:#fff;transition:.15s}
+.foot-soc a:hover{background:var(--accent)}
+.foot-soc svg{width:18px;height:18px}
+.foot-col h4{font-family:var(--disp);color:#fff;font-size:14px;font-weight:700;margin-bottom:17px}
+.foot-col a,.foot-col div{display:block;font-size:13.5px;margin-bottom:11px;transition:.15s}
+.foot-col a:hover{color:#fff}
+.foot-contact div{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;margin-bottom:13px}
+.foot-contact svg{width:17px;height:17px;color:var(--accent-2);flex-shrink:0;margin-top:2px}
+.foot-bot{border-top:1px solid rgba(255,255,255,.09);margin-top:44px;padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px}
+.pay-icons{display:flex;gap:7px;align-items:center}
+.pay-icons span{background:rgba(255,255,255,.09);border-radius:7px;padding:5px 10px;font-size:11px;font-weight:650;color:#fff}
+.wa-fab{position:fixed;right:20px;bottom:20px;z-index:140;width:58px;height:58px;border-radius:50%;background:#1aae54;box-shadow:0 8px 24px rgba(26,174,84,.42);display:grid;place-items:center;transition:.2s;animation:bob 4.5s ease-in-out infinite}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab svg{width:30px;height:30px;color:#fff}
+.wa-fab::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #1aae54;animation:ring 2.6s infinite}
+@keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.7);opacity:0}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(130%);z-index:500;background:var(--ink);color:#fff;padding:14px 22px;border-radius:14px;font-weight:550;font-size:14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);transition:transform .4s cubic-bezier(.3,1.3,.5,1);max-width:92vw}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast svg{width:20px;height:20px;color:var(--good);flex-shrink:0}
+.success-check{display:none;flex-direction:column;align-items:center;gap:18px;padding:40px 20px;text-align:center}
+.success-check.vis{display:flex}
+.success-circle{width:72px;height:72px;border-radius:50%;background:#e8f5ed;display:grid;place-items:center;animation:popIn .5s cubic-bezier(.3,1.4,.5,1)}
+.success-circle svg{width:36px;height:36px;color:var(--good)}
+@keyframes popIn{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.success-check h3{font-size:22px;font-weight:800}
+.success-check p{color:var(--ink-2);font-size:15px;max-width:380px}
+@media(max-width:880px){
+  :root{--topbar:100px}
+  .nav-links{display:none}
+  .hamb{display:grid}
+  .nav{height:64px;gap:12px}
+  .cards-row{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .map-wrap{height:300px}
+  .cta-banner{padding:40px 24px}
+}
+@media(max-width:560px){
+  .wrap{padding:0 15px}
+  .sect{padding:42px 0}
+  body{padding-bottom:72px}
+  .wa-fab{display:none}
+  .foot-grid{grid-template-columns:1fr}
+  .contact-hero h1{font-size:33px}
+  .c-card{padding:24px 20px}
+  .form-section h2,.map-section h2,.faq-section h2{font-size:24px}
+  .faq-q{padding:15px 18px;font-size:14px}
+  .faq-a-inner{padding:0 18px 16px 48px;font-size:13.5px}
+  .map-wrap{height:250px}
+  .cta-banner{padding:34px 20px}
+  .cta-banner h2{font-size:24px}
+  .brand-img{height:46px}
+}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:135;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
+.mbar button,.mbar a{flex:1;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-weight:700;font-size:15px}
+.mbar .mb-cart{background:var(--ink);color:#fff}
+.mbar .mb-wa{background:#1aae54;color:#fff}
+.mbar svg{width:20px;height:20px}
+@media(max-width:560px){.mbar{display:flex}}
+</style>
+</head>
+<body>
+
+<div class="anno"><div class="anno-track" id="annoTrack"></div></div>
+
+<header class="topbar">
+  <div class="wrap nav">
+    <button class="icon-btn hamb" id="hambBtn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <a href="index.html" class="brand" id="brandTop" aria-label="Sastho Lanka"></a>
+    <nav class="nav-links">
+      <a href="index.html#deals">Deals</a>
+      <a href="index.html#shop">Shop</a>
+      <a href="index.html#builder">Build My Space</a>
+      <a href="index.html#how">How It Works</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="https://wa.me/94777675984" target="_blank" rel="noopener" class="icon-btn" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+    </div>
+  </div>
+</header>
+
+<section class="contact-hero">
+  <div class="wrap">
+    <span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Contact</span>
+    <h1>Get in touch</h1>
+    <p>We're here to help. Reach out anytime &mdash; we reply within hours.</p>
+  </div>
+</section>
+
+<section class="sect">
+  <div class="wrap">
+    <div class="cards-row reveal">
+      <div class="c-card">
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></div>
+        <h3>+94 77 767 5984</h3>
+        <div class="c-sub">Fastest way to reach us</div>
+        <a class="c-link" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener">Chat now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+        <h3>No.84/1, Maliban Street</h3>
+        <div class="c-sub">Colombo 11 &middot; Open 7 days &middot; 10am &ndash; 7pm</div>
+        <a class="c-link" href="https://www.google.com/maps/search/No.84%2F1+Maliban+Street+Colombo+11" target="_blank" rel="noopener">Get directions <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <div class="c-card">
+        <div class="c-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+        <h3>hello@sastho.lk</h3>
+        <div class="c-sub">We reply within 24 hours</div>
+        <a class="c-link" href="mailto:hello@sastho.lk">Send email <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </div>
+
+    <div class="form-section reveal" id="formSection">
+      <span class="eyebrow" style="display:flex;justify-content:center;margin-bottom:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="m9 15 3-3 3 3"/></svg>Send a message</span>
+      <h2>How can we help?</h2>
+      <p>Fill in the form below and we'll get back to you as soon as possible.</p>
+      <form id="contactForm" novalidate>
+        <div class="row2">
+          <div class="field" data-v="required">
+            <label for="fname">Full name</label>
+            <input type="text" id="fname" name="name" placeholder="Your name" autocomplete="name">
+            <div class="msg">Please enter your name</div>
+          </div>
+          <div class="field" data-v="email">
+            <label for="femail">Email address</label>
+            <input type="email" id="femail" name="email" placeholder="you@example.com" autocomplete="email">
+            <div class="msg">Please enter a valid email</div>
+          </div>
+        </div>
+        <div class="row2">
+          <div class="field">
+            <label for="fphone">Phone number <span style="color:var(--ink-3);font-weight:500">(optional)</span></label>
+            <input type="tel" id="fphone" name="phone" placeholder="+94 7X XXX XXXX" autocomplete="tel">
+          </div>
+          <div class="field" data-v="required">
+            <label for="fsubject">Subject</label>
+            <select id="fsubject" name="subject">
+              <option value="" disabled selected>Choose a topic</option>
+              <option value="General inquiry">General inquiry</option>
+              <option value="Order issue">Order issue</option>
+              <option value="Product question">Product question</option>
+              <option value="Wholesale">Wholesale</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="msg">Please select a subject</div>
+          </div>
+        </div>
+        <div class="field" data-v="required">
+          <label for="fmsg">Message</label>
+          <textarea id="fmsg" name="message" placeholder="Tell us what's on your mind..."></textarea>
+          <div class="msg">Please enter your message</div>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>Send Message</button>
+      </form>
+      <div class="success-check" id="successMsg">
+        <div class="success-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Message sent!</h3>
+        <p>Thanks for reaching out. We'll get back to you within 24 hours.</p>
+        <button class="btn btn-ghost" onclick="resetForm()" style="margin-top:6px">Send another message</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-section reveal">
+  <div class="wrap">
+    <span class="eyebrow" style="display:flex;justify-content:center;margin-bottom:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>Find us</span>
+    <h2>Visit our store</h2>
+    <p>No.84/1, Maliban Street, Colombo 11 &mdash; open 7 days a week.</p>
+    <div class="map-wrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.7!2d79.8486!3d6.9384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2591f4b0c6c73%3A0x0!2sMaliban%20Street%2C%20Colombo%2011!5e0!3m2!1sen!2slk!4v1700000000000" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section reveal">
+  <div class="wrap">
+    <span class="eyebrow" style="display:flex;justify-content:center;margin-bottom:16px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Support</span>
+    <h2>Common questions</h2>
+    <p>Quick answers to the things people ask us most.</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h2"/><path d="M14 9h4l3 3v5h-3"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>How long does delivery take?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">Delivery within Colombo takes 1&ndash;2 business days. For other areas across Sri Lanka, expect 3&ndash;5 business days. You'll receive a tracking update via WhatsApp once your order is dispatched.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>Can I return a product?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes. We offer a 7-day return policy on all items. If the product is damaged, defective, or not what you expected, message us on WhatsApp with your order number and photos. We'll arrange a pickup and full refund.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>Do you deliver to my area?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">We deliver island-wide across all 25 districts of Sri Lanka. Whether you're in Jaffna, Galle, Kandy, or anywhere in between, we've got you covered. Delivery fees vary by location and are shown at checkout.</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6 6v-.5M18 19v.5"/></svg>How does cash on delivery work?<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></div>
+        <div class="faq-a"><div class="faq-a-inner">Simply place your order online and choose Cash on Delivery at checkout. When the courier arrives at your door with the package, you pay the total amount in cash. No card or online payment needed. You only pay when you have the product in your hands.</div></div>
+      </div>
+    </div>
+    <div class="faq-link"><a href="faq.html">See all FAQs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+  </div>
+</section>
+
+<section class="sect" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-banner reveal">
+      <h2>Prefer to shop?</h2>
+      <p>Browse our collection of home and kitchen products at unbeatable prices.</p>
+      <a href="index.html#shop" class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>Shop Now</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" aria-label="Sastho Lanka"><img class="brand-img foot" src="assets/logo-light.png" alt="Sastho Lanka" width="180" height="110"></a>
+        <p>Sri Lanka's one-stop shop for home, kitchen and more. Unbeatable quality at unbeatable prices, delivered island-wide.</p>
+        <div class="foot-soc">
+          <a href="https://instagram.com/sastho.lk" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .5-1.5 1.7-1.5H17V2.5h-2.5C11.7 2.5 10 4.2 10 7v2H7.5v3.2H10V21.5h4v-9.3h2.7l.5-3.2H14z"/></svg></a>
+          <a href="https://wa.me/94777675984" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4>Shop</h4>
+        <a href="index.html#deals">Lightning Deals</a>
+        <a href="index.html#shop">All Categories</a>
+        <a href="index.html#builder">Build My Space</a>
+        <div>New Arrivals</div>
+        <div>Best Sellers</div>
+      </div>
+      <div class="foot-col">
+        <h4>Help</h4>
+        <a href="index.html#how">How It Works</a>
+        <div>Track My Order</div>
+        <div>Returns &amp; Refunds</div>
+        <a href="faq.html">FAQs</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <div class="foot-col foot-contact">
+        <h4>Reach us</h4>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16.5v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 3.2 2h3a2 2 0 0 1 2 1.7c.13.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L9.1 9.9a16 16 0 0 0 6 6l1.3-1.35a2 2 0 0 1 2.1-.45c.9.34 1.84.57 2.8.7a2 2 0 0 1 1.7 2z"/></svg>+94 77 767 5984</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>No.84/1, Maliban Street, Colombo 11</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Open 7 days &middot; 10am to 7pm</div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>&copy; 2026 Sastho Lanka. All rights reserved. Concept rebuild by Business Booster.</span>
+      <div class="pay-icons"><span>COD</span><span>Visa</span><span>Master</span><span>WhatsApp</span></div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43l-.48-.01c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.75 2.67 4.25 3.75.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+</a>
+
+<div class="mbar">
+  <a class="mb-cart" href="index.html#shop" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>Shop</a>
+  <a class="mb-wa" href="https://wa.me/94777675984?text=Hi%20Sastho!%20I%20have%20a%20question." target="_blank" rel="noopener" style="text-decoration:none"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.2 4.74 1.2h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01zM12.04 20.15h-.003a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.1.81.83-3.02-.2-.31a8.18 8.18 0 0 1-1.26-4.39c0-4.54 3.7-8.23 8.24-8.23a8.18 8.18 0 0 1 8.23 8.24c0 4.54-3.69 8.23-8.22 8.23z"/></svg>WhatsApp</a>
+</div>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span id="toastMsg"></span></div>
+
+<script>
+(function(){
+  var annoItems=[
+    '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 10-12h-7l1-8z"/></svg>Lightning Deals live now: the week\'s lowest prices</span>',
+    '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h2"/><path d="M14 9h4l3 3v5h-3"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>FREE island-wide delivery over Rs 5,000</span>',
+    '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/></svg>Pay cash on delivery, no card needed</span>',
+    '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 10-12h-7l1-8z"/></svg>Get 10% off your first order with WELCOME10</span>'
+  ];
+  var one=annoItems.join("");
+  document.getElementById("annoTrack").innerHTML=one+one;
+})();
+
+document.getElementById("brandTop").innerHTML='<img class="brand-img" src="assets/logo.png" alt="Sastho Lanka" width="180" height="110">';
+
+document.getElementById("hambBtn").addEventListener("click",function(){
+  document.querySelector(".contact-hero").scrollIntoView({behavior:"smooth"});
+});
+
+var obs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("vis");obs.unobserve(e.target)}});
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(function(el){obs.observe(el)});
+
+document.querySelectorAll(".faq-q").forEach(function(q){
+  q.addEventListener("click",function(){
+    var item=q.parentElement;
+    var a=item.querySelector(".faq-a");
+    var inner=a.querySelector(".faq-a-inner");
+    if(item.classList.contains("open")){
+      a.style.maxHeight="0";
+      item.classList.remove("open");
+    }else{
+      document.querySelectorAll(".faq-item.open").forEach(function(o){
+        o.querySelector(".faq-a").style.maxHeight="0";
+        o.classList.remove("open");
+      });
+      a.style.maxHeight=inner.scrollHeight+"px";
+      item.classList.add("open");
+    }
+  });
+});
+
+var form=document.getElementById("contactForm");
+var submitBtn=document.getElementById("submitBtn");
+
+function showToast(msg){
+  var t=document.getElementById("toast");
+  document.getElementById("toastMsg").textContent=msg;
+  t.classList.add("show");
+  setTimeout(function(){t.classList.remove("show")},4000);
+}
+
+form.addEventListener("submit",function(e){
+  e.preventDefault();
+  var valid=true;
+  form.querySelectorAll(".field[data-v]").forEach(function(f){
+    var v=f.getAttribute("data-v");
+    var inp=f.querySelector("input,textarea,select");
+    var val=(inp.value||"").trim();
+    f.classList.remove("err");
+    if(v==="required"&&!val){f.classList.add("err");valid=false;}
+    if(v==="email"&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){f.classList.add("err");valid=false;}
+  });
+  if(!valid)return;
+  submitBtn.classList.add("sending");
+  submitBtn.innerHTML='<svg style="width:20px;height:20px;animation:spin .7s linear infinite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"/></svg>Sending...';
+  setTimeout(function(){
+    form.style.display="none";
+    document.getElementById("successMsg").classList.add("vis");
+    showToast("Message sent! We'll get back to you within 24 hours.");
+    submitBtn.classList.remove("sending");
+    submitBtn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="m22 2-7 20-4-9-9-4 20-7z"/></svg>Send Message';
+  },1200);
+});
+
+form.querySelectorAll("input,textarea,select").forEach(function(inp){
+  inp.addEventListener("input",function(){
+    var f=inp.closest(".field");
+    if(f)f.classList.remove("err");
+  });
+});
+
+window.resetForm=function(){
+  form.style.display="";
+  form.reset();
+  document.getElementById("successMsg").classList.remove("vis");
+};
+})();
+</script>
+<style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+</body>
+</html>

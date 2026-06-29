@@ -83,6 +83,24 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .search svg{position:absolute;left:15px;width:17px;height:17px;color:var(--ink-3)}
 .search input{width:100%;height:44px;border:1px solid var(--line-2);background:var(--surface);border-radius:14px;padding:0 16px 0 40px;font-size:14px;font-weight:450;transition:.18s}
 .search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(210,78,8,.1)}
+.search-drop{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--line-2);border-radius:16px;box-shadow:var(--shadow-lg);max-height:420px;overflow-y:auto;z-index:300;display:none;padding:8px}
+.search-drop.open{display:block;animation:sdIn .2s ease}
+@keyframes sdIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.sd-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;cursor:pointer;transition:.12s}
+.sd-item:hover{background:rgba(210,78,8,.06)}
+.sd-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:#f4ede6}
+.sd-item-info{flex:1;min-width:0}
+.sd-item-name{font-size:13.5px;font-weight:550;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sd-item-meta{font-size:12px;color:var(--ink-3);display:flex;gap:8px;align-items:center}
+.sd-item-price{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--ink);white-space:nowrap}
+.sd-empty{padding:24px;text-align:center;color:var(--ink-3);font-size:14px}
+.sd-head{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:8px 12px 4px}
+.quick-view{position:absolute;bottom:0;left:0;right:0;background:rgba(23,18,16,.85);backdrop-filter:blur(6px);color:#fff;padding:10px 14px;font-size:13px;font-weight:600;text-align:center;opacity:0;transform:translateY(100%);transition:.3s cubic-bezier(.4,0,.2,1);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.card:hover .quick-view{opacity:1;transform:translateY(0)}
+.quick-view svg{width:15px;height:15px}
+.viewing-badge{position:absolute;top:11px;right:11px;background:rgba(23,18,16,.8);backdrop-filter:blur(6px);color:#fff;font-size:10.5px;font-weight:600;padding:4px 9px;border-radius:9px;display:none;align-items:center;gap:5px;z-index:2}
+.card:hover .viewing-badge{display:flex}
+.viewing-badge .eye{width:12px;height:12px}
 .nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
 .icon-btn{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--ink);transition:.15s;position:relative}
 .icon-btn:hover{background:rgba(0,0,0,.04)}
@@ -192,7 +210,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 /* ===== PRODUCT GRID ===== */
 .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:.2s;position:relative;display:flex;flex-direction:column}
-.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
+.card.card-in:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--line-2)}
 .card-img{position:relative;aspect-ratio:1;background:#f4ede6;overflow:hidden}
 .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s;mix-blend-mode:multiply}
 .card:hover .card-img img{transform:scale(1.06)}
@@ -572,6 +590,10 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 /* ===== SCROLL REVEAL (gated: visible unless JS enables) ===== */
 .reveal-on .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
 .reveal-on .reveal.in{opacity:1;transform:none}
+.card{opacity:0;transform:translateY(20px);transition:opacity .5s cubic-bezier(.2,.6,.2,1),transform .5s cubic-bezier(.2,.6,.2,1),box-shadow .2s,border-color .2s}
+.card.card-in{opacity:1;transform:translateY(0)}
+.card:hover{transform:translateY(-5px)}
+@media(prefers-reduced-motion:reduce){.card,.reveal-on .reveal{transition:none!important;opacity:1!important;transform:none!important}}
 
 /* ===== MOBILE STICKY BAR ===== */
 .mbar{position:fixed;left:0;right:0;bottom:0;z-index:135;display:none;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-top:1px solid var(--line)}
@@ -775,7 +797,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
     </nav>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-      <input type="text" id="searchInput" placeholder="Search home & kitchen finds...">
+      <input type="text" id="searchInput" placeholder="Search home & kitchen finds..." autocomplete="off">
+      <div class="search-drop" id="searchDrop"></div>
     </div>
     <div class="nav-actions">
       <button class="icon-btn" onclick="openWish()" aria-label="Saved items">
@@ -1060,16 +1083,16 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
         <a href="#deals">Lightning Deals</a>
         <a href="#shop">All Categories</a>
         <a href="#builder">Build My Space</a>
-        <div>New Arrivals</div>
+        <a href="about.html">About Us</a>
         <div>Best Sellers</div>
       </div>
       <div class="foot-col">
         <h4>Help</h4>
         <a href="#how">How It Works</a>
         <a href="#" onclick="openTrack();return false">Track My Order</a>
-        <div>Returns &amp; Refunds</div>
-        <div>FAQs</div>
-        <a href="https://wa.me/94777675984" target="_blank" rel="noopener">Contact Us</a>
+        <a href="faq.html">Returns &amp; Refunds</a>
+        <a href="faq.html">FAQs</a>
+        <a href="contact.html">Contact Us</a>
       </div>
       <div class="foot-col foot-contact">
         <h4>Reach us</h4>
@@ -1372,6 +1395,8 @@ function cardHTML(p){
       ${low?`<span class="badge-low"><span class="pulse"></span>Only ${p.stock} left</span>`:""}
       <img src="${p.img}" alt="${p.name}" loading="lazy">
       <button class="fav ${isFav?'on':''}" onclick="event.stopPropagation();toggleFav(${p.id},this)" aria-label="Save">${I.heart}</button>
+      <div class="viewing-badge"><svg class="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>${3+p.id%10} viewing</div>
+      <div class="quick-view" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Quick view</div>
     </div>
     <div class="card-body">
       <div class="card-cat">${p.cat}</div>
@@ -1395,7 +1420,18 @@ function loadMore(){
   if(list.length===0) byId("grid").innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--ink-3)">No matches. Try another search.</div>`;
 }
 function renderGrid(cat){activeCat=cat||"all";shown=0;byId("grid").innerHTML="";loadMore();}
-byId("searchInput").addEventListener("input", e=>{searchQ=e.target.value;activeCat="all";shown=0;byId("grid").innerHTML="";loadMore();});
+byId("searchInput").addEventListener("input", e=>{
+  searchQ=e.target.value;activeCat="all";shown=0;byId("grid").innerHTML="";loadMore();
+  const q=e.target.value.trim().toLowerCase();
+  const drop=byId("searchDrop");
+  if(q.length<2){drop.classList.remove("open");return;}
+  const matches=CATALOG.filter(p=>p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)).slice(0,6);
+  if(!matches.length){drop.innerHTML='<div class="sd-empty">No products found for "'+e.target.value+'"</div>';drop.classList.add("open");return;}
+  drop.innerHTML='<div class="sd-head">Products</div>'+matches.map(p=>`<div class="sd-item" onclick="byId('searchDrop').classList.remove('open');filterCat('${p.cat}');"><img src="${p.img}" alt="" loading="lazy"><div class="sd-item-info"><div class="sd-item-name">${p.name}</div><div class="sd-item-meta"><span>${p.cat}</span><span>${p.rating.toFixed(1)} ★</span></div></div><div class="sd-item-price">${fmt(p.price)}</div></div>`).join("");
+  drop.classList.add("open");
+});
+byId("searchInput").addEventListener("focus",()=>{if(byId("searchInput").value.trim().length>=2)byId("searchDrop").classList.add("open");});
+document.addEventListener("click",e=>{if(!e.target.closest(".search"))byId("searchDrop").classList.remove("open");});
 function toggleFav(id,el){
   const i=favs.indexOf(id);
   if(i>-1){favs.splice(i,1);if(el)el.classList.remove("on");}else{favs.push(id);if(el)el.classList.add("on");toast("Saved to favourites");}
@@ -1892,6 +1928,25 @@ function claimOffer(){
   byId("deals").scrollIntoView({behavior:"smooth"});
 }
 
+/* ============ CARD STAGGER REVEAL ============ */
+function cardRevealObserver(){
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{
+      if(!en.isIntersecting)return;
+      const cards=en.target.querySelectorAll('.card:not(.card-in)');
+      cards.forEach((c,i)=>setTimeout(()=>c.classList.add('card-in'),i*70));
+      obs.unobserve(en.target);
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('#grid').forEach(g=>obs.observe(g));
+}
+const gridObs=new MutationObserver(()=>{
+  document.querySelectorAll('.card:not(.card-in)').forEach((c,i)=>{
+    if(c.getBoundingClientRect().top<window.innerHeight)setTimeout(()=>c.classList.add('card-in'),i*70);
+  });
+});
+setTimeout(()=>{const g=byId('grid');if(g)gridObs.observe(g,{childList:true});},500);
+
 /* ============ MISC ============ */
 function toast(msg){const t=byId("toast");byId("toastMsg").textContent=msg;t.classList.add("show");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("show"),2400);}
 function revealOnScroll(){
@@ -1910,7 +1965,7 @@ byId("hambBtn").addEventListener("click",()=>byId("deals").scrollIntoView({behav
 /* ============ INIT ============ */
 (function init(){
   renderHeroCarousel();renderCats();renderSpotlight();renderBuilder();renderTesti();loadMore();updateCart();updateWishCount();
-  setTimeout(proofLoop,9000);revealOnScroll();
+  setTimeout(proofLoop,9000);revealOnScroll();cardRevealObserver();
   if(!localStorage.getItem("sastho_offer"))setTimeout(openOffer,2600);
 })();
 </script>
