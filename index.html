@@ -795,6 +795,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
       <a href="#builder">Build My Space</a>
       <a href="#how">How It Works</a>
       <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="faq.html">Help</a>
     </nav>
     <div class="search">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
@@ -1398,11 +1400,11 @@ function cardHTML(p){
       <img src="${p.img}" alt="${p.name}" loading="lazy">
       <button class="fav ${isFav?'on':''}" onclick="event.stopPropagation();toggleFav(${p.id},this)" aria-label="Save">${I.heart}</button>
       <div class="viewing-badge"><svg class="eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>${3+p.id%10} viewing</div>
-      <div class="quick-view" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Quick view</div>
+      <a class="quick-view" href="product.html?id=${p.id}" onclick="event.stopPropagation()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>Quick view</a>
     </div>
     <div class="card-body">
       <div class="card-cat">${p.cat}</div>
-      <div class="card-name">${p.name}</div>
+      <a class="card-name" href="product.html?id=${p.id}">${p.name}</a>
       <div class="card-rate"><span class="stars">${cardStars(p.rating)}</span>${p.rating.toFixed(1)}<span class="sold">&middot; ${p.sold.toLocaleString()} sold</span></div>
       <div class="card-price"><span class="now">${fmt(p.price)}</span>${off>0?`<span class="was">${fmt(p.reg)}</span>`:""}</div>
       <div class="card-actions">
