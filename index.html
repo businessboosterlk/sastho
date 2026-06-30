@@ -737,14 +737,22 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   .qv-grid{grid-template-columns:1fr;overflow-y:auto}
   .qv-img img{min-height:auto;aspect-ratio:4/3}
   .qv-info{padding:24px 22px}
+  .sect-head h2{font-size:28px}
+  .hero-cta{flex-direction:column;align-items:center}
+  .hero-cta .btn{width:100%;max-width:320px}
+  .hero-trust{flex-direction:column;align-items:center;gap:14px}
 }
 @media(max-width:560px){
-  .wrap{padding:0 15px}
+  .wrap{padding:0 16px}
   .sect{padding:42px 0}
   body{padding-bottom:72px}
-  .mbar{display:flex}
+  .mbar{display:flex;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
   .wa-fab{display:none}
-  .editorial{min-height:360px}
+  .editorial{min-height:320px}
+  .editorial .ed-in{margin:16px;padding:24px 20px;max-width:none}
+  .editorial h2{font-size:22px}
+  .editorial p{font-size:13.5px}
+  .ed-dots{bottom:14px;right:16px}
   .proof-pop{bottom:150px}
   .row2{grid-template-columns:1fr}
   .co-done{padding:34px 22px}
@@ -752,30 +760,40 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   .co-form{padding:22px 20px}
   .cset{bottom:82px}
   .grid{grid-template-columns:repeat(2,1fr);gap:12px}
-  .cat-rail{grid-template-columns:repeat(3,1fr);gap:10px}
+  .cat-rail{grid-template-columns:repeat(2,1fr);gap:10px}
   .hero-visual{height:310px;margin-top:14px;margin-bottom:8px}
   .hc-card{width:220px;height:250px;margin-left:-110px;margin-top:-125px}
   .hc-card[data-pos="1"]{transform:translateX(140px) rotateY(-16deg) scale(.8)}
   .hc-card[data-pos="-1"]{transform:translateX(-140px) rotateY(16deg) scale(.8)}
   .hc-prod{width:36px;height:36px;border-radius:8px}
   .hc-products{gap:5px;bottom:10px;right:10px}
-  .hero h1{font-size:33px}
-  .hero-sub{font-size:15px;margin-top:16px}
-  .hero-cta{margin-top:20px}
-  .hero-trust{gap:12px;margin-top:22px}
-  .hero-trust div{font-size:12px}
+  .hero h1{font-size:28px}
+  .hero-sub{font-size:14px;margin-top:14px}
+  .hero-cta{margin-top:18px;gap:10px}
+  .hero-cta .btn{font-size:14px;padding:13px 20px;min-height:48px}
+  .hero-trust{gap:10px;margin-top:18px}
+  .hero-trust div{font-size:12.5px;gap:8px}
   .hero-trust .ic{width:32px;height:32px}
   .foot-grid{grid-template-columns:1fr}
-  .card-name{font-size:12.5px;min-height:34px}
+  .card-name{font-size:13px;min-height:34px}
   .card-price .now{font-size:16px}
-  .add-btn{font-size:12px;padding:10px}
+  .add-btn{font-size:13px;padding:12px;min-height:44px}
   .builder-l{padding:28px 20px}
   .how{padding:36px 22px}
+  .how-steps .step{padding:22px 18px}
   .promo-card{padding:30px 24px}
   .proof-pop{left:12px;right:12px;bottom:84px;max-width:none}
   .m-hide{display:none}
-  .sect-head h2{font-size:24px}
+  .sect-head h2{font-size:22px}
   .offer-top .big{font-size:38px}
+  .tstrip .wrap{grid-template-columns:1fr;gap:14px;padding:20px 16px}
+  .tstrip .t{justify-content:flex-start}
+  .tstrip .t b{font-size:13.5px}
+  .tstrip .t small{font-size:11px}
+  .anno-track{padding-left:16px;gap:36px}
+  .btn{font-size:14px;padding:13px 20px;min-height:44px}
+  .chip{min-height:44px}
+  .room-card{min-height:44px}
 }
 </style>
 </head>

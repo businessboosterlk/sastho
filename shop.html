@@ -293,24 +293,39 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
   .filter-bar{top:98px}
   .shop-hero{padding:32px 0 26px}
   .shop-hero h1{font-size:30px}
+  .shop-hero .eyebrow{flex-direction:column;gap:6px;font-size:10.5px}
   .grid{grid-template-columns:repeat(2,1fr);gap:14px}
   .grid.list-view{grid-template-columns:1fr}
   .grid.list-view .card-img{width:120px}
   .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
-  .qv-box{grid-template-columns:1fr;overflow-y:auto;max-height:90vh}
+  .qv-box{grid-template-columns:1fr;overflow-y:auto;max-height:100vh;max-height:100dvh;border-radius:0;width:100%;max-width:100%}
+  .qv-scrim{padding:0}
   .qv-img img{min-height:auto;aspect-ratio:4/3}
   .qv-info{padding:24px 22px}
   .controls{gap:10px}
   .view-toggle{display:none}
+  /* Category pills: horizontal scroll with no wrap */
+  .cat-pills{flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;position:relative}
+  .cat-pills::after{content:"";position:sticky;right:0;top:0;bottom:0;min-width:28px;background:linear-gradient(90deg,transparent,var(--bg) 70%);pointer-events:none;flex-shrink:0}
+  /* Result count smaller */
+  .result-count{font-size:12.5px}
+  /* Touch targets */
+  .pill{min-height:44px;display:flex;align-items:center}
+  .price-btn{min-height:44px}
+  .sort-select{min-height:44px}
+  .add-btn{min-height:44px}
+  .icon-btn{min-width:44px;min-height:44px}
 }
 @media(max-width:560px){
-  .wrap{padding:0 15px}
-  body{padding-bottom:72px}
-  .mbar{display:flex}
+  html,body{overflow-x:hidden}
+  .wrap{padding:0 16px}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom));font-size:14px}
+  .mbar{display:flex;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
   .wa-fab{display:none}
   .btt{bottom:84px;right:14px}
   .grid{grid-template-columns:repeat(2,1fr);gap:10px}
-  .card-name{font-size:12.5px;min-height:34px}
+  .card-name{font-size:13px;min-height:34px}
+  .card-body{padding:12px 10px 14px}
   .card-price .now{font-size:16px}
   .add-btn{font-size:12px;padding:10px}
   .wa-btn-card{display:none}
@@ -320,9 +335,30 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
   .ctrl-right{gap:6px}
   .sort-select{font-size:12px;padding:8px 28px 8px 10px}
   .price-btn{font-size:12px;padding:8px 10px}
-  .toast{font-size:13px;bottom:82px}
+  .toast{font-size:13px;bottom:calc(82px + env(safe-area-inset-bottom))}
   .shop-hero{padding:24px 0 20px}
-  .qv-scrim{padding:10px}
+  .shop-hero h1{font-size:26px}
+  .shop-hero p{font-size:14px}
+  .shop-hero .count-badge{font-size:12px;padding:6px 12px 6px 8px}
+  .shop-hero .eyebrow{font-size:10px;letter-spacing:.12em}
+  /* Quick view full-screen on mobile */
+  .qv-scrim{padding:0;align-items:stretch}
+  .qv-box{border-radius:0;max-width:100%;max-height:100vh;max-height:100dvh;height:100%;overflow-y:auto}
+  .qv-img img{min-height:auto;aspect-ratio:1}
+  .qv-info{padding:20px 16px}
+  .qv-name{font-size:18px}
+  .qv-pricing .now{font-size:22px}
+  /* Ensure min font size for body text */
+  .card-cat{font-size:10.5px}
+  .card-rate{font-size:12px}
+  .card-price .was{font-size:12px}
+  .result-count{font-size:12px}
+  /* Footer single column */
+  .foot-bot{flex-direction:column;text-align:center;gap:12px}
+  .foot-bot span{font-size:12px}
+  /* Section headings smaller */
+  h2{font-size:22px}
+  h3{font-size:17px}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.05ms!important}}
 </style>

@@ -150,30 +150,35 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
   .cat-pill{font-size:13px;padding:9px 16px 9px 13px}
 }
 @media(max-width:560px){
-  .wrap{padding:0 15px}
+  body{overflow-x:hidden;font-size:14px;padding-bottom:0}
+  .wrap{padding:0 16px}
   .brand-img{height:46px}
   .faq-hero{padding:44px 0 28px}
-  .faq-hero h1{font-size:32px}
-  .faq-hero .sub{font-size:15px}
-  .faq-search input{height:50px;font-size:15px}
-  .cat-pills{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+  .faq-hero h1{font-size:28px}
+  .faq-hero .sub{font-size:14px}
+  .faq-search{max-width:100%}
+  .faq-search input{height:50px;font-size:15px;width:100%}
+  .cat-pills{justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:20px 0 6px;margin:0 -16px;padding-left:16px;padding-right:16px}
   .cat-pills::-webkit-scrollbar{display:none}
-  .cat-pill{flex-shrink:0;font-size:12.5px;padding:8px 14px 8px 11px;gap:7px}
+  .cat-pill{flex-shrink:0;font-size:12.5px;padding:10px 16px 10px 13px;gap:7px;min-height:44px}
   .cat-pill svg{width:16px;height:16px}
   .faq-section-head{gap:11px}
   .faq-section-head .ico{width:38px;height:38px;border-radius:12px}
   .faq-section-head .ico svg{width:19px;height:19px}
   .faq-section-head h2{font-size:18px}
-  .acc-q{padding:15px 16px;font-size:14px;gap:10px}
-  .acc-inner{padding:0 16px 16px 16px;font-size:14px}
+  .faq-section-head .count{font-size:11px;padding:3px 10px}
+  .acc-q{padding:14px 16px;font-size:14px;gap:10px;min-height:48px}
+  .acc-inner{padding:0 16px 16px 16px;font-size:14px;line-height:1.6}
   .acc-chev{width:26px;height:26px}
-  .cta-block{padding:40px 22px}
-  .cta-btns{flex-direction:column;align-items:center}
-  .cta-btns .btn{width:100%;max-width:320px}
+  .cta-block{padding:40px 16px}
+  .cta-block h2{font-size:22px}
+  .cta-block p{font-size:14px}
+  .cta-btns{flex-direction:column;align-items:stretch}
+  .cta-btns .btn{width:100%;min-height:48px}
   .foot-grid{grid-template-columns:1fr}
+  .foot-bot{flex-direction:column;text-align:center;gap:12px}
   .faq-body{padding:24px 0 48px}
   .wa-fab{display:none}
-  body{padding-bottom:0}
 }
 </style>
 </head>

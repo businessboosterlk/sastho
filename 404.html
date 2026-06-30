@@ -119,18 +119,25 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 }
 @media(max-width:560px){
   :root{--topbar:100px}
-  .wrap{padding:0 15px}
+  body{overflow-x:hidden;font-size:14px}
+  .wrap{padding:0 16px}
   .wa-fab{display:none}
   .brand-img{height:46px}
   .foot-grid{grid-template-columns:1fr}
-  .e-illust{width:280px}
-  .e-actions{flex-direction:column;align-items:center}
-  .e-actions .btn{width:100%}
+  .foot-bot{flex-direction:column;text-align:center;gap:12px}
+  .hero-404{padding:24px 16px}
+  .e-illust{width:260px}
+  .e-head{font-size:24px}
+  .e-sub{font-size:14px;margin-bottom:24px}
+  .e-actions{flex-direction:column;align-items:stretch}
+  .e-actions .btn{width:100%;min-height:48px;justify-content:center}
+  .e-search{margin-bottom:24px}
+  .e-search p{font-size:13px}
   .e-search-bar{flex-direction:column}
-  .e-search-bar button{justify-content:center}
-  .hero-404{padding:24px 15px}
+  .e-search-bar input{height:48px;font-size:14px}
+  .e-search-bar button{justify-content:center;height:48px;font-size:14px}
   .e-cats{gap:6px}
-  .e-pill{padding:8px 14px;font-size:12px}
+  .e-pill{padding:10px 16px;font-size:12px;min-height:44px}
 }
 </style>
 </head>

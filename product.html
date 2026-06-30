@@ -215,20 +215,55 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
   .also-card{min-width:180px;max-width:180px}
 }
 @media(max-width:560px){
-  .wrap{padding:0 15px}
-  body{padding-bottom:72px}
+  body{overflow-x:hidden;font-size:14px;padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+  .wrap{padding:0 16px}
   .wa-fab{display:none}
-  .foot-grid{grid-template-columns:1fr}
-  .gallery-thumbs button{width:64px;height:64px}
-  .pdp-info h1{font-size:26px}
-  .price-now{font-size:28px}
-  .trust-row{gap:14px}
+  .gallery{margin:0 -16px}
+  .gallery-main{border-radius:0}
+  .gallery-thumbs{padding:0 16px;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .gallery-thumbs::-webkit-scrollbar{display:none}
+  .gallery-thumbs button{width:64px;height:64px;flex-shrink:0}
+  .gallery-badge{top:12px;left:12px}
+  .breadcrumb{font-size:12px;padding:16px 0 0}
+  .pdp-info h1{font-size:24px;margin:12px 0 10px}
+  .price-block{margin-bottom:14px}
+  .price-now{font-size:26px}
+  .price-was{font-size:14px}
+  .pdp-desc{font-size:14px;line-height:1.6}
+  .qty-row{margin-bottom:14px}
+  .btn-atc{height:52px;font-size:15px;border-radius:14px;min-height:48px}
+  .btn-wa{height:48px;font-size:14px}
+  .trust-row{gap:12px}
   .trust-item{font-size:12px}
+  .trust-item svg{width:16px;height:16px}
+  .accordion{margin-top:40px}
+  .acc-head{font-size:15px;padding:16px 0;min-height:48px}
+  .acc-inner{font-size:14px}
+  .reviews-section{padding:40px 0}
+  .reviews-head{flex-direction:column;gap:20px}
+  .reviews-summary{width:100%}
   .reviews-summary .big-num{font-size:44px}
+  .reviews-bars{width:100%}
+  .review-card{padding:18px 16px}
+  .review-top{gap:10px}
+  .review-avatar{width:38px;height:38px;font-size:14px}
+  .review-text{font-size:14px}
+  .review-verified{font-size:11px}
+  .btn-review{width:100%;justify-content:center;min-height:48px}
+  .also-section{padding:40px 0}
+  .also-section h2{font-size:22px;margin-bottom:18px}
+  .also-rail{margin:0 -16px;padding:0 16px 8px}
   .also-card{min-width:160px;max-width:160px}
   .also-card .body{padding:10px 10px 13px}
   .also-card .nm{font-size:12px}
   .also-card .pr{font-size:15px}
+  .sticky-bar{padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
+  .sticky-bar .btn-s{min-height:44px;padding:0 20px;font-size:13px;border-radius:12px}
+  .sticky-bar .info .nm{font-size:12px}
+  .sticky-bar .info .pr{font-size:16px}
+  .foot-grid{grid-template-columns:1fr}
+  .foot-bot{flex-direction:column;text-align:center;gap:12px}
+  footer{margin-top:0}
 }
 </style>
 </head>

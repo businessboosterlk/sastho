@@ -293,39 +293,90 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px}
   .hamb{display:grid}
   .nav{height:64px;gap:12px}
   .filter-bar{top:99px}
-  .deals-hero{padding:40px 0 42px}
+  .deals-hero{padding:40px 20px 42px}
   .deals-hero h1{font-size:34px}
   .countdown-wrap{padding:18px 22px;gap:12px;flex-wrap:wrap;justify-content:center}
   .timer .seg{width:48px;height:50px;font-size:20px}
   .foot-grid{grid-template-columns:1fr 1fr;gap:30px}
-  .qv-grid{grid-template-columns:1fr;overflow-y:auto}
+  /* Quick view full-screen on mobile */
+  .qv-box{border-radius:0;max-width:100%;max-height:100vh;max-height:100dvh;width:100%;height:100%}
+  .qv-scrim{padding:0;align-items:stretch}
+  .qv-grid{grid-template-columns:1fr;overflow-y:auto;max-height:100vh;max-height:100dvh}
   .qv-img img{min-height:auto;aspect-ratio:4/3}
   .qv-info{padding:24px 22px}
+  /* Category pills: horizontal scroll, no wrap */
+  .pills{flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;position:relative}
+  .pills::after{content:"";position:sticky;right:0;top:0;bottom:0;min-width:28px;background:linear-gradient(90deg,transparent,var(--bg) 70%);pointer-events:none;flex-shrink:0}
+  /* Touch targets */
+  .pill{min-height:44px;display:flex;align-items:center}
+  .add-btn{min-height:44px}
+  .icon-btn{min-width:44px;min-height:44px}
+  /* Grid 2 columns */
+  .grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  /* Badge sizing for mobile cards */
+  .badge-off{font-size:11px;padding:4px 7px;border-radius:7px}
+  .badge-low{font-size:10px;padding:4px 7px}
+  /* Stock bar width */
+  .stock-bar{width:100%}
+  .stock-bar .sb-track{width:100%}
 }
 @media(max-width:560px){
-  .wrap{padding:0 15px}
-  body{padding-bottom:72px}
-  .mbar{display:flex}
+  html,body{overflow-x:hidden}
+  .wrap{padding:0 16px}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom));font-size:14px}
+  .mbar{display:flex;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
   .wa-fab{display:none}
-  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .why-grid{grid-template-columns:1fr}
-  .deals-hero{padding:32px 0 36px}
-  .deals-hero h1{font-size:28px}
-  .hero-bolt{width:56px;height:56px;border-radius:16px}
-  .hero-bolt svg{width:28px;height:28px}
-  .countdown-wrap{margin:-24px 15px 0;padding:16px 16px;gap:10px}
-  .countdown-wrap .cw-label{font-size:13px}
-  .timer .seg{width:42px;height:44px;font-size:18px;border-radius:10px}
-  .timer .colon{font-size:18px}
-  .newsletter{padding:34px 22px;border-radius:var(--r)}
+  .deals-hero{padding:28px 16px 34px}
+  .deals-hero h1{font-size:26px}
+  .deals-hero p{font-size:14px}
+  .hero-bolt{width:52px;height:52px;border-radius:14px}
+  .hero-bolt svg{width:26px;height:26px}
+  .countdown-wrap{margin:-22px 16px 0;padding:14px 14px;gap:8px;border-radius:18px}
+  .countdown-wrap .cw-label{font-size:12.5px}
+  .timer .seg{width:38px;height:40px;font-size:16px;border-radius:9px}
+  .timer .colon{font-size:16px}
+  .newsletter{padding:30px 20px;border-radius:var(--r)}
+  .newsletter h2{font-size:22px}
+  .newsletter p{font-size:14px}
   .news-form{flex-direction:column}
-  .news-form button{height:50px}
+  .news-form input{height:48px;font-size:14px}
+  .news-form button{height:48px;font-size:14px}
   .foot-grid{grid-template-columns:1fr}
-  .card-name{font-size:12.5px;min-height:34px}
+  .foot-bot{flex-direction:column;text-align:center;gap:12px}
+  .foot-bot span{font-size:12px}
+  .card-body{padding:12px 10px 14px}
+  .card-name{font-size:13px;min-height:34px}
   .card-price .now{font-size:16px}
+  .card-price .was{font-size:12px}
+  .card-cat{font-size:10.5px}
+  .card-rate{font-size:12px}
+  .card-save{font-size:11px}
   .add-btn{font-size:12px;padding:10px}
-  .toast{bottom:84px}
-  .brand-img{height:46px}
+  .wa-btn{display:none}
+  .toast{font-size:13px;bottom:calc(84px + env(safe-area-inset-bottom))}
+  .brand-img{height:42px}
+  /* Badge positioning - prevent overlap */
+  .badge-off{top:8px;left:8px;font-size:10.5px;padding:3px 6px;border-radius:6px;max-width:calc(50% - 4px)}
+  .badge-low{top:8px;right:8px;font-size:10px;padding:3px 6px;max-width:calc(50% - 4px)}
+  /* Stock bar */
+  .stock-bar{margin-top:8px}
+  .stock-bar .sb-text{font-size:10.5px}
+  /* Quick view full-screen */
+  .qv-scrim{padding:0;align-items:stretch}
+  .qv-box{border-radius:0;max-width:100%;max-height:100vh;max-height:100dvh;height:100%;overflow-y:auto}
+  .qv-grid{max-height:none}
+  .qv-img img{aspect-ratio:1}
+  .qv-info{padding:20px 16px}
+  .qv-info h3{font-size:18px}
+  .qv-price .now{font-size:22px}
+  /* Section headings smaller */
+  .why-card h3{font-size:16px}
+  .why-card p{font-size:13px}
+  .pill{padding:8px 14px;font-size:12.5px}
+  /* Ensure min font size */
+  .qv-meta div{font-size:13px}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.05ms!important}}
 </style>

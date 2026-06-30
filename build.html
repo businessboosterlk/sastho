@@ -271,28 +271,56 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px}
   .rb-actions{justify-content:center}
 }
 @media(max-width:560px){
-  .wrap{padding:0 15px}
-  body{padding-bottom:72px}
-  .mbar{display:flex}
+  html,body{overflow-x:hidden}
+  .wrap{padding:0 16px}
+  body{padding-bottom:calc(72px + env(safe-area-inset-bottom))}
+  .mbar{display:flex;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
   .wa-fab{display:none}
-  .build-hero{padding:36px 0 44px}
-  .build-hero h1{font-size:30px}
-  .options-grid.cols-3,.options-grid.cols-4{grid-template-columns:repeat(2,1fr)}
-  .options-grid.cols-2{grid-template-columns:1fr}
-  .opt-card{padding:20px 14px;gap:8px}
-  .opt-icon{width:46px;height:46px;border-radius:13px}
+  .build-hero{padding:32px 0 36px}
+  .build-hero h1{font-size:28px}
+  .build-hero p{font-size:14px}
+  .progress-inner{gap:10px}
+  .progress-label{font-size:12px}
+  .progress-pct{font-size:12px}
+  .options-grid.cols-3,.options-grid.cols-4{grid-template-columns:repeat(2,1fr);gap:10px}
+  .options-grid.cols-2{grid-template-columns:repeat(2,1fr);gap:10px}
+  .opt-card{padding:18px 12px;gap:8px;min-height:44px}
+  .opt-card.selected::after{width:20px;height:20px;top:8px;right:8px;background-size:13px}
+  .opt-icon{width:44px;height:44px;border-radius:12px}
   .opt-icon svg{width:22px;height:22px}
   .opt-card b{font-size:13.5px}
+  .color-dot{width:20px;height:20px}
+  .style-preview{height:5px}
+  .opt-card .price-tag{font-size:15px}
+  .opt-card span{font-size:11px!important}
+  .multi-hint{font-size:12px;margin-top:-14px;margin-bottom:14px}
+  .quiz-nav{margin-top:28px;gap:10px}
+  .quiz-nav .btn{padding:13px 18px;font-size:14px;min-height:48px}
   .products-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .p-info{padding:10px 12px 14px}
-  .p-name{font-size:12.5px;min-height:34px}
-  .p-price .now{font-size:16px}
-  .p-add{font-size:12px;padding:10px}
-  .quiz-section{padding:32px 0 48px}
+  .p-name{font-size:13px;min-height:36px}
+  .p-price .now{font-size:15px}
+  .p-add{font-size:13px;padding:11px;min-height:44px}
+  .quiz-section{padding:28px 0 44px}
+  .step-head{margin-bottom:24px}
   .step-head h2{font-size:22px}
+  .step-head p{font-size:14px}
   .foot-grid{grid-template-columns:1fr}
-  .results-head h2{font-size:26px}
-  .rb-total b{font-size:22px}
+  .foot-bot{flex-direction:column;text-align:center;gap:12px}
+  .foot-bot span{font-size:12px}
+  .results-head{padding:36px 0 28px}
+  .results-head h2{font-size:24px}
+  .results-summary{gap:6px}
+  .sum-pill{font-size:12px;padding:5px 12px}
+  .rb-total b{font-size:20px}
+  .results-bar{padding:18px 16px}
+  .rb-actions{flex-direction:column}
+  .rb-actions .btn{width:100%;justify-content:center;min-height:48px}
+  .how-section{padding:40px 0}
+  .how-card{padding:24px 16px}
+  .how-card h3{font-size:16px}
+  .how-card p{font-size:14px}
+  .mob-panel a{min-height:48px;display:flex;align-items:center;font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.05ms!important}}
 </style>
