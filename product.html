@@ -194,8 +194,9 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 .sticky-bar .btn-s{height:46px;padding:0 24px;background:var(--accent);color:#fff;font-weight:700;font-size:14px;border-radius:13px;display:flex;align-items:center;gap:8px;box-shadow:0 6px 16px rgba(210,78,8,.28);transition:.16s;flex-shrink:0}
 .sticky-bar .btn-s:hover{background:var(--accent-deep)}
 .sticky-bar .btn-s svg{width:17px;height:17px}
-.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(130%);z-index:500;background:var(--ink);color:#fff;padding:13px 20px;border-radius:14px;font-weight:550;font-size:14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);transition:transform .4s cubic-bezier(.3,1.3,.5,1);white-space:nowrap}
-.toast.show{transform:translateX(-50%) translateY(0)}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(130%);opacity:0;visibility:hidden;pointer-events:none;z-index:500;background:var(--ink);color:#fff;padding:13px 20px;border-radius:14px;font-weight:550;font-size:14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow-lg);transition:transform .4s cubic-bezier(.3,1.3,.5,1),opacity .28s ease,visibility .28s;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;visibility:visible;pointer-events:auto}
+@media(max-width:560px){.toast{bottom:calc(88px + env(safe-area-inset-bottom))}}
 .toast svg{width:18px;height:18px;color:var(--accent-2)}
 @media(max-width:1080px){
   .pdp-grid{gap:32px}
