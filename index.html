@@ -867,6 +867,36 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   </div>
 </div>
 
+<!-- LIGHTNING DEALS -->
+<section class="sect" id="deals">
+  <div class="wrap">
+    <div class="flash">
+      <span class="bolt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
+      <div class="ftxt"><b>Lightning Deals</b><small>The lowest prices of the week. When the timer hits zero, prices go back up.</small></div>
+      <div class="timer">
+        <span class="lab">Ends in</span>
+        <span class="seg" id="th">02</span><span class="colon">:</span>
+        <span class="seg" id="tm">00</span><span class="colon">:</span>
+        <span class="seg" id="ts">00</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED GRID -->
+<section class="sect" style="padding-top:0">
+  <div class="wrap">
+    <div class="sect-head">
+      <div><span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 7-8"/><path d="M16 8h5v5"/></svg>Trending now</span><h2>This week's best sellers</h2></div>
+      <a class="link-more" href="#" onclick="renderGrid('all');return false">View all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn btn-ghost" id="loadMore" onclick="loadMore()">Load more finds</button>
+    </div>
+  </div>
+</section>
+
 <!-- EDITORIAL BAND -->
 <section class="sect" style="padding-bottom:0">
   <div class="wrap">
@@ -927,36 +957,6 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
       <a class="link-more" href="#deals">All categories <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
     <div class="cat-rail" id="catRail"></div>
-  </div>
-</section>
-
-<!-- LIGHTNING DEALS -->
-<section class="sect" id="deals" style="padding-top:0">
-  <div class="wrap">
-    <div class="flash">
-      <span class="bolt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 10-12h-7l1-8z"/></svg></span>
-      <div class="ftxt"><b>Lightning Deals</b><small>The lowest prices of the week. When the timer hits zero, prices go back up.</small></div>
-      <div class="timer">
-        <span class="lab">Ends in</span>
-        <span class="seg" id="th">02</span><span class="colon">:</span>
-        <span class="seg" id="tm">00</span><span class="colon">:</span>
-        <span class="seg" id="ts">00</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURED GRID -->
-<section class="sect" style="padding-top:0">
-  <div class="wrap">
-    <div class="sect-head">
-      <div><span class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 4 7-8"/><path d="M16 8h5v5"/></svg>Trending now</span><h2>This week's best sellers</h2></div>
-      <a class="link-more" href="#" onclick="renderGrid('all');return false">View all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    </div>
-    <div class="grid" id="grid"></div>
-    <div style="text-align:center;margin-top:32px">
-      <button class="btn btn-ghost" id="loadMore" onclick="loadMore()">Load more finds</button>
-    </div>
   </div>
 </section>
 
@@ -1962,7 +1962,7 @@ function revealOnScroll(){
   const els=[...document.querySelectorAll(".reveal")];
   if(!els.length)return;
   document.documentElement.classList.add("reveal-on");
-  function check(){const vh=window.innerHeight;els.forEach(e=>{if(e.classList.contains("in"))return;if(e.getBoundingClientRect().top<vh-70)e.classList.add("in");});}
+  function check(){const vh=window.innerHeight;els.forEach(e=>{if(e.classList.contains("in"))return;if(e.getBoundingClientRect().top<vh-70)e.classList.add("in");});document.querySelectorAll(".card:not(.card-in)").forEach(c=>{if(c.getBoundingClientRect().top<vh-40)c.classList.add("card-in");});}
   check();
   window.addEventListener("scroll",check,{passive:true});
   window.addEventListener("resize",check);
