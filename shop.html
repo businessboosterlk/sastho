@@ -99,14 +99,18 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .sm-foot a{color:var(--accent);font-weight:650}
 
 /* ===== HERO ===== */
-.shop-hero{background:var(--surface);padding:48px 0 36px;text-align:center;border-bottom:1px solid var(--line)}
-.shop-hero .eyebrow{margin-bottom:14px}
-.shop-hero h1{font-size:clamp(34px,5vw,52px);font-weight:800;letter-spacing:-.04em}
+.shop-hero{position:relative;overflow:hidden;text-align:center;border-bottom:1px solid var(--line);padding:56px 0 42px;background:radial-gradient(130% 110% at 50% 0%,rgba(242,103,26,.11) 0%,rgba(242,103,26,0) 52%),var(--surface)}
+.sh-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line-2);border-radius:100px;padding:7px 15px 7px 12px;font-family:var(--disp);font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);box-shadow:var(--shadow);margin-bottom:20px}
+.sh-eyebrow svg{width:15px;height:15px;flex-shrink:0}
+.shop-hero h1{font-size:clamp(34px,5.4vw,58px);font-weight:800;letter-spacing:-.045em;line-height:1.03}
 .shop-hero h1 .u{color:var(--accent);position:relative}
-.shop-hero p{color:var(--ink-2);font-size:clamp(15px,1.8vw,17px);margin-top:10px;max-width:500px;margin-left:auto;margin-right:auto;font-weight:450;line-height:1.55}
-.shop-hero .count-badge{display:inline-flex;align-items:center;gap:7px;background:var(--bg);border:1px solid var(--line-2);border-radius:100px;padding:7px 16px 7px 9px;font-size:13px;font-weight:600;color:var(--ink-2);margin-top:16px;box-shadow:var(--shadow)}
-.shop-hero .count-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--good);animation:pulse 1.4s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.shop-hero p{color:var(--ink-2);font-size:clamp(15px,1.7vw,17px);margin:16px auto 0;max-width:540px;font-weight:450;line-height:1.55}
+.sh-stats{display:inline-flex;align-items:stretch;margin-top:28px;background:var(--bg);border:1px solid var(--line-2);border-radius:16px;padding:4px;box-shadow:var(--shadow)}
+.sh-stat{padding:10px 26px;display:flex;flex-direction:column;gap:2px;justify-content:center;position:relative}
+.sh-stat+.sh-stat::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);height:34px;width:1px;background:var(--line-2)}
+.sh-stat b{font-family:var(--disp);font-size:23px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1}
+.sh-stat span{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.eyebrow svg{width:15px;height:15px;flex-shrink:0}
 
 /* ===== FILTER BAR ===== */
 .filter-bar{position:sticky;top:114px;z-index:100;background:rgba(250,248,245,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);padding:14px 0;transition:top .2s}
@@ -291,9 +295,14 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
   .nav{height:64px;gap:12px}
   .brand-img{height:42px}
   .filter-bar{top:98px}
-  .shop-hero{padding:32px 0 26px}
-  .shop-hero h1{font-size:30px}
-  .shop-hero .eyebrow{flex-direction:column;gap:6px;font-size:10.5px}
+  .shop-hero{padding:34px 0 28px}
+  .shop-hero h1{font-size:31px}
+  .shop-hero p{font-size:14.5px}
+  .sh-eyebrow{margin-bottom:16px}
+  .sh-stats{margin-top:22px}
+  .sh-stat{padding:9px 16px}
+  .sh-stat b{font-size:20px}
+  .sh-stat span{font-size:10px}
   .grid{grid-template-columns:repeat(2,1fr);gap:14px}
   .grid.list-view{grid-template-columns:1fr}
   .grid.list-view .card-img{width:120px}
@@ -377,7 +386,6 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
       <a href="deals.html">Deals</a>
       <a href="shop.html" class="active">Shop</a>
       <a href="build.html">Build My Space</a>
-      <a href="index.html#how">How It Works</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a href="faq.html">Help</a>
@@ -406,7 +414,6 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
     <a href="deals.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>Deals</a>
     <a href="shop.html" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg>Shop</a>
     <a href="build.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Build My Space</a>
-    <a href="index.html#how"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>How It Works</a>
     <a href="about.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>About</a>
     <a href="contact.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a>
     <a href="faq.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Help</a>
@@ -417,10 +424,14 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 <!-- HERO -->
 <section class="shop-hero">
   <div class="wrap">
-    <div class="eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 17v4"/></svg> THE FULL COLLECTION</div>
-    <h1>Shop <span class="u">All Products</span></h1>
-    <p>Explore our curated range of home, kitchen & lifestyle essentials. Every item hand-picked, quality-checked and delivered COD island-wide.</p>
-    <div class="count-badge"><span class="dot"></span> <span id="totalCount">0</span> products available</div>
+    <span class="sh-eyebrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1-5h16l1 5"/><path d="M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9"/><path d="M9 22V13h6v9"/></svg> The full collection</span>
+    <h1>Everything for a<br><span class="u">beautiful home.</span></h1>
+    <p>Home, kitchen &amp; lifestyle essentials — hand-picked, quality-checked, and delivered cash-on-delivery across all 25 districts.</p>
+    <div class="sh-stats">
+      <div class="sh-stat"><b id="totalCount">75</b><span>Products</span></div>
+      <div class="sh-stat"><b>8</b><span>Categories</span></div>
+      <div class="sh-stat"><b>25</b><span>Districts</span></div>
+    </div>
   </div>
 </section>
 
