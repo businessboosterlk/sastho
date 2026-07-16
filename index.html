@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="assets/logo.png">
 <meta property="og:title" content="Sastho Lanka | Unbeatable Quality at Unbeatable Prices">
 <meta property="og:description" content="Sri Lanka's home and kitchen store. Island-wide delivery, pay cash only when it arrives.">
-<meta property="og:image" content="assets/life-3.jpg">
+<meta property="og:image" content="https://businessboosterlk.github.io/sastho/assets/life-3.jpg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -142,7 +142,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .hero-trust div{display:flex;align-items:center;gap:10px;font-size:13.5px;font-weight:550;color:var(--ink-2)}
 .hero-trust .ic{width:36px;height:36px;border-radius:11px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--accent);box-shadow:var(--shadow)}
 .hero-trust .ic svg{width:18px;height:18px}
-.hero-visual{position:relative;width:100%;height:520px;perspective:1600px;margin-top:20px}
+.hero-visual{position:relative;width:100%;height:520px;perspective:1600px;margin-top:20px;overflow-x:clip}
 .hc-stage{position:absolute;inset:0;transform-style:preserve-3d}
 .hc-card{position:absolute;width:380px;height:440px;top:calc(50% - 20px);left:50%;margin-left:-190px;margin-top:-220px;border-radius:22px;overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.3);transition:all .7s cubic-bezier(.4,0,.2,1);cursor:pointer;backface-visibility:hidden}
 .hc-card img{width:100%;height:100%;object-fit:cover}
@@ -593,7 +593,8 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 /* ===== SCROLL REVEAL (gated: visible unless JS enables) ===== */
 .reveal-on .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.6,.2,1),transform .7s cubic-bezier(.2,.6,.2,1)}
 .reveal-on .reveal.in{opacity:1;transform:none}
-.card{opacity:0;transform:translateY(20px);transition:opacity .5s cubic-bezier(.2,.6,.2,1),transform .5s cubic-bezier(.2,.6,.2,1),box-shadow .2s,border-color .2s}
+.card{opacity:1;transform:none;transition:opacity .5s cubic-bezier(.2,.6,.2,1),transform .5s cubic-bezier(.2,.6,.2,1),box-shadow .2s,border-color .2s}
+.reveal-on .card:not(.card-in){opacity:0;transform:translateY(20px)}
 .card.card-in{opacity:1;transform:translateY(0)}
 .card:hover{transform:translateY(-5px)}
 @media(prefers-reduced-motion:reduce){.card,.reveal-on .reveal{transition:none!important;opacity:1!important;transform:none!important}}
@@ -799,6 +800,21 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
   .room-card{min-height:44px}
 }
 </style>
+
+<link rel="canonical" href="https://businessboosterlk.github.io/sastho/">
+<meta name="robots" content="index,follow">
+<meta property="og:url" content="https://businessboosterlk.github.io/sastho/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+ {"@type":"LocalBusiness","@id":"https://businessboosterlk.github.io/sastho/#org","name":"Sastho Lanka",
+  "url":"https://businessboosterlk.github.io/sastho/","image":"https://businessboosterlk.github.io/sastho/assets/life-3.jpg",
+  "telephone":"+94777675984",
+  "address":{"@type":"PostalAddress","streetAddress":"84 Maliban Street, Pettah","addressLocality":"Colombo 11","addressCountry":"LK"},
+  "contactPoint":{"@type":"ContactPoint","contactType":"customer service","telephone":"+94777675984","url":"https://wa.me/94777675984"},
+  "sameAs":["https://www.instagram.com/sastho.lk","https://www.tiktok.com/@sastho.lk"]},
+ {"@type":"WebSite","@id":"https://businessboosterlk.github.io/sastho/#website","url":"https://businessboosterlk.github.io/sastho/","name":"Sastho Lanka","publisher":{"@id":"https://businessboosterlk.github.io/sastho/#org"}}
+]}
+</script>
 </head>
 <body>
 
@@ -1150,6 +1166,22 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
 </div>
 
 
+<!-- CART DRAWER -->
+<div class="scrim" id="scrim" onclick="closeCart()"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>
+    <b>Your cart</b>
+    <button class="x" onclick="closeCart()" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="cart-urgent" id="cartUrgent" style="display:none">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+    <span>Selling fast, we're holding your items for <span class="ct" id="holdTimer">09:59</span></span>
+  </div>
+  <div class="ship-bar" id="shipBar" style="display:none">
+    <div class="st" id="shipText"></div>
+    <div class="ship-track"><div class="ship-fill" id="shipFill"></div></div>
+  </div>
   <div class="cart-body" id="cartBody"></div>
   <div class="drawer-foot" id="cartFoot" style="display:none">
     <div class="sum-row"><span>Subtotal</span><span id="sumSub">Rs 0</span></div>
@@ -1967,6 +1999,9 @@ function revealOnScroll(){
   window.addEventListener("scroll",check,{passive:true});
   window.addEventListener("resize",check);
   setTimeout(check,500);
+  // Bulletproof fallback: never leave any card stranded invisible if the
+  // observer or scroll never fires (headless, hidden tab, fast paint).
+  setTimeout(()=>{document.querySelectorAll(".card:not(.card-in)").forEach(c=>c.classList.add("card-in"));},1400);
 }
 function subscribe(e){e.preventDefault();e.target.querySelector("input").value="";toast("You're in! Your code is on the way");if(!localStorage.getItem("sastho_offer"))setTimeout(openOffer,400);return false;}
 byId("hambBtn").addEventListener("click",()=>byId("deals").scrollIntoView({behavior:"smooth"}));
