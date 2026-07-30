@@ -1,0 +1,16 @@
+# Sastho Lanka
+
+Sastho Lanka is a home and kitchen goods retailer in Sri Lanka - ceramics (hero
+category), cookware, kitchen storage, home decor, glassware and small appliances.
+Retail and wholesale. Island-wide cash-on-delivery.
+
+Showroom: 84 Maliban Street, Pettah, Colombo 11, Sri Lanka
+Phone / WhatsApp: +94 77 767 5984
+Instagram / TikTok: @sastho.lk
+
+Key pages:
+- https://businessboosterlk.github.io/sastho/ (home)
+- https://businessboosterlk.github.io/sastho/shop.html (shop)
+- https://businessboosterlk.github.io/sastho/deals.html (deals)
+- https://businessboosterlk.github.io/sastho/faq.html (FAQ)
+- https://businessboosterlk.github.io/sastho/contact.html (contact)
