@@ -6,7 +6,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>Shop All Products | Sastho Lanka</title>
 <meta name="description" content="Browse the full Sastho Lanka collection. Home, kitchen, bathroom & more — unbeatable prices, island-wide COD delivery.">
-<meta name="theme-color" content="#d24e08">
+<meta name="theme-color" content="#c85103">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
 <meta property="og:title" content="Shop All Products | Sastho Lanka">
@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --accent:#d24e08;--accent-2:#f2671a;--accent-deep:#a83d06;
+  --accent:#c85103;--accent-2:#f96504;--accent-deep:#9d3f02;
   --ink:#171210;--ink-2:#5c524b;--ink-3:#8c8077;
   --bg:#faf8f5;--surface:#ffffff;--line:#efe9e2;--line-2:#e2d8cd;
   --good:#1a8a4a;--hot:#d92121;--gold:#e8a200;
@@ -32,7 +32,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 svg{flex-shrink:0}
 html,body{overflow-x:clip;max-width:100%}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-top:var(--topbar)}
 img{display:block;max-width:100%}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
@@ -63,12 +63,12 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .search-nav{flex:1;max-width:360px;margin:0 auto;position:relative;display:flex;align-items:center}
 .search-nav svg.si{position:absolute;left:15px;width:17px;height:17px;color:var(--ink-3);pointer-events:none}
 .search-nav input{width:100%;height:44px;border:1px solid var(--line-2);background:var(--surface);border-radius:14px;padding:0 16px 0 40px;font-size:14px;font-weight:450;transition:.18s}
-.search-nav input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(210,78,8,.1)}
+.search-nav input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(200,81,3,.1)}
 .search-drop{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--line-2);border-radius:16px;box-shadow:var(--shadow-lg);max-height:420px;overflow-y:auto;z-index:300;display:none;padding:8px}
 .search-drop.open{display:block;animation:sdIn .2s ease}
 @keyframes sdIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .sd-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;cursor:pointer;transition:.12s}
-.sd-item:hover{background:rgba(210,78,8,.06)}
+.sd-item:hover{background:rgba(200,81,3,.06)}
 .sd-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:#f4ede6}
 .sd-item-info{flex:1;min-width:0}
 .sd-item-name{font-size:13.5px;font-weight:550;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -92,7 +92,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .sm-close:hover{background:rgba(0,0,0,.06)}
 .sm-links{padding:16px 12px;flex:1;overflow-y:auto}
 .sm-links a{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:14px;font-weight:600;font-size:15.5px;color:var(--ink);transition:.12s}
-.sm-links a:hover,.sm-links a.active{background:rgba(210,78,8,.06);color:var(--accent)}
+.sm-links a:hover,.sm-links a.active{background:rgba(200,81,3,.06);color:var(--accent)}
 .sm-links a svg{width:20px;height:20px;color:var(--ink-3)}
 .sm-links a.active svg{color:var(--accent)}
 .sm-foot{padding:18px 22px;border-top:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
@@ -119,7 +119,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .cat-pills::-webkit-scrollbar{display:none}
 .pill{background:var(--surface);border:1px solid var(--line-2);border-radius:100px;padding:9px 18px;font-weight:600;font-size:13.5px;color:var(--ink-2);white-space:nowrap;transition:.15s;cursor:pointer}
 .pill:hover{border-color:var(--accent);color:var(--ink)}
-.pill.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(210,78,8,.25)}
+.pill.active{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 4px 14px rgba(200,81,3,.25)}
 
 /* ===== CONTROLS BAR ===== */
 .controls{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:20px 0 6px;flex-wrap:wrap}
@@ -133,7 +133,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .price-drop{position:absolute;top:calc(100% + 6px);right:0;background:var(--surface);border:1px solid var(--line-2);border-radius:14px;box-shadow:var(--shadow-lg);padding:6px;min-width:180px;display:none;z-index:50}
 .price-drop.open{display:block;animation:sdIn .2s ease}
 .price-opt{display:block;width:100%;text-align:left;padding:10px 14px;border-radius:10px;font-size:13.5px;font-weight:550;color:var(--ink-2);transition:.12s}
-.price-opt:hover{background:rgba(210,78,8,.06);color:var(--ink)}
+.price-opt:hover{background:rgba(200,81,3,.06);color:var(--ink)}
 .price-opt.active{color:var(--accent);font-weight:650}
 .sort-select{background:var(--surface);border:1px solid var(--line-2);border-radius:12px;padding:9px 14px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:.15s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%238c8077' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px}
 .sort-select:focus{outline:none;border-color:var(--accent)}
@@ -181,7 +181,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .card-price .pct{font-size:11px;font-weight:700;color:var(--hot);background:rgba(217,33,33,.08);padding:2px 7px;border-radius:6px}
 .card-actions{display:flex;gap:8px;margin-top:12px}
 .add-btn{flex:1;background:linear-gradient(180deg,#241c16,var(--ink));color:#fff;font-weight:650;font-size:13px;letter-spacing:.01em;border-radius:12px;padding:11px 12px;display:flex;align-items:center;justify-content:center;gap:7px;box-shadow:0 2px 6px rgba(20,12,6,.16),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .15s cubic-bezier(.34,1.4,.6,1),background .18s,box-shadow .18s}
-.add-btn:hover{background:linear-gradient(180deg,var(--accent-2),var(--accent));box-shadow:0 8px 18px rgba(210,78,8,.32);transform:translateY(-1px)}
+.add-btn:hover{background:linear-gradient(180deg,var(--accent-2),var(--accent));box-shadow:0 8px 18px rgba(200,81,3,.32);transform:translateY(-1px)}
 .add-btn svg{width:15px;height:15px}
 .add-btn.added{background:linear-gradient(180deg,#22b15b,var(--good));box-shadow:0 8px 18px rgba(26,138,74,.32)}
 .wa-btn-card{width:44px;flex-shrink:0;background:#e8f7ee;color:#1aae54;border-radius:12px;display:grid;place-items:center;transition:.15s}
@@ -223,7 +223,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .qv-trust div{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:550;color:var(--ink-2)}
 .qv-trust svg{width:16px;height:16px;color:var(--good)}
 .qv-actions{display:flex;gap:10px;margin-top:auto}
-.qv-add{flex:1;background:var(--accent);color:#fff;font-weight:700;font-size:15px;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 22px rgba(210,78,8,.28);transition:.16s}
+.qv-add{flex:1;background:var(--accent);color:#fff;font-weight:700;font-size:15px;border-radius:14px;padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 22px rgba(200,81,3,.28);transition:.16s}
 .qv-add:hover{background:var(--accent-deep);transform:translateY(-1px)}
 .qv-add svg{width:18px;height:18px}
 .qv-wa{width:52px;flex-shrink:0;background:#e8f7ee;color:#1aae54;border-radius:14px;display:grid;place-items:center;transition:.15s;border:1px solid #cfe9d8}
@@ -560,7 +560,7 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
       <div class="qv-trust">
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>100% Quality Guaranteed</div>
         <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="3"/><path d="M1 10h22"/></svg>Cash on Delivery island-wide</div>
-        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Free shipping on Rs 3,000+</div>
+        <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>Free shipping on Rs 5,000+</div>
       </div>
       <div class="qv-actions">
         <button class="qv-add" id="qvAdd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg>Add to Cart</button>
@@ -639,7 +639,7 @@ function soldFmt(n) {
 /* ===== ANNOUNCEMENT BAR ===== */
 function initAnno() {
   const msgs = [
-    ['Free shipping on orders over Rs 3,000', 'M5 12h14M12 5l7 7-7 7'],
+    ['Free shipping on orders over Rs 5,000', 'M5 12h14M12 5l7 7-7 7'],
     ['Cash on Delivery island-wide', 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'],
     ['Up to 10% off on every product', 'M13 2L3 14h9l-1 8 10-12h-9l1-8z'],
     ['Quality guaranteed or money back', 'M20 6L9 17l-5-5'],

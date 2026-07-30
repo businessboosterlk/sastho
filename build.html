@@ -8,7 +8,7 @@
 <meta http-equiv="Expires" content="0">
 <title>Build My Space | Sastho Lanka</title>
 <meta name="description" content="Answer a few quick questions and we'll curate the perfect home & kitchen collection for your space, style, and budget. Cash on delivery, island-wide.">
-<meta name="theme-color" content="#d24e08">
+<meta name="theme-color" content="#c85103">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
 <meta property="og:title" content="Build My Space | Sastho Lanka">
@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --accent:#d24e08;--accent-2:#f2671a;--accent-deep:#a83d06;
+  --accent:#c85103;--accent-2:#f96504;--accent-deep:#9d3f02;
   --ink:#171210;--ink-2:#5c524b;--ink-3:#8c8077;
   --bg:#faf8f5;--surface:#ffffff;--line:#efe9e2;--line-2:#e2d8cd;
   --good:#1a8a4a;--hot:#d92121;--gold:#e8a700;
@@ -33,7 +33,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 svg{flex-shrink:0}
 html,body{overflow-x:clip;max-width:100%}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-top:var(--topbar)}
 img{display:block;max-width:100%}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
@@ -64,7 +64,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .nav-links{display:flex;gap:2px;margin-left:14px}
 .nav-links a{font-weight:550;font-size:14.5px;color:var(--ink-2);padding:9px 14px;border-radius:10px;transition:.15s}
 .nav-links a:hover{color:var(--ink);background:rgba(0,0,0,.04)}
-.nav-links a.active{color:var(--accent);background:rgba(210,78,8,.07)}
+.nav-links a.active{color:var(--accent);background:rgba(200,81,3,.07)}
 .nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto}
 .icon-btn{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;color:var(--ink);transition:.15s;position:relative}
 .icon-btn:hover{background:rgba(0,0,0,.04)}
@@ -84,7 +84,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 
 /* ===== HERO ===== */
 .build-hero{background:var(--surface);padding:52px 0 60px;text-align:center;position:relative;overflow:hidden}
-.build-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(210,78,8,.06),transparent)}
+.build-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(200,81,3,.06),transparent)}
 .build-hero>*{position:relative}
 .build-hero .eyebrow{margin-bottom:16px;justify-content:center}
 .build-hero h1{font-size:clamp(36px,5.2vw,58px);font-weight:800;letter-spacing:-.04em;margin-bottom:14px}
@@ -125,10 +125,10 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .options-grid.cols-4{grid-template-columns:repeat(4,1fr)}
 .opt-card{background:var(--surface);border:2px solid var(--line);border-radius:var(--r);padding:28px 20px;text-align:center;cursor:pointer;transition:all .2s cubic-bezier(.4,0,.2,1);position:relative;display:flex;flex-direction:column;align-items:center;gap:12px}
 .opt-card:hover{border-color:var(--line-2);transform:translateY(-3px);box-shadow:var(--shadow)}
-.opt-card.selected{border-color:var(--accent);background:rgba(210,78,8,.04);box-shadow:0 0 0 4px rgba(210,78,8,.1)}
+.opt-card.selected{border-color:var(--accent);background:rgba(200,81,3,.04);box-shadow:0 0 0 4px rgba(200,81,3,.1)}
 .opt-card.selected::after{content:"";position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;background:var(--accent);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 12l5 5L19 7'/%3E%3C/svg%3E");background-size:16px;background-position:center;background-repeat:no-repeat}
-.opt-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(210,78,8,.08),rgba(210,78,8,.03));display:grid;place-items:center;color:var(--accent);transition:all .2s}
-.opt-card:hover .opt-icon{background:linear-gradient(135deg,rgba(210,78,8,.14),rgba(210,78,8,.06))}
+.opt-icon{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,rgba(200,81,3,.08),rgba(200,81,3,.03));display:grid;place-items:center;color:var(--accent);transition:all .2s}
+.opt-card:hover .opt-icon{background:linear-gradient(135deg,rgba(200,81,3,.14),rgba(200,81,3,.06))}
 .opt-card.selected .opt-icon{background:var(--accent);color:#fff}
 .opt-icon svg{width:26px;height:26px}
 .opt-card b{font-family:var(--disp);font-weight:700;font-size:15px;color:var(--ink)}
@@ -152,8 +152,8 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .quiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:36px;gap:14px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:650;font-size:15px;border-radius:14px;padding:14px 28px;transition:.16s;white-space:nowrap}
 .btn svg{width:18px;height:18px}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(210,78,8,.28)}
-.btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(210,78,8,.36)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(200,81,3,.28)}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(200,81,3,.36)}
 .btn-primary:disabled{opacity:.4;pointer-events:none;transform:none;box-shadow:none}
 .btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line-2)}
 .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
@@ -929,7 +929,7 @@ function launchConfetti(){
   canvas.width=window.innerWidth;
   canvas.height=window.innerHeight;
 
-  const colors=['#d24e08','#f2671a','#e8a700','#1a8a4a','#d92121','#4a7c8c','#c42a5a'];
+  const colors=['#c85103','#f96504','#e8a700','#1a8a4a','#d92121','#4a7c8c','#c42a5a'];
   const particles=[];
 
   for(let i=0;i<120;i++){
