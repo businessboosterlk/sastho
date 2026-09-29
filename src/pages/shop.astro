@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Cards from '../components/Cards.astro';
+import { url } from '../scripts/icon.js';
+import data from '../data/products.json';
+const first = data.products.slice(0, 24);
+const total = data.meta.count;
+const PRICES = [['', 'Any price'], ['0-499', 'Under Rs 500'], ['500-999', 'Rs 500 to 999'], ['1000-2499', 'Rs 1,000 to 2,499'], ['2500-', 'Rs 2,500 and over']];
+const SORTS = [['new', 'Newest first'], ['low', 'Price, low to high'], ['high', 'Price, high to low'], ['az', 'Name, A to Z']];
+---
+<Layout title="Shop" active="shop" path="shop.html"
+  description={`Browse all ${total} home and kitchen products from Sastho Lanka. Filter by shelf and price, then order on WhatsApp and pay cash on delivery.`}>
+
+  <section class="phead">
+    <div class="wrap">
+      <span class="eyebrow">The whole range</span>
+      <h1>Shop</h1>
+      <p><b id="shop-total">{total}</b> products in store, read from sastho.lk.</p>
+    </div>
+  </section>
+
+  <section class="wrap shop">
+    <div class="fbar" id="fbar">
+      <label class="fsearch"><Icon name="search" /><span class="sr">Search these products</span>
+        <input id="f-q" type="search" placeholder="Search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></label>
+      <label class="fsel desk"><span class="sr">Price</span><select id="f-price">{PRICES.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
+      <label class="fsel desk"><span class="sr">Sort</span><select id="f-sort">{SORTS.map(([v, l]) => <option value={v}>{l}</option>)}</select></label>
+      <button class="chip desk" type="button" id="f-sale" aria-pressed="false"><Icon name="tag" />On offer</button>
+      <button class="btn ghost sm phone" type="button" data-sheet="filters" id="f-open"><Icon name="filters" />Filters<span class="fcount" id="f-count" hidden></span></button>
+    </div>
+    <div class="chips" id="f-shelves" role="group" aria-label="Shelf">
+      <button class="chip on" type="button" data-shelf="" aria-pressed="true">All<small>{total}</small></button>
+      {data.shelves.map(s => <button class="chip" type="button" data-shelf={s.key} aria-pressed="false">{s.label}<small>{s.count}</small></button>)}
+    </div>
+    <div class="fstate">
+      <p id="f-line" aria-live="polite">Showing {first.length} of {total} products</p>
+      <button class="btn quiet sm" type="button" id="f-clear" hidden>Clear filters</button>
+    </div>
+    <div class="grid" id="shop-grid"><Cards items={first} eager={4} /></div>
+    <div class="morewrap"><button class="btn ghost" type="button" id="shop-more">Show more</button></div>
+  </section>
+
+  <aside slot="sheets" class="sheet tall" id="sheet-filters" role="dialog" aria-modal="true" aria-labelledby="filters-title" aria-hidden="true" tabindex="-1" inert>
+    <div class="s-head"><h3 id="filters-title">Filters</h3><button class="x" type="button" data-close aria-label="Close filters"><Icon name="close" /></button></div>
+    <div class="s-body">
+      <div class="fgroup"><span class="flabel">Price</span>
+        <div class="chips wrapped" id="s-price" role="group" aria-label="Price">{PRICES.map(([v, l]) => <button class="chip" type="button" data-price={v} aria-pressed="false">{l}</button>)}</div></div>
+      <div class="fgroup"><span class="flabel">Sort by</span>
+        <div class="chips wrapped" id="s-sort" role="group" aria-label="Sort by">{SORTS.map(([v, l]) => <button class="chip" type="button" data-sort={v} aria-pressed="false">{l}</button>)}</div></div>
+      <div class="fgroup"><span class="flabel">Offers</span>
+        <div class="chips wrapped"><button class="chip" type="button" id="s-sale" aria-pressed="false"><Icon name="tag" />On offer only</button></div></div>
+    </div>
+    <div class="s-foot">
+      <button class="btn primary" type="button" data-close id="s-show">Show {total} products</button>
+      <button class="btn quiet" type="button" id="s-clear">Clear filters</button>
+    </div>
+  </aside>
+
+  <script>import '../scripts/shop.js';</script>
+</Layout>

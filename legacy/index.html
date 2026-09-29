@@ -8,7 +8,7 @@
 <meta http-equiv="Expires" content="0">
 <title>Sastho Lanka | Unbeatable Quality at Unbeatable Prices</title>
 <meta name="description" content="Sastho Lanka. Sri Lanka's home and kitchen store. Unbeatable quality at unbeatable prices, island-wide delivery, pay cash only when it arrives.">
-<meta name="theme-color" content="#d24e08">
+<meta name="theme-color" content="#c85103">
 <link rel="icon" type="image/png" href="assets/logo.png">
 <link rel="apple-touch-icon" href="assets/logo.png">
 <meta property="og:title" content="Sastho Lanka | Unbeatable Quality at Unbeatable Prices">
@@ -20,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;450;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --accent:#d24e08; --accent-2:#f2671a; --accent-deep:#a83d06;
+  --accent:#c85103; --accent-2:#f96504; --accent-deep:#9d3f02;
   --ink:#171210; --ink-2:#5c524b; --ink-3:#8c8077;
   --bg:#faf8f5; --surface:#ffffff; --line:#efe9e2; --line-2:#e2d8cd;
   --good:#1a8a4a; --hot:#d92121; --gold:#e8a200;
@@ -34,7 +34,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 svg{flex-shrink:0}
 html,body{overflow-x:clip;max-width:100%}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.5;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;padding-top:var(--topbar)}
 img{display:block;max-width:100%}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
@@ -82,12 +82,12 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .search{flex:1;max-width:360px;margin:0 auto;position:relative;display:flex;align-items:center}
 .search svg{position:absolute;left:15px;width:17px;height:17px;color:var(--ink-3)}
 .search input{width:100%;height:44px;border:1px solid var(--line-2);background:var(--surface);border-radius:14px;padding:0 16px 0 40px;font-size:14px;font-weight:450;transition:.18s}
-.search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(210,78,8,.1)}
+.search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(200,81,3,.1)}
 .search-drop{position:absolute;top:calc(100% + 6px);left:0;right:0;background:var(--surface);border:1px solid var(--line-2);border-radius:16px;box-shadow:var(--shadow-lg);max-height:420px;overflow-y:auto;z-index:300;display:none;padding:8px}
 .search-drop.open{display:block;animation:sdIn .2s ease}
 @keyframes sdIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .sd-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;cursor:pointer;transition:.12s}
-.sd-item:hover{background:rgba(210,78,8,.06)}
+.sd-item:hover{background:rgba(200,81,3,.06)}
 .sd-item img{width:48px;height:48px;border-radius:10px;object-fit:cover;background:#f4ede6}
 .sd-item-info{flex:1;min-width:0}
 .sd-item-name{font-size:13.5px;font-weight:550;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -112,8 +112,8 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .hamb{display:none}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:650;font-size:15px;border-radius:14px;padding:14px 24px;transition:.16s;white-space:nowrap}
 .btn svg{width:18px;height:18px}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(210,78,8,.28)}
-.btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(210,78,8,.36)}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px rgba(200,81,3,.28)}
+.btn-primary:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:0 12px 28px rgba(200,81,3,.36)}
 .btn-ghost{background:var(--surface);color:var(--ink);border:1px solid var(--line-2)}
 .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
 .btn-dark{background:var(--ink);color:#fff}
@@ -236,7 +236,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .card-price .was{font-size:12.5px;color:var(--ink-3);text-decoration:line-through}
 .card-actions{display:flex;gap:8px;margin-top:12px}
 .add-btn{flex:1;background:linear-gradient(180deg,#241c16,var(--ink));color:#fff;font-weight:650;font-size:13px;letter-spacing:.01em;border-radius:12px;padding:11px 12px;display:flex;align-items:center;justify-content:center;gap:7px;box-shadow:0 2px 6px rgba(20,12,6,.16),inset 0 1px 0 rgba(255,255,255,.08);transition:transform .15s cubic-bezier(.34,1.4,.6,1),background .18s,box-shadow .18s}
-.add-btn:hover{background:linear-gradient(180deg,var(--accent-2),var(--accent));box-shadow:0 8px 18px rgba(210,78,8,.32);transform:translateY(-1px)}
+.add-btn:hover{background:linear-gradient(180deg,var(--accent-2),var(--accent));box-shadow:0 8px 18px rgba(200,81,3,.32);transform:translateY(-1px)}
 .add-btn svg{width:15px;height:15px}
 .add-btn.added{background:linear-gradient(180deg,#22b15b,var(--good));box-shadow:0 8px 18px rgba(26,138,74,.32)}
 .add-btn.added:hover{transform:none}
@@ -259,10 +259,10 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .chip{background:var(--surface);border:1px solid var(--line-2);border-radius:13px;padding:11px 16px;font-weight:600;font-size:14px;color:var(--ink);transition:.15s;display:flex;align-items:center;gap:8px}
 .chip svg{width:17px;height:17px}
 .chip:hover{border-color:var(--accent)}
-.chip.sel{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(210,78,8,.28)}
+.chip.sel{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(200,81,3,.28)}
 .builder-r{background:linear-gradient(160deg,#fefcfa,#f9f3ec);border-left:1px solid var(--line);padding:34px 32px;display:flex;flex-direction:column;position:relative}
-.builder-r::before{content:"";position:absolute;top:20px;right:20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(210,78,8,.06),transparent 70%);pointer-events:none}
-.builder-r::after{content:"";position:absolute;bottom:60px;left:10px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(210,78,8,.04),transparent 70%);pointer-events:none}
+.builder-r::before{content:"";position:absolute;top:20px;right:20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(200,81,3,.06),transparent 70%);pointer-events:none}
+.builder-r::after{content:"";position:absolute;bottom:60px;left:10px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(200,81,3,.04),transparent 70%);pointer-events:none}
 .br-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--ink-3);gap:16px;padding:30px}
 .br-empty .big{width:64px;height:64px;border-radius:20px;background:rgba(255,255,255,.8);border:1px solid var(--line);display:grid;place-items:center;color:var(--accent)}
 .br-empty .big svg{width:30px;height:30px}
@@ -275,7 +275,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.025em;line-height:1.07}
 .br-tags span{font-size:11px;font-weight:650;color:var(--accent);background:#fbf2ea;border:1px solid #f0ddc9;border-radius:100px;padding:4px 11px}
 .br-items{display:flex;flex-direction:column;gap:10px;flex:1;overflow-y:auto;margin:-4px -8px 0;padding:4px 8px}
 .br-item{display:flex;gap:13px;align-items:center;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:13px;padding:10px 12px}
-.br-item:hover{background:rgba(255,255,255,.95);border-color:var(--accent);box-shadow:0 4px 12px rgba(210,78,8,.08)}
+.br-item:hover{background:rgba(255,255,255,.95);border-color:var(--accent);box-shadow:0 4px 12px rgba(200,81,3,.08)}
 .br-item img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex-shrink:0;border:1px solid var(--line);mix-blend-mode:multiply}
 .br-item .nm{font-size:12.5px;font-weight:550;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .br-item .pr{font-size:12.5px;font-weight:800;font-family:var(--disp);margin-left:auto;white-space:nowrap}
@@ -402,7 +402,7 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 .sum-row{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:8px;color:var(--ink-2)}
 .sum-row.tot{font-family:var(--disp);font-size:20px;font-weight:800;color:var(--ink);margin:13px 0 4px}
 .sum-row .free{color:var(--good);font-weight:700}
-.checkout-go{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:16px;border-radius:15px;padding:16px;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:13px;box-shadow:0 8px 22px rgba(210,78,8,.28);transition:.16s}
+.checkout-go{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:16px;border-radius:15px;padding:16px;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:13px;box-shadow:0 8px 22px rgba(200,81,3,.28);transition:.16s}
 .checkout-go:hover{background:var(--accent-deep);transform:translateY(-1px)}
 .checkout-go svg{width:19px;height:19px}
 .checkout-wa-alt{width:100%;background:transparent;color:#159247;font-weight:650;font-size:14px;border-radius:13px;padding:12px;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:9px;border:1px solid #cfe9d8;transition:.15s}
@@ -441,7 +441,7 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 .offer-code .cd{font-family:var(--disp);font-weight:800;font-size:18px;color:var(--accent);letter-spacing:.06em}
 .offer-code .cp{font-size:12px;font-weight:650;color:var(--accent);display:flex;align-items:center;gap:5px}
 .offer-code .cp svg{width:14px;height:14px}
-.offer-cta{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:16px;border-radius:14px;padding:15px;box-shadow:0 8px 22px rgba(210,78,8,.28);transition:.16s}
+.offer-cta{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:16px;border-radius:14px;padding:15px;box-shadow:0 8px 22px rgba(200,81,3,.28);transition:.16s}
 .offer-cta:hover{background:var(--accent-deep);transform:translateY(-1px)}
 .offer-tiny{font-size:11.5px;color:var(--ink-3);margin-top:13px;display:flex;align-items:center;justify-content:center;gap:6px}
 .offer-tiny svg{width:13px;height:13px}
@@ -471,7 +471,7 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 .field label{display:block;font-size:12px;font-weight:650;color:var(--ink-2);margin-bottom:6px}
 .field input,.field textarea,.field select{width:100%;border:1px solid var(--line-2);background:var(--surface);border-radius:12px;padding:12px 14px;font-size:14px;font-weight:500;transition:.15s;color:var(--ink)}
 .field textarea{resize:vertical;min-height:62px}
-.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(210,78,8,.1)}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px rgba(200,81,3,.1)}
 .field.err input,.field.err textarea,.field.err select{border-color:var(--hot);box-shadow:0 0 0 4px rgba(217,33,33,.08)}
 .field .msg{font-size:11.5px;color:var(--hot);margin-top:5px;display:none;font-weight:600}
 .field.err .msg{display:block}
@@ -491,7 +491,7 @@ footer{background:#19120e;color:rgba(255,255,255,.6);padding:60px 0 32px;margin-
 .co-it .pr{font-size:12.5px;font-weight:800;font-family:var(--disp);white-space:nowrap}
 .co-it .pr small{display:block;font-family:var(--sans);font-weight:500;font-size:10.5px;color:var(--ink-3);text-align:right}
 .co-sum{border-top:1px solid var(--line);padding-top:14px;margin-top:auto}
-.co-cta{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:16px;border-radius:14px;padding:15px;margin-top:15px;box-shadow:0 8px 22px rgba(210,78,8,.28);display:flex;align-items:center;justify-content:center;gap:9px;transition:.16s}
+.co-cta{width:100%;background:var(--accent);color:#fff;font-weight:700;font-size:16px;border-radius:14px;padding:15px;margin-top:15px;box-shadow:0 8px 22px rgba(200,81,3,.28);display:flex;align-items:center;justify-content:center;gap:9px;transition:.16s}
 .co-cta:hover{background:var(--accent-deep);transform:translateY(-1px)}
 .co-cta svg{width:18px;height:18px}
 .co-alt{display:block;width:100%;text-align:center;margin-top:11px;font-size:13px;font-weight:600;color:#159247;padding:6px}
@@ -630,7 +630,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
 .room-card.noimg .ri{color:var(--accent)}
 .room-card.noimg .ri svg{width:24px;height:24px}
 .room-card.noimg .rl{position:static;color:var(--ink)}
-.room-card.sel{border-color:var(--accent);box-shadow:0 6px 16px rgba(210,78,8,.22)}
+.room-card.sel{border-color:var(--accent);box-shadow:0 6px 16px rgba(200,81,3,.22)}
 .room-card .chk{position:absolute;top:6px;right:6px;z-index:3;width:20px;height:20px;border-radius:50%;background:var(--accent);display:none;place-items:center}
 .room-card .chk svg{width:12px;height:12px;color:#fff}
 .room-card.sel .chk{display:grid;animation:popin .3s}
@@ -686,7 +686,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
 .qv-qtyrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}
 .qv-qtyrow span.l{font-size:12.5px;font-weight:600;color:var(--ink-2)}
 .qv-cta{display:flex;gap:9px;margin-top:auto}
-.qv-add{flex:1;background:var(--accent);color:#fff;font-weight:700;font-size:15px;border-radius:13px;padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px rgba(210,78,8,.28);transition:.16s}
+.qv-add{flex:1;background:var(--accent);color:#fff;font-weight:700;font-size:15px;border-radius:13px;padding:14px;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 8px 20px rgba(200,81,3,.28);transition:.16s}
 .qv-add:hover{background:var(--accent-deep);transform:translateY(-1px)}
 .qv-add:active{transform:scale(.97)}
 .qv-add svg{width:17px;height:17px}
@@ -866,7 +866,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
       <div class="hero-trust">
         <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 17h4V5H2v12h2"/><path d="M14 9h4l3 3v5h-3"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></span>Island-wide delivery</div>
         <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/><path d="M6 6v-.5M18 19v.5"/></svg></span>Pay on delivery</div>
-        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>7-day returns</div>
+        <div><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>14-day returns</div>
       </div>
     </div>
     <div class="hero-visual" id="heroCarousel"></div>
@@ -1057,7 +1057,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible{outline:none}
       <div class="how-steps">
         <div class="how-step"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1.2"/><circle cx="19" cy="21" r="1.2"/><path d="M2 2h2l2.4 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 1.95-1.57L21 7H5.1"/></svg></div><b>1. Add &amp; check out</b><p>Add what you love and check out on the site in seconds, cash on delivery. Prefer chat? Order on WhatsApp.</p></div>
         <div class="how-step"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg></div><b>2. We pack &amp; dispatch</b><p>We confirm on WhatsApp and courier it island-wide, usually within 1 to 3 days.</p></div>
-        <div class="how-step"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/></svg></div><b>3. Pay the courier</b><p>Check your items at the door, then pay cash. Not happy? 7-day returns.</p></div>
+        <div class="how-step"><div class="n"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><circle cx="12" cy="12.5" r="2.5"/></svg></div><b>3. Pay the courier</b><p>Check your items at the door, then pay cash. Not happy? 14-day returns.</p></div>
       </div>
     </div>
   </div>
@@ -1707,7 +1707,7 @@ function coSummaryHTML(){
       <div class="sum-row tot"><span>Total</span><span>${fmt(t.tot)}</span></div>
     </div>
     <div class="co-trust">
-      <span>${I.check}Pay on delivery</span><span>${I.check}7-day returns</span><span>${I.check}Island-wide</span>
+      <span>${I.check}Pay on delivery</span><span>${I.check}14-day returns</span><span>${I.check}Island-wide</span>
     </div>
   </div>`;
 }

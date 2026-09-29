@@ -1,0 +1,25 @@
+---
+// THE OLD PRODUCT ADDRESS. Before the rebuild every product opened product.html?id=123 and showed the
+// same made up dinner plate set. The address still works: it reads the number, finds the real product
+// and opens its own page. A number the shop no longer sells gets an honest answer and the way on.
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { url } from '../scripts/icon.js';
+---
+<Layout title="Product" active="shop" path="product.html" description="Find a product in the Sastho Lanka shop.">
+  <section class="phead">
+    <div class="wrap" id="gone" hidden>
+      <span class="eyebrow">Product</span>
+      <h1>That product is not in the shop today</h1>
+      <p>It may have sold through or been renamed. The shop has everything Sastho is selling right now.</p>
+      <div class="hero-cta"><a class="btn primary" href={url('shop.html')}><Icon name="store" />Browse the shop</a><button class="btn ghost" type="button" data-sheet="search"><Icon name="search" />Search for it</button></div>
+    </div>
+  </section>
+  <script>
+    import { find } from '../scripts/store.js';
+    import { page } from '../scripts/card.js';
+    const id = new URLSearchParams(location.search).get('id');
+    const p = id ? find(id) : null;
+    if (p) location.replace(page(p)); else document.getElementById('gone').hidden = false;
+  </script>
+</Layout>

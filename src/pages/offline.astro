@@ -1,0 +1,20 @@
+---
+// Shown by the worker when a page is asked for with no connection and no copy of it is on the phone.
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { url } from '../scripts/icon.js';
+---
+<Layout title="No connection" path="offline.html" description="No connection. The Sastho Lanka shop opens again when you are back online.">
+  <section class="phead">
+    <div class="wrap">
+      <span class="eyebrow"><Icon name="offline" />No connection</span>
+      <h1>This page needs a connection</h1>
+      <p>Your basket and your saved items are safe on your phone. The pages you have opened before still work.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href={url('index.html')}><Icon name="home" />Go to the home page</a>
+        <button class="btn ghost" type="button" id="again"><Icon name="refresh" />Try again</button>
+      </div>
+    </div>
+  </section>
+  <script>document.getElementById('again').addEventListener('click', () => location.reload());</script>
+</Layout>

@@ -1,0 +1,32 @@
+---
+// THE ASK TO INSTALL, as a band on a page. It shows only on a phone or a desk that can install the shop
+// and has not yet. Once the shop is on the Home Screen the band is gone.
+import Icon from './Icon.astro';
+import { SITE } from '../config.js';
+import { url } from '../scripts/icon.js';
+import { waText } from '../scripts/card.js';
+const O = SITE.appOffer;
+const alerts = waText('Hi Sastho, please send me your sale alerts on WhatsApp.');
+---
+<section class="sect tight appband-wrap">
+  <div class="wrap">
+    <div class="appband">
+      <img class="ab-icon" src={url('icon-192.png')} alt="" width="76" height="76" loading="lazy">
+      <div class="ab-text">
+        <span class="eyebrow"><Icon name="device" />The Sastho app</span>
+        <h2>{O.on ? `${O.percent}% off your first order` : 'Keep Sastho on your phone'}</h2>
+        <p>Put Sastho on your Home Screen. It opens full screen, keeps your basket and your delivery details on the phone{O.on ? ` and takes ${O.percent}% off your first order` : ''}. No app store.</p>
+        <ul class="ticks">
+          {O.on && <li><Icon name="check" />{O.percent}% off comes off in the basket, no code to type</li>}
+          <li><Icon name="check" />New offers are marked each time you open it</li>
+          <li><Icon name="check" />Browse the range even with no signal</li>
+        </ul>
+        <div class="ab-act">
+          <button class="btn primary" type="button" data-install-go><Icon name="download" />Get the app</button>
+          {SITE.saleAlerts.whatsapp && <a class="btn ghost" href={alerts} target="_blank" rel="noopener"><Icon name="b-whatsapp" />Sale alerts on WhatsApp</a>}
+        </div>
+        {O.on && <p class="fine">{O.covers} One offer for each phone.</p>}
+      </div>
+    </div>
+  </div>
+</section>

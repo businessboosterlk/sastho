@@ -1,0 +1,7 @@
+---
+// The one icon. It draws a symbol from assets/icons.svg, which scripts/build-icons.mjs builds from
+// Lucide (line icons) and Simple Icons (brand marks, named b-whatsapp and so on). Never type path data.
+import { icon } from '../scripts/icon.js';
+const { name, class: cls = '' } = Astro.props;
+---
+<Fragment set:html={icon(name, cls)} />

@@ -1,0 +1,213 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Cards from '../components/Cards.astro';
+import AppBand from '../components/AppBand.astro';
+import { SITE } from '../config.js';
+import { url } from '../scripts/icon.js';
+import data from '../data/products.json';
+
+const P = data.products;                                   // newest first
+const offers = P.filter(p => p.sale);
+const fresh = P.filter(p => !p.sale).slice(0, 10);
+const under500 = P.filter(p => p.price < 500);
+const shown = new Set([...offers.slice(0, 10), ...fresh].map(p => p.id));
+const pocket = under500.filter(p => !shown.has(p.id)).slice(0, 10);
+const count = data.meta.count.toLocaleString('en-LK');
+const ROOMS = [
+  { key: 'kitchen',  name: 'Kitchen',     img: 'room-kitchen.jpg' },
+  { key: 'dining',   name: 'Dining room', img: 'room-dining.jpg' },
+  { key: 'living',   name: 'Living room', img: 'room-living.jpg' },
+  { key: 'bedroom',  name: 'Bedroom',     img: 'room-bedroom.jpg' },
+  { key: 'bathroom', name: 'Bathroom',    img: 'room-bathroom.jpg' },
+  { key: 'office',   name: 'Home office', img: 'room-office.jpg' },
+];
+// Quoted from the testimonials on sastho.lk, read 29 Sep 2026. Spelling corrected, words unchanged.
+const WORDS = [
+  { q: 'Affordable luxury products delivered with the best service. Definitely recommend!', n: 'Himmath Rizvi' },
+  { q: 'Great variety of home decor and of great quality.', n: 'Thahir Ismail' },
+  { q: 'Extremely satisfied with the after service, and very user friendly website. Good job!', n: 'Imran Hameed' },
+];
+---
+<Layout active="home" path="index.html"
+  description="Sastho Lanka. Home and kitchen finds at honest prices, delivered anywhere in Sri Lanka. Order on WhatsApp and pay cash when it arrives.">
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <span class="pill"><b>{count}</b>home and kitchen finds in store</span>
+        <h1>Unbeatable quality, <span class="u">unbeatable prices.</span></h1>
+        <p>Sri Lanka's one-stop shop for home, kitchen and more. Fill a basket, send it on WhatsApp and pay cash only when it is in your hands.</p>
+        <div class="hero-cta">
+          <a class="btn primary" href={url('shop.html')}><Icon name="store" />Shop the range</a>
+          <a class="btn ghost" href={url('build.html')}><Icon name="wand" />Build My Space</a>
+        </div>
+        <ul class="hero-trust">
+          <li><Icon name="truck" />Island-wide delivery</li>
+          <li><Icon name="cash" />Cash on delivery</li>
+          <li><Icon name="returns" />{SITE.returnsDays} day returns</li>
+        </ul>
+      </div>
+      <div class="hero-photo"><img src={url('assets/life-6.jpg')} alt="A couple arranging ceramics and storage jars on kitchen shelves" width="1500" height="844" fetchpriority="high"></div>
+    </div>
+  </section>
+
+  <section class="sect" aria-labelledby="rooms-h">
+    <div class="wrap">
+      <div class="head"><div><span class="eyebrow">Start with a room</span><h2 id="rooms-h">Which room are you doing up?</h2></div></div>
+      <div class="rooms">
+        {ROOMS.map((r, i) => <a class="room" href={url('build.html') + '?room=' + r.key}>
+          <img src={url('assets/' + r.img)} alt="" width="1122" height="1402" loading={i < 2 ? 'eager' : 'lazy'}>
+          <span>{r.name}<Icon name="arrow" /></span>
+        </a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-label="What you can count on">
+    <div class="wrap band-grid">
+      <div><span class="bi"><Icon name="truck" /></span><p><b>Island-wide delivery</b>To every district in Sri Lanka</p></div>
+      <div><span class="bi"><Icon name="cash" /></span><p><b>Cash on delivery</b>Pay only when it arrives</p></div>
+      <div><span class="bi"><Icon name="chat" /></span><p><b>WhatsApp ordering</b>Answered 7 days a week</p></div>
+      <div><span class="bi"><Icon name="returns" /></span><p><b>{SITE.returnsDays} day returns</b>On unused items in their packaging</p></div>
+    </div>
+  </section>
+
+  {offers.length > 0 && <section class="sect" aria-labelledby="offers-h">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow"><Icon name="tag" />On offer now</span><h2 id="offers-h">Marked down in store today</h2></div>
+        <a class="more" href={url('deals.html')}>All deals<Icon name="arrow" /></a>
+      <p>The price crossed out is Sastho's own regular price for the same product.</p></div>
+      <div class="rail"><Cards items={offers.slice(0, 10)} /></div>
+    </div>
+  </section>}
+
+  <section class="sect" aria-labelledby="new-h">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow"><Icon name="sparkles" />New in</span><h2 id="new-h">Just added to the shop</h2></div>
+        <a class="more" href={url('shop.html') + '?sort=new'}>See all<Icon name="arrow" /></a>
+      </div>
+      <div class="rail"><Cards items={fresh} /></div>
+    </div>
+  </section>
+
+  <AppBand />
+
+  <section class="sect tight">
+    <div class="wrap">
+      <div class="story">
+        <img src={url('assets/life-2.jpg')} alt="A Sri Lankan home styled with Sastho pieces" width="1500" height="844" loading="lazy">
+        <div class="story-in">
+          <span class="eyebrow">Made for real homes</span>
+          <h2>The home you love, for less.</h2>
+          <p>From the kitchen to the dining table, Sastho brings together the pieces that make everyday living easier and better looking, at prices that leave room for the next room.</p>
+          <a class="btn primary" href={url('shop.html')}>Explore the range<Icon name="arrow" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect" aria-labelledby="shelves-h">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow">Browse</span><h2 id="shelves-h">Shop by shelf</h2></div>
+        <a class="more" href={url('shop.html')}>Everything<Icon name="arrow" /></a>
+      </div>
+      <div class="shelves">
+        {data.shelves.map(s => <a class="shelf" href={url('shop.html') + '?shelf=' + s.key}>
+          <span class="si"><Icon name={s.icon} /></span>
+          <b>{s.label}</b><small>{s.count} products</small>
+        </a>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sect tight" aria-labelledby="pocket-h">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow"><Icon name="zap" />Easy on the pocket</span><h2 id="pocket-h">Under Rs 500</h2></div>
+        <a class="more" href={url('shop.html') + '?price=0-499'}>All {under500.length}<Icon name="arrow" /></a>
+      </div>
+      <div class="rail"><Cards items={pocket} /></div>
+    </div>
+  </section>
+
+  <section class="sect tight">
+    <div class="wrap">
+      <div class="split">
+        <div class="split-media"><img src={url('assets/life-1.jpg')} alt="Ceramic tableware and storage jars on a marble counter" width="1500" height="844" loading="lazy"></div>
+        <div class="split-text">
+          <span class="eyebrow">Shop the look</span>
+          <h2>Style your space, one piece at a time</h2>
+          <p>Ceramics, glassware and storage that sit well together. Mix them, match them and make the room yours.</p>
+          <ul class="ticks">
+            <li><Icon name="check" />Picked to match, room by room</li>
+            <li><Icon name="check" />Every price shown before you order</li>
+            <li><Icon name="check" />Delivered to your door, paid for on arrival</li>
+          </ul>
+          <a class="btn dark" href={url('shop.html') + '?shelf=tableware'}>Shop tableware<Icon name="arrow" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect tight">
+    <div class="wrap">
+      <div class="teaser">
+        <div>
+          <span class="eyebrow"><Icon name="wand" />The Sastho shortcut</span>
+          <h2>Build My Space</h2>
+          <p>Pick a room, say what you need and set a budget. Sastho puts together a basket that fits, from what is in store today.</p>
+        </div>
+        <a class="btn primary" href={url('build.html')}>Start with a room<Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="head"><div><span class="eyebrow">How it works</span><h2 id="how-h">No card, no account, no risk</h2></div><p>You pay only when the parcel is in your hands.</p></div>
+      <ol class="steps">
+        <li><span class="sn"><Icon name="cart" /></span><h3>Fill your basket</h3><p>Browse the range and add what you like. The basket stays on your phone.</p></li>
+        <li><span class="sn"><Icon name="b-whatsapp" /></span><h3>Send it on WhatsApp</h3><p>Your order goes to Sastho as one message. They confirm the price, stock and delivery.</p></li>
+        <li><span class="sn"><Icon name="cash" /></span><h3>Pay on delivery</h3><p>Pay the courier in cash when your order arrives.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sect tight" aria-labelledby="words-h">
+    <div class="wrap">
+      <div class="head"><div><span class="eyebrow">In their words</span><h2 id="words-h">What customers told Sastho</h2></div><p>Quoted from the reviews on sastho.lk.</p></div>
+      <div class="words">
+        {WORDS.map(w => <figure class="word"><blockquote data-client-copy>{w.q}</blockquote><figcaption data-client-copy>{w.n}</figcaption></figure>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="sect tight" aria-label="Sastho at home">
+    <div class="wrap">
+      <div class="look">
+        <figure><img src={url('assets/life-3.jpg')} alt="Storage jars and ceramics on open kitchen shelves" width="1500" height="844" loading="lazy"><figcaption>Storage and ceramics</figcaption></figure>
+        <figure><img src={url('assets/life-5.jpg')} alt="A dinner table laid for a family meal" width="1500" height="844" loading="lazy"><figcaption>Dinner for the family</figcaption></figure>
+        <figure><img src={url('assets/life-4.jpg')} alt="A bright kitchen and living space" width="1500" height="844" loading="lazy"><figcaption>Everyday living</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect tight">
+    <div class="wrap duo">
+      <div class="promo dark">
+        <h3>Buying in bulk?</h3>
+        <p>Hotels, resellers and offices can ask Sastho for wholesale rates.</p>
+        <a class="btn light" href={SITE.wholesale} target="_blank" rel="noopener">Wholesale Direct<Icon name="external" /></a>
+      </div>
+      <div class="promo warm">
+        <h3>Come and see it first</h3>
+        <p>{SITE.address}. {SITE.hours}.</p>
+        <a class="btn dark" href={url('contact.html')}>Find the showroom<Icon name="pin" /></a>
+      </div>
+    </div>
+  </section>
+</Layout>

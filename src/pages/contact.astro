@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../config.js';
+import { url } from '../scripts/icon.js';
+import { waText } from '../scripts/card.js';
+const hello = waText('Hi Sastho, I have a question.');
+const map = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(SITE.mapQuery);
+const TOPICS = ['A product', 'An order I placed', 'A return or a swap', 'Wholesale', 'Something else'];
+---
+<Layout title="Contact" active="contact" path="contact.html"
+  description={`Talk to Sastho Lanka on WhatsApp at ${SITE.phoneShown} or visit the showroom at ${SITE.address}. ${SITE.hours}.`}>
+
+  <section class="phead">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h1>Talk to Sastho</h1>
+      <p>WhatsApp is the quickest way. Sastho answers 7 days a week, 10am to 7pm.</p>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="tiles reach3">
+      <a class="tile link" href={hello} target="_blank" rel="noopener">
+        <span class="si wa"><Icon name="b-whatsapp" /></span><h3>{SITE.phoneShown}</h3><p>WhatsApp or call</p><span class="more">Chat now<Icon name="arrow" /></span></a>
+      <a class="tile link" href={map} target="_blank" rel="noopener">
+        <span class="si"><Icon name="pin" /></span><h3>The showroom</h3><p>{SITE.address}</p><span class="more">Get directions<Icon name="arrow" /></span></a>
+      <div class="tile">
+        <span class="si"><Icon name="clock" /></span><h3>Opening hours</h3><p>Monday to Sunday<br>10am to 7pm</p></div>
+    </div>
+  </section>
+
+  <section class="sect" aria-labelledby="msg-h">
+    <div class="wrap two">
+      <div>
+        <span class="eyebrow">Send a message</span>
+        <h2 id="msg-h">How can Sastho help?</h2>
+        <p class="sub">Fill this in and it opens WhatsApp with your message written out. Press send there and it reaches Sastho. Nothing is stored on this page.</p>
+      </div>
+      <form class="formcard" id="contact-form" novalidate autocomplete="on">
+        <label class="field" id="c-name"><span>Full name</span><input name="name" type="text" autocomplete="name" autocapitalize="words" enterkeyhint="next" required><span class="msg">Please add your name</span></label>
+        <label class="field" id="c-phone"><span>Phone number</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" placeholder="07X XXX XXXX" required><span class="msg">Please add a Sri Lankan number, for example 077 123 4567</span></label>
+        <label class="field" id="c-topic"><span>What is it about?</span><select name="topic" required><option value="">Choose</option>{TOPICS.map(t => <option>{t}</option>)}</select><span class="msg">Please choose one</span></label>
+        <label class="field" id="c-text"><span>Your message</span><textarea name="text" rows="4" enterkeyhint="enter" required></textarea><span class="msg">Please write your message</span></label>
+        <button class="btn wa block" type="submit" id="contact-send"><Icon name="b-whatsapp" />Open WhatsApp with my message</button>
+        <p class="fine" id="contact-after" hidden>WhatsApp has your message ready. Press send there to reach Sastho.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="sect tight">
+    <div class="wrap">
+      <div class="teaser">
+        <div>
+          <span class="eyebrow">Quick answers</span>
+          <h2>Delivery, paying and returns</h2>
+          <p>The Help page covers how ordering works, what you can return and how long a refund takes.</p>
+        </div>
+        <a class="btn primary" href={url('faq.html')}>Open Help<Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    import { waText } from '../scripts/card.js';
+    const f = document.getElementById('contact-form');
+    const ok = v => /^(0\d{9}|(\+?94)\d{9})$/.test(String(v).replace(/[\s-]/g, ''));
+    f.addEventListener('input', e => { const x = e.target.closest('.field.bad'); if (x) x.classList.remove('bad', 'say'); });
+    f.addEventListener('change', e => { const x = e.target.closest('.field.bad'); if (x) x.classList.remove('bad', 'say'); });
+    f.addEventListener('submit', e => {
+      e.preventDefault();
+      const g = n => (f.elements[n].value || '').trim();
+      const m = { name: g('name'), phone: g('phone'), topic: g('topic'), text: g('text') };
+      const bad = { name: !m.name, phone: !ok(m.phone), topic: !m.topic, text: !m.text };
+      const first = Object.keys(bad).find(k => bad[k]);
+      Object.entries(bad).forEach(([k, b]) => { const f = document.getElementById('c-' + k); f.classList.toggle('bad', b); f.classList.toggle('say', b && k === first); });
+      if (first) { const el = document.querySelector('#c-' + first + ' :is(input,textarea,select)'); el.focus({ preventScroll: true }); el.scrollIntoView({ block: 'center' }); return; }
+      window.open(waText(`Hi Sastho, this is ${m.name}.\n\nAbout: ${m.topic}\n\n${m.text}\n\nMy number: ${m.phone}\nSent from the Sastho app`), '_blank', 'noopener');
+      document.getElementById('contact-after').hidden = false;
+    });
+  </script>
+</Layout>

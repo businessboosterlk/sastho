@@ -1,0 +1,91 @@
+---
+// Every fact on this page is Sastho's own, from sastho.lk/about-us, its policies or its store feed,
+// read on 29 Sep 2026. No founding year and no length of time in business is printed anywhere.
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import AppBand from '../components/AppBand.astro';
+import { SITE } from '../config.js';
+import { url } from '../scripts/icon.js';
+import data from '../data/products.json';
+const count = data.meta.count.toLocaleString('en-LK');
+---
+<Layout title="About" active="about" path="about.html" image="assets/life-5.jpg"
+  description="Sastho means cheap in Memon. To Sastho Lanka it is a promise: good home and kitchen products at prices that do not break the bank.">
+
+  <section class="phead photo">
+    <img src={url('assets/life-5.jpg')} alt="A dinner table laid for a family meal" width="1500" height="844" fetchpriority="high">
+    <div class="wrap">
+      <span class="eyebrow">Our story</span>
+      <h1>Good things for the home, at prices that make sense</h1>
+      <p>Sri Lanka's one-stop shop for home, kitchen and more.</p>
+    </div>
+  </section>
+
+  <section class="sect">
+    <div class="wrap two">
+      <div>
+        <span class="eyebrow">What Sastho means</span>
+        <h2>The name means cheap. The promise is value.</h2>
+      </div>
+      <div class="prose">
+        <p>Sastho means cheap in Memon. To Sastho it is a promise: unbeatable deals without giving up on quality.</p>
+        <p>The range runs from kitchen essentials and home decor to everyday tools for the house. Every product is picked by hand, so what reaches your door is reliable, looks right and does not cost more than it should.</p>
+        <p>You can see it all at the showroom in Pettah or order from anywhere in Sri Lanka and pay cash when it arrives.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" aria-label="Sastho in numbers">
+    <div class="wrap band-grid stats">
+      <div><b class="big">{count}</b><p>products in store today</p></div>
+      <div><b class="big">25</b><p>districts delivered to</p></div>
+      <div><b class="big">7</b><p>days a week, 10am to 7pm</p></div>
+      <div><b class="big">{SITE.returnsDays}</b><p>days to return an unused item</p></div>
+    </div>
+  </section>
+
+  <section class="sect" aria-labelledby="why-h">
+    <div class="wrap">
+      <div class="head"><div><span class="eyebrow">Why people shop here</span><h2 id="why-h">Three things you can count on</h2></div></div>
+      <div class="tiles">
+        <div class="tile"><span class="si"><Icon name="tag" /></span><h3>Prices you can see</h3><p>Every price is on the product before you order. What the basket shows is what Sastho confirms.</p></div>
+        <div class="tile"><span class="si"><Icon name="cash" /></span><h3>Pay when it arrives</h3><p>No card and no advance. You pay the courier in cash when the parcel is in your hands.</p></div>
+        <div class="tile"><span class="si"><Icon name="shield" /></span><h3>Help after you buy</h3><p>If something arrives damaged, faulty or wrong, Sastho collects it or swaps it at its own cost.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect tight">
+    <div class="wrap">
+      <div class="split">
+        <div class="split-media"><img src={url('assets/life-4.jpg')} alt="A bright kitchen and living space" width="1500" height="844" loading="lazy"></div>
+        <div class="split-text">
+          <span class="eyebrow">Come and see</span>
+          <h2>The showroom in Pettah</h2>
+          <p>Pick things up and compare them side by side before you buy.</p>
+          <ul class="ticks">
+            <li><Icon name="pin" />{SITE.address}</li>
+            <li><Icon name="clock" />{SITE.hours}</li>
+            <li><Icon name="phone" />{SITE.phoneShown}</li>
+          </ul>
+          <a class="btn dark" href={url('contact.html')}>Find the showroom<Icon name="arrow" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <AppBand />
+
+  <section class="sect tight">
+    <div class="wrap">
+      <div class="teaser">
+        <div>
+          <span class="eyebrow">Ready when you are</span>
+          <h2>Find something for your home</h2>
+          <p>{count} products, every price shown and nothing to pay until it arrives.</p>
+        </div>
+        <a class="btn primary" href={url('shop.html')}>Shop the range<Icon name="arrow" /></a>
+      </div>
+    </div>
+  </section>
+</Layout>

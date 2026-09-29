@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { url } from '../scripts/icon.js';
+import { ROOMS, LOOKS, BUDGETS } from '../scripts/rooms.js';
+---
+<Layout title="Build My Space" active="build" path="build.html" image="assets/room-kitchen.jpg"
+  description="Pick a room, say what you need and set a budget. Sastho puts together a basket that fits, from what is in store today.">
+
+  <section class="phead">
+    <div class="wrap">
+      <span class="eyebrow"><Icon name="wand" />The Sastho shortcut</span>
+      <h1>Build My Space</h1>
+      <p>Four quick questions. Sastho picks a basket that fits your room and your budget, from what is in store today.</p>
+    </div>
+  </section>
+
+  <section class="wrap quiz" id="quiz" data-step="1">
+    <div class="qprog" aria-hidden="true"><i id="qbar"></i></div>
+    <p class="qstep" id="qstep" aria-live="polite">Question 1 of 4</p>
+
+    <div class="qpane" data-pane="1">
+      <h2>Which room is it for?</h2>
+      <div class="rooms pick" role="group" aria-label="Room">
+        {ROOMS.map((r, i) => <button class="room" type="button" data-room={r.key} aria-pressed="false">
+          <img src={url('assets/' + r.img)} alt="" width="1122" height="1402" loading={i < 2 ? 'eager' : 'lazy'}>
+          <span>{r.name}<Icon name="check" /></span>
+        </button>)}
+      </div>
+    </div>
+
+    <div class="qpane" data-pane="2" hidden>
+      <h2>What do you need?</h2>
+      <p class="qhint">Pick as many as you like, or take everything for the room.</p>
+      <div class="chips wrapped" id="q-needs" role="group" aria-label="What you need"></div>
+    </div>
+
+    <div class="qpane" data-pane="3" hidden>
+      <h2>What look do you like?</h2>
+      <p class="qhint">This one is optional. Skip it and Sastho picks across every look.</p>
+      <div class="chips wrapped" id="q-looks" role="group" aria-label="Look">
+        {LOOKS.map(l => <button class="chip" type="button" data-look={l.key} aria-pressed="false">{l.name}</button>)}
+      </div>
+    </div>
+
+    <div class="qpane" data-pane="4" hidden>
+      <h2>What is your budget?</h2>
+      <div class="chips wrapped" id="q-budget" role="group" aria-label="Budget">
+        {BUDGETS.map(b => <button class="chip" type="button" data-budget={b.max} aria-pressed="false">{b.name}</button>)}
+      </div>
+    </div>
+
+    <div class="qpane" data-pane="5" hidden>
+      <span class="eyebrow">Picked for you</span>
+      <h2 id="q-title">Your picks</h2>
+      <p class="qhint" id="q-sub"></p>
+      <div class="picks" id="q-picks"></div>
+      <div class="qsum">
+        <div><span>Basket total</span><b id="q-total">Rs 0</b></div>
+        <div class="qsum-act">
+          <button class="btn primary" type="button" id="q-add"><Icon name="cart" /><span>Add all to basket</span></button>
+          <div class="pair">
+            <button class="btn ghost" type="button" id="q-again"><Icon name="refresh" />Another mix</button>
+            <button class="btn ghost" type="button" id="q-restart">Start again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="qnav" id="qnav">
+      <button class="btn ghost" type="button" id="q-back" hidden><Icon name="back" />Back</button>
+      <button class="btn primary" type="button" id="q-next" disabled>Next<Icon name="arrow" /></button>
+    </div>
+  </section>
+
+  <section class="sect" aria-labelledby="how-h">
+    <div class="wrap">
+      <div class="head"><div><span class="eyebrow">How it works</span><h2 id="how-h">From a room to a basket</h2></div></div>
+      <ol class="steps">
+        <li><span class="sn"><Icon name="wand" /></span><h3>Answer four questions</h3><p>The room, what you need, the look and the budget.</p></li>
+        <li><span class="sn"><Icon name="boxcheck" /></span><h3>See your picks</h3><p>Real products from the shop, with today's prices. Take one out or ask for another mix.</p></li>
+        <li><span class="sn"><Icon name="b-whatsapp" /></span><h3>Order on WhatsApp</h3><p>Add them to your basket and send the order. Pay cash when it arrives.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <script>import '../scripts/build-space.js';</script>
+</Layout>
