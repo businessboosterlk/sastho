@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Cards from '../components/Cards.astro';
 import AppBand from '../components/AppBand.astro';
+import GoalBand from '../components/GoalBand.astro';
 import { SITE } from '../config.js';
 import { url } from '../scripts/icon.js';
 import data from '../data/products.json';
@@ -92,6 +93,8 @@ const WORDS = [
       <div class="rail"><Cards items={fresh} /></div>
     </div>
   </section>
+
+  <GoalBand />
 
   <AppBand />
 

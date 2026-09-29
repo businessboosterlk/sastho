@@ -1,0 +1,25 @@
+---
+// SPEND MORE, SAVE MORE, said once on the page in full. The steps come from src/config.js and nowhere else.
+import Icon from './Icon.astro';
+import { SITE } from '../config.js';
+import { url } from '../scripts/icon.js';
+import { rs } from '../scripts/card.js';
+const G = SITE.basketGoals;
+const tiers = G.on ? G.tiers.slice().sort((a, b) => a.spend - b.spend) : [];
+---
+{tiers.length > 0 && <section class="sect tight" aria-labelledby="goal-h">
+  <div class="wrap">
+    <div class="goalband">
+      <div class="gl-text">
+        <span class="eyebrow"><Icon name="tag" />Spend more, save more</span>
+        <h2 id="goal-h">The bigger the basket, the more comes off</h2>
+        <p>It comes off the whole basket by itself. Your basket shows how far the next step is.</p>
+      </div>
+      <ol class="gl-steps">
+        {tiers.map(t => <li><b>{t.percent}% off</b><span>baskets of {rs(t.spend)} or more</span></li>)}
+      </ol>
+      <a class="btn primary" href={url('shop.html')}>Start a basket<Icon name="arrow" /></a>
+      <p class="fine">{G.covers} Offers do not add together: the basket takes the best one.</p>
+    </div>
+  </div>
+</section>}

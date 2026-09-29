@@ -39,6 +39,8 @@ body{min-height:100dvh;overscroll-behavior-y:none}
 html{min-height:calc(100% + var(--sat))}
 [hidden]{display:none!important}
 img{display:block;max-width:100%}
+/* a photograph that did not arrive leaves its frame in the page colour, never a torn picture mark */
+img.gone{visibility:hidden}
 svg{flex-shrink:0}
 button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
 button{cursor:pointer;border:0;background:none}
@@ -397,3 +399,47 @@ select::-ms-expand{display:none}
 .foot .bar b{color:rgba(255,255,255,.86);font-weight:600}
 @media (min-width:960px){.foot{padding:64px 0 34px}}
 @media (hover:hover){.foot nav a:hover{background:rgba(255,255,255,.08)}.foot .soc a:hover{background:var(--accent)}}
+
+/* ───────────── THE BASKET BAR AND THE LADDER ───────────── */
+.goalbar{position:fixed;left:10px;right:10px;bottom:calc(var(--tab-h) + var(--sab) + 8px);z-index:58;display:grid;grid-template-columns:44px minmax(0,1fr) auto;align-items:center;gap:12px;min-height:60px;padding:8px 14px 8px 8px;border-radius:18px;background:var(--ink);color:#fff;text-align:left;box-shadow:var(--sh-lg);transition:opacity 180ms var(--ease),transform 180ms var(--ease)}
+.goalbar[hidden]{display:none}
+.goalbar:active{transform:scale(.985)}
+.gb-mark{position:relative;width:44px;height:44px;border-radius:13px;background:rgba(255,255,255,.12);display:grid;place-items:center}
+.gb-mark .ic{width:21px;height:21px}
+.gb-mark .count{top:-4px;right:-4px}
+.gb-text{min-width:0;display:block}
+.gb-text b{display:block;font-family:var(--disp);font-size:14.5px;font-weight:700;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gb-text small{display:block;font-size:12.5px;color:rgba(255,255,255,.74);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gb-bar{display:block;height:4px;border-radius:2px;background:rgba(255,255,255,.18);margin-top:6px;overflow:hidden}
+.gb-bar i{display:block;height:100%;border-radius:2px;background:var(--accent-2);transition:width 320ms var(--ease)}
+.gb-go{display:inline-flex;align-items:center;gap:2px;font-size:13.5px;font-weight:650;color:#fff}
+.gb-go .ic{width:17px;height:17px}
+body.sheet-open .goalbar{opacity:0;transform:translateY(16px);pointer-events:none}
+/* with the basket bar on screen the message line and the foot of the page stand clear of it */
+body.has-goal .toast{bottom:calc(var(--tab-h) + 84px + var(--sab))}
+body.has-goal .foot{padding-bottom:calc(28px + var(--tab-h) + 76px + var(--sab))}
+@media (min-width:960px){
+  .goalbar{left:auto;right:24px;bottom:24px;width:380px}
+  body.has-goal .toast{bottom:104px}
+  body.has-goal .foot{padding-bottom:120px}
+}
+.ladder{padding:16px 16px 40px;border-radius:16px;background:var(--accent-soft);border:1px solid #f3d9c4;margin-bottom:6px}
+.ld-head{font-size:15px;line-height:1.35;color:var(--ink)}
+.ld-head b{font-family:var(--disp);font-weight:800;color:var(--accent-deep)}
+.ld-sub{font-size:12.5px;color:var(--ink-2);margin-top:3px}
+.ld-bar{position:relative;height:8px;border-radius:4px;background:rgba(200,81,3,.16);margin:14px 18px 0 4px}
+.ld-bar > i{display:block;height:100%;border-radius:4px;background:var(--accent);transition:width 320ms var(--ease)}
+.ld-step{position:absolute;top:-4px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 2px rgba(200,81,3,.35)}
+.ld-step.on{background:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.ld-step em,.ld-step small{position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;font-style:normal;font-variant-numeric:tabular-nums}
+.ld-step em{top:19px;font-size:12px;font-weight:700;color:var(--ink)}
+.ld-step small{top:34px;font-size:11px;color:var(--ink-3)}
+.ld-step:last-child em,.ld-step:last-child small{left:auto;right:-10px;transform:none}
+.reach{margin-top:8px;padding:14px 0 4px;box-shadow:inset 0 1px var(--line)}
+.rc-head{font-family:var(--disp);font-size:14px;font-weight:700;margin-bottom:6px}
+.rc-row{display:grid;grid-template-columns:56px minmax(0,1fr) auto;align-items:center;gap:12px;padding:6px 0}
+.rc-row img{width:56px;height:56px;border-radius:11px;object-fit:cover;background:var(--surface-2)}
+.rc-row .nm{display:flex;align-items:center;min-height:44px;font-size:13.5px;font-weight:600;line-height:1.3}
+.rc-row .nm span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rc-row .btn{padding:0 12px;gap:5px;font-variant-numeric:tabular-nums}
+.rc-row .btn.done{background:var(--good)}

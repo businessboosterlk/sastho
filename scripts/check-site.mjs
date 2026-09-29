@@ -307,6 +307,63 @@ for (const [w, h, touch] of SIZES) {
   await ctx.close();
 }
 
+/* ───────────── F. THE SALES PUSH ───────────── */
+console.log('\nF. The sales push: the ladder, the basket bar and the sums');
+{
+  const cfg = (await import('../src/config.js')).SITE, tiers = (cfg.basketGoals.on ? cfg.basketGoals.tiers : []).slice().sort((a, b) => a.spend - b.spend);
+  const money = n => 'Rs ' + Math.round(n).toLocaleString('en-LK');
+  const plain = data.products.filter(p => !p.options.length && p.images.length);
+  const near = v => plain.slice().sort((a, b) => Math.abs(a.price - v) - Math.abs(b.price - v))[0];
+  /* baskets that sit under the first step, one rupee under a step, exactly on a step, between steps and over the top */
+  const BASKETS = tiers.length ? [[[near(400), 1]], [[near(tiers[0].spend - 300), 1]], [[near(tiers[0].spend / 2), 2]], [[near(1700), 2]], [[near(tiers[tiers.length - 1].spend / 2 + 300), 2]]] : [];
+  for (const [w, h, touch] of SIZES) {
+    const ctx = await browser.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: touch ? 2 : 1, isMobile: touch, hasTouch: touch, serviceWorkers: 'block' });
+    const page = await ctx.newPage(); const faults = [], errs = []; page.on('pageerror', e => errs.push(e.message)); let sums = 0;
+    for (const lines of BASKETS) {
+      const items = lines.reduce((n, [p, q]) => n + p.price * q, 0);
+      /* THE ARITHMETIC IS DONE HERE, from the config, and the screen must agree with it */
+      const have = tiers.filter(t => items >= t.spend).pop() || null, next = tiers.find(t => items < t.spend) || null;
+      const cut = have ? Math.round(items * have.percent / 100) : 0, total = items - cut, tag = `basket of ${money(items)}@${w}`;
+      await page.goto(BASE + 'offline.html'); await page.evaluate(l => { localStorage.clear(); localStorage.setItem('sastho_install_hint', '1'); localStorage.setItem('sastho_app_hello_v1', '1'); localStorage.setItem('sastho_me_v1', JSON.stringify({ name: 'Test Shopper', phone: '0771234567', address: '12 Example Road', district: 'Colombo', town: '', note: '' })); localStorage.setItem('sastho_cart_v2', JSON.stringify(l)); }, lines.map(([p, q]) => ({ id: p.id, qty: q, opt: '' })));
+      for (const f of ['shop.html', PAGES.plain]) {
+        await page.goto(BASE + f, { waitUntil: 'load' }); await page.evaluate(() => document.fonts.ready); await page.waitForTimeout(350);
+        const b = await page.evaluate(() => { const g = document.querySelector('#goalbar'), r = g.getBoundingClientRect(), bar = document.querySelector('.tabs'), br = bar && getComputedStyle(bar).display !== 'none' ? bar.getBoundingClientRect() : null; return { shown: !g.hidden && r.height > 0, top: document.querySelector('#gb-top').textContent, sub: document.querySelector('#gb-sub').textContent, h: r.height, gap: br ? br.top - r.bottom : innerHeight - r.bottom, left: r.left, right: innerWidth - r.right, cutTop: document.querySelector('#gb-top').scrollWidth > document.querySelector('#gb-top').clientWidth + 1 }; });
+        const wantTop = next ? `${money(next.spend - items)} more for ${next.percent}% off` : `${have.percent}% off is yours`;
+        if (!b.shown) faults.push(`${tag} ${f}: the basket bar is not shown`);
+        if (b.top !== wantTop) faults.push(`${tag} ${f}: the bar says "${b.top}", the sum says "${wantTop}"`);
+        if (!b.sub.includes(money(total))) faults.push(`${tag} ${f}: the bar's total is "${b.sub}", the sum is ${money(total)}`);
+        if (b.h < 44 || b.gap < 8 || b.left < 8 || b.right < 8) faults.push(`${tag} ${f}: the bar is ${b.h} high, ${b.gap} from the bar under it, ${b.left} and ${b.right} from the edges`);
+        if (b.cutTop && w >= 360) faults.push(`${tag} ${f}: the bar's words are cut`);
+        (await page.evaluate(AUDIT)).forEach(x => faults.push(`${tag} ${f}: ${x}`));
+        /* at the foot of the page nothing a person reads or presses sits under the bars */
+        const foot = await page.evaluate(async () => { window.scrollTo(0, document.documentElement.scrollHeight); await new Promise(r => setTimeout(r, 200)); const last = document.querySelector('.foot .bar'), g = document.querySelector('#goalbar').getBoundingClientRect(); return last.getBoundingClientRect().bottom - g.top; });
+        if (foot > 0) faults.push(`${tag} ${f}: the last line of the page runs ${Math.round(foot)}px under the basket bar`);
+        if (f !== 'shop.html') { const line = await page.evaluate(() => { const e = document.querySelector('#p-goal'); return e.hidden ? '' : e.textContent; }); const p = data.products.find(x => 'p/' + x.slug + '.html' === f), then = items + p.price, h2 = tiers.filter(t => then >= t.spend).pop() || null, n2 = tiers.find(t => then < t.spend) || null;
+          const wantLine = h2 && (!have || h2.percent > have.percent) ? `Add this and your whole basket gets ${h2.percent}% off` : n2 ? `Add this and you are ${money(n2.spend - then)} from ${n2.percent}% off your basket` : `Your basket has ${h2.percent}% off`;
+          if (line !== wantLine) faults.push(`${tag}: the product says "${line}", the sum says "${wantLine}"`); }
+      }
+      await page.goto(BASE + 'shop.html', { waitUntil: 'load' }); await page.waitForTimeout(300);
+      await page.evaluate(() => window.Sastho.open('cart')); await page.waitForTimeout(450);
+      const c = await page.evaluate(() => ({ total: document.querySelector('#cart-foot .tot b').textContent, head: (document.querySelector('.ld-head') || {}).textContent || '', offer: [...document.querySelectorAll('#cart-body .sums .sum')].map(e => e.textContent.replace(/\s+/g, ' ').trim()).find(t => /offer/.test(t)) || '', picks: [...document.querySelectorAll('#cart-body .rc-row [data-add]')].map(b => +b.dataset.add), on: document.querySelectorAll('.ld-step.on').length }));
+      if (c.total !== money(total)) faults.push(`${tag}: the basket total is ${c.total}, the sum is ${money(total)}`);
+      if (next && !c.head.includes(money(next.spend - items))) faults.push(`${tag}: the ladder says "${c.head}", ${money(next.spend - items)} is what is missing`);
+      if (cut && !c.offer.includes('minus ' + money(cut))) faults.push(`${tag}: the offer line is "${c.offer}", the sum is minus ${money(cut)}`);
+      if (!cut && c.offer) faults.push(`${tag}: an offer is shown on a basket that has not reached a step: "${c.offer}"`);
+      if (c.on !== tiers.filter(t => items >= t.spend).length) faults.push(`${tag}: ${c.on} steps are lit, ${tiers.filter(t => items >= t.spend).length} are reached`);
+      if (next) { const gap = next.spend - items, reachers = c.picks.map(id => data.products.find(p => p.id === id)).filter(p => p.price >= gap); if (!c.picks.length) faults.push(`${tag}: no product is offered to reach the next step`); else if (!reachers.length) faults.push(`${tag}: none of the ${c.picks.length} products offered reaches the next step in one tap`); }
+      await page.evaluate(() => window.Sastho.open('order')); await page.waitForTimeout(450);
+      const msg = decodeURIComponent((await page.locator('#order-send').getAttribute('href')).split('text=')[1]);
+      if (cut && !(msg.includes(`Basket offer, ${have.percent}% off a basket of ${money(have.spend)} or more: minus ${money(cut)}`) && msg.includes('Items after the offer: ' + money(total)))) faults.push(`${tag}: the order message does not carry the offer and its sum`);
+      if (!cut && /offer/i.test(msg)) faults.push(`${tag}: the order message names an offer the basket has not reached`);
+      (await page.evaluate(AUDIT)).forEach(x => faults.push(`${tag} order sheet: ${x}`));
+      if (w === 390) { styleText.push(...(await page.evaluate(TEXT))); await page.goBack(); await page.waitForTimeout(450); styleText.push(...(await page.evaluate(TEXT))); }
+      sums++;
+    }
+    ok(`${w}px: the ladder, the basket bar, the product line and the order message agree with the sums, on ${sums} baskets`, !faults.length && !errs.length && sums === BASKETS.length, faults.length || errs.length ? (faults.length + errs.length) + ' faults: ' + sample([...errs, ...faults], 5) : BASKETS.map(l => money(l.reduce((n, [p, q]) => n + p.price * q, 0))).join(', '));
+    await ctx.close();
+  }
+}
+
 /* ───────────── E. THE WORDS ───────────── */
 console.log('\nE. The words');
 {

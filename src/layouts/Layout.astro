@@ -130,6 +130,12 @@ const promises = [
       <button class:list={['tab', ['build', 'about', 'contact', 'faq'].includes(active) ? 'on' : '']} type="button" data-sheet="menu" aria-label="More pages"><Icon name="menu" /><span>More</span></button>
     </nav>}
 
+<button class="goalbar" id="goalbar" type="button" data-sheet="cart" data-behind hidden>
+  <span class="gb-mark"><Icon name="cart" /><span class="count" data-count="cart" data-n="0"></span></span>
+  <span class="gb-text"><b id="gb-top">Your basket is ready</b><small id="gb-sub"></small><i class="gb-bar"><i id="gb-fill"></i></i></span>
+  <span class="gb-go">Open<Icon name="right" /></span>
+</button>
+
 <div class="scrim" data-scrim></div>
 
 <aside class="sheet tall" id="sheet-cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" tabindex="-1" inert>

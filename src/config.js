@@ -28,6 +28,16 @@ export const SITE = {
   // did not name its exclusions (dinner plates). Get his yes and his exclusions in writing before this link is
   // shared with shoppers, then write the exclusions into `covers` and set agreed to true.
   appOffer: { on: true, percent: 10, code: 'APP10', agreed: false, covers: 'Sastho confirms which items the offer covers when it confirms your order.' },
+  // THE BASKET LADDER (Thulaib, 29 Sep 2026): "add Rs X more to get Y", to push a bigger basket.
+  // The reward is a percentage off, NOT free delivery. BB's own delivery report to Cader (9 Sep 2026) shows free
+  // delivery over a threshold loses him money at every threshold it tested, because the first kilo is most of
+  // the courier bill. The same report shows why a bigger basket is worth pushing: orders under Rs 500 are
+  // cancelled 44 times in 100, orders of Rs 4,000 to 6,000 only 18 times in 100, and Rs 2,500 is the basket the
+  // report set as the target.
+  // THE THREE FIGURES BELOW ARE BUSINESS BOOSTER'S STARTING POINT. CADER HAS NOT AGREED THEM (agreed:false).
+  // Change a line here and every screen, sum and order message follows. Offers never stack: the basket takes the
+  // better of the ladder and the app offer.
+  basketGoals: { on: true, agreed: false, tiers: [{ spend: 2500, percent: 3 }, { spend: 5000, percent: 5 }, { spend: 8000, percent: 8 }], covers: 'Sastho confirms which items the offer covers when it confirms your order.' },
   // SALE ALERTS. A notification on a locked phone needs a server to send it. That is not built and is
   // Thulaib's decision. What works with no server: the app marks new offers each time it opens, and a
   // shopper can ask Sastho for sale alerts on WhatsApp.

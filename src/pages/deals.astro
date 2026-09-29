@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Icon from '../components/Icon.astro';
 import Cards from '../components/Cards.astro';
 import AppBand from '../components/AppBand.astro';
+import GoalBand from '../components/GoalBand.astro';
 import { SITE } from '../config.js';
 import { url } from '../scripts/icon.js';
 import { waText } from '../scripts/card.js';
@@ -39,6 +40,8 @@ const alerts = waText('Hi Sastho, please send me your sale alerts on WhatsApp.')
         : <div class="empty"><strong>Nothing is marked down today</strong>Sastho changes its offers often. Ask for sale alerts on WhatsApp and you hear first.</div>}
     </div>
   </section>
+
+  <GoalBand />
 
   <AppBand />
 

@@ -314,19 +314,37 @@ details > .prose{padding:0 0 22px}
 
 .prose .code{font-size:13px;color:var(--ink-3);margin-top:16px}
 
+/* ───────── spend more, save more ───────── */
+.goalband{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;background:var(--dark);color:#fff;border-radius:var(--r-lg);padding:26px 22px}
+.goalband .eyebrow{color:#ffb27a}
+.goalband h2{font-size:clamp(24px,3.2vw,36px);font-weight:800}
+.goalband p{color:var(--on-dark-2);margin-top:10px;max-width:56ch}
+.goalband .fine{color:rgba(255,255,255,.6)!important;margin-top:0!important}
+.gl-steps{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.gl-steps li{background:rgba(255,255,255,.08);border-radius:14px;padding:14px 10px;text-align:center;min-width:0}
+.gl-steps b{display:block;font-family:var(--disp);font-size:clamp(19px,2.4vw,28px);font-weight:800;color:var(--accent-2);line-height:1.1}
+.gl-steps span{display:block;font-size:12px;color:rgba(255,255,255,.8);margin-top:6px;line-height:1.35}
+.goal-line{margin-top:12px;padding:10px 12px;border-radius:12px;background:var(--accent-soft);color:var(--accent-deep);font-size:13.5px;font-weight:650;line-height:1.35}
+.goal-line[hidden]{display:none}
+@media (min-width:960px){.goalband{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px 56px;padding:46px 52px;align-items:center}.goalband .btn{justify-self:start}.goalband .fine{grid-column:1/-1}.gl-steps{grid-row:span 2}}
+/* the basket bar sits over the product bar on a product page */
+.on-product .goalbar{bottom:calc(66px + var(--sab) + 8px)}
+.on-product.has-goal .foot{padding-bottom:calc(28px + 66px + 76px + var(--sab))}
+@media (min-width:960px){.on-product .goalbar{bottom:24px}.on-product.has-goal .foot{padding-bottom:120px}}
+
 /* ───────── ON A PHONE, CENTRED (Thulaib, 29 Sep 2026) ─────────
    The hard left rule is for a desk, where the brand mark sits at the far left of a wide bar. On a phone the
    hero, every page heading and every feature block sit in the centre with their buttons the full width.
    A row title that carries a "See all" link stays a row: title left, link right. Product details and
    forms stay left, because they are read line by line. */
 @media (max-width:719px){
-  .hero-text,.phead .wrap,.teaser,.appband,.promo,.story-in,.split-text,.steps li,.tile,.word,.two > div:first-child,.qpane,.qstep,.blank,.empty{text-align:center}
-  .hero h1,.hero-text > p,.phead h1,.phead p,.teaser p,.appband p,.promo p,.story-in h2,.story-in p,.split-text h2,.split-text > p,.two h2,.two .sub,.qhint,.blank p{margin-left:auto;margin-right:auto}
+  .hero-text,.phead .wrap,.teaser,.appband,.goalband,.promo,.story-in,.split-text,.steps li,.tile,.word,.two > div:first-child,.qpane,.qstep,.blank,.empty{text-align:center}
+  .hero h1,.hero-text > p,.phead h1,.phead p,.teaser p,.appband p,.goalband p,.promo p,.story-in h2,.story-in p,.split-text h2,.split-text > p,.two h2,.two .sub,.qhint,.blank p{margin-left:auto;margin-right:auto}
   .hero-cta{justify-content:center}
   .hero-cta .btn{flex:1 1 100%;max-width:none}
   .hero-trust{justify-content:center}
   .fsearch.big{margin-left:auto;margin-right:auto}
-  .teaser .btn,.promo .btn,.story-in .btn,.split-text .btn{width:100%}
+  .teaser .btn,.promo .btn,.story-in .btn,.split-text .btn,.goalband .btn{width:100%}
   .ab-icon,.si,.sn,.blank .mark{margin-left:auto;margin-right:auto}
   .tile .more{justify-content:center}
   /* a list of ticks is read down its left edge, so the list is centred as a block and its lines stay left */

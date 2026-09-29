@@ -6,6 +6,7 @@
       { "q": "Do I need an account?", "a": ["No. Your basket, your saved items and your delivery details are kept on your own phone. Nothing is stored by this app anywhere else."] },
       { "q": "Can I order without using the basket?", "a": ["Yes. Every product has a WhatsApp button that opens a message about that product. You can also message or call Sastho on 077 767 5984."] },
       { "q": "Can I cancel an order?", "a": ["Yes. Sastho's policy lets you cancel within 6 hours of placing an order, unless the order has already been dispatched. Message Sastho on WhatsApp as soon as you can."] },
+      { "q": "How do the basket offers work?", "a": ["The bigger the basket, the more comes off. Your basket shows each step, how far the next one is and what it is worth in rupees. The offer comes off the whole basket by itself.", "Offers do not add together. If you also have the app offer, the basket takes the better of the two. Sastho confirms which items the offer covers when it confirms your order."] },
       { "q": "Is there a smallest order?", "a": ["The shop sets no smallest order. Add one item or twenty."] }
     ] },
     { "key": "delivery", "name": "Delivery", "icon": "truck", "items": [

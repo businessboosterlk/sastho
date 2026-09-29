@@ -1,8 +1,8 @@
 // THE PRODUCT PAGE: the photographs, the options, the quantity and the two ways to buy.
 import { icon } from './icon.js';
 import { rs, waProduct } from './card.js';
-import { cart, find } from './store.js';
-import { toast, open } from './app.js';
+import { cart, find, goals, push } from './store.js';
+import { toast, open, nextWord } from './app.js';
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
@@ -27,6 +27,16 @@ if (p) {
     $('#p-add span').textContent = word;
     const bar = $('#pbar-add span'); if (bar) bar.textContent = word;
     $('#p-wa').href = waProduct(p, qty, optText());
+    /* what adding THIS does to the basket: the step it reaches, or how close it brings the next one */
+    const line = $('#p-goal');
+    if (line && goals.on) {
+      const now = cart.totals().items, then = now + p.price * qty, a = push(now), b = push(then);
+      line.hidden = false;
+      line.textContent = b.have.kind === 'goal' && b.have.percent > a.have.percent ? `Add this and your whole basket gets ${b.have.percent}% off`
+        : b.next ? `Add this and you are ${rs(b.gap)} from ${b.next.percent}% off your basket`
+        : b.have.percent ? `Your basket has ${b.have.percent}% off` : '';
+      if (!line.textContent) line.hidden = true;
+    }
     $$('[data-optset]').forEach(set => {
       const n = set.dataset.optset;
       set.querySelector('.optpick').textContent = picked[n] ? picked[n] : '';
@@ -42,7 +52,7 @@ if (p) {
       toast('Choose an option first', 'info'); return;
     }
     cart.add(p.id, qty, optText());
-    toast(qty > 1 ? `Added ${qty} to your basket` : 'Added to your basket');
+    toast(nextWord() || (qty > 1 ? `Added ${qty} to your basket` : 'Added to your basket'));
     if (btn && !btn.classList.contains('done')) {
       const was = btn.innerHTML; btn.classList.add('done'); btn.innerHTML = icon('check') + '<span>Added</span>';
       setTimeout(() => { btn.classList.remove('done'); btn.innerHTML = was; paint(); }, 1300);
@@ -58,6 +68,6 @@ if (p) {
   });
   const save = $('#p-save');
   const saveWord = () => { if (save) save.querySelector('span').textContent = save.classList.contains('on') ? 'Saved' : 'Save'; };
-  document.addEventListener('sastho:change', saveWord);
+  document.addEventListener('sastho:change', () => { saveWord(); paint(); });
   paint(); saveWord();
 }

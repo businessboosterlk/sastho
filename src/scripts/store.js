@@ -106,3 +106,34 @@ export const offers = {
   firstVisit: () => read(K.seen, null) === null,
   markSeen() { write(K.seen, SALE); tell('offers'); },
 };
+
+/* ───────── the basket ladder: add this much more, get this much off ───────── */
+const G = SITE.basketGoals || { on: false, tiers: [] };
+const TIERS = (G.on ? G.tiers : []).slice().sort((a, b) => a.spend - b.spend);
+export const goals = {
+  on: TIERS.length > 0, tiers: TIERS, covers: G.covers || '',
+  reached: items => TIERS.filter(t => items >= t.spend).pop() || null,
+  next: items => TIERS.find(t => items < t.spend) || null,
+};
+/* OFFERS NEVER STACK. The basket takes the better of the two, and says which one it took. */
+export function best(items) {
+  const app = offer.open() ? offer.percent : 0, g = goals.reached(items), lad = g ? g.percent : 0;
+  if (!app && !lad) return { kind: '', percent: 0, amount: 0, label: '', note: '' };
+  return app >= lad
+    ? { kind: 'app', percent: app, amount: Math.round(items * app / 100), label: `App offer, ${app}% off your first order`, note: offer.covers, code: offer.code }
+    : { kind: 'goal', percent: lad, amount: Math.round(items * lad / 100), label: `Basket offer, ${lad}% off`, note: goals.covers, spend: g.spend };
+}
+/* what to say to push the basket on: how far the next step is and what it is worth */
+export function push(items) {
+  const b = best(items), n = goals.tiers.find(t => items < t.spend && t.percent > b.percent) || null;
+  return { have: b, next: n, gap: n ? n.spend - items : 0, part: n ? Math.max(0.04, Math.min(1, items / n.spend)) : 1 };
+}
+/* products that close the gap in one tap: no options to choose, from the shelves already in the basket first */
+export function reach(gap, n = 4) {
+  const inside = new Set(cart.lines().map(l => l.id)), shelves = new Set(cart.lines().map(l => find(l.id).shelf));
+  const pool = PRODUCTS.filter(p => !inside.has(p.id) && !p.options && p.stock && p.thumb);
+  if (!(gap > 0)) return pool.filter(p => shelves.has(p.shelf)).slice(0, n);
+  /* the nearest price at or over the gap comes first, then the nearest under it. Nothing dearer than three gaps. */
+  const score = p => (p.price >= gap ? p.price - gap : (gap - p.price) * 1.6) + (shelves.has(p.shelf) ? 0 : gap * 0.35);
+  return pool.filter(p => p.price <= Math.max(gap * 3, gap + 600)).sort((a, b) => score(a) - score(b)).slice(0, n);
+}

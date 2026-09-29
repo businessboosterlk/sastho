@@ -109,6 +109,8 @@ async function run(w, h, touch) {
     ['home', 'index.html', { ask: 1 }],
     ['shop', 'shop.html', {}],
     ['shop, nothing matches', 'shop.html?q=zzzqqq', {}],
+    ['shop, with a basket started', 'shop.html', { cart: CART }],
+    ['product, with a basket started', 'p/' + PLAIN.slug + '.html', { cart: CART }],
     ['deals', 'deals.html', {}],
     ['build, the room', 'build.html', {}],
     ['build, the needs', 'build.html', {}, async () => { await tap('.quiz [data-room="kitchen"]'); }],
@@ -301,12 +303,22 @@ async function run(w, h, touch) {
     await page.touchscreen.tap(x, y); await sleep(500);
     const a = await st(); if (!/^index/.test(a.href) || a.sheets.length) return `a second touch in the same place reached "${under.what}" and the screen is now ${JSON.stringify(a)}`;
   });
+  await want('the basket bar: it appears with the first item, says the next step, opens the basket, goes when the basket is empty', async () => {
+    await go('shop.html'); const hidden = await page.evaluate(() => document.querySelector('#goalbar').hidden); if (!hidden) return 'the bar is shown on an empty basket';
+    await tap('#shop-grid [data-add]'); const a = await page.evaluate(() => ({ hidden: document.querySelector('#goalbar').hidden, top: document.querySelector('#gb-top').textContent, toast: document.querySelector('#toast').textContent }));
+    if (a.hidden || !/more for \d+% off/.test(a.top)) return `after the first item the bar says "${a.top}" (hidden ${a.hidden})`;
+    if (!/more for \d+% off/.test(a.toast)) return `the message after adding says "${a.toast}"`;
+    await tap('#goalbar'); await sleep(800); const b = await st(); if (b.sheets.join() !== 'cart') return `the bar should open the basket, saw [${b.sheets}]`;
+    const n0 = b.cart; await tap('#cart-body .rc-row [data-add]'); const c = await st(); if (c.cart !== n0 + 1) return `a product offered to reach the next step was pressed and the basket went from ${n0} to ${c.cart}`;
+    await back(); await tap(cartOpen); await tap('#cart-body [data-remove]'); await tap('#cart-body [data-remove]'); const d = await st(); if (d.cart !== 0) return `two lines removed and the basket holds ${d.cart}`;
+    await back(); const gone = await page.evaluate(() => document.querySelector('#goalbar').hidden && !document.body.classList.contains('has-goal')); if (!gone) return 'the basket is empty and the bar is still on screen';
+  });
   await want('a second tab of the shop follows the basket', async () => {
     await go('shop.html'); const two = await ctx.newPage(); await two.goto(BASE + 'index.html', { waitUntil: 'load' }); await sleep(300);
     await tap('#shop-grid [data-add]'); await sleep(400);
     const n = await two.evaluate(() => document.querySelector('[data-count="cart"]').textContent); await two.close(); if (n !== '1') return `the other tab shows ${n}`;
   });
-  ok(`${tag}: the sequences, Back once and Back twice`, !F.length && !errs.length, F.length || errs.length ? [...errs.slice(0, 2), ...F].join(' | ') : (touch ? '12' : '11') + ' sequences walked, each ended where its label promised');
+  ok(`${tag}: the sequences, Back once and Back twice`, !F.length && !errs.length, F.length || errs.length ? [...errs.slice(0, 2), ...F].join(' | ') : (touch ? '13' : '12') + ' sequences walked, each ended where its label promised');
   await ctx.close();
   return { kinds: ALL.size, pressed };
 }

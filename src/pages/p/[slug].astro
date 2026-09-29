@@ -62,6 +62,7 @@ for (let i = 0; i < blocks.length; i++) if (blocks[i].h && (!blocks[i + 1] || bl
           {o > 0 && <span class="was">{rs(p.reg)}</span>}
           {o > 0 && <span class="off">Save {rs(p.reg - p.price)}</span>}
         </div>
+        <p class="goal-line" id="p-goal" aria-live="polite" hidden></p>
         {p.short.length > 0 && <p class="lead" data-client-copy>{p.short.join(' ')}</p>}
 
         {p.options.map(op => <div class="optset" data-optset={op.name} data-client-copy>

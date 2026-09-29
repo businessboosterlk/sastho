@@ -3,7 +3,7 @@
 import { SITE } from '../config.js';
 import { icon, url } from './icon.js';
 import { rs, esc, off, img, page, waText, waProduct } from './card.js';
-import { cart, saved, me, hint, find, shelfLabel, onChange, PRODUCTS, SHELVES, META, offer, offers, hello, installed } from './store.js';
+import { cart, saved, me, hint, find, shelfLabel, onChange, PRODUCTS, SHELVES, META, offer, offers, hello, installed, goals, best, push, reach } from './store.js';
 import { open, close, onSheet, isOpen, shutAll } from './sheets.js';
 import { BUILD } from './build.js';
 
@@ -27,12 +27,33 @@ function paint() {
   $$('[data-count="saved"]').forEach(e => { e.textContent = String(s); e.dataset.n = String(s); });
   const fresh = SITE.saleAlerts.inApp ? offers.fresh().length : 0;
   $$('[data-count="offers"]').forEach(e => { e.textContent = String(fresh); e.dataset.n = String(fresh); });
+  goalbar();
   $$('[data-cart-label]').forEach(e => e.setAttribute('aria-label', c ? `Basket, ${c} item${c === 1 ? '' : 's'}` : 'Basket, empty'));
   hearts();
 }
 export function hearts(root = document) {
   const ids = new Set(saved.ids());
   $$('[data-fav]', root).forEach(b => { const on = ids.has(+b.dataset.fav); b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+}
+
+/* ───────── the push: what the next step is, said the same way everywhere ───────── */
+export function nextWord(items = cart.totals().items) {
+  if (!goals.on || !items) return '';
+  const pu = push(items);
+  if (pu.next) return `Added. ${rs(pu.gap)} more for ${pu.next.percent}% off`;
+  return pu.have.percent ? `Added. ${pu.have.percent}% off is yours` : '';
+}
+/* THE BASKET BAR. Once something is in the basket it stays in sight on every page: what is in it, how far the
+   next step is, one tap to open it. It is gone when the basket is empty and while a sheet is open. */
+function goalbar() {
+  const bar = $('#goalbar'); if (!bar) return;
+  const t = cart.totals(), has = t.count > 0;
+  document.body.classList.toggle('has-goal', has);
+  bar.hidden = !has; if (!has) return;
+  const pu = push(t.items);
+  $('#gb-top').textContent = pu.next ? `${rs(pu.gap)} more for ${pu.next.percent}% off` : pu.have.percent ? `${pu.have.percent}% off is yours` : 'Your basket is ready';
+  $('#gb-sub').textContent = `${t.count} item${t.count === 1 ? '' : 's'}, ${rs(t.items - pu.have.amount)}${pu.have.percent && pu.next ? `, ${pu.have.percent}% off so far` : ''}`;
+  $('#gb-fill').style.width = (pu.part * 100) + '%';
 }
 
 /* ───────── delivery, only ever what the client has confirmed ───────── */
@@ -72,25 +93,42 @@ function renderCart() {
     return;
   }
   const d = deliveryLine(t.items);
-  let ship = '';
-  if (D.freeOver != null) {
-    const left = Math.max(0, D.freeOver - t.items);
-    ship = `<div class="shipline">${left > 0 ? `Add <b>${rs(left)}</b> more for free delivery` : '<b>Free delivery on this order</b>'}<div class="bar"><i style="width:${Math.min(100, t.items / D.freeOver * 100)}%"></i></div></div>`;
+  const o = best(t.items), cut = o.amount, pu = push(t.items);
+  /* THE LADDER, where the money is. How far the next step is, what it is worth in rupees on this basket, and
+     the products that reach it in one tap. */
+  let ladder = '';
+  if (goals.on) {
+    const head = pu.next
+      ? `Add <b>${rs(pu.gap)}</b> more and take <b>${pu.next.percent}% off</b> the whole basket`
+      : `<b>${o.percent}% off</b> is yours on this basket`;
+    const sub = pu.next
+      ? (o.percent ? `You have ${o.percent}% off already. The next step is worth ${rs(Math.round(pu.next.spend * pu.next.percent / 100))}.` : `That is ${rs(Math.round(pu.next.spend * pu.next.percent / 100))} off at ${rs(pu.next.spend)}.`)
+      : 'You have reached the top step.';
+    const top = goals.tiers[goals.tiers.length - 1].spend;
+    ladder = `<div class="ladder">
+      <p class="ld-head">${head}</p><p class="ld-sub">${sub}</p>
+      <div class="ld-bar" role="img" aria-label="${pu.next ? rs(pu.gap) + ' to the next step' : 'Top step reached'}"><i style="width:${Math.min(100, t.items / top * 100)}%"></i>${goals.tiers.map(g => `<span class="ld-step${t.items >= g.spend ? ' on' : ''}" style="left:${g.spend / top * 100}%"><em>${g.percent}%</em><small>${rs(g.spend)}</small></span>`).join('')}</div>
+    </div>`;
   }
-  const cut = offer.amount(t.items);
-  /* the offer is shown where the money is: in the basket, with the sum it is worth on this order */
-  const nudge = offer.waiting() ? `<div class="offer-card">
+  const picks = reach(pu.gap);
+  const more = picks.length ? `<div class="reach"><p class="rc-head">${pu.next ? `One of these gets you to ${pu.next.percent}% off` : 'Goes well with your basket'}</p>${picks.map(p => `<div class="rc-row">
+      <a href="${page(p)}"><img src="${esc(img(p.thumb))}" alt="" width="56" height="56" loading="lazy"></a>
+      <a class="nm" href="${page(p)}" data-client-copy><span>${esc(p.name)}</span></a>
+      <button class="btn dark sm" type="button" data-add="${p.id}" aria-label="Add ${esc(p.name)} for ${rs(p.price)}">${icon('plus')}<span>${rs(p.price)}</span></button>
+    </div>`).join('')}</div>` : '';
+  /* the app offer is asked for only when it would beat what the basket already has */
+  const nudge = offer.waiting() && offer.percent > o.percent ? `<div class="offer-card">
       <span class="oc-mark">${icon('device')}</span>
       <div><b>Take ${rs(Math.round(t.items * offer.percent / 100))} off this order</b><span>Keep Sastho on your phone and your first order is ${offer.percent}% less.</span></div>
       <button class="btn dark sm" type="button" data-install-go>Get the app</button>
     </div>` : '';
   /* the sums ride with the list, so the pinned bar holds only the total and the way on, and the list keeps its room */
-  body.innerHTML = nudge + ship + lines.map(lineHTML).join('') + `<div class="sums">
+  body.innerHTML = ladder + lines.map(lineHTML).join('') + more + nudge + `<div class="sums">
     <div class="sum"><span>Items</span><b>${rs(t.items)}</b></div>
     ${t.saved > 0 ? `<div class="sum"><span>You save</span><b class="save">${rs(t.saved)}</b></div>` : ''}
-    ${cut > 0 ? `<div class="sum"><span>App offer, ${offer.percent}% off your first order</span><b class="save">minus ${rs(cut)}</b></div>` : ''}
+    ${cut > 0 ? `<div class="sum"><span>${o.label}</span><b class="save">minus ${rs(cut)}</b></div>` : ''}
     <div class="sum"><span>Delivery</span><b>${d.text}</b></div>
-    ${cut > 0 ? `<p class="note">${esc(offer.covers)}</p>` : ''}
+    ${cut > 0 ? `<p class="note">${esc(o.note)}</p>` : ''}
   </div>`;
   foot.innerHTML = `
     <div class="sum tot"><span>${d.amount == null ? 'Total before delivery' : 'Total'}</span><b>${rs(t.items - cut + (d.amount || 0))}</b></div>
@@ -162,9 +200,9 @@ function orderMessage(m) {
   const t = cart.totals(), d = deliveryLine(t.items);
   let s = 'Hi Sastho, I would like to place this order (cash on delivery):\n\n';
   cart.lines().forEach((l, i) => { const p = find(l.id); s += `${i + 1}. ${p.name}${l.opt ? ' (' + l.opt + ')' : ''}\n   ${l.qty} x ${rs(p.price)} = ${rs(p.price * l.qty)}\n`; });
-  const cut = offer.amount(t.items);
+  const o = best(t.items), cut = o.amount;
   s += `\nItems: ${rs(t.items)}\n`;
-  if (cut > 0) s += `App offer ${offer.code}, ${offer.percent}% off my first order: minus ${rs(cut)}\nItems after the offer: ${rs(t.items - cut)}\n`;
+  if (cut > 0) s += (o.kind === 'app' ? `App offer ${o.code}, ${o.percent}% off my first order` : `Basket offer, ${o.percent}% off a basket of ${rs(o.spend)} or more`) + `: minus ${rs(cut)}\nItems after the offer: ${rs(t.items - cut)}\n`;
   s += `Delivery: ${d.amount == null ? 'please confirm' : d.text}\n`;
   if (d.amount != null) s += `Total: ${rs(t.items - cut + d.amount)}\n`;
   s += `\nName: ${m.name}\nPhone: ${m.phone}\nAddress: ${m.address}\n${m.town ? 'Town: ' + m.town + '\n' : ''}District: ${m.district}\n`;
@@ -174,9 +212,9 @@ function orderMessage(m) {
 }
 function orderSummary() {
   const t = cart.totals(), d = deliveryLine(t.items);
-  const cut = offer.amount(t.items);
+  const o = best(t.items), cut = o.amount;
   return `<div class="sum"><span>${t.count} item${t.count === 1 ? '' : 's'}</span><b>${rs(t.items)}</b></div>
-    ${cut > 0 ? `<div class="sum"><span>App offer, ${offer.percent}% off</span><b class="save">minus ${rs(cut)}</b></div>` : ''}
+    ${cut > 0 ? `<div class="sum"><span>${o.label}</span><b class="save">minus ${rs(cut)}</b></div>` : ''}
     <div class="sum tot"><span>${d.amount == null ? 'Total before delivery' : 'Total'}</span><b>${rs(t.items - cut + (d.amount || 0))}</b></div>`;
 }
 function renderOrder() {
@@ -292,7 +330,7 @@ document.addEventListener('click', e => {
     const p = find(b.dataset.add); if (!p) return;
     /* the screen changes at the tap: the basket is on the phone, so nothing waits on a server */
     cart.add(p.id, +(b.dataset.qty || 1), b.dataset.opt || '');
-    added(b); toast('Added: ' + short(p.name));
+    added(b); toast(nextWord() || 'Added: ' + short(p.name));
     return;
   }
   if ((b = t.closest('[data-fav]'))) {
@@ -309,7 +347,7 @@ document.addEventListener('click', e => {
   if ((b = t.closest('[data-quick-add]'))) {
     const p = find(q.id), miss = optMissing(p, q.opt);
     if (miss) { toast('Choose an option first', 'info'); return; }
-    cart.add(p.id, q.qty, optText(p, q.opt)); toast('Added: ' + short(p.name));
+    cart.add(p.id, q.qty, optText(p, q.opt)); toast(nextWord() || 'Added: ' + short(p.name));
     open('cart', { swap: true }); return;
   }
   if ((b = t.closest('[data-order-send]'))) { const m = readOrderForm(); if (!m) return; me.set(m); window.open(waText(orderMessage(m)), '_blank', 'noopener'); orderView = 'sent'; renderOrder(); return; }
@@ -317,7 +355,7 @@ document.addEventListener('click', e => {
   if ((b = t.closest('[data-order-edit]'))) { orderView = 'form'; renderOrder(); const f = $('#order-form input'); if (f) f.focus(); return; }
   if ((b = t.closest('[data-order-cancel-edit]'))) { orderView = 'card'; renderOrder(); return; }
   if ((b = t.closest('[data-order-back]'))) { orderView = me.get() ? 'card' : 'form'; renderOrder(); return; }
-  if ((b = t.closest('[data-order-done]'))) { if (offer.open()) offer.spend(); cart.clear(); orderView = 'form'; shutAllSoft(); toast('Basket emptied. Thank you'); return; }
+  if ((b = t.closest('[data-order-done]'))) { /* the app offer is spent only when it was the offer this order took */ if (best(cart.totals().items).kind === 'app') offer.spend(); cart.clear(); orderView = 'form'; shutAllSoft(); toast('Basket emptied. Thank you'); return; }
 });
 /* closing two sheets at once (the order over the basket) steps back through both history entries */
 function shutAllSoft() { const n = document.querySelectorAll('.sheet.on').length; shutAll(); if (n > 0) history.go(-n); }
@@ -330,6 +368,14 @@ document.addEventListener('submit', e => {
   if (e.target && e.target.id === 'find-form') { e.preventDefault(); const v = $('#find-input').value.trim(); if (v) { shutAll(); location.replace(url('shop.html') + '?q=' + encodeURIComponent(v)); } }
   if (e.target && e.target.id === 'order-form') e.preventDefault();
 });
+
+/* A PHOTOGRAPH THAT DOES NOT ARRIVE. Product photographs come from sastho.lk. When one fails it is asked for
+   once more, and if it fails again its frame is left clean. Errors do not bubble, so this listens on the way down. */
+document.addEventListener('error', e => {
+  const i = e.target; if (!(i instanceof HTMLImageElement)) return;
+  if (!i.dataset.again && /^https?:/.test(i.src)) { i.dataset.again = '1'; const src = i.src; setTimeout(() => { i.src = src + (src.includes('?') ? '&' : '?') + 'again=1'; }, 1200); return; }
+  i.classList.add('gone'); i.alt = '';
+}, true);
 
 /* ───────── the shell ───────── */
 const top = $('.top');
@@ -438,6 +484,6 @@ if (hello.due()) setTimeout(() => { if (!isOpen()) open('hello'); }, 700);
 if (offers.firstVisit() && !document.body.classList.contains('page-deals')) { /* marked as seen on the Deals page, or now if there is nothing to see */ if (!offers.all().length) offers.markSeen(); }
 
 paint();
-window.Sastho = { cart, saved, find, toast, open, close, search, hearts, offer, offers, installed, BUILD };
+window.Sastho = { cart, saved, find, toast, open, close, search, hearts, offer, offers, installed, goals, best, push, BUILD };
 document.documentElement.classList.add('app-ready');
 export { open, close };

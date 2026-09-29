@@ -19,7 +19,7 @@ built or served.
 npm install          # Node 22.12 or newer
 npm run build        # checks the icons, stamps the build, writes dist/, writes the worker
 node scripts/serve.mjs          # http://localhost:4599/sastho/  behaves like GitHub Pages
-node scripts/check-site.mjs     # the gate: 60 checks, 11 pages, 3 widths, every sheet opened
+node scripts/check-site.mjs     # the gate: 63 checks, 11 pages, 3 widths, every sheet opened, the sums
 node scripts/click-path.mjs     # every touchpoint counted and pressed, Back once and twice
 node scripts/shots.mjs evidence/shots    # photographs of every page, to be LOOKED at
 npm run pull         # reads the whole catalogue from sastho.lk again, then rebuilds the site's data
@@ -57,6 +57,10 @@ click path on the Mac before every push.** They are not yet run by the workflow.
    the charge is confirmed on WhatsApp. Put real numbers in `config.js` and the basket shows them.
 4. **The app offer needs the client's yes.** `SITE.appOffer.agreed` is `false`. Do not share the link with
    shoppers until Cader has agreed the offer and named what it does not cover.
+4b. **The basket ladder needs the client's yes too.** `SITE.basketGoals` holds three steps (3% at Rs 2,500, 5% at
+   Rs 5,000, 8% at Rs 8,000). They are Business Booster's starting point and `agreed` is `false`. The reward is a
+   percentage and never free delivery: BB's own delivery report to the client shows free delivery loses him
+   money. Offers never stack. The gate works the sums out from the config and fails if a screen disagrees.
 5. **On a phone the layout is centred. On a desk it is hard left.** The gate measures both.
 6. **Icons are never drawn by hand.** Lucide and Simple Icons through `scripts/build-icons.mjs`. To add one, put
    its name in that file and run `npm run icons`.
