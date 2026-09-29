@@ -1,0 +1,123 @@
+---
+// ONE PAGE PER PRODUCT, printed at build time from the client's own store data. The name, the price,
+// the photographs, the options and every word of the description are Sastho's. Nothing is invented:
+// no ratings, no reviews and no specifications the store does not hold.
+import Layout from '../../layouts/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import Cards from '../../components/Cards.astro';
+import { SITE } from '../../config.js';
+import { url } from '../../scripts/icon.js';
+import { rs, off, UPLOADS, waProduct, shape } from '../../scripts/card.js';
+import data from '../../data/products.json';
+
+export function getStaticPaths() {
+  return data.products.map(p => ({ params: { slug: p.slug }, props: { p } }));
+}
+const { p } = Astro.props;
+const shelf = data.shelves.find(s => s.key === p.shelf) || { key: '', label: 'Shop' };
+const o = off(p);
+const pics = p.images.length ? p.images : [{ src: '', thumb: '', alt: '' }];
+const src = i => i.src ? UPLOADS + i.src : url('assets/logo.png');
+const th = i => i.thumb ? UPLOADS + i.thumb : url('assets/logo.png');
+const also = data.products.filter(x => x.shelf === p.shelf && x.id !== p.id).slice(0, 10);
+const lead = (p.short[0] || p.desc[0] || '').slice(0, 155);
+/* the description arrives as plain lines. A line that starts with a bullet is a list item, a short line
+   with no full stop is a small heading, everything else is a paragraph. */
+const blocks = [];
+for (const line of p.desc) {
+  if (line.startsWith('•')) { const t = line.replace(/^•\s*/, ''); const last = blocks[blocks.length - 1]; if (last && last.list) last.list.push(t); else blocks.push({ list: [t] }); }
+  else if (/^[A-Z]{1,5}[- ]?\d{2,}[A-Z0-9-]*$/.test(line)) blocks.push({ code: line });          // the store's own product code
+  else if (line.length < 48 && /[a-z]/.test(line) && (!/[.!?:,]$/.test(line) || /:$/.test(line))) blocks.push({ h: line.replace(/:$/, '') });
+  else blocks.push({ p: line });
+}
+/* a heading with nothing under it is only a short line */
+for (let i = 0; i < blocks.length; i++) if (blocks[i].h && (!blocks[i + 1] || blocks[i + 1].h || blocks[i + 1].code)) blocks[i] = { p: blocks[i].h };
+---
+<Layout title={p.name} active="shop" path={'p/' + p.slug + '.html'} image={pics[0].src ? src(pics[0]) : undefined} product={p}
+  description={lead || `${p.name} from Sastho Lanka. Order on WhatsApp and pay cash on delivery.`}>
+
+  <div class="wrap pdp" data-product={p.id}>
+    <nav class="crumbs" aria-label="You are here">
+      <a href={url('shop.html')}><Icon name="left" />Shop</a>
+      <a href={url('shop.html') + '?shelf=' + shelf.key}>{shelf.label}</a>
+    </nav>
+
+    <div class="pdp-grid">
+      <div class="gal">
+        <div class="gal-main" id="gal-main" data-client-copy>
+          {pics.map((i, n) => <img src={src(i)} alt={n === 0 ? p.name : `${p.name}, photograph ${n + 1}`} width="960" height="960" loading={n === 0 ? 'eager' : 'lazy'} fetchpriority={n === 0 ? 'high' : undefined} decoding="async">)}
+          {o > 0 && <span class="badge">{o}% off</span>}
+        </div>
+        {pics.length > 1 && <div class="gal-thumbs" id="gal-thumbs" role="group" aria-label="Photographs">
+          {pics.map((i, n) => <button type="button" class:list={[n === 0 ? 'on' : '']} data-pic={n} aria-label={`Photograph ${n + 1} of ${pics.length}`} aria-pressed={n === 0 ? 'true' : 'false'}><img src={th(i)} alt="" width="72" height="72" loading="lazy"></button>)}
+        </div>}
+      </div>
+
+      <div class="info">
+        <a class="card-cat" href={url('shop.html') + '?shelf=' + shelf.key}>{shelf.label}</a>
+        <h1 data-client-copy>{p.name}</h1>
+        <div class="price">
+          {p.range && p.range.max > p.range.min && <span class="from">From</span>}
+          <span class="now">{rs(p.price)}</span>
+          {o > 0 && <span class="was">{rs(p.reg)}</span>}
+          {o > 0 && <span class="off">Save {rs(p.reg - p.price)}</span>}
+        </div>
+        {p.short.length > 0 && <p class="lead" data-client-copy>{p.short.join(' ')}</p>}
+
+        {p.options.map(op => <div class="optset" data-optset={op.name} data-client-copy>
+          <span class="optname" data-client-copy>{op.name}<i class="optpick" aria-live="polite"></i></span>
+          <div class="chips wrapped" role="group" aria-label={op.name}>
+            {op.terms.map(t => <button class="chip" type="button" data-opt-name={op.name} data-opt-term={t} aria-pressed="false" data-client-copy>{t}</button>)}
+          </div>
+        </div>)}
+
+        <div class="qrow"><span>Quantity</span>
+          <div class="qty" role="group" aria-label="Quantity">
+            <button type="button" id="pq-minus" aria-label="One fewer" disabled><Icon name="minus" /></button>
+            <b id="pq" aria-live="polite">1</b>
+            <button type="button" id="pq-plus" aria-label="One more"><Icon name="plus" /></button>
+          </div>
+        </div>
+
+        <div class="buy">
+          <button class="btn primary block" type="button" id="p-add"><Icon name="cart" /><span>Add to basket</span></button>
+          <div class="pair">
+            <a class="btn ghost" id="p-wa" href={waProduct(shape(p))} target="_blank" rel="noopener"><Icon name="b-whatsapp" />Order on WhatsApp</a>
+            <button class="btn ghost" type="button" data-fav={p.id} aria-pressed="false" id="p-save"><Icon name="heart" /><span>Save</span></button>
+          </div>
+        </div>
+
+        <ul class="facts">
+          <li><Icon name="cash" /><span><b>Cash on delivery</b>Pay the courier when it arrives</span></li>
+          <li><Icon name="truck" /><span><b>Island-wide delivery</b>Sastho confirms the charge and the day on WhatsApp</span></li>
+          <li><Icon name="returns" /><span><b>{SITE.returnsDays} day returns</b>On unused items in their original packaging</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="more-info">
+      <details open>
+        <summary>About this product<Icon name="down" /></summary>
+        <div class="prose" data-client-copy>
+          {blocks.map(b => b.h ? <h3>{b.h}</h3> : b.list ? <ul>{b.list.map(t => <li>{t}</li>)}</ul> : b.code ? <p class="code">Product code {b.code}</p> : <p>{b.p}</p>)}
+        </div>
+      </details>
+      <details>
+        <summary>Delivery and returns<Icon name="down" /></summary>
+        <div class="prose">
+          <p>Sastho delivers anywhere in Sri Lanka. When you send your order, Sastho confirms the delivery charge and the delivery day on WhatsApp before anything is sent out.</p>
+          <p>You have {SITE.returnsDays} days from delivery to ask for a return or a refund. The item must be unused, in the condition you received it and in its original packaging, with your proof of purchase.</p>
+          <p>If something arrives damaged, faulty or wrong, tell Sastho straight away. Sastho arranges the collection or the swap at its own cost.</p>
+          <p><a class="inline" href={SITE.store + '/refunds-returns/'} target="_blank" rel="noopener">Read the full returns policy on sastho.lk</a></p>
+        </div>
+      </details>
+    </div>
+
+    {also.length > 0 && <section class="also" aria-labelledby="also-h">
+      <div class="head"><div><h2 id="also-h">More from {shelf.label}</h2></div><a class="more" href={url('shop.html') + '?shelf=' + shelf.key}>See all<Icon name="arrow" /></a></div>
+      <div class="rail"><Cards items={also} /></div>
+    </section>}
+  </div>
+
+  <script>import '../../scripts/product.js';</script>
+</Layout>

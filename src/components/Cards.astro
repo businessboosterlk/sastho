@@ -1,0 +1,8 @@
+---
+// A run of product cards, printed at build time by the same function the browser uses.
+import { cardHTML } from '../scripts/card.js';
+import data from '../data/products.json';
+const { items = [], eager = 0 } = Astro.props;
+const label = key => (data.shelves.find(s => s.key === key) || {}).label || '';
+---
+<Fragment set:html={items.map((p, i) => cardHTML(p, label(p.shelf), i < eager)).join('\n')} />

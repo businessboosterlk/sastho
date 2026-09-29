@@ -1,0 +1,229 @@
+---
+// THE SHELL EVERY PAGE WEARS: head, the strip under the clock, the top bar, the footer, the bottom bar,
+// every sheet and the message line. One header and one bottom bar, so the nine pages are one app.
+import '../styles/app.css';
+import '../styles/pages.css';
+import Icon from '../components/Icon.astro';
+import { SITE, TABS, LINKS } from '../config.js';
+import { url } from '../scripts/icon.js';
+import { waText } from '../scripts/card.js';
+import data from '../data/products.json';
+
+const { title, description, active = '', path = '', image = 'assets/life-3.jpg', product = null } = Astro.props;
+const full = title ? `${title} | ${SITE.name}` : `${SITE.name} | ${SITE.tagline}`;
+const origin = (Astro.site ? Astro.site.origin : '');
+const here = origin + url(path);
+const share = /^https?:/.test(image) ? image : origin + url(image);
+const hello = waText('Hi Sastho, I have a question.');
+const alerts = waText('Hi Sastho, please send me your sale alerts on WhatsApp.');
+const O = SITE.appOffer;
+const pulled = new Date(data.meta.pulled).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Colombo' });
+const promises = [
+  { icon: 'cash',    text: 'Pay cash when it arrives' },
+  { icon: 'truck',   text: 'Delivered anywhere in Sri Lanka' },
+  { icon: 'returns', text: `Returns within ${SITE.returnsDays} days on unused items` },
+  { icon: 'chat',    text: `Order on WhatsApp, ${SITE.phoneShown}` },
+  { icon: 'clock',   text: SITE.hours },
+];
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{full}</title>
+<meta name="description" content={description}>
+<meta name="robots" content={SITE.robots}>
+<link rel="canonical" href={here}>
+<meta name="theme-color" content="#faf8f5">
+<meta name="color-scheme" content="light">
+<link rel="manifest" href={url('manifest.json')}>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content={SITE.short}>
+<link rel="apple-touch-icon" href={url('apple-touch-icon.png')}>
+<link rel="icon" type="image/png" href={url('favicon.png')}>
+<meta name="format-detection" content="telephone=no">
+<meta property="og:site_name" content={SITE.name}>
+<meta property="og:title" content={full}>
+<meta property="og:description" content={description}>
+<meta property="og:image" content={share}>
+<meta property="og:url" content={here}>
+<meta property="og:type" content={product ? 'product' : 'website'}>
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href={url('assets/fonts/jakarta.woff2')} as="font" type="font/woff2" crossorigin>
+<link rel="preload" href={url('assets/fonts/inter.woff2')} as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://sastho.lk">
+<!-- The catalogue is asked for in the head so it has run before any page script reads it. Scripts run in
+     the order they are written, and a page's own script sits higher in the page than the shell's. -->
+<script is:inline defer src={url('assets/catalog.js')}></script>
+<slot name="head" />
+</head>
+<body class:list={[product ? 'on-product' : '', 'page-' + (active || 'plain')]}>
+<div class="statusfill" aria-hidden="true"></div>
+
+<header class="top" data-behind>
+  <a class="brand" href={url('index.html')} aria-label={SITE.name + ', home'}><img src={url('assets/logo.png')} alt={SITE.name} width="409" height="250"></a>
+  <nav class="top-links" aria-label="Pages">
+    {LINKS.map(l => <a href={url(l.href)} class:list={[active === l.key ? 'on' : '']} aria-current={active === l.key ? 'page' : undefined}>{l.label}</a>)}
+  </nav>
+  <button class="top-search" type="button" data-sheet="search"><Icon name="search" /><span>Search the shop</span></button>
+  <button class="ib search-ib" type="button" data-sheet="search" aria-label="Search the shop"><Icon name="search" /></button>
+  <button class="ib" type="button" data-sheet="saved" aria-label="Saved items"><Icon name="heart" /><span class="count" data-count="saved" data-n="0"></span></button>
+  <button class="ib cart-top" type="button" data-sheet="cart" data-cart-label aria-label="Basket"><Icon name="cart" /><span class="count" data-count="cart" data-n="0"></span></button>
+  <a class="ib wa" href={hello} target="_blank" rel="noopener" aria-label="Chat with Sastho on WhatsApp"><Icon name="b-whatsapp" /><span class="wa-word">WhatsApp</span></a>
+</header>
+
+<div class="ticker" data-behind aria-hidden="true">
+  <div class="ticker-track">
+    {[0, 1].map(() => promises.map(p => <span><Icon name={p.icon} />{p.text}</span>))}
+  </div>
+</div>
+
+<div class="install" id="install" data-behind role="note">
+  <span class="in-mark"><Icon name="download" /></span>
+  <div class="in-text"><b data-install-pitch>Keep Sastho on your phone</b><span data-install-how>Install the app. One tap, no app store.</span></div>
+  <button class="x" type="button" data-install-no aria-label="Not now"><Icon name="close" /></button>
+  <button class="btn primary sm" type="button" data-install-go>Get the app</button>
+</div>
+
+<main data-behind>
+  <slot />
+</main>
+
+<footer class="foot" data-behind>
+  <div class="wrap">
+    <a class="mark" href={url('index.html')} aria-label={SITE.name + ', home'}><img src={url('assets/logo-light.png')} alt={SITE.name} width="409" height="250" loading="lazy"></a>
+    <p class="line1">Home and kitchen finds at honest prices, delivered anywhere in Sri Lanka. Pay cash when it arrives.</p>
+    <nav aria-label="Footer">
+      {LINKS.map(l => <a href={url(l.href)}>{l.label}</a>)}
+      <a href={SITE.wholesale} target="_blank" rel="noopener">Wholesale</a>
+      <a href={SITE.store + '/refunds-returns/'} target="_blank" rel="noopener">Returns policy</a>
+    </nav>
+    <div class="reach">
+      <a href={hello} target="_blank" rel="noopener"><Icon name="phone" />{SITE.phoneIntl}</a>
+      <a href={'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(SITE.mapQuery)} target="_blank" rel="noopener"><Icon name="pin" />{SITE.address}</a>
+      <span><Icon name="clock" />{SITE.hours}</span>
+    </div>
+    <div class="soc">
+      <a href={hello} target="_blank" rel="noopener" aria-label="WhatsApp"><Icon name="b-whatsapp" /></a>
+      <a href={SITE.instagram} target="_blank" rel="noopener" aria-label="Instagram"><Icon name="b-instagram" /></a>
+      {SITE.facebook && <a href={SITE.facebook} target="_blank" rel="noopener" aria-label="Facebook"><Icon name="b-facebook" /></a>}
+    </div>
+    <div class="bar">
+      <b>&copy; 2026 {SITE.name}.</b> A concept by Business Booster.<br>
+      {data.meta.count} products and their prices were read from sastho.lk on {pulled}. Sastho confirms the price, stock and delivery on WhatsApp before an order is sent out.<br>
+      Build <span data-build></span>
+    </div>
+  </div>
+</footer>
+
+{product
+  ? <nav class="tabs pbar" data-behind aria-label="Buy this product">
+      <button class="tab" type="button" data-sheet="cart" data-cart-label aria-label="Basket"><Icon name="cart" /><span>Basket</span><span class="count" data-count="cart" data-n="0"></span></button>
+      <button class="btn primary" type="button" id="pbar-add"><Icon name="plus" /><span>{product.options.length ? 'Choose and add' : 'Add to basket'}</span></button>
+    </nav>
+  : <nav class="tabs" data-behind aria-label="Main">
+      {TABS.filter(t => t.key !== 'build').map(t => <a class:list={['tab', active === t.key ? 'on' : '']} href={url(t.href)} aria-current={active === t.key ? 'page' : undefined}><Icon name={t.icon} /><span>{t.label}</span>{t.key === 'deals' && <span class="count" data-count="offers" data-n="0"></span>}</a>)}
+      <button class="tab" type="button" data-sheet="cart" data-cart-label aria-label="Basket"><Icon name="cart" /><span>Basket</span><span class="count" data-count="cart" data-n="0"></span></button>
+      <button class:list={['tab', ['build', 'about', 'contact', 'faq'].includes(active) ? 'on' : '']} type="button" data-sheet="menu" aria-label="More pages"><Icon name="menu" /><span>More</span></button>
+    </nav>}
+
+<div class="scrim" data-scrim></div>
+
+<aside class="sheet tall" id="sheet-cart" role="dialog" aria-modal="true" aria-labelledby="cart-title" aria-hidden="true" tabindex="-1" inert>
+  <div class="s-head"><h3 id="cart-title">Your basket</h3><button class="x" type="button" data-close aria-label="Close the basket"><Icon name="close" /></button></div>
+  <div class="s-body" id="cart-body"></div>
+  <div class="s-foot" id="cart-foot"></div>
+</aside>
+
+<aside class="sheet tall" id="sheet-order" role="dialog" aria-modal="true" aria-labelledby="order-title" aria-hidden="true" tabindex="-1" inert>
+  <div class="s-head"><h3 id="order-title">Your order</h3>
+    <button class="btn ghost sm s-edit" type="button" id="order-edit" data-order-edit hidden><Icon name="pencil" />Edit</button>
+    <button class="x" type="button" data-close aria-label="Back to the basket"><Icon name="close" /></button></div>
+  <div class="s-body" id="order-body"></div>
+  <div class="s-foot" id="order-foot"></div>
+</aside>
+
+<aside class="sheet tall" id="sheet-saved" role="dialog" aria-modal="true" aria-labelledby="saved-title" aria-hidden="true" tabindex="-1" inert>
+  <div class="s-head"><h3 id="saved-title">Saved items</h3><button class="x" type="button" data-close aria-label="Close saved items"><Icon name="close" /></button></div>
+  <div class="s-body" id="saved-body"></div>
+  <div class="s-foot" id="saved-foot"></div>
+</aside>
+
+<aside class="sheet mid" id="sheet-quick" role="dialog" aria-modal="true" aria-labelledby="quick-title" aria-hidden="true" tabindex="-1" inert>
+  <div class="s-head"><h3 id="quick-title">Product</h3><button class="x" type="button" data-close aria-label="Close"><Icon name="close" /></button></div>
+  <div class="s-body" id="quick-body"></div>
+  <div class="s-foot" id="quick-foot"></div>
+</aside>
+
+<aside class="sheet full" id="sheet-search" role="dialog" aria-modal="true" aria-label="Search the shop" aria-hidden="true" tabindex="-1" inert>
+  <form class="find" id="find-form" role="search" action={url('shop.html')}>
+    <div class="box"><Icon name="search" />
+      <input id="find-input" name="q" type="search" placeholder="Plates, lamps, jars" aria-label="Search the shop" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" data-autofocus></div>
+    <button class="x" type="button" data-close aria-label="Close search"><Icon name="close" /></button>
+  </form>
+  <div class="s-body" id="search-body"></div>
+</aside>
+
+<aside class="sheet" id="sheet-menu" role="dialog" aria-modal="true" aria-labelledby="menu-title" aria-hidden="true" tabindex="-1" inert>
+  <div class="s-head"><h3 id="menu-title">More</h3><button class="x" type="button" data-close aria-label="Close the menu"><Icon name="close" /></button></div>
+  <div class="s-body">
+    <nav class="menu" aria-label="More pages">
+      <a href={url('build.html')}><Icon name="wand" />Build My Space<Icon name="right" class="go" /></a>
+      <a href={url('about.html')}><Icon name="info" />About Sastho<Icon name="right" class="go" /></a>
+      <a href={url('faq.html')}><Icon name="help" />Help<Icon name="right" class="go" /></a>
+      <a href={url('contact.html')}><Icon name="pin" />Contact and showroom<Icon name="right" class="go" /></a>
+      <a href={hello} target="_blank" rel="noopener"><Icon name="b-whatsapp" />Chat on WhatsApp<Icon name="external" class="go" /></a>
+      <a href={SITE.wholesale} target="_blank" rel="noopener"><Icon name="building" />Wholesale<Icon name="external" class="go" /></a>
+      <a href={SITE.instagram} target="_blank" rel="noopener"><Icon name="b-instagram" />Instagram<Icon name="external" class="go" /></a>
+      <button type="button" data-install-go data-install-row hidden><Icon name="device" /><span data-install-pitch>Keep Sastho on your phone</span><Icon name="right" class="go" /></button>
+      {SITE.saleAlerts.whatsapp && <a href={alerts} target="_blank" rel="noopener"><Icon name="tag" />Sale alerts on WhatsApp<Icon name="external" class="go" /></a>}
+    </nav>
+    <p class="menu-foot">{SITE.address}<br>{SITE.hours}<br>Build <span data-build></span><br><span data-update></span></p>
+  </div>
+</aside>
+
+<aside class="sheet" id="sheet-install" role="dialog" aria-modal="true" aria-labelledby="install-title" aria-hidden="true" tabindex="-1" inert>
+  <div class="s-head"><h3 id="install-title">Keep Sastho on your phone</h3><button class="x" type="button" data-close aria-label="Close"><Icon name="close" /></button></div>
+  <div class="s-body">
+    {O.on && <div class="offer-hero"><b>{O.percent}% off</b><span>your first order from the app</span></div>}
+    <ol class="howto ios-only">
+      <li><span class="hn">1</span><div><b>Open this page in Safari</b>Only Safari can add an app to an iPhone.</div></li>
+      <li><span class="hn">2</span><div><b>Tap the three dots, then Share <Icon name="share" class="inl" /></b>They sit at the bottom of Safari. On an older iPhone the share button is there by itself.</div></li>
+      <li><span class="hn">3</span><div><b>Tap View More, then Add to Home Screen <Icon name="addbox" class="inl" /></b>Leave Open as Web App switched on, then tap Add.</div></li>
+      <li><span class="hn">4</span><div><b>Open Sastho from your Home Screen</b>{O.on ? 'The offer is waiting in your basket.' : 'It opens full screen, like any app.'}</div></li>
+    </ol>
+    <ol class="howto other-only">
+      <li><span class="hn">1</span><div><b>Open your browser's menu</b>In Chrome it is the three dots at the top.</div></li>
+      <li><span class="hn">2</span><div><b>Choose Install app or Add to Home screen</b>No app store and nothing to pay.</div></li>
+      <li><span class="hn">3</span><div><b>Open Sastho from your Home Screen</b>{O.on ? 'The offer is waiting in your basket.' : 'It opens full screen, like any app.'}</div></li>
+    </ol>
+    {O.on && <p class="fine">{O.covers} One offer for each phone, on the first order sent from the app.</p>}
+  </div>
+  <div class="s-foot"><button class="btn primary" type="button" data-close>Got it</button></div>
+</aside>
+
+<aside class="sheet" id="sheet-hello" role="dialog" aria-modal="true" aria-labelledby="hello-title" aria-hidden="true" tabindex="-1" inert>
+  <div class="s-head"><h3 id="hello-title">Welcome to the app</h3><button class="x" type="button" data-close aria-label="Close"><Icon name="close" /></button></div>
+  <div class="s-body">
+    {O.on && <div class="offer-hero"><b>{O.percent}% off</b><span>is waiting in your basket</span></div>}
+    <p class="lead">{O.on ? `Your first order from this app is ${O.percent}% less. It comes off in the basket by itself, so there is no code to type.` : 'Sastho now opens from your Home Screen, full screen, with your basket kept on the phone.'}</p>
+    {SITE.saleAlerts.whatsapp && <p class="lead">Want to hear when prices drop? Sastho can send its sale alerts to your WhatsApp.</p>}
+    {O.on && <p class="fine">{O.covers}</p>}
+  </div>
+  <div class="s-foot">
+    <a class="btn primary" href={url('shop.html')}>Start shopping</a>
+    {SITE.saleAlerts.whatsapp && <a class="btn ghost" href={alerts} target="_blank" rel="noopener"><Icon name="b-whatsapp" />Send me sale alerts</a>}
+    <button class="btn quiet" type="button" data-close>Not now</button>
+  </div>
+</aside>
+
+<slot name="sheets" />
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>import '../scripts/app.js';</script>
+</body>
+</html>

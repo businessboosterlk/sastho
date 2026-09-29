@@ -1,3 +1,29 @@
+# SASTHO LANKA STOREFRONT
+
+## REBUILT 29 SEPTEMBER 2026. READ `DEVELOPER.md` FIRST.
+
+The nine single HTML files described below were replaced by an Astro build on 29 Sep 2026. They are kept in
+`legacy/` as the rollback. Everything under "HISTORY" is the record of the first build and is no longer how the
+site works. What changed and why:
+
+- One header and one bottom bar on every page. Before, each page had its own.
+- One basket, kept on the phone, on every page. Before, two pages kept two different baskets and seven kept none.
+- 701 real products with one real page each, read from the sastho.lk store feed. Before, every product link
+  opened the same made up dinner plate set with made up reviews.
+- Removed because the store holds no such data: star ratings, sold counts, "only 3 left", "12 viewing", the
+  countdown timer, the "holding your items" timer, the pop up of made up orders, the made up reviews, the
+  WELCOME10 code, the Rs 350 delivery charge and the free delivery over Rs 5,000 line.
+- Checkout and the contact form hand off to WhatsApp. Before, both showed a success message and sent nothing.
+- Installable as an app, with 10% off the first order from the installed app (needs Cader's yes).
+- `noindex`, so the concept does not compete with sastho.lk.
+
+OPEN WITH THE CLIENT: the app offer and what it excludes, the delivery charge, 14 days or 7 days for returns
+(his two policy pages disagree), the Facebook address, a vector file of the tag logo for a sharper app icon.
+
+---
+
+## HISTORY: the first build, July 2026
+
 # Sastho — World-Class Storefront Remake
 
 **Client:** Sastho (sastho.lk), Sri Lanka's budget home, kitchen and lifestyle store. Colombo 11, island-wide COD delivery.

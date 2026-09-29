@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Cards from '../components/Cards.astro';
+import { url } from '../scripts/icon.js';
+import data from '../data/products.json';
+---
+<Layout title="Page not found" path="404.html" description="That page is not here. The Sastho Lanka shop is.">
+  <section class="phead">
+    <div class="wrap">
+      <span class="eyebrow">Page not found</span>
+      <h1>That page is not here</h1>
+      <p>The link may be old or mistyped. Everything Sastho sells is in the shop.</p>
+      <div class="hero-cta">
+        <a class="btn primary" href={url('shop.html')}><Icon name="store" />Browse the shop</a>
+        <button class="btn ghost" type="button" data-sheet="search"><Icon name="search" />Search</button>
+      </div>
+    </div>
+  </section>
+  <section class="wrap">
+    <div class="chips wrapped">
+      {data.shelves.map(s => <a class="chip" href={url('shop.html') + '?shelf=' + s.key}>{s.label}<small>{s.count}</small></a>)}
+    </div>
+  </section>
+  <section class="sect">
+    <div class="wrap">
+      <div class="head"><div><h2>Just added to the shop</h2></div><a class="more" href={url('shop.html')}>See all<Icon name="arrow" /></a></div>
+      <div class="rail"><Cards items={data.products.slice(0, 10)} /></div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../config.js';
+import { url } from '../scripts/icon.js';
+import { waText } from '../scripts/card.js';
+import faq from '../data/faq.json';
+const hello = waText('Hi Sastho, I have a question.');
+const O = SITE.appOffer;
+/* the offer answer is printed only while the offer runs */
+const groups = faq.groups.map(g => ({ ...g, items: g.items.filter(i => O.on || !/app offer/i.test(i.q)).map(i => ({ ...i, q: i.q.replace('10%', O.percent + '%'), a: i.a.map(t => t.replace('10%', O.percent + '%')) })) }));
+const total = groups.reduce((n, g) => n + g.items.length, 0);
+---
+<Layout title="Help" active="faq" path="faq.html"
+  description="How ordering, delivery, paying and returns work at Sastho Lanka. Answers taken from Sastho's own policies.">
+
+  <section class="phead">
+    <div class="wrap">
+      <span class="eyebrow">Help</span>
+      <h1>Answers before you order</h1>
+      <p>{total} answers, taken from Sastho's own policies.</p>
+      <label class="fsearch big"><Icon name="search" /><span class="sr">Search the answers</span>
+        <input id="faq-q" type="search" placeholder="Search, for example returns" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" enterkeyhint="search"></label>
+    </div>
+  </section>
+
+  <section class="wrap faq">
+    <div class="chips" id="faq-tabs" role="group" aria-label="Topic">
+      <button class="chip on" type="button" data-topic="" aria-pressed="true">All</button>
+      {groups.map(g => <button class="chip" type="button" data-topic={g.key} aria-pressed="false"><Icon name={g.icon} />{g.name}</button>)}
+    </div>
+    <p class="fline" id="faq-line" aria-live="polite" hidden></p>
+    {groups.map(g => <section class="fgrp" data-group={g.key} aria-labelledby={'g-' + g.key}>
+      <h2 id={'g-' + g.key}><span class="si"><Icon name={g.icon} /></span>{g.name}</h2>
+      <div class="qa">
+        {g.items.map(i => <details>
+          <summary>{i.q}<Icon name="down" /></summary>
+          <div class="prose">{i.a.map(t => <p>{t}</p>)}</div>
+        </details>)}
+      </div>
+    </section>)}
+    <div class="empty" id="faq-none" hidden><strong>No answer matches that</strong>Try one word, such as refund or delivery. Or ask Sastho and get a person.<br><a class="btn wa sm" href={hello} target="_blank" rel="noopener"><Icon name="b-whatsapp" />Ask on WhatsApp</a></div>
+  </section>
+
+  <section class="sect">
+    <div class="wrap">
+      <div class="teaser">
+        <div>
+          <span class="eyebrow">Still not sure?</span>
+          <h2>Ask a person</h2>
+          <p>Sastho answers on WhatsApp 7 days a week, 10am to 7pm.</p>
+        </div>
+        <a class="btn wa" href={hello} target="_blank" rel="noopener"><Icon name="b-whatsapp" />Chat on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+    let topic = '', words = '';
+    function paint() {
+      let shown = 0;
+      $$('.fgrp').forEach(g => {
+        let n = 0;
+        g.querySelectorAll('details').forEach(d => {
+          const hit = !words || d.textContent.toLowerCase().includes(words);
+          d.hidden = !hit; if (hit) n++;
+          if (words) d.open = hit && n <= 3;
+        });
+        g.hidden = (topic && g.dataset.group !== topic) || n === 0;
+        if (!g.hidden) shown += n;
+      });
+      $('#faq-none').hidden = shown > 0;
+      const line = $('#faq-line'); line.hidden = !words;
+      line.textContent = shown === 1 ? '1 answer matches' : shown + ' answers match';
+      $$('#faq-tabs .chip').forEach(b => { const on = b.dataset.topic === topic; b.classList.toggle('on', on); b.setAttribute('aria-pressed', String(on)); });
+    }
+    $('#faq-tabs').addEventListener('click', e => { const b = e.target.closest('[data-topic]'); if (b) { topic = b.dataset.topic; paint(); } });
+    $('#faq-q').addEventListener('input', e => { words = e.target.value.trim().toLowerCase(); if (words) topic = ''; paint(); });
+    $('#faq-q').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); e.target.blur(); } });
+  </script>
+</Layout>

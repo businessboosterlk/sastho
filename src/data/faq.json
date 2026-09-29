@@ -1,0 +1,43 @@
+{
+  "_source": "Every answer is taken from Sastho's own pages, read on 29 Sep 2026: sastho.lk/refunds-returns, sastho.lk/after-sale-service, the site footer, or from how this app works. Where Sastho has not published a figure the answer says Sastho confirms it on WhatsApp. Never add a delivery time, a delivery charge, a warranty length or a price promise that Sastho has not published.",
+  "groups": [
+    { "key": "order", "name": "Ordering", "icon": "cart", "items": [
+      { "q": "How do I place an order?", "a": ["Add what you want to your basket, then choose Continue to order. Add your name, number and delivery address, then send the order on WhatsApp.", "Sastho replies on WhatsApp to confirm the price, the stock and the delivery before anything is sent out."] },
+      { "q": "Do I need an account?", "a": ["No. Your basket, your saved items and your delivery details are kept on your own phone. Nothing is stored by this app anywhere else."] },
+      { "q": "Can I order without using the basket?", "a": ["Yes. Every product has a WhatsApp button that opens a message about that product. You can also message or call Sastho on 077 767 5984."] },
+      { "q": "Can I cancel an order?", "a": ["Yes. Sastho's policy lets you cancel within 6 hours of placing an order, unless the order has already been dispatched. Message Sastho on WhatsApp as soon as you can."] },
+      { "q": "Is there a smallest order?", "a": ["The shop sets no smallest order. Add one item or twenty."] }
+    ] },
+    { "key": "delivery", "name": "Delivery", "icon": "truck", "items": [
+      { "q": "Where do you deliver?", "a": ["Anywhere in Sri Lanka. Sastho ships island-wide."] },
+      { "q": "How much is delivery?", "a": ["Sastho confirms the delivery charge on WhatsApp when it confirms your order, before anything is sent out. The basket shows your items total until then."] },
+      { "q": "How long does delivery take?", "a": ["Sastho tells you the delivery day on WhatsApp when it confirms your order."] },
+      { "q": "Can I collect from the showroom?", "a": ["The showroom is at No. 84/1, Maliban Street, Colombo 11 and is open Monday to Sunday, 10am to 7pm. Ask on WhatsApp first so your order is ready when you arrive."] }
+    ] },
+    { "key": "pay", "name": "Paying", "icon": "cash", "items": [
+      { "q": "How do I pay?", "a": ["Cash on delivery. You pay the courier when your order arrives."] },
+      { "q": "Does this app take card payments?", "a": ["No. This app takes no payment at all. If you would rather pay by card, the sastho.lk website has a card checkout."] },
+      { "q": "Do I pay anything before delivery?", "a": ["No. With cash on delivery there is nothing to pay until the parcel is in your hands."] }
+    ] },
+    { "key": "returns", "name": "Returns and refunds", "icon": "returns", "items": [
+      { "q": "Can I return something?", "a": ["Yes. You have 14 days from the day of delivery to ask for a return or a refund.", "The item must be unused, in the condition you received it and in its original packaging. You also need your proof of purchase, which is the receipt or the order confirmation."] },
+      { "q": "What if it arrives damaged, faulty or wrong?", "a": ["Tell Sastho straight away on WhatsApp. Sastho arranges for the item to be collected or swapped at its own cost."] },
+      { "q": "How do I send something back?", "a": ["Message Sastho with your order number and the reason. Once the return is agreed, pack the item with the receipt and send it to Sastho Lanka, 84 Maliban Street, Pettah, Colombo 11.", "You can also bring the item and the receipt to the showroom within 14 days of delivery."] },
+      { "q": "How long does a refund take?", "a": ["A refund goes back the same way you paid. Sastho's policy says it can take 7 to 14 business days to show, depending on your payment provider."] },
+      { "q": "Is there anything I cannot return?", "a": ["For health and hygiene reasons Sastho does not take back perishable goods, hygiene products or opened personal care items. Items damaged through misuse may not get a full refund. The delivery charge you first paid is usually not refunded."] },
+      { "q": "Do products have a warranty?", "a": ["Some do. Sastho says some products carry a limited manufacturer or store warranty. Ask on WhatsApp about the product you are looking at and Sastho tells you whether it is covered."] }
+    ] },
+    { "key": "shop", "name": "Products and showroom", "icon": "store", "items": [
+      { "q": "Are the prices in the app correct?", "a": ["Prices are read from sastho.lk. The date they were read is printed at the foot of every page. Sastho confirms the price when it confirms your order."] },
+      { "q": "Is everything in the app in stock?", "a": ["The app lists what the store showed as available when the prices were read. Sastho confirms the stock when it confirms your order."] },
+      { "q": "Can I see products before I buy?", "a": ["Yes. Visit the showroom at No. 84/1, Maliban Street, Colombo 11. It is open Monday to Sunday, 10am to 7pm."] },
+      { "q": "Do you sell wholesale?", "a": ["Yes. Hotels, resellers and offices can ask for wholesale rates at wholesale.sastho.lk or on WhatsApp."] }
+    ] },
+    { "key": "app", "name": "The app", "icon": "device", "items": [
+      { "q": "How do I put Sastho on my phone?", "a": ["On an iPhone, open this page in Safari. Tap the three dots at the bottom, then Share, then View More, then Add to Home Screen.", "On Android, tap Get the app. You can also open the browser menu and choose Install app. There is no app store and nothing to pay."] },
+      { "q": "How does the 10% app offer work?", "a": ["Put Sastho on your Home Screen and open it from there. Your first order from the app is 10% less. It comes off in the basket by itself and the order message tells Sastho.", "It is one offer for each phone. Sastho confirms which items the offer covers when it confirms your order."] },
+      { "q": "How do I hear about sales?", "a": ["Each time you open the app, the Deals tab marks the offers that are new since you last looked. You can also ask Sastho to send its sale alerts to your WhatsApp."] },
+      { "q": "Does it work with no signal?", "a": ["You can browse the range and fill your basket with no signal. Photographs you have not seen before need a connection. So does sending the order."] }
+    ] }
+  ]
+}

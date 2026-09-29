@@ -1,0 +1,84 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import Cards from '../components/Cards.astro';
+import AppBand from '../components/AppBand.astro';
+import { SITE } from '../config.js';
+import { url } from '../scripts/icon.js';
+import { waText } from '../scripts/card.js';
+import data from '../data/products.json';
+const P = data.products;
+const offers = P.filter(p => p.sale).sort((a, b) => (1 - a.price / a.reg) < (1 - b.price / b.reg) ? 1 : -1);
+const u500 = P.filter(p => p.price < 500);
+const u1000 = P.filter(p => p.price >= 500 && p.price < 1000);
+const alerts = waText('Hi Sastho, please send me your sale alerts on WhatsApp.');
+---
+<Layout title="Deals" active="deals" path="deals.html"
+  description="Products on offer at Sastho Lanka today, plus everything under Rs 500 and under Rs 1,000. Order on WhatsApp and pay cash on delivery.">
+
+  <section class="phead">
+    <div class="wrap">
+      <span class="eyebrow"><Icon name="tag" />Deals</span>
+      <h1>What is on offer today</h1>
+      <p>Every price here is Sastho's own, read from sastho.lk. A crossed out price is the regular price of that same product.</p>
+      <div class="hero-cta">
+        {SITE.saleAlerts.whatsapp && <a class="btn wa" href={alerts} target="_blank" rel="noopener"><Icon name="b-whatsapp" />Tell me when prices drop</a>}
+        <a class="btn ghost" href="#pocket">Under Rs 500</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect tight" aria-labelledby="on-h">
+    <div class="wrap">
+      <div class="head">
+        <div><h2 id="on-h">Marked down now</h2></div>
+        {offers.length > 0 && <a class="more" href={url('shop.html') + '?offer=1'}>All {offers.length}<Icon name="arrow" /></a>}
+      <p id="fresh-line" hidden></p></div>
+      {offers.length > 0
+        ? <div class="grid" id="offer-grid"><Cards items={offers.slice(0, 20)} eager={4} /></div>
+        : <div class="empty"><strong>Nothing is marked down today</strong>Sastho changes its offers often. Ask for sale alerts on WhatsApp and you hear first.</div>}
+    </div>
+  </section>
+
+  <AppBand />
+
+  <section class="sect" id="pocket" aria-labelledby="p5-h">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="eyebrow"><Icon name="zap" />Easy on the pocket</span><h2 id="p5-h">Under Rs 500</h2></div>
+        <a class="more" href={url('shop.html') + '?price=0-499'}>All {u500.length}<Icon name="arrow" /></a>
+      </div>
+      <div class="grid"><Cards items={u500.slice(0, 12)} /></div>
+      <div class="morewrap"><a class="btn ghost" href={url('shop.html') + '?price=0-499'}>See all {u500.length} under Rs 500</a></div>
+    </div>
+  </section>
+
+  <section class="sect tight" aria-labelledby="p10-h">
+    <div class="wrap">
+      <div class="head">
+        <div><h2 id="p10-h">Rs 500 to Rs 999</h2></div>
+        <a class="more" href={url('shop.html') + '?price=500-999'}>All {u1000.length}<Icon name="arrow" /></a>
+      </div>
+      <div class="rail"><Cards items={u1000.slice(0, 10)} /></div>
+    </div>
+  </section>
+
+  <section class="band" aria-label="What you can count on">
+    <div class="wrap band-grid three">
+      <div><span class="bi"><Icon name="cash" /></span><p><b>Cash on delivery</b>Pay only when it arrives</p></div>
+      <div><span class="bi"><Icon name="truck" /></span><p><b>Island-wide delivery</b>To every district in Sri Lanka</p></div>
+      <div><span class="bi"><Icon name="returns" /></span><p><b>{SITE.returnsDays} day returns</b>On unused items in their packaging</p></div>
+    </div>
+  </section>
+
+  <script>
+    // The Deals page is where new offers are seen. Say how many are new to this phone, then mark them seen.
+    import { offers } from '../scripts/store.js';
+    const fresh = offers.fresh(), line = document.getElementById('fresh-line');
+    if (fresh.length && line) {
+      line.hidden = false; line.textContent = fresh.length === 1 ? '1 offer is new since you last looked.' : fresh.length + ' offers are new since you last looked.';
+      fresh.forEach(id => { const c = document.querySelector('#offer-grid .card[data-id="' + id + '"] .card-img'); if (c) c.insertAdjacentHTML('beforeend', '<span class="badge new">New</span>'); });
+    }
+    offers.markSeen();
+  </script>
+</Layout>
