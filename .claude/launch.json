@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "sastho",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4599"],
+      "runtimeExecutable": "/Users/thulaibhassen/.local/node/bin/node",
+      "runtimeArgs": ["node_modules/astro/bin/astro.mjs", "preview", "--port", "4599"],
       "port": 4599
     }
   ]
